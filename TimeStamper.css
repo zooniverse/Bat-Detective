@@ -47,8 +47,8 @@
 		position: absolute;
 		top: 0;
 		-moz-transition:
-			left 0.1s ease-in-out,
-			opacity 0.1s ease-in-out;
+			left 0.1s ease-in-out 0.1s,
+			opacity 0.1s ease-in-out 0.1s;
 	}
 
 	.frequency-selection:hover .controls {
@@ -66,25 +66,34 @@
 
 	.frequency-selection .high-handle,
 	.frequency-selection .low-handle {
-		background: inherit;
-		bottom: 100%;
+		bottom: auto;
+		border-bottom: 0 solid #000;
+		border-top: 0 solid #000;
 		cursor: ns-resize;
-		height: 1px;
+		height: 8px;
 		left: 0;
 		opacity: 0.5;
 		position: absolute;
-		-moz-transition: height 0.1s ease-in-out 0.1s;
+		top: 0;
+		-moz-transition:
+			border-width 0.1s ease-in-out 0.1s,
+			height 0.1s ease-in-out 0.1s;
 		width: 100%
 	}
 
 	.frequency-selection .low-handle {
-		bottom: auto;
-		top: 100%;
+		bottom: 0;
+		top: auto;
 	}
 
-	.frequency-selection:hover .high-handle,
+	.frequency-selection:hover .high-handle {
+		border-top-width: 8px;
+		height: 0;
+	}
+
 	.frequency-selection:hover .low-handle {
-		height: 8px
+		border-bottom-width: 8px;
+		height: 0;
 	}
 
 /* Sound selection */
@@ -98,22 +107,32 @@
 
 	.sound-selection .start-handle,
 	.sound-selection .end-handle {
-		background: #000;
+		border-left: 0 solid #000;
+		border-right: 0 solid #000;
 		cursor: ew-resize;
 		height: 100%;
+		left: 0;
+		opacity: 0.5;
 		position: absolute;
-		right: 100%;
+		right: auto;
 		top: 0;
-		-moz-transition: width 0.1s ease-in-out 0.1s;
-		width: 1px;
+		-moz-transition:
+			border-width 0.1s ease-in-out 0.1s,
+			width 0.1s ease-in-out 0.1s;
+		width: 8px;
 	}
 
 	.sound-selection .end-handle {
-		left: 100%;
-		right: auto
+		left: auto;
+		right: 0;
 	}
 
-	.sound-selection:hover .start-handle,
+	.sound-selection:hover .start-handle {
+		border-left-width: 8px;
+		width: 0;
+	}
+
 	.sound-selection:hover .end-handle {
-		width: 8px;
+		border-right-width: 8px;
+		width: 0;
 	}

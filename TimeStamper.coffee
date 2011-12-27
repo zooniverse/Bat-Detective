@@ -22,7 +22,9 @@ class Widget extends Spine.Controller
 		@el.addClass(@rootClass)
 
 	onMouseDown: (e) =>
-		e.preventDefault() unless 'value' in e.target
+		return if e.target.nodeName.toUpperCase() is 'SELECT'
+
+		e.preventDefault()
 
 		@mouseIsDown =
 			x: e.clientX - @el.offset().left
@@ -146,9 +148,6 @@ class FrequencyRange extends Widget
 
 	rootClass: 'frequency-selection'
 	template: '''
-		<div class="high-handle"></div>
- 		<div class="low-handle"></div>
-
 		<div class="drag-handle">
 			<select class="type">
 				<option value="UNKNOWN">What is this?</option>
@@ -163,6 +162,9 @@ class FrequencyRange extends Widget
  		</div>
 
 		<div class="time-track"></div>
+
+		<div class="high-handle"></div>
+ 		<div class="low-handle"></div>
 	'''
 
 	events:
