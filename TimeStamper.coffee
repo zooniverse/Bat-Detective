@@ -123,14 +123,14 @@ class SoundSelection extends Widget
 		if @toSet then @set(@toSet, @frequencyRange.motion.absolute.x)
 
 	set_start: (value) =>
-		return if value < 0 or value > 1
+		return if value < 0 or value >= @end
 
 		@start = value
 		@el.css('left', "#{value * 100}%")
 
 	set_center: (value) =>
 		newStart = @start + (@motion.relative.x / @frequencyRange.el.width())
-		newEnd =   @end   + (@motion.relative.x / @frequencyRange.el.width())
+		newEnd = @end + (@motion.relative.x / @frequencyRange.el.width())
 
 		@log newStart, newEnd
 
@@ -139,7 +139,7 @@ class SoundSelection extends Widget
 			@set('end',  newEnd)
 
 	set_end: (value) =>
-		return if value < 0 or value > 1
+		return if value <= @start or value > 1
 
 		@end = value
 		@el.css('right', "#{(1 - value) * 100}%")
@@ -234,7 +234,7 @@ class FrequencyRange extends Widget
 
 	set_high: (value) =>
 		@log 'High', value
-		return if value < 0 or value > 1
+		return if value < 0 or value >= @low
 
 		@high = value
 		@el.css('top', "#{value * 100}%")
@@ -249,7 +249,7 @@ class FrequencyRange extends Widget
 
 	set_low: (value) =>
 		@log 'Low', value
-		return if value < 0 or value > 1
+		return if value <= @high or value > 1
 
 		@low = value
 		@el.css('bottom', "#{(1 - value) * 100}%")
@@ -267,7 +267,7 @@ class FrequencyRange extends Widget
 		)
 
 		sound.set('start', center)
-		sound.set('end', center + 0.05)
+		sound.set('end', center + 0.01)
 
 		@sounds.push(sound)
 
@@ -341,7 +341,7 @@ class window.Annotator extends Widget
 		)
 
 		range.set('high', centerPoint)
-		range.set('low', centerPoint + 0.05)
+		range.set('low', centerPoint + 0.01)
 
 		@ranges.push(range)
 
