@@ -1,9 +1,12 @@
 class Widget extends Spine.Controller
-	rootClass: ''
-	template: ''
+	rootClass: '' # Will be applied to @el
+	template: '' # Will be used to populate @el
 
-	mouseIsDown: null # The x and y where the mouse was downed.
-	motion: # Positions updated when the mouse moves.
+	# The x and y where the mouse was downed.
+	mouseIsDown: null
+	
+	# Positions updated when the mouse moves.
+	motion:
 		relative:
 			x: NaN
 			y: NaN
@@ -13,19 +16,27 @@ class Widget extends Spine.Controller
 
 	constructor: ->
 		super
+
+		@render()
+
 		@el.on 'mousedown', @onMouseDown
+
+		# Some mouse events are better delegated to the document
 		$(document).on 'mousemove', @onMouseMove
 		$(document).on 'mouseup', @onMouseUp
 
+	# Fill in the template and add the rootClass.
 	render: =>
 		@html(@template)
 		@el.addClass(@rootClass)
 
 	onMouseDown: (e) =>
+		# Preventing default of a <select> mousedown effectively disables it in Chrome.
 		return if e.target.nodeName.toUpperCase() is 'SELECT'
 
 		e.preventDefault()
 
+		# Remember where the mouse went down so we can see how far it's moved.
 		@mouseIsDown =
 			x: e.clientX - @el.offset().left
 			y: e.clientY - @el.offset().top
@@ -35,14 +46,15 @@ class Widget extends Spine.Controller
 	onMouseMove: (e) =>
 		if @mouseIsDown then @onDrag(e)
 
+	# Fired when the mouse moves while it's down.
 	onDrag: (e) =>
 		@_updateMotion(e)
 
 	_updateMotion: (e) =>
+		{min, max} = Math
+
 		x = (e.clientX - @el.offset().left) / @el.width()
 		y = (e.clientY - @el.offset().top) / @el.height()
-
-		{min, max} = Math
 
 		@motion =
 			relative:
@@ -55,15 +67,16 @@ class Widget extends Spine.Controller
 	onMouseUp: (e) =>
 		@mouseIsDown = null
 
+	# Set property values, using a custom set_propertyName method if available.
 	set: (property, value) =>
 		if typeof property is 'object'
+			# Set multiple properties at once.
 			for nestedProperty, nestedValue of property
 				@set(nestedProperty, nestedValue)
-		else if @["set_#{property}"]?
-			@["set_#{property}"](value)
 		else
-			@[property] = value
+			@["set_#{property}"]?(value) || @[property] = value
 
+	# Allows for custom getters.
 	get: (property, passThrough...) =>
 		@["get_#{property}"]?(passThrough...) || @[property]
 
@@ -224,11 +237,18 @@ class FrequencyRange extends Widget
 
 	createSound: (center) =>
 		sound = new SoundSelection(frequencyRange: @)
-		sound.render()
 		sound.appendTo(@timeTrack)
 
+		# Get the new sound's drag started
+		sound.onMouseDown(
+			clientX: center
+			clientY: NaN
+			target: sound.endHandle[0]
+			preventDefault: ->
+		)
+
 		sound.set('start', center)
-		sound.set('end', center + 0.1)
+		sound.set('end', center + 0.05)
 
 		@sounds.push(sound)
 
@@ -259,15 +279,13 @@ class FrequencyRange extends Widget
 
 
 class window.Annotator extends Widget
-	# The highest and lowest frequency, in Hz (I guess)
+	# The highest and lowest frequency, in Hz (probably)
 	high: 100
 	low: 50
 
 	# The start and ending time for the sample, in milliseconds
 	start: 0
 	end: 3000
-
-	value: null
 
 	ranges: []
 
@@ -288,10 +306,17 @@ class window.Annotator extends Widget
 		@log "Creating range at #{centerPoint}"
 
 		range = new FrequencyRange(annotator: @)
-		range.render()
 		range.appendTo(@el)
 
-		range.set('high', centerPoint - 0.05)
+		# Get the new range's drag started
+		range.onMouseDown(
+			clientX: NaN
+			clientY: centerPoint
+			target: range.lowHandle[0]
+			preventDefault: ->
+		)
+
+		range.set('high', centerPoint)
 		range.set('low', centerPoint + 0.05)
 
 		@ranges.push(range)
@@ -301,15 +326,21 @@ class window.Annotator extends Widget
 			range.release()
 		super
 
+	# Convert a number between 0 and 1 to a frequency in this annotator's range.
+	# The lower the input, the higher the frequency, so subtract from 1 first.
 	toHertz: (outOfOne) =>
 		((1 - outOfOne) * (@high - @low)) + @low
 
+	# Convert a number between 0 and 1 to a time on this annotator's scale.
 	toTime: (outOfOne) =>
 		(outOfOne * (@end - @start)) + @start
 
+	# JSON representation of the marked frequencies and their sounds
 	get_value: =>
 		out = for range in @ranges
 			range.get('value')
+
+		JSON.stringify(out)
 
 	release: =>
 		for range in @ranges
