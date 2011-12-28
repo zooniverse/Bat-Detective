@@ -147,7 +147,13 @@ class SoundSelection extends Widget
 	release: =>
 		# Remove this sound from its parent frequency's list.
 		for sound, i in @frequencyRange.sounds when sound is @
-			@frequencyRange.sounds.splice(i, 1)
+			# Modify the frequency's sound list in a timeout so that its
+			# release method doesn't modify the array it iterates over.
+			index = i
+			setTimeout(
+				=> @frequencyRange.sounds.splice(index, 1)
+				0
+			)
 
 		super
 
@@ -269,11 +275,16 @@ class FrequencyRange extends Widget
 		out
 
 	release: =>
-		for sound in @sounds
-			sound.release()
+		sound.release() for sound in @sounds
 
 		for range, i in @annotator.ranges when range is @
-			@annotator.ranges.splice(i, 1)
+			# Modify the annotator's range list in a timeout so that its
+			# release method doesn't modify the array it iterates over.
+			index = i # By the time the timeout fires i will be the array's length.
+			setTimeout(
+				=> @annotator.ranges.splice(index, 1)
+				0
+			)
 
 		super
 
@@ -322,8 +333,7 @@ class window.Annotator extends Widget
 		@ranges.push(range)
 
 	release: =>
-		for range in @ranges
-			range.release()
+		range.release() for range in @ranges
 		super
 
 	# Convert a number between 0 and 1 to a frequency in this annotator's range.
