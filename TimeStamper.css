@@ -52,6 +52,9 @@
 		-moz-transition:
 			left 0.1s ease-in-out 0.1s,
 			opacity 0.1s ease-in-out 0.1s;
+		-webkit-transition:
+			left 0.1s ease-in-out 0.1s,
+			opacity 0.1s ease-in-out 0.1s;
 	}
 
 	.frequency-selection:hover .frequency-controls {
@@ -79,6 +82,9 @@
 		position: absolute;
 		top: 0;
 		-moz-transition:
+			border-width 0.1s ease-in-out 0.1s,
+			height 0.1s ease-in-out 0.1s;
+		-webkit-transition:
 			border-width 0.1s ease-in-out 0.1s,
 			height 0.1s ease-in-out 0.1s;
 		width: 100%
@@ -132,6 +138,9 @@
 		right: auto;
 		top: 0;
 		-moz-transition:
+			border-width 0.1s ease-in-out 0.1s,
+			width 0.1s ease-in-out 0.1s;
+		-webkit-transition:
 			border-width 0.1s ease-in-out 0.1s,
 			width 0.1s ease-in-out 0.1s;
 		width: 8px;
