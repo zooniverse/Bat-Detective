@@ -83,9 +83,15 @@ class SoundSelection extends Widget
 
 	rootClass: 'sound-selection'
 	template: '''
+		<div class="sound-controls">
+			<button class="delete-sound">x</button>
+		</div>
 		<div class="start-handle"></div>
 		<div class="end-handle"></div>
 	'''
+
+	events:
+		'click .delete-sound': 'release'
 
 	onMouseDown: (e) =>
 		super
@@ -125,6 +131,13 @@ class SoundSelection extends Widget
 			start: @frequencyRange.annotator.toTime(@start)
 			end: @frequencyRange.annotator.toTime(@end)
 
+	release: =>
+		# Remove this sound from its parent frequency's list.
+		for sound, i in @frequencyRange.sounds when sound is @
+			@frequencyRange.sounds.splice(i, 1)
+
+		super
+
 
 class FrequencyRange extends Widget
 	high: NaN
@@ -157,8 +170,8 @@ class FrequencyRange extends Widget
 			</select>
 		</div>
 
- 		<div class="controls">
-			<button class="delete">X</button>
+ 		<div class="frequency-controls">
+			<button class="delete-frequency">X</button>
  		</div>
 
 		<div class="time-track"></div>
@@ -169,7 +182,7 @@ class FrequencyRange extends Widget
 
 	events:
 		'change .type': 'typeChanged'
-		'click .delete': 'release'
+		'click .delete-frequency': 'release'
 
 	constructor: ->
 		super
@@ -224,11 +237,6 @@ class FrequencyRange extends Widget
 		@el.removeClass('bat insect machine')
 		@el.addClass(@typeSelect.val().toLowerCase())
 
-	release: =>
-		for sound in @sounds
-			sound.release()
-		super
-
 	get_value: =>
 		out =
 			type: @type
@@ -239,6 +247,15 @@ class FrequencyRange extends Widget
 			sound.get('value')
 
 		out
+
+	release: =>
+		for sound in @sounds
+			sound.release()
+
+		for range, i in @annotator.ranges when range is @
+			@annotator.ranges.splice(i, 1)
+
+		super
 
 
 class window.Annotator extends Widget
@@ -293,3 +310,9 @@ class window.Annotator extends Widget
 	get_value: =>
 		out = for range in @ranges
 			range.get('value')
+
+	release: =>
+		for range in @ranges
+			range.release()
+
+		super

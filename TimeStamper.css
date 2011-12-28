@@ -19,14 +19,17 @@
 
 .frequency-selection.bat {
 	background: -moz-linear-gradient(top, #666, #333);
+	background: -webkit-linear-gradient(top, #666, #333);
 }
 
 .frequency-selection.insect {
 	background: -moz-linear-gradient(top, #696, #363);
+	background: -webkit-linear-gradient(top, #696, #363);
 }
 
 .frequency-selection.machine {
 	background: -moz-linear-gradient(top, #999, #666);
+	background: -webkit-linear-gradient(top, #999, #666);
 }
 
 	.frequency-selection .drag-handle {
@@ -39,7 +42,7 @@
 		right: 100%;
 	}
 
-	.frequency-selection .controls {
+	.frequency-selection .frequency-controls {
 		background: inherit;
 		height: 100%;
 		left: 90%;
@@ -51,7 +54,7 @@
 			opacity 0.1s ease-in-out 0.1s;
 	}
 
-	.frequency-selection:hover .controls {
+	.frequency-selection:hover .frequency-controls {
 		left: 100%;
 		opacity: 1;
 	}
@@ -104,6 +107,18 @@
 	min-width: 12px;
 	position: absolute;
 }
+
+	.sound-selection .sound-controls {
+		display: none;
+		position: absolute;
+		right: -5px;
+		top: -5px;
+		z-index: 1;
+	}
+
+	.sound-selection:hover .sound-controls {
+		display: block
+	}
 
 	.sound-selection .start-handle,
 	.sound-selection .end-handle {
