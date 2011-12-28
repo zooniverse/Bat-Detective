@@ -123,21 +123,26 @@ class SoundSelection extends Widget
 		if @toSet then @set(@toSet, @frequencyRange.motion.absolute.x)
 
 	set_start: (value) =>
+		return if value < 0 or value > 1
+
 		@start = value
-		@log "Setting start to #{value}"
 		@el.css('left', "#{value * 100}%")
-		@el.css('width', "#{@originalWidth - @frequencyRange.motion.relative.x}")
 
 	set_center: (value) =>
-		@log "Setting center to #{value}"
-		halfSize = (@end - @start) / 2
-		@set('start', value - halfSize)
-		@set('end',  value + halfSize)
+		newStart = @start + (@motion.relative.x / @frequencyRange.el.width())
+		newEnd =   @end   + (@motion.relative.x / @frequencyRange.el.width())
+
+		@log newStart, newEnd
+
+		if newStart >= 0 and newEnd <= 1
+			@set('start', newStart)
+			@set('end',  newEnd)
 
 	set_end: (value) =>
+		return if value < 0 or value > 1
+
 		@end = value
-		@log "Setting end to #{value}"
-		@el.width("#{(value - (@start || 0)) * 100}%")
+		@el.css('right', "#{(1 - value) * 100}%")
 
 	get_value: =>
 		out =
@@ -228,18 +233,26 @@ class FrequencyRange extends Widget
 		if @toSet then @set(@toSet, @annotator.motion.absolute.y)
 
 	set_high: (value) =>
+		@log 'High', value
+		return if value < 0 or value > 1
+
 		@high = value
 		@el.css('top', "#{value * 100}%")
-		@el.css('height', "#{@originalHeight - @annotator.motion.relative.y}")
 
 	set_center: (value) =>
-		halfSize = (@low - @high) / 2
-		@set('high', value - halfSize)
-		@set('low',  value + halfSize)
+		newHigh = @high + (@motion.relative.y / @annotator.el.height())
+		newLow = @low + (@motion.relative.y / @annotator.el.height())
+
+		if newHigh >= 0 and newLow <= 1
+			@set('high', newHigh)
+			@set('low',  newLow)
 
 	set_low: (value) =>
+		@log 'Low', value
+		return if value < 0 or value > 1
+
 		@low = value
-		@el.height("#{(value - @high || 0) * 100}%")
+		@el.css('bottom', "#{(1 - value) * 100}%")
 
 	createSound: (center) =>
 		sound = new SoundSelection(frequencyRange: @)
