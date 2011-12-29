@@ -132,8 +132,6 @@ class SoundSelection extends Widget
 		newStart = @start + (@motion.relative.x / @frequencyRange.el.width())
 		newEnd = @end + (@motion.relative.x / @frequencyRange.el.width())
 
-		@log newStart, newEnd
-
 		if newStart >= 0 and newEnd <= 1
 			@set('start', newStart)
 			@set('end',  newEnd)
@@ -233,7 +231,6 @@ class FrequencyRange extends Widget
 		if @toSet then @set(@toSet, @annotator.motion.absolute.y)
 
 	set_high: (value) =>
-		@log 'High', value
 		return if value < 0 or value >= @low
 
 		@high = value
@@ -248,7 +245,6 @@ class FrequencyRange extends Widget
 			@set('low',  newLow)
 
 	set_low: (value) =>
-		@log 'Low', value
 		return if value <= @high or value > 1
 
 		@low = value
@@ -327,8 +323,6 @@ class window.Annotator extends Widget
 			@createRange(clickY)
 
 	createRange: (centerPoint) =>
-		@log "Creating range at #{centerPoint}"
-
 		range = new FrequencyRange(annotator: @)
 		range.appendTo(@el)
 
