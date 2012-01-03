@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+
+		<style type="text/css">
+			html {
+				background: #000 url("visual-assets/road.png") no-repeat center top;
+				background-position: 0 center;
+				color: #fff;
+			}
+
+				body {
+					margin: 0;
+				}
+
+					.bg-layer {
+						height: 100%;
+						left: 0;
+						position: fixed;
+						top: 0;
+						width: 100%;
+					}
+
+					#bats-bg-far {
+						background: url("visual-assets/bats.png");
+					}
+
+					#bats-bg-close {
+						background: url("visual-assets/bats.png");
+					}
+
+					#wrapper {
+						margin: 3em;
+						min-width: 150%;
+						position: relative;
+					}
+
+						.explanation {
+							background: rgba(127, 0, 0, 0.33);
+							border: 1px solid #f00;
+							max-width: 50%;
+							padding: 0 1em;
+						}
+		</style>
+	</head>
+
+	<body>
+		<div id="bats-bg-far" class="bg-layer" data-parallax-multiplier="3"></div>
+		<div id="bats-bg-close" class="bg-layer" data-parallax-multiplier="7"></div>
+
+		<div id="wrapper">
+			<div class="explanation">
+				<h1>Parallax scrolling demo</h1>
+				<p>Add a <code>data-parallax-multiplier</code> attribute to elements whose backgrounds should scroll some multiple of the actual scroll distance.</p>
+				<p><strong>Note:</strong> I've symlinked <code>bats/pngs/</code> from the the zooniverse/Visual-Assets repo to <code>./visual-assets</code>.</p>
+			</div>
+
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+		</div>
+
+		<script type="text/javascript">
+			var multiplierAttr = 'data-parallax-multiplier';
+			var multiplied = document.querySelectorAll('[' + multiplierAttr + ']');
+			multiplied = Array.prototype.slice.call(multiplied);
+
+			document.addEventListener('scroll', function(e) {
+				multiplied.forEach(function(element) {
+					var multiplier = parseFloat(element.getAttribute(multiplierAttr));
+
+					element.style.backgroundPosition = [
+						(-1 * scrollX * multiplier) + 'px',
+						(-1 * scrollY * multiplier) + 'px'
+					].join(' ');
+				});
+			}, false);
+		</script>
+	</body>
+</html>
