@@ -1,0 +1,147 @@
+@import "constants";
+
+html {
+	background: #000 url("road.jpg") center top no-repeat fixed;
+	color: $white;
+	font: 12px Titillium, "Helvetica Neue", Arial, sans-serif;
+
+	body {}
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 75%;
+
+	> header {
+		background: url("rule.png") center bottom no-repeat;
+
+		> nav {
+			padding: 140px 0 90px;
+			position: relative;
+
+			> h1 {
+				margin: 0;
+				position: absolute;
+				left: 50%;
+				top: 60px;
+
+				> a {
+					display: block;
+					margin-left: -50%;
+				}
+			}
+
+			> ul {
+				display: table;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+
+				> li {
+					display: table-cell;
+					text-align: right;
+
+					&:first-child,
+					&:first-child + li {
+						text-align: left;
+					}
+
+					> a {
+						color: inherit;
+						padding: 10px 0;
+						text-decoration: none;
+						text-transform: uppercase;
+
+						&:hover,
+						&.active {
+							color: $gold;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#main {
+		> section {
+			clear: both;
+
+			> header {
+				> nav {
+					font-size: 14px;
+
+					> ul {
+						padding: 0;
+
+						> li {
+							display: inline-block;
+
+							> a {
+								background: $white-trans-medium;
+								color: $black;
+								display: block;
+								padding: 5px 10px;
+								text-decoration: none;
+								text-transform: uppercase;
+
+								&:hover {
+									background: $white-trans-low;
+								}
+
+								&.active {
+									background: $gold;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.primary {
+			float: left;
+			max-width: 33%;
+		}
+
+		.secondary {
+			float: right;
+			max-width: 33%;
+		}
+
+		h2 {
+			font: {
+				size: 24px;
+				weight: normal;
+			}
+			text-transform: uppercase;
+		}
+
+		h3 {
+			font: {
+				size: 16px;
+				weight: normal;
+			}
+			text-transform: uppercase;
+		}
+
+		p {
+			margin: 2em 0;
+		}
+
+		a.play {
+			// TODO: Background image
+			font-size: 12px;
+		}
+	}
+
+	a {
+		color: $gold;
+		text-decoration: none;
+
+		img {
+			border: 0;
+		}
+	}
+}

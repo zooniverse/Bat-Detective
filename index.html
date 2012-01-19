@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+
+		<title>Bat Detective</title>
+		<link href="style/main.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div id="zooniverse-bar"></div>
+
+		<div id="wrapper">
+			<header>
+				<nav>
+					<h1><a href="#/home"><img src="/images/bat-detective-heading.png" alt="Bat Detective" /></a></h1>
+
+					<ul>
+						<li><a href="#/home">Home</a></li>
+						<li><a href="#/sounds" class="active">Sounds</a></li>
+						<li><a href="#/classify">Classify</a></li>
+						<li><a href="#/team">Team</a></li>
+					</li>
+				</nav>
+			</header>
+
+			<div id="main" data-active-page="sounds">
+				<section data-page="home">
+					<h2>This is the home page</h2>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+				</section>
+
+				<section data-page="sounds" data-active-page="bat-calls">
+					<header>
+						<h2>What am I hearing?</h2>
+
+						<nav>
+							<ul>
+								<li><a class="active" href="#/sounds/bat-calls">Bat calls</a></li>
+								<li><a href="#/sounds/insects">Insects</a></li>
+								<li><a href="#/sounds/machines">Machines</a></li>
+							</ul>
+						</nav>
+					</header>
+
+					<section data-page="bat-calls">
+						<div class="primary">
+							<p>A bat call will be relatively tonal and when played back will sound like a whistle.</p>
+							<p>Generally a bat call will be longer than 2.5ms and shorter than 70ms.</p>
+							<p>Generally bat calls are produced in a sequence (Note, however, that low frequency bat calls (&lt;25kHz) may only produce a single call in a 320ms snapshot.</p>
+						</div>
+
+						<div class="secondary">
+							<section>
+								<h3>Social <a href="#/sounds/bat-calls/social/play" class="play">Play example</a></h3>
+								<p>Social calls usually consist of a series of downward sweeping fequency modulated components - for example every 6ms.</p>
+							</section>
+
+							<section>
+								<h3>Ecolocation <a href="#/sounds/bat-calls/ecolocation/play" class="play">Play example</a></h3>
+								<p>Social calls usually consist of a series of downward sweeping fequency modulated components - for example every 6ms.</p>
+							</section>
+
+							<section>
+								<h3>Feeding <a href="#/sounds/bat-calls/feeding/play" class="play">Play example</a></h3>
+								<p>Social calls usually consist of a series of downward sweeping fequency modulated components - for example every 6ms.</p>
+							</section>
+						</div>
+					</section>
+
+					<section data-page="insects">
+						<p>Insects</p>
+					</section
+
+					<section data-page="machines">
+						<p>Machines</p>
+					</section
+				</section>
+
+				<section data-page="classify">
+					<h2>This is the classify page</h2>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+				</section>
+
+				<section data-page="team">
+					<h2>This is the team page</h2>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/jquery.js" type="text/javascript"></script>
+		<script src="lib/spine/lib/spine.js" type="text/javascript"></script>
+	</body>
+</html>
