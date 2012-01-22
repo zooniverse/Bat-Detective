@@ -1,18 +1,28 @@
 define (require) ->
 	Spine = require 'Spine'
+	$ = jQuery
 
 	class Page extends Spine.Controller
+		path: '' # Like "/foo/bar"
+		
+		tabs: null
+
+		constructor: ->
+			super
+
+			@tabs ||= $("a[href='##{@path}']")
+
+			if @el.hasClass 'active' then @activate()
+
+			@log "New Page at \"#{@path}\" and #{@tabs.length} tabs"
+
 		activate: =>
-			@el.addClass 'active'
-			@el.removeClass 'before'
-			@el.removeClass 'after'
+			elAndTabs = @el.add @tabs
+			elAndTabs.addClass 'active'
+			elAndTabs.removeClass 'before'
+			elAndTabs.removeClass 'after'
 
 		deactivate: (inactiveClass) =>
-			@el.removeClass 'active'
-			if inactiveClass then @el.addClass inactiveClass
-
-		before: =>
-			@deactivate 'before'
-
-		after: =>
-			@deactivate 'after'
+			elAndTabs = @el.add @tabs
+			elAndTabs.removeClass 'active'
+			elAndTabs.addClass inactiveClass

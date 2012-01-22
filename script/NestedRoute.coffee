@@ -1,5 +1,6 @@
 define (require) ->
 	Spine = require 'Spine'
+	$ = require 'jQuery'
 
 	# This totally sucks,
 	# but there's no way to extend this so that the context
@@ -8,12 +9,13 @@ define (require) ->
 	Spine.Route.superMatchRoute = Spine.Route.matchRoute
 
 	Spine.Route.matchRoute = (path, options) ->
-		if typeof path is 'string'			
-			path = path.split('/')
+		if typeof path is 'string' then path = path.split '/'
 
 		matchPath = []
 		while path.length > 0
 			matchPath.push path.shift()
-			@superMatchRoute matchPath.join '/'
+			matchedPath = matchPath.join '/'
+
+			if matchedPath then @superMatchRoute matchedPath
 
 	Spine.Route

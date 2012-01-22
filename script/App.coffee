@@ -1,7 +1,6 @@
 define (require) ->
 	Spine = require 'Spine'
 	Pager = require 'Pager'
-	Page = require 'Page'
 
 	class App extends Spine.Controller
 		pagers: null

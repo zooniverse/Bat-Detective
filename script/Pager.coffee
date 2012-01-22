@@ -4,9 +4,9 @@ define (require) ->
 	Page = require 'Page'
 
 	class window.Pager extends Spine.Controller
-		path: ''
+		path: '' # "/foo/bar/:page"
+
 		pages: null
-		tabs: null
 
 		constructor: ->
 			super
@@ -24,17 +24,17 @@ define (require) ->
 
 				'/' + segments.join '/'
 
+			path = @path
+
 			@pages ||= do =>
 				@el.children('[data-page]').map ->
 					new Page
 						el: @
-
-			@tabs ||= []
+						path: path.replace(':page', $(@).attr 'data-page')
 
 			@route @path, @pathMatched
 
-			console.log "Created new Pager at \"#{@path}\" " +
-			"with #{@pages.length} pages and #{@tabs.length} tabs"
+			@log "Created new Pager at \"#{@path}\" with #{@pages.length} pages"
 
 		pathMatched: (params) =>
 			matched = false
@@ -45,6 +45,6 @@ define (require) ->
 					@activate()
 				else
 					if not matched
-						@before()
+						@deactivate 'before'
 					else
-						@after()
+						@deactivate 'after'
