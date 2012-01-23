@@ -24,33 +24,33 @@ html {
 			padding: 140px 0 90px;
 			position: relative;
 
-			> h1 {
-				margin: 0;
-				position: absolute;
-				left: 50%;
-				top: 60px;
-
-				> a {
-					display: block;
-					margin-left: -50%;
-				}
-			}
-
 			> ul {
 				display: table;
+				border: 0;
+				border-collapse: collapse;
 				margin: 0;
 				padding: 0;
 				position: relative;
+				table-layout: fixed;
 				width: 100%;
 				z-index: 1;
 
 				> li {
 					display: table-cell;
-					text-align: right;
+					text-align: left;
+					width: 1%;
 
-					&:first-child,
-					&:first-child + li {
-						text-align: left;
+					&.logo {
+						text-align: center;
+						width: 2%;
+
+						img {
+							vertical-align: -45px;
+						}
+
+						~ li {
+							text-align: right;
+						}
 					}
 
 					> a {
