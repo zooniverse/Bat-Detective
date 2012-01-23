@@ -73,14 +73,12 @@ html {
 		position: relative;
 
 		> section {
+			@include transition(#{left 0.25s ease-in-out, opacity 0.25s ease-in-out});
 			clear: both;
 			left: 0;
 			opacity: 0;
 			position: absolute;
 			top: 0;
-			-moz-transition:
-				left 0.25s ease-in-out,
-				opacity 0.25s ease-in-out;
 			width: 100%;
 
 			&.active {

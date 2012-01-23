@@ -8,6 +8,8 @@ $gold: #eb0;
 
 $gray-darkest: #111;
 
-@mixin box-shadow($args) {
-	box-shadow: $args;
+@mixin transition($args) {
+	-moz-transition: $args;
+	-webkit-transition: $args;
+	transition: $args;
 }
