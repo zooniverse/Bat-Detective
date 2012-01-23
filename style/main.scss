@@ -9,7 +9,6 @@ html {
 	body {
 		height: 100%;
 		margin: 0;
-		overflow-x: hidden;
 	}
 }
 
@@ -21,7 +20,7 @@ html {
 		background: url("rule.png") center bottom no-repeat;
 
 		> nav {
-			padding: 140px 0 90px;
+			padding: 70px 0 40px;
 			position: relative;
 
 			> ul {
@@ -72,28 +71,35 @@ html {
 	#main {
 		position: relative;
 
+		// Main pages
 		> section {
 			@include transition(#{left 0.25s ease-in-out, opacity 0.25s ease-in-out});
 			clear: both;
+			height: 100%;
 			left: 0;
 			opacity: 0;
+			overflow: hidden;
 			position: absolute;
 			top: 0;
 			width: 100%;
 
 			&.active {
+				height: auto;
 				opacity: 1;
+				position: relative;
 				z-index: 1;
 			}
 
 			&.before {
-				left: -20%;
+				left: -16.67%;
+
 			}
 
 			&.after {
-				left: 20%;
+				left: 16.67%;
 			}
 
+			// Second-level tabs
 			> section {
 				display: none;
 
