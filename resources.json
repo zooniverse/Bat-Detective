@@ -1,6 +1,7 @@
 [
 	{"http://requirejs.org/docs/release/1.0.4/comments/require.js": "lib/require.js"},
 	{"http://code.jquery.com/jquery-1.7.1.js": "lib/jquery.js"},
+	{"http://jplayer.org/latest/jQuery.jPlayer.2.1.0.zip": "lib/jPlayer"},
 	{"https://github.com/maccman/spine/zipball/df1b4418716e1633a6f7bbe37933ac308e8ad344": "lib/spine"},
 	{"http://www.fontsquirrel.com/fontfacekit/TitilliumText": "lib/TitilliumText"}
 ]
