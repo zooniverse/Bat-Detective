@@ -22,10 +22,12 @@
 
 		<script src="../lib/jquery.js" type="text/javascript"></script>
 		<script src="../lib/spine/lib/spine.js" type="text/javascript"></script>
+		<script src="./TimeStamper.js" type="text/javascript"></script>
 
-		<script src="TimeStamper.js" type="text/coffeescript"></script>
 		<script type="text/javascript">
-			window.annotation = new window.Annotator(el: $('#demo-annotator'));
+			window.annotation = new window.Annotator({
+				el: $('#demo-annotator')
+			});
 		</script>
 	</body>
 </html>
