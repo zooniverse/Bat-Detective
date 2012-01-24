@@ -12,6 +12,13 @@ html {
 	}
 }
 
+// Only show the current translation.
+html[lang="en"] [lang]:not([lang="en"]),
+html[lang="de"] [lang]:not([lang="de"]),
+html[lang="pl"] [lang]:not([lang="pl"]) {
+	display: none;
+}
+
 #app {
 	margin: 0 auto;
 	width: 75%;

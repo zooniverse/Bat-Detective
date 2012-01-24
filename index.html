@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 
@@ -9,25 +9,47 @@
 	</head>
 
 	<body>
-		<div id="zooniverse-bar"></div>
+		<div id="zooniverse-bar">
+			<select onchange="$('html').attr('lang', this.value);">
+				<option value="en">EN</option>
+				<option value="de">DE</option>
+				<option value="pl">PL</option>
+			</select>
+		</div>
 
 		<div id="app">
 			<header>
 				<nav>
 					<ul>
-						<li><a href="#/home">Home</a></li>
-						<li><a href="#/sounds">Sounds</a></li>
+						<li>
+							<a href="#/home">
+								<span lang="en">Home</span>
+								<span lang="de">Hause</span>
+								<span lang="pl">Domu</span>
+							</a>
+						</li>
+						<li><a href="#/sounds" data-string="sounds">Sounds</a></li>
 						<li class="logo"><a href="#/"><img src="/images/bat-detective-heading.png" alt="Bat Detective" /></a></li>
-						<li><a href="#/classify">Classify</a></li>
-						<li><a href="#/team">Team</a></li>
-					</li>
+						<li><a href="#/classify" data-string="classify">Classify</a></li>
+						<li><a href="#/team" data-string="team">Team</a></li>
+					</ul>
 				</nav>
 			</header>
 
 			<div id="main">
-				<section data-page="home" class="active">
-					<h2>This is the home page</h2>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+				<section data-page="home" data-string="home" class="active">
+					<div lang="en">
+						<h2>This is the home page</h2>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+					</div>
+					<div lang="de">
+						<h2>This is the hause page</h2>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+					</div>
+					<div lang="pl">
+						<h2>This is the domu page</h2>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+					</div>
 				</section>
 
 				<section data-page="sounds">
