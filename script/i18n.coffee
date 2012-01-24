@@ -26,10 +26,7 @@ define (require, exports) ->
 		# but it makes sense when you write it. Defaults to "span".
 		tag = tag.join('') || 'span'
 
-		markup = ''
-
-		for lang, string of translations
-			markup += "<#{tag} lang=\"#{lang}\">#{string}</#{tag}>"
-
-		# Generate an element list from the markup.
-		$(markup)
+		markup = do ->
+			temp = for lang, string of translations
+				markup += "<#{tag} lang=\"#{lang}\">#{string}</#{tag}>"
+			temp.join('')
