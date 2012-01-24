@@ -4,6 +4,7 @@ define (require) ->
 
 	App = require 'App'
 	NestedRoute = require 'NestedRoute'
+	
 	parallax = require 'parallax'
 
 	window.app = new App

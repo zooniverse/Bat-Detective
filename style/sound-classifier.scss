@@ -1,0 +1,63 @@
+.sound-classifier {
+
+	> .jp-gui {
+		background: gray;
+		position: absolute;
+		width: 100%;
+
+		> .jp-play {}
+
+		> .jp-pause {}
+
+		> .progress {
+			height: 20px;
+			left: 50px;
+			position: absolute;
+			right: 10px;
+			top: 0;
+
+			> .jp-seek-bar {
+				background: black;
+				height: 5px;
+				left: 0;
+				position: absolute;
+				top: 7px;
+				width: 100% !important; // jPlayer sets this to 0 for some reason.
+
+				> .jp-play-bar {
+					background: white;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+
+					> .line {
+						background: green;
+						height: 500px;
+						position: absolute;
+						right: 0;
+						top: 0;
+						width: 2px;
+					}
+
+					> .thumb {
+						background: red;
+						border-radius: 50%;
+						height: 15px;
+						position: absolute;
+						right: 0;
+						top: -5px;
+						width: 15px;
+					}
+				}
+			}
+		}
+
+		> .jp-no-solution {}
+	}
+
+	> img {
+		width: 100%;
+	}
+}
