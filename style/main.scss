@@ -19,6 +19,16 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 	display: none;
 }
 
+#bats-bg {
+	background: url("bats.png") 0 0 no-repeat;
+	height: 100%;
+	left: 0;
+	opacity: 0.67;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
 #app {
 	margin: 0 auto;
 	width: 75%;
