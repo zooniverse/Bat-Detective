@@ -1,12 +1,16 @@
 define (require) ->
 	Spine = require 'Spine'
+	Clip = require 'Clip'
 
 	class Sound extends Spine.Model
-		start: NaN
-		end: NaN
+		high: NaN # 75000
+		low: NaN # 50000
 
-		high: NaN
-		low: NaN
+		maker: '' # "Bat" or "insect" or "machine"
+		type: '' # "Social" or "searching" or "feeding"
+
+		clips: null # [Clip, Clip, Clip]
 
 		constructor: ->
 			super
+			@clips = []

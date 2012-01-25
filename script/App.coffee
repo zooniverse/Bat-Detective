@@ -1,7 +1,7 @@
 define (require) ->
 	Spine = require 'Spine'
 	Pager = require 'Pager'
-	SoundClassifier = require 'SoundClassifier'
+	SonogramClassifier = require 'SonogramClassifier'
 
 	class App extends Spine.Controller
 		pagers: null
@@ -14,5 +14,5 @@ define (require) ->
 				new Pager
 					el: @
 
-			@classifier = new SoundClassifier
+			@classifier = new SonogramClassifier
 				el: @$('#sound-classifier')

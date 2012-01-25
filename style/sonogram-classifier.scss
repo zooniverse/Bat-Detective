@@ -1,0 +1,91 @@
+@import "constants";
+
+.sound-classifier {
+	position: relative;
+
+	> .controls {
+		background: gray;
+
+		> .play,
+		> .pause {
+			background: transparent;
+			border: 0;
+			color: white;
+			padding: 3px 10px;
+		}
+
+		> .pause {
+			display: none;
+		}
+
+		> .seek {
+			height: 40px;
+
+			> .track {
+				background: black;
+				height: 5px;
+				position: relative;
+
+				> .fill {
+					background: white;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 0; // Updates on play
+				}
+
+				> .thumb {
+					background: red;
+					border-radius: 10px;
+					height: 20px;
+					left: 0; // Updates on play
+					margin-left: -10px;
+					opacity: 0.5;
+					position: absolute;
+					top: -5px;
+					width: 20px;
+				}
+			}
+		}
+	}
+
+	> .image {
+		position: relative;
+
+		> .sonogram {
+			width: 100%;
+		}
+
+		> .seek-line {
+			background: green;
+			display: none;
+			height: 100%;
+			left: 0;
+			margin-left: -1px;
+			position: absolute;
+			top: 0;
+			width: 2px;
+		}
+	}
+
+	&.playing {
+		> .controls {
+			> .play {
+				display: none;
+			}
+
+			> .pause {
+				display: inline-block;
+			}
+		}
+
+		> .image > .seek-line {
+			display: block;
+		}
+	}
+
+	&.seeking > .image > .seek-line {
+		display: block;
+	}
+}
