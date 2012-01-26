@@ -56,7 +56,7 @@ define (require) ->
 				<img src="" class="sonogram" />
 			</div>
 
-			<div class="description">
+			<div class="details">
 				<div class="location"></div>
 				<div class="environment"></div>
 				<div class="date"></div>
@@ -82,10 +82,10 @@ define (require) ->
 			'.seek .thumb': 'thumb'
 			'.image > .sonogram': 'sonogram'
 			'.image > .seek-line': 'seekLine'
-			'.description > .location': 'location'
-			'.description > .environment': 'environment'
-			'.description > .date': 'date'
-			'.description > .time': 'time'
+			'.details > .location': 'location'
+			'.details > .environment': 'environment'
+			'.details > .date': 'date'
+			'.details > .time': 'time'
 
 		constructor: ->
 			super

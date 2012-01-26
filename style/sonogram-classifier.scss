@@ -4,14 +4,22 @@
 	position: relative;
 
 	> .controls {
-		background: gray;
+		@include linear-gradient(top, $gray, $gray-dark);
+		position: relative;
+		z-index: 1;
 
 		> .play,
 		> .pause {
 			background: transparent;
 			border: 0;
-			color: white;
+			color: inherit;
+			cursor: pointer;
+			font: {
+				size: 14px;
+				weight: bold;
+			}
 			padding: 3px 10px;
+			text-shadow: 0 1px 1px $gray-darkest;
 		}
 
 		> .pause {
@@ -19,32 +27,35 @@
 		}
 
 		> .seek {
-			height: 40px;
+			@include linear-gradient(top, $gray-darkest, $gray);
+			border: 1px solid $gray-dark {
+				width: 1px 0;
+			}
+			padding: 0 10px;
 
 			> .track {
-				background: black;
-				height: 5px;
+				height: 20px;
 				position: relative;
 
 				> .fill {
-					background: white;
-					height: 100%;
+					@include linear-gradient(left, transparent, $white-trans-medium);
+					height: 50%;
 					left: 0;
 					position: absolute;
-					top: 0;
+					top: 25%;
 					width: 0; // Updates on play
 				}
 
 				> .thumb {
-					background: red;
-					border-radius: 10px;
-					height: 20px;
+					background: $gray-lightest;
+					border-radius: 5px;
+					box-shadow: 0 0 2px $gray-darkest;
+					height: 10px;
 					left: 0; // Updates on play
-					margin-left: -10px;
-					opacity: 0.5;
+					margin-left: -5px;
 					position: absolute;
-					top: -5px;
-					width: 20px;
+					top: 5px;
+					width: 10px;
 				}
 			}
 		}
@@ -56,6 +67,7 @@
 		> .axis {
 			@include box-sizing(border-box);
 			border-bottom: 1px solid;
+			color: $gray-lighter;
 			font-size: 9px;
 			height: 100%;
 			opacity: 0.33;
@@ -134,5 +146,9 @@
 
 	&.seeking > .image > .seek-line {
 		display: block;
+	}
+
+	> .details {
+		
 	}
 }

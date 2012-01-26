@@ -1,17 +1,29 @@
 $black: #000;
 
+$gold: #f5bd00;
+
+$gray: #64635e;
+$gray-light: lighten($gray, 20);
+$gray-lighter: lighten($gray, 40);
+$gray-lightest: lighten($gray, 60);
+$gray-dark: darken($gray, 20);
+$gray-darker: darken($gray, 40);
+$gray-darkest: darken($gray, 60);
+
 $white: #fff;
 $white-trans-high: transparentize($white, 0.75);
 $white-trans-medium: transparentize($white, 0.5);
 $white-trans-low: transparentize($white, 0.25);
 
-$gold: #eb0;
-
-$gray-darkest: #111;
-
 @mixin box-sizing($args) {
 	-moz-box-sizing: $args;
 	box-sizing: $args;
+}
+
+@mixin linear-gradient($position: top, $start: transparent, $end: transparent) {
+	background-image: -webkit-linear-gradient($position, $start, $end);
+	background-image: -moz-linear-gradient($position, $start, $end);
+	background-image: linear-gradient($position, $start, $end);
 }
 
 @mixin transition($args) {
