@@ -3,8 +3,6 @@ define (require) ->
 	$ = require 'jQuery'
 	{delay} = require 'util'
 
-	jpEvent = $.jPlayer.event
-
 	class SoundClassifier extends Spine.Controller
 		sonogram: null
 
