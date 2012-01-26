@@ -34,6 +34,7 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 	margin: 0 auto;
 	width: 75%;
 	max-width: 960px; // Width of the sonograms
+	min-width: 375px;
 
 	> header {
 		background: url("rule.png") center bottom no-repeat;
@@ -49,26 +50,38 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 				margin: 0;
 				padding: 0;
 				position: relative;
-				table-layout: fixed;
 				width: 100%;
 				z-index: 1;
 
 				> li {
 					display: table-cell;
-					text-align: left;
+					padding: 0 10px;
+					text-align: center;
 					width: 1%;
 
+					&:first-child {
+						padding: 0;
+						text-align: left;
+					}
+
 					&.logo {
-						text-align: center;
-						width: 2%;
+						width: 5%;
 
-						img {
-							vertical-align: -45px;
-						}
+						> a {
+							display: block;
 
-						~ li {
-							text-align: right;
+							> img {
+								vertical-align: -45px;
+								width: 100%;
+								max-width: 213px;
+								min-width: 140px;
+							}
 						}
+					}
+
+					&:last-child {
+						padding: 0;
+						text-align: right;
 					}
 
 					> a {
