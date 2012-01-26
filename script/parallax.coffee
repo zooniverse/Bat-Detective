@@ -10,14 +10,25 @@ define (require) ->
 	parallaxOnScroll = ->
 		if debounceTimeout then return
 
-		debounceTimeout = delay 33, ->
+		debounceTimeout = delay 15, ->
 			elements.each ->
 				element = $(@)
-				multiplier = parseFloat(element.attr multiplierAttr)
-				position = "#{-1 * scrollX * multiplier}px #{-1 * scrollY * multiplier}px"
+				multiplierString = element.attr multiplierAttr
+
+				multiplierValue = parseFloat multiplierString
+
+				positions = element.css('backgroundPosition').split(' ')
+
+				changeX = !!~multiplierString.toLowerCase().indexOf 'x'
+				newX = "#{-1 * scrollX * multiplierValue}px"
+				if changeX then positions[0] = newX
+
+				changeY = !!~multiplierString.toLowerCase().indexOf 'y'
+				newY = "#{-1 * scrollY * multiplierValue}px"
+				if changeY then positions[1] = newY
 
 				element.css
-					'backgroundPosition': position
+					'backgroundPosition': positions.join ' '
 
 			debounceTimeout = NaN
 

@@ -2,7 +2,7 @@
 @import "sonogram-classifier";
 
 html {
-	background: #000 url("road.jpg") center top no-repeat fixed;
+	background: #000;
 	color: $white;
 	font: 12px Titillium, "Helvetica Neue", Arial, sans-serif;
 	min-height: 100%;
@@ -20,14 +20,21 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 	display: none;
 }
 
-#bats-bg {
-	background: url("bats.png") 0 0 no-repeat;
+[data-parallax-multiplier] {
 	height: 100%;
 	left: 0;
-	opacity: 0.67;
 	position: fixed;
 	top: 0;
 	width: 100%;
+}
+
+#road-bg {
+	background: url("road.jpg") center 0 no-repeat;
+}
+
+#bats-bg {
+	background: url("bats.png") center 0 no-repeat;
+	opacity: 0.67;
 }
 
 #app {
