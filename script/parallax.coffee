@@ -20,11 +20,11 @@ define (require) ->
 				positions = element.css('backgroundPosition').split(' ')
 
 				changeX = !!~multiplierString.toLowerCase().indexOf 'x'
-				newX = "#{-1 * scrollX * multiplierValue}px"
+				newX = "#{-1 * pageXOffset * multiplierValue}px"
 				if changeX then positions[0] = newX
 
 				changeY = !!~multiplierString.toLowerCase().indexOf 'y'
-				newY = "#{-1 * scrollY * multiplierValue}px"
+				newY = "#{-1 * pageYOffset * multiplierValue}px"
 				if changeY then positions[1] = newY
 
 				element.css
