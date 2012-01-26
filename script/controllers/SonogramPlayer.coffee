@@ -57,10 +57,10 @@ define (require) ->
 			</div>
 
 			<div class="details">
-				<div class="location"></div>
-				<div class="environment"></div>
-				<div class="date"></div>
-				<div class="time"></div>
+				<div class="location field"></div>
+				<div class="environment field"></div>
+				<div class="date field"></div>
+				<div class="time field"></div>
 			</div>
 
 			<div class="action">

@@ -6,9 +6,9 @@ $gray: #64635e;
 $gray-light: lighten($gray, 20);
 $gray-lighter: lighten($gray, 40);
 $gray-lightest: lighten($gray, 60);
-$gray-dark: darken($gray, 20);
-$gray-darker: darken($gray, 40);
-$gray-darkest: darken($gray, 60);
+$gray-dark: darken($gray, 15);
+$gray-darker: darken($gray, 30);
+$gray-darkest: darken($gray, 45);
 
 $white: #fff;
 $white-trans-high: transparentize($white, 0.75);
@@ -30,4 +30,42 @@ $white-trans-low: transparentize($white, 0.25);
 	-moz-transition: $args;
 	-webkit-transition: $args;
 	transition: $args;
+}
+
+$titillium-dir: "../../lib/TitilliumText";
+
+@font-face {
+	font-family: "Titillium";
+	font-weight: 100;
+	font-style: normal;
+	src: url($titillium-dir + "/TitilliumText22L001-webfont.eot");
+	src:
+		url($titillium-dir + "/TitilliumText22L001-webfont.eot?#iefix") format("embedded-opentype"),
+		url($titillium-dir + "/TitilliumText22L001-webfont.woff") format("woff"),
+		url($titillium-dir + "/TitilliumText22L001-webfont.ttf") format("truetype"),
+		url($titillium-dir + "/TitilliumText22L001-webfont.svg#TitilliumText22LThin") format("svg");
+}
+
+@font-face {
+	font-family: "Titillium";
+	font-weight: 400;
+	font-style: normal;
+	src: url($titillium-dir + "/TitilliumText22L002-webfont.eot");
+	src:
+		url($titillium-dir + "/TitilliumText22L002-webfont.eot?#iefix") format("embedded-opentype"),
+		url($titillium-dir + "/TitilliumText22L002-webfont.woff") format("woff"),
+		url($titillium-dir + "/TitilliumText22L002-webfont.ttf") format("truetype"),
+		url($titillium-dir + "/TitilliumText22L002-webfont.svg#TitilliumText22LLight") format("svg");
+}
+
+@font-face {
+	font-family: "Titillium";
+	font-weight: 700;
+	font-style: normal;
+	src: url($titillium-dir + "/TitilliumText22L004-webfont.eot");
+	src:
+		url($titillium-dir + "/TitilliumText22L004-webfont.eot?#iefix") format("embedded-opentype"),
+		url($titillium-dir + "/TitilliumText22L004-webfont.woff") format("woff"),
+		url($titillium-dir + "/TitilliumText22L004-webfont.ttf") format("truetype"),
+		url($titillium-dir + "/TitilliumText22L004-webfont.svg#TitilliumText22LMedium") format("svg");
 }

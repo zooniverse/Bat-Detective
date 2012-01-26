@@ -1,6 +1,8 @@
 @import "constants";
 
 .sound-classifier {
+	@include box-sizing(border-box);
+	border: 1px solid $gray;
 	position: relative;
 
 	> .controls {
@@ -149,6 +151,60 @@
 	}
 
 	> .details {
-		
+		color: $gray-light;
+		float: left;
+		font: {
+			size: 14px;
+			weight: bold;
+		};
+		margin: 20px 0;
+		text-transform: uppercase;
+		width: 67%;
+
+		> .field {
+			float: left;
+			width: 25%;
+		}
+
+		> .location {}
+
+		> .environment {}
+
+		> .date {}
+
+		> .time {}
+	}
+
+	> .action {
+		float: right;
+		font: {
+			size: 14px;
+			weight: bold;
+		};
+		margin: 20px 0;
+		text: {
+			align: right;
+			transform: uppercase;
+		};
+		width: 33%;
+
+		> .clear,
+		> .done {
+			background: $gray-darker;
+			border: 1px solid $gray;
+			color: inherit;
+			font: {
+				family: inherit;
+				size: inherit;
+				weight: inherit;
+			};
+			padding: 5px 20px;
+		}
+
+		> .done {
+			background: $gold;
+			box-shadow: 0 0 0 2px $gray-darker inset;
+			color: $black;
+		}
 	}
 }
