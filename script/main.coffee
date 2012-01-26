@@ -1,8 +1,8 @@
 define (require) ->
 	$ = require 'jQuery'
 	Spine = require 'Spine'
-	Sonogram = require 'Sonogram'
 
+	Sonogram = require 'Sonogram'
 	App = require 'App'
 	NestedRoute = require 'NestedRoute'
 

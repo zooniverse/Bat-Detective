@@ -1,9 +1,33 @@
 define (require) ->
 	Spine = require 'Spine'
 	$ = require 'jQuery'
-	Page = require 'Page'
 
-	class window.Pager extends Spine.Controller
+	class Page extends Spine.Controller
+		path: '' # Like "/foo/bar"
+
+		tabs: null
+
+		constructor: ->
+			super
+
+			@tabs ||= $("a[href='##{@path}']")
+
+			if @el.hasClass 'active' then @activate()
+
+			@log "New Page at \"#{@path}\" and #{@tabs.length} tabs"
+
+		activate: =>
+			elAndTabs = @el.add @tabs
+			elAndTabs.addClass 'active'
+			elAndTabs.removeClass 'before'
+			elAndTabs.removeClass 'after'
+
+		deactivate: (inactiveClass) =>
+			elAndTabs = @el.add @tabs
+			elAndTabs.removeClass 'active'
+			elAndTabs.addClass inactiveClass
+
+	class Pager extends Spine.Controller
 		path: '' # "/foo/bar/:page"
 
 		pages: null
