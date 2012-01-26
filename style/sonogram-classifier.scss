@@ -53,7 +53,54 @@
 	> .image {
 		position: relative;
 
+		> .axis {
+			@include box-sizing(border-box);
+			border-bottom: 1px solid;
+			font-size: 9px;
+			height: 100%;
+			opacity: 0.33;
+			position: absolute;
+			right: 101%;
+			top: 0;
+			width: 15px;
+
+			> .space {
+				@include box-sizing(border-box);
+				border-top: 1px solid;
+				height: 8.33%;
+				margin-left: 25%;
+				position: relative;
+				width: 50%;
+
+				&:first-child {
+					margin-left: 0;
+					width: 100%;
+				}
+
+				> .label {
+					line-height: 1;
+					margin-right: 5px;
+					position: absolute;
+					right: 100%;
+					top: -0.5em;
+					white-space: nowrap;
+				}
+			}
+
+			&:after {
+				border-right: 1px solid;
+				content: " ";
+				display: block;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 50%;
+			}
+		}
+
 		> .sonogram {
+			display: block;
 			width: 100%;
 		}
 

@@ -33,6 +33,25 @@ define (require) ->
 			</div>
 
 			<div class="image">
+				<div class="axis">
+					<div class="space">
+						<div class="label">200 KHz</div>
+					</div>
+					<div class="space"></div>
+					<div class="space"></div>
+					<div class="space"></div>
+					<div class="space"></div>
+					<div class="space"></div>
+					<div class="space">
+						<div class="label">100 KHz</div>
+					</div>
+					<div class="space"></div>
+					<div class="space"></div>
+					<div class="space"></div>
+					<div class="space"></div>
+					<div class="space"></div>
+				</div>
+
 				<div class="seek-line"></div>
 				<img src="" class="sonogram" />
 			</div>
