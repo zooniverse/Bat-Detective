@@ -1,7 +1,8 @@
 define (require) ->
 	Spine = require 'Spine'
-	Pager = require 'Pager'
-	SonogramClassifier = require 'SonogramClassifier'
+
+	Pager = require 'controllers/Pager'
+	SonogramClassifier = require 'controllers/SonogramClassifier'
 
 	class App extends Spine.Controller
 		pagers: null

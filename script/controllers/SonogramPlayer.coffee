@@ -1,13 +1,14 @@
 define (require) ->
 	Spine = require 'Spine'
 	$ = require 'jQuery'
+
 	{delay} = require 'util'
 
 	class SonogramPlayer extends Spine.Controller
-		sonogram: null
+		model: null
 
 		playing: false
-		mouseIsDown: false
+		seeking: false
 		wasPlaying: false
 
 		seekAt: NaN
@@ -60,7 +61,7 @@ define (require) ->
 			'.seek .track': 'track'
 			'.seek .fill': 'fill'
 			'.seek .thumb': 'thumb'
-			'.image > .sonogram': 'img'
+			'.image > .sonogram': 'sonogram'
 			'.image > .seek-line': 'seekLine'
 			'.description > .location': 'location'
 			'.description > .environment': 'environment'
@@ -90,20 +91,19 @@ define (require) ->
 
 		delegateEvents: ->
 			super
+			$(document).on 'mouseup', @seekEnd
 
-			$(document).bind 'mouseup', @seekEnd
-
-		setSonogram: (@sonogram) =>
+		setModel: (@model) =>
 			# Sometimes the image never loads unless we wait a tick to load the audio
 			delay 0, =>
 				@player 'setMedia',
-					mp3: @sonogram.mp3
-					oga: @sonogram.oga
+					mp3: @model.mp3
+					oga: @model.oga
 
-			@img.attr 'src', @sonogram.image
+			@sonogram.attr 'src', @model.image
 
-			@location.html @sonogram.location
-			@environment.html @sonogram.environment
+			@location.html @model.location
+			@environment.html @model.environment
 
 		play: =>
 			@player 'play', (@seekAt / 100) * @duration
@@ -117,13 +117,13 @@ define (require) ->
 			@wasPlaying = @playing
 			@pause()
 
-			@mouseIsDown = true
+			@seeking = true
 			@el.addClass 'seeking'
 
 			@seekMove(e)
 
 		seekMove: (e) =>
-			if not @mouseIsDown then return
+			if not @seeking then return
 
 			targetX = e.clientX - @track.offset().left
 			percent = (targetX / @track.width()) * 100
@@ -131,7 +131,7 @@ define (require) ->
 			@player 'playHead', percent
 
 		seekEnd: (e) =>
-			@mouseIsDown = false
+			@seeking = false
 			@el.removeClass 'seeking'
 
 			if @wasPlaying then @play()
@@ -141,8 +141,8 @@ define (require) ->
 			@playerElement.jPlayer args...
 
 		playerReady: (e) =>
-			if @sonogram then @setSonogram @sonogram
-			@log 'Created new SoundClassifier', @
+			if @model then @setModel @model
+			@log 'Created new SoundPlayer', @
 
 		playerPlayed: (e) =>
 			@playing = true

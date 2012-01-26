@@ -2,8 +2,8 @@ define (require) ->
 	$ = require 'jQuery'
 	Spine = require 'Spine'
 
-	Sonogram = require 'Sonogram'
-	App = require 'App'
+	Sonogram = require 'models/Sonogram'
+	App = require 'controllers/App'
 	NestedRoute = require 'NestedRoute'
 
 	parallax = require 'parallax'
@@ -21,4 +21,4 @@ define (require) ->
 		environment: 'Urban area'
 		datetime: 1234567891234
 
-	window.app.classifier.setSonogram window.exampleSonogram
+	window.app.classifier.setModel window.exampleSonogram
