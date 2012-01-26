@@ -125,7 +125,7 @@ define (require) ->
 		seekMove: (e) =>
 			if not @seeking then return
 
-			targetX = e.clientX - @track.offset().left
+			targetX = e.pageX - @track.offset().left
 			percent = (targetX / @track.width()) * 100
 
 			@player 'playHead', percent
