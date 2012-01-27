@@ -190,6 +190,7 @@
 
 		> .clear,
 		> .done {
+			@include box-sizing(border-box);
 			background: $gray-darker;
 			border: 1px solid $gray;
 			color: inherit;
@@ -198,7 +199,8 @@
 				size: inherit;
 				weight: inherit;
 			};
-			padding: 5px 20px;
+			padding: 10px 0 5px;
+			width: 49%;
 		}
 
 		> .done {
