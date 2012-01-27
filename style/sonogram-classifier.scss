@@ -166,13 +166,36 @@
 			width: 25%;
 		}
 
-		> .location {}
+		> .location:before,
+		> .environment:before,
+		> .date:before,
+		> .time:before {
+			background: url("sonogram-details-icons.png") 0 0 no-repeat;
+			content: " ";
+			display: inline-block;
+			height: 24px;
+			margin: 0 3px 3px 0;
+			vertical-align: middle;
+			width: 24px;
+		}
 
-		> .environment {}
+		> .location:before {
+			background-position: -13px -4px;
+			width: 18px;
+		}
 
-		> .date {}
+		> .environment:before {
+			background-position: -41px -3px;
+			width: 32px;
+		}
 
-		> .time {}
+		> .date:before {
+			background-position: -83px -3px;
+		}
+
+		> .time:before {
+			background-position: -116px -4px;
+		}
 	}
 
 	> .action {
@@ -194,6 +217,7 @@
 			background: $gray-darker;
 			border: 1px solid $gray;
 			color: inherit;
+			cursor: pointer;
 			font: {
 				family: inherit;
 				size: inherit;
