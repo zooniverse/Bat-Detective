@@ -5,10 +5,9 @@ html {
 	background: #000;
 	color: $white;
 	font: 12px Titillium, "Helvetica Neue", Arial, sans-serif;
-	min-height: 100%;
+	overflow-y: scroll; // Force scroll bar to prevent jumping
 
-	body {
-		height: 100%;
+	> body {
 		margin: 0;
 	}
 }
@@ -18,6 +17,11 @@ html[lang="en"] [lang]:not([lang="en"]),
 html[lang="de"] [lang]:not([lang="de"]),
 html[lang="pl"] [lang]:not([lang="pl"]) {
 	display: none;
+}
+
+#zooniverse-bar {
+	position: relative;
+	z-index: 1;
 }
 
 [data-parallax-multiplier] {
@@ -38,10 +42,12 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 }
 
 #app {
+	@include clear-floats;
 	margin: 0 auto;
-	width: 75%;
 	max-width: 960px; // Width of the sonograms
 	min-width: 375px;
+	position: relative;
+	width: 75%;
 
 	> header {
 		background: url("rule.png") center bottom no-repeat;
@@ -109,6 +115,8 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 	}
 
 	> #main {
+		background: url("rule.png") center bottom no-repeat;
+		margin-bottom: 20px;
 		position: relative;
 
 		// Main pages
@@ -117,16 +125,18 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 				left 0.25s ease-in-out,
 				opacity 0.25s ease-in-out
 			});
-			clear: both;
 			left: 0;
+			max-height: 100%;
 			opacity: 0;
+			overflow: hidden;
 			position: absolute;
 			top: 0;
 			width: 100%;
 
 			&.active {
-				opacity: 1;
 				float: left;
+				opacity: 1;
+				overflow: visible;
 				position: relative;
 				z-index: 1;
 			}

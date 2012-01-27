@@ -20,6 +20,14 @@ $white-trans-low: transparentize($white, 0.25);
 	box-sizing: $args;
 }
 
+@mixin clear-floats {
+	&:after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+}
+
 @mixin linear-gradient($position: top, $start: transparent, $end: transparent) {
 	background-image: -webkit-linear-gradient($position, $start, $end);
 	background-image: -moz-linear-gradient($position, $start, $end);
