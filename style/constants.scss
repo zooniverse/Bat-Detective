@@ -20,7 +20,7 @@ $white-trans-low: transparentize($white, 0.25);
 	box-sizing: $args;
 }
 
-@mixin clear-floats {
+@mixin contain-floats {
 	&:after {
 		content: "";
 		clear: both;

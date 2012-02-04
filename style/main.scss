@@ -5,7 +5,7 @@ html {
 	background: #000;
 	color: $white;
 	font: 12px Titillium, "Helvetica Neue", Arial, sans-serif;
-	overflow-y: scroll; // Force scroll bar to prevent jumping
+	overflow-y: scroll; // Force scroll bar to prevent jumping.
 
 	> body {
 		margin: 0;
@@ -24,25 +24,26 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 	z-index: 1;
 }
 
+// Parallax backgrounds (see parallax.coffee)
 [data-parallax-multiplier] {
 	height: 100%;
 	left: 0;
 	position: fixed;
 	top: 0;
 	width: 100%;
-}
 
-#road-bg {
-	background: url("road.jpg") center 0 no-repeat;
-}
+	&#road-bg {
+		background: url("road.jpg") center 0 no-repeat;
+	}
 
-#bats-bg {
-	background: url("bats.png") center 0 no-repeat;
-	opacity: 0.67;
+	&#bats-bg {
+		background: url("bats.png") center 0 no-repeat;
+		opacity: 0.67;
+	}
 }
 
 #app {
-	@include clear-floats;
+	@include contain-floats;
 	margin: 0 auto;
 	max-width: 960px; // Width of the sonograms
 	min-width: 375px;
