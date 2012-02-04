@@ -152,6 +152,7 @@
 
 	> .details {
 		color: $gray-light;
+		display: table;
 		float: left;
 		font: {
 			size: 14px;
@@ -159,24 +160,48 @@
 		};
 		margin: 20px 0;
 		text-transform: uppercase;
-		width: 67%;
+		width: 75%;
 
-		> .field {
-			float: left;
-			width: 25%;
+		@media (max-width: 1000px) {
+			display: block;
 		}
 
-		> .location:before,
-		> .environment:before,
-		> .date:before,
-		> .time:before {
-			background: url("sonogram-details-icons.png") 0 0 no-repeat;
-			content: " ";
-			display: inline-block;
-			height: 24px;
-			margin: 0 3px 3px 0;
-			vertical-align: middle;
-			width: 24px;
+		> .field {
+			display: table-cell;
+			padding: 5px 10px 5px 0;
+
+			@media (max-width: 1100px) {
+				display: inline-block;
+				width: 45%;
+			}
+
+			&:before {
+				background: url("sonogram-details-icons.png") 0 0 no-repeat;
+				content: " ";
+				display: inline-block;
+				height: 24px;
+				margin: 0 3px 3px 0;
+				vertical-align: middle;
+				width: 24px;
+
+				@media (max-width: 800px) {
+					display: none;
+				}
+			}
+
+			&.date .full {
+				@media (max-width: 1200px) {
+					display: none;
+
+					@media (max-width: 1000px) {
+						display: inline;
+
+						@media (max-width: 600px) {
+							display: none;
+						}
+					}
+				}
+			}
 		}
 
 		> .location:before {
@@ -209,7 +234,7 @@
 			align: right;
 			transform: uppercase;
 		};
-		width: 33%;
+		width: 25%;
 
 		> .clear,
 		> .done {
@@ -223,8 +248,12 @@
 				size: inherit;
 				weight: inherit;
 			};
-			padding: 10px 0 5px;
-			width: 49%;
+			padding: 10px 20px 7px;
+
+			@media (max-width: 1000px) {
+				margin: 2px 0;
+				width: 100%;
+			}
 		}
 
 		> .done {

@@ -17,8 +17,8 @@ define (require) ->
 		image: '/example-data/sonogram.jpg'
 		mp3: ''
 		oga: 'http://upload.wikimedia.org/wikipedia/commons/9/94/Pipistrellus.ogg'
-		location: 'United Kingdom'
-		environment: 'Urban area'
+		location: 'Oxford, United Kingdom'
+		environment: 'Residential area'
 		datetime: 1234567891234
 
 	window.app.classifier.setModel window.exampleSonogram
