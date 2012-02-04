@@ -1,3 +1,7 @@
+require.config
+	paths:
+		lib: '/lib'
+
 define (require) ->
 	$ = require 'jQuery'
 	Spine = require 'Spine'
@@ -22,3 +26,5 @@ define (require) ->
 		datetime: 1234567891234
 
 	window.app.classifier.setModel window.exampleSonogram
+
+	window.app

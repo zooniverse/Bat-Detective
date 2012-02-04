@@ -1,6 +1,6 @@
 define (require) ->
-	require '/lib/spine/lib/spine.js'
-	require '/lib/spine/lib/relation.js'
-	require '/lib/spine/lib/route.js'
+	require 'lib/spine/lib/spine'
+	require 'lib/spine/lib/relation'
+	require 'lib/spine/lib/route'
 
 	Spine
