@@ -2,6 +2,7 @@ define (require) ->
 	Spine = require 'Spine'
 	$ = require 'jQuery'
 
+	translations = require 'translations'
 	{delay} = require 'util'
 
 	class SonogramPlayer extends Spine.Controller
@@ -123,6 +124,18 @@ define (require) ->
 
 			@location.html @model.location
 			@environment.html @model.environment
+
+			dt = new Date @model.datetime
+
+			@date.html """
+				#{dt.getDate()}
+				#{translations.months[dt.getMonth()]}
+				#{dt.getFullYear()}
+			"""
+			@time.html """
+				#{(dt.getHours() % 12) or 12}:#{dt.getMinutes()}
+				#{if dt.getHours() < 12 then 'am' else 'pm'}
+			"""
 
 		play: =>
 			@player 'play', (@seekAt / 100) * @duration
