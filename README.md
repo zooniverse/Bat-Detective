@@ -5,7 +5,7 @@ Download and install resources from resources.json (try <https://github.com/bria
 
 You'll also need:
 
-	npm install -g coffee-script
+    npm install -g coffee-script
     gem install sass
 
 And to minify the JS:
