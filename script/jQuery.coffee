@@ -1,4 +1,4 @@
 define (require) ->
-	require '/lib/jquery.js'
+	require 'lib/jquery'
 
 	jQuery
