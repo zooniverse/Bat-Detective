@@ -80,7 +80,6 @@ define (require) ->
 			'click .play': 'play'
 			'click .pause': 'pause'
 			'mousedown .seek': 'seekStart'
-			'mousemove .seek': 'seekMove'
 
 		elements:
 			'.jplayer': 'playerElement'
@@ -106,6 +105,7 @@ define (require) ->
 
 		delegateEvents: ->
 			super
+			$(document).on 'mousemove', @seekMove
 			$(document).on 'mouseup', @seekEnd
 
 		setModel: (@model) =>
@@ -161,24 +161,25 @@ define (require) ->
 
 			targetX = e.pageX - @track.offset().left
 			percent = targetX / @track.width()
+			percent = Math.min(Math.max(percent, 0), 1)
 
 			@sound.setPosition percent * @sound.duration
 
-		seekEnd: (e) =>
+		seekEnd: =>
 			@seeking = false
 			@el.removeClass 'seeking'
 
 			if @wasPlaying then @play()
 
-		playerPlayed: (e) =>
+		playerPlayed: =>
 			@playing = true
 			@el.addClass 'playing'
 
-		playerPaused: (e) =>
+		playerPaused: =>
 			@playing = false
 			@el.removeClass 'playing'
 
-		playerTimeUpdated: (e) =>
+		playerTimeUpdated: =>
 			percent = (@sound.position / @sound.duration) * 100
 
 			@seekLine.css 'left', percent + '%'
