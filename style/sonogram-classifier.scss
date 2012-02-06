@@ -2,66 +2,10 @@
 
 .sound-classifier {
 	@include box-sizing(border-box);
-	border: 1px solid $gray;
+	background: transparentize($black, 0.33);
+	border: 1px solid;
+	color: $gray;
 	position: relative;
-
-	> .controls {
-		@include linear-gradient(top, $gray, $gray-dark);
-		position: relative;
-		z-index: 1;
-
-		> .play,
-		> .pause {
-			background: transparent;
-			border: 0;
-			color: inherit;
-			cursor: pointer;
-			font: {
-				size: 14px;
-				weight: bold;
-			}
-			padding: 3px 10px;
-			text-shadow: 0 1px 1px $gray-darkest;
-		}
-
-		> .pause {
-			display: none;
-		}
-
-		> .seek {
-			@include linear-gradient(top, $gray-darkest, $gray);
-			border: 1px solid $gray-dark {
-				width: 1px 0;
-			}
-			padding: 0 10px;
-
-			> .track {
-				height: 20px;
-				position: relative;
-
-				> .fill {
-					@include linear-gradient(left, transparent, $white-trans-medium);
-					height: 50%;
-					left: 0;
-					position: absolute;
-					top: 25%;
-					width: 0; // Updates on play
-				}
-
-				> .thumb {
-					background: $gray-lightest;
-					border-radius: 5px;
-					box-shadow: 0 0 2px $gray-darkest;
-					height: 10px;
-					left: 0; // Updates on play
-					margin-left: -5px;
-					position: absolute;
-					top: 5px;
-					width: 10px;
-				}
-			}
-		}
-	}
 
 	> .image {
 		position: relative;
@@ -119,7 +63,7 @@
 		}
 
 		> .seek-line {
-			background: green;
+			background: transparentize($gold, 0.5);
 			display: none;
 			height: 100%;
 			left: 0;
@@ -127,6 +71,148 @@
 			position: absolute;
 			top: 0;
 			width: 2px;
+		}
+	}
+
+	> .seek {
+		background: $gray-dark;
+
+		> .track {
+			height: 6px;
+			position: relative;
+
+			> .fill {
+				background: $gold;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 0; // Updates on play
+			}
+
+			> .thumb {
+				display: none;
+			}
+		}
+	}
+
+	> .controls {
+		text-align: right;
+
+		button,
+		.field {
+			@include box-sizing(content-box);
+			background: transparent;
+			border: 0 {
+				left: 1px solid;
+			};
+			color: inherit;
+			line-height: 1;
+			margin: 0;
+			padding: 13px 17px;
+			vertical-align: top;
+		}
+
+		button {
+			cursor: pointer;
+			font: {
+				family: inherit;
+				size: inherit;
+			};
+			text-transform: uppercase;
+		}
+
+		> .play,
+		> .pause {
+			border: {
+				left: 0;
+				right: 1px solid;
+			};
+			float: left;
+		}
+
+		> .pause {
+			display: none;
+		}
+
+		> .details {
+			display: inline-block;
+
+			> .field {
+				background: url("sonogram-details-icons.png") 0 0 no-repeat;
+				display: inline-block;
+				height: 1em;
+				position: relative;
+				width: 4px;
+
+				&.location {
+					background-position: 0px center;
+				}
+
+				&.environment {
+					background-position: -35px center;
+					width: 8px;
+				}
+
+				&.date {
+					background-position: -74px center;
+					
+				}
+
+				&.time {
+					background-position: -108px center;
+					
+				}
+
+				> .icon {
+					height: 15px;
+					float: left;
+				}
+
+				> .value {
+					@include transition(#{opacity 0.25s ease-in-out, top 0.25s ease-in-out});
+					background: $gold;
+					color: $black;
+					font: {
+						size: 10px;
+						weight: bold;
+					};
+					letter-spacing: 1px;
+					opacity: 0;
+					padding: 6px 18px;
+					position: absolute;
+					left: 0;
+					text-transform: uppercase;
+					top: 67%;
+					white-space: nowrap;
+
+					&:before {
+						background: transparent;
+						border: 10px solid transparentize($gold, 1) {
+							left-color: $gold;
+						};
+						content: " ";
+						display: block;
+						position: absolute;
+						top: -5px;
+						left: 0;
+					}
+				}
+
+				&:hover {
+					> .value {
+						opacity: 1;
+						top: 100%;
+						z-index: 1;
+					}
+				}
+			}
+		}
+
+		> .actions {
+			display: inline-block;
+
+			> button {}
 		}
 	}
 
@@ -148,118 +234,5 @@
 
 	&.seeking > .image > .seek-line {
 		display: block;
-	}
-
-	> .details {
-		color: $gray-light;
-		display: table;
-		float: left;
-		font: {
-			size: 14px;
-			weight: bold;
-		};
-		margin: 20px 0;
-		text-transform: uppercase;
-		width: 75%;
-
-		@media (max-width: 1000px) {
-			display: block;
-		}
-
-		> .field {
-			display: table-cell;
-			padding: 5px 10px 5px 0;
-
-			@media (max-width: 1100px) {
-				display: inline-block;
-				width: 45%;
-			}
-
-			&:before {
-				background: url("sonogram-details-icons.png") 0 0 no-repeat;
-				content: " ";
-				display: inline-block;
-				height: 24px;
-				margin: 0 3px 3px 0;
-				vertical-align: middle;
-				width: 24px;
-
-				@media (max-width: 800px) {
-					display: none;
-				}
-			}
-
-			&.date .full {
-				@media (max-width: 1200px) {
-					display: none;
-
-					@media (max-width: 1000px) {
-						display: inline;
-
-						@media (max-width: 600px) {
-							display: none;
-						}
-					}
-				}
-			}
-		}
-
-		> .location:before {
-			background-position: -13px -4px;
-			width: 18px;
-		}
-
-		> .environment:before {
-			background-position: -41px -3px;
-			width: 32px;
-		}
-
-		> .date:before {
-			background-position: -83px -3px;
-		}
-
-		> .time:before {
-			background-position: -116px -4px;
-		}
-	}
-
-	> .action {
-		float: right;
-		font: {
-			size: 14px;
-			weight: bold;
-		};
-		margin: 20px 0;
-		text: {
-			align: right;
-			transform: uppercase;
-		};
-		width: 25%;
-
-		> .clear,
-		> .done {
-			@include box-sizing(border-box);
-			background: $gray-darker;
-			border: 1px solid $gray;
-			color: inherit;
-			cursor: pointer;
-			font: {
-				family: inherit;
-				size: inherit;
-				weight: inherit;
-			};
-			padding: 10px 20px 7px;
-
-			@media (max-width: 1000px) {
-				margin: 2px 0;
-				width: 100%;
-			}
-		}
-
-		> .done {
-			background: $gold;
-			box-shadow: 0 0 0 2px $gray-darker inset;
-			color: $black;
-		}
 	}
 }

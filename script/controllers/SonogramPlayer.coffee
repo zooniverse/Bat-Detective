@@ -15,18 +15,6 @@ define (require) ->
 
 		className: 'sound-classifier'
 		template: """
-			<div class="controls">
-				<button class="play">Play</button>
-				<button class="pause">Pause</button>
-
-				<div class="seek">
-					<div class="track">
-						<div class="fill"></div>
-						<div class="thumb"></div>
-					</div>
-				</div>
-			</div>
-
 			<div class="image">
 				<div class="axis">
 					<div class="space">
@@ -47,20 +35,44 @@ define (require) ->
 					<div class="space"></div>
 				</div>
 
-				<div class="seek-line"></div>
 				<img src="" class="sonogram" />
+
+				<div class="seek-line"></div>
 			</div>
 
-			<div class="details">
-				<div class="location field"></div>
-				<div class="environment field"></div>
-				<div class="date field"></div>
-				<div class="time field"></div>
+			<div class="seek">
+				<div class="track">
+					<div class="fill"></div>
+					<div class="thumb"></div>
+				</div>
 			</div>
 
-			<div class="action">
-				<button class="clear">Clear</button>
-				<button class="done">Done</button>
+			<div class="controls">
+				<button class="play">Play</button>
+				<button class="pause">Pause</button>
+
+				<div class="details">
+					<div class="location field">
+						<span class="value"></span>
+					</div>
+					
+					<div class="environment field">
+						<span class="value"></span>
+					</div>
+
+					<div class="date field">
+						<span class="value"></span>
+					</div>
+
+					<div class="time field">
+						<span class="value"></span>
+					</div>
+				</div>
+
+				<div class="actions">
+					<button class="clear">Clear</button>
+					<button class="done">Done</button>
+				</div>
 			</div>
 		"""
 
@@ -77,10 +89,10 @@ define (require) ->
 			'.seek .thumb': 'thumb'
 			'.image > .sonogram': 'sonogram'
 			'.image > .seek-line': 'seekLine'
-			'.details > .location': 'location'
-			'.details > .environment': 'environment'
-			'.details > .date': 'date'
-			'.details > .time': 'time'
+			'.details > .location > .value': 'location'
+			'.details > .environment > .value': 'environment'
+			'.details > .date > .value': 'date'
+			'.details > .time > .value': 'time'
 
 		constructor: ->
 			super

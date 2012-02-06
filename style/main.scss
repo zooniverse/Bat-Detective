@@ -44,7 +44,7 @@ html[lang="pl"] [lang]:not([lang="pl"]) {
 
 #app {
 	@include contain-floats;
-	margin: 0 auto;
+	margin: 0 auto 50px;
 	max-width: 960px; // Width of the sonograms
 	min-width: 300px;
 	position: relative;
