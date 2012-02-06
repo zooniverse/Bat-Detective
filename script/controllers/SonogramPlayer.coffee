@@ -1,6 +1,7 @@
 define (require) ->
 	Spine = require 'Spine'
 	$ = require 'jQuery'
+	soundManager = require 'soundManager'
 
 	translations = require 'translations'
 	{delay} = require 'util'
@@ -12,15 +13,8 @@ define (require) ->
 		seeking: false
 		wasPlaying: false
 
-		seekAt: NaN
-		duration: NaN
-
 		className: 'sound-classifier'
-		random: NaN
-
 		template: """
-			<div class="jplayer"></div>
-
 			<div class="controls">
 				<button class="play">Play</button>
 				<button class="pause">Pause</button>
@@ -98,28 +92,24 @@ define (require) ->
 			@el.html @template
 			@refreshElements()
 
-			# Set up the jPlayer instance
-			@player
-				swfPath: '/lib/jPlayer'
-				supplied: 'm4a, oga'
-				volume: 1
-
-				ready: @playerReady
-				play: @playerPlayed
-				timeupdate: @playerTimeUpdated # Fires during play
-				pause: @playerPaused
-
 		delegateEvents: ->
 			super
 			$(document).on 'mouseup', @seekEnd
 
 		setModel: (@model) =>
-			# Sometimes the image never loads unless we wait a tick to load the audio
-			delay 0, =>
-				@player 'setMedia',
-					mp3: @model.mp3
-					oga: @model.oga
+			soundManager.onready =>
+				@sound?.destruct()
+				@sound = soundManager.createSound
+					id: @model.id or '_' + Math.floor Math.random() * 1000
+					url: @model.url
 
+					autoload: true
+					onload: @playerFinished
+					onplay: @playerPlayed
+					onpause: @playerPaused
+					whileplaying: @playerTimeUpdated
+					onfinish: @playerFinished
+				
 			@sonogram.attr 'src', @model.image
 
 			@location.html @model.location
@@ -138,10 +128,10 @@ define (require) ->
 			"""
 
 		play: =>
-			@player 'play', (@seekAt / 100) * @duration
+			@sound.play()
 
 		pause: =>
-			@player 'pause'
+			@sound.pause()
 
 		seekStart: (e) =>
 			e.preventDefault()
@@ -158,23 +148,15 @@ define (require) ->
 			if not @seeking then return
 
 			targetX = e.pageX - @track.offset().left
-			percent = (targetX / @track.width()) * 100
+			percent = targetX / @track.width()
 
-			@player 'playHead', percent
+			@sound.setPosition percent * @sound.duration
 
 		seekEnd: (e) =>
 			@seeking = false
 			@el.removeClass 'seeking'
 
 			if @wasPlaying then @play()
-
-		# Convenience alias for the jPlayer instance
-		player: (args...) =>
-			@playerElement.jPlayer args...
-
-		playerReady: (e) =>
-			if @model then @setModel @model
-			@log 'Created new SoundPlayer', @
 
 		playerPlayed: (e) =>
 			@playing = true
@@ -185,9 +167,14 @@ define (require) ->
 			@el.removeClass 'playing'
 
 		playerTimeUpdated: (e) =>
-			@duration = e.jPlayer.status.duration
-			@seekAt = e.jPlayer.status.currentPercentRelative
+			percent = (@sound.position / @sound.duration) * 100
 
-			@seekLine.css 'left', @seekAt + '%'
-			@fill.css 'width', @seekAt + '%'
-			@thumb.css 'left', @seekAt + '%'
+			@seekLine.css 'left', percent + '%'
+			@fill.css 'width', percent + '%'
+			@thumb.css 'left', percent + '%'
+
+		playerFinished: =>
+			# We always want the sound to be "playing", even when it's paused,
+			# so that the whileplaying callback fires as we seek.
+			@sound.play()
+			@sound.pause()
