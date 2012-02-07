@@ -1,6 +1,7 @@
 define (require) ->
 	Spine = require 'Spine'
 	$ = require 'jQuery'
+	{delay} = require 'util'
 
 	class Page extends Spine.Controller
 		path: '' # Like "/foo/bar"
@@ -12,9 +13,14 @@ define (require) ->
 
 			@tabs ||= $("a[href='##{@path}']")
 
-			if @el.hasClass 'active' then @activate()
-
 			@log "New Page at \"#{@path}\" and #{@tabs.length} tabs"
+
+			if @el.hasClass 'active' then delay @defaultActivate
+
+		defaultActivate: =>
+			# Only activate by default if the active class is present.
+			# If it's not, another page has already been activated.
+			@activate() if @el.hasClass 'active'
 
 		activate: =>
 			elAndTabs = @el.add @tabs
@@ -61,6 +67,8 @@ define (require) ->
 			@log "Created new Pager at \"#{@path}\" with #{@pages.length} pages"
 
 		pathMatched: (params) =>
+			return unless params.page
+
 			matched = false
 
 			@pages.each ->
