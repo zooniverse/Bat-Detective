@@ -1,29 +1,3 @@
-Dependencies
-------------
-
-Download and install resources from resources.json (try <https://github.com/brian-c/resourcer>).
-
-You'll also need:
-
-    npm install -g coffee-script
-    gem install sass
-
-And to minify the JS:
-
-    npm install -g requirejs
-
-
-Serving locally
----------------
-
-    cd Bat-Detective
-    python -m SimpleHTTPServer 8000
-    coffee --compile --watch ./script
-    sass --watch ./style
-
-
-Concatting and minifying the JS
--------------------------------
-
-    cd Bat-Detective/script
-    r.js -o baseUrl=. paths.lib=../lib name=main out=main.build.js
+    bundle install
+    grabass assets.json
+    jekyll --auto --server

@@ -40,7 +40,7 @@ $white-trans-low: transparentize($white, 0.25);
 	transition: $args;
 }
 
-$titillium-dir: "../../lib/TitilliumText";
+$titillium-dir: "lib/TitilliumText";
 
 @font-face {
 	font-family: "Titillium";

@@ -1,4 +1,4 @@
-define
+exports =
 	months: [
 		'''
 			<span lang="en">Jan<span class="full">uary</span></span>

@@ -1,0 +1,19 @@
+coffee:
+  amd: true
+  paths:
+  - ./scripts
+  exclude:
+  - ./scripts/lib
+
+sass:
+  syntax: scss
+  paths:
+  - ./styles
+  exclude:
+  - ./styles/lib
+
+exclude:
+  - assets.json
+  - Gemfile
+  - Gemfile.lock
+  - README.md

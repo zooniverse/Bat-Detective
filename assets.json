@@ -1,0 +1,13 @@
+[
+	{"https://raw.github.com/brian-c/jekyll-plugins/master/_plugins/extension_converter.rb": "_plugins/extension_converter.rb"},
+	{"https://raw.github.com/brian-c/jekyll-plugins/master/_plugins/coffee.rb": "_plugins/coffee.rb"},
+	{"https://raw.github.com/brian-c/jekyll-plugins/master/_plugins/sass.rb": "_plugins/sass.rb"},
+
+	{"http://requirejs.org/docs/release/1.0.7/comments/require.js": "scripts/lib/require.js"},
+	{"http://requirejs.org/docs/release/1.0.5/comments/order.js": "scripts/lib/order.js"},
+	{"http://code.jquery.com/jquery-1.7.1.js": "scripts/lib/jquery.js"},
+	{"https://github.com/maccman/spine/zipball/df1b4418716e1633a6f7bbe37933ac308e8ad344": "scripts/lib/spine"},
+	{"http://www.schillmania.com/projects/soundmanager2/download/soundmanagerv297a-20111220.zip": "scripts/lib/soundmanager"},
+
+	{"http://www.fontsquirrel.com/fontfacekit/TitilliumText": "styles/lib/TitilliumText"}
+]

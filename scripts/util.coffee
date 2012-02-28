@@ -1,4 +1,4 @@
-define
+exports =
 	delay: (duration, callback) ->
 		if typeof duration is 'function'
 			callback = duration
