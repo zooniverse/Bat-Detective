@@ -1,7 +1,7 @@
 $ = require 'jQuery'
 
 SonogramPlayer = require 'controllers/SonogramPlayer'
-FrequencySelection = require 'controllers/FrequencySelection'
+FrequencySelector = require 'controllers/FrequencySelector'
 
 class SonogramClassifier extends SonogramPlayer
 	subject: null
@@ -22,7 +22,7 @@ class SonogramClassifier extends SonogramPlayer
 		clickY = pageY - @sonogram.offset().top
 		percent = (clickY / @sonogram.height()) * 100
 
-		@selection = new FrequencySelection
+		@selection = new FrequencySelector
 			range: @classification.frequencyRanges().create {}
 
 exports = SonogramClassifier

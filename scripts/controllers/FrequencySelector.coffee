@@ -1,6 +1,6 @@
 Spine = require 'Spine'
 
-class FrequencySelection extends Spine.Controller
+class FrequencySelector extends Spine.Controller
 	range: null
 
 	constructor: ->
@@ -13,4 +13,4 @@ class FrequencySelection extends Spine.Controller
 	onRangeChange: =>
 		@log 'Range changed', @range.toJSON()
 
-exports = FrequencySelection
+exports = FrequencySelector
