@@ -1,4 +1,7 @@
 Spine = require 'Spine'
+
+TimeSelector = require 'controllers/TimeSelector'
+
 FREQUENCY_TEMPLATE = require 'lib/text!views/FrequencySelector.html'
 
 class FrequencySelector extends Spine.Controller
@@ -29,11 +32,11 @@ class FrequencySelector extends Spine.Controller
 		@range.bind 'change', @onRangeChange
 		@range.trigger 'change'
 
-	onMouseDown: (e) -> e.preventDefault(); @mouseDown = e;
-	onMouseMove: (e) -> @onDrag e if @mouseDown
-	onMouseUp: (e) -> delete @mouseDown
+	onMouseDown: (e) => e.preventDefault(); @mouseDown = e
+	onMouseMove: (e) => @onDrag e if @mouseDown
+	onMouseUp: (e) => delete @mouseDown
 
-	onDrag: (e) ->
+	onDrag: (e) =>
 		target = $(@mouseDown.target)
 
 		if target.is @highHandle
@@ -41,7 +44,7 @@ class FrequencySelector extends Spine.Controller
 		else if target.is @lowHandle
 			attribute = 'low'
 		else if @el.has(target).length is 0
-			# Target outside the FrequencySelector means it's brnad new.
+			# A target outside the FrequencySelector means it's brnad new.
 			# If it moves up, change the high.
 			# If it moves down, change the low.
 			if e.pageY < @mouseDown.pageY
@@ -54,8 +57,6 @@ class FrequencySelector extends Spine.Controller
 			@range.updateAttribute attribute, y
 
 	onRangeChange: =>
-		@log 'Range changed', (@range.low * 100) + '%', ((1 - @range.high) * 100) + '%'
-
 		highHeight = ((1 - @range.high) * 100) + '%'
 		lowHeight = (@range.low * 100) + '%'
 
@@ -65,7 +66,15 @@ class FrequencySelector extends Spine.Controller
 			top: highHeight
 			bottom: lowHeight
 
-	addTimeRange: (e) ->
-		@log 'TODO: Add time range'
+	addTimeRange: (e) =>
+		x = (e.pageX - @timesContainer.offset().left) / @timesContainer.width()
+
+		@timeRange = new TimeSelector
+			range: @range.timeRanges().create
+				start: x - 0.005
+				end: x + 0.005
+			mouseDown: true
+
+		@timeRange.el.appendTo @timesContainer
 
 exports = FrequencySelector

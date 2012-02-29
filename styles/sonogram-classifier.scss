@@ -84,6 +84,27 @@
 				left: 0;
 				position: absolute;
 				width: 100%;
+
+				> .time-selector {
+					background: red;
+					height: 100%;
+					position: absolute;
+
+					> .handle {
+						height: 100%;
+						position: absolute;
+						top: 0;
+						width: 5px;
+
+						&.start {
+							right: 0;
+						}
+
+						&.end {
+							left: 0;
+						}
+					}
+				}
 			}
 
 			> .cover {
