@@ -5,7 +5,7 @@ soundManager = require 'soundManager'
 translations = require 'translations'
 {delay} = require 'util'
 
-PLAYER_TEMPLATE = require 'lib/text!views/sonogramPlayer.html'
+PLAYER_TEMPLATE = require 'lib/text!views/SonogramPlayer.html'
 
 class SonogramPlayer extends Spine.Controller
 	subject: null
