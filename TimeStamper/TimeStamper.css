@@ -1,10 +1,10 @@
 .audio-annotator {
-	background: #ffc;
+	background: url("spectrogram.png") center bottom;
 	border: 2px solid #cc9;
 	display: inline-block;
-	height: 320px;
+	height: 513px;
 	position: relative;
-	width: 350px;
+	width: 500px;
 }
 
 /* Frequency selection */
@@ -78,7 +78,7 @@
 		cursor: ns-resize;
 		height: 8px;
 		left: 0;
-		opacity: 0.25;
+		opacity: 0.01;
 		position: absolute;
 		top: 0;
 		-moz-transition:
@@ -107,8 +107,8 @@
 
 	.frequency-selection .low-handle:hover,
 	.frequency-selection .high-handle:hover {
-		opacity: 0.33;
-	}	
+		/*opacity: 0.33;*/
+	}
 
 /* Sound selection */
 
@@ -138,7 +138,7 @@
 		cursor: ew-resize;
 		height: 100%;
 		left: 0;
-		opacity: 0.25;
+		opacity: 0.1;
 		position: absolute;
 		right: auto;
 		top: 0;
@@ -168,5 +168,5 @@
 
 	.sound-selection .start-handle:hover,
 	.sound-selection .end-handle:hover {
-		opacity: 0.33;
+		/*opacity: 0.33;*/
 	}
