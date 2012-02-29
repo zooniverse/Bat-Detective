@@ -5,75 +5,18 @@ soundManager = require 'soundManager'
 translations = require 'translations'
 {delay} = require 'util'
 
-class SonogramPlayer extends Spine.Controller
-	model: null
+PLAYER_TEMPLATE = require 'lib/text!views/sonogramPlayer.html'
 
+class SonogramPlayer extends Spine.Controller
+	subject: null
+
+	sound: null
 	playing: false
 	seeking: false
 	wasPlaying: false
 
 	className: 'sound-classifier'
-	template: """
-		<div class="image">
-			<div class="axis">
-				<div class="space">
-					<div class="label">200 KHz</div>
-				</div>
-				<div class="space"></div>
-				<div class="space"></div>
-				<div class="space"></div>
-				<div class="space"></div>
-				<div class="space"></div>
-				<div class="space">
-					<div class="label">100 KHz</div>
-				</div>
-				<div class="space"></div>
-				<div class="space"></div>
-				<div class="space"></div>
-				<div class="space"></div>
-				<div class="space"></div>
-			</div>
-
-			<img src="" class="sonogram" />
-
-			<div class="seek-line"></div>
-		</div>
-
-		<div class="seek">
-			<div class="track">
-				<div class="fill"></div>
-				<div class="thumb"></div>
-			</div>
-		</div>
-
-		<div class="controls">
-			<button class="play">Play</button>
-			<button class="pause">Pause</button>
-
-			<div class="details">
-				<div class="location field">
-					<span class="value"></span>
-				</div>
-				
-				<div class="environment field">
-					<span class="value"></span>
-				</div>
-
-				<div class="date field">
-					<span class="value"></span>
-				</div>
-
-				<div class="time field">
-					<span class="value"></span>
-				</div>
-			</div>
-
-			<div class="actions">
-				<button class="clear">Clear</button>
-				<button class="done">Done</button>
-			</div>
-		</div>
-	"""
+	template: PLAYER_TEMPLATE
 
 	events:
 		'click .play': 'play'
@@ -81,7 +24,6 @@ class SonogramPlayer extends Spine.Controller
 		'mousedown .seek': 'seekStart'
 
 	elements:
-		'.jplayer': 'playerElement'
 		'.seek .track': 'track'
 		'.seek .fill': 'fill'
 		'.seek .thumb': 'thumb'
@@ -95,24 +37,22 @@ class SonogramPlayer extends Spine.Controller
 	constructor: ->
 		super
 
-		# Use this to identify the controller's node from jPlayer
-		@random = Math.floor Math.random() * 1000
-		@el.attr 'data-random', @random
-
 		@el.html @template
 		@refreshElements()
+
+		@setSubject @subject
 
 	delegateEvents: ->
 		super
 		$(document).on 'mousemove', @seekMove
 		$(document).on 'mouseup', @seekEnd
 
-	setModel: (@model) =>
+	setSubject: (@subject) =>
+		@sound?.destruct()
 		soundManager.onready =>
-			@sound?.destruct()
 			@sound = soundManager.createSound
-				id: @model.id or '_' + Math.floor Math.random() * 1000
-				url: @model.url
+				id: @subject.id or '_' + Math.floor Math.random() * 1000
+				url: @subject.url
 
 				autoload: true
 				onload: @playerFinished
@@ -120,13 +60,13 @@ class SonogramPlayer extends Spine.Controller
 				onpause: @playerPaused
 				whileplaying: @playerTimeUpdated
 				onfinish: @playerFinished
-			
-		@sonogram.attr 'src', @model.image
 
-		@location.html @model.location
-		@environment.html @model.environment
+		@sonogram.attr 'src', @subject.image
 
-		dt = new Date @model.datetime
+		@location.html @subject.location
+		@environment.html @subject.environment
+
+		dt = new Date @subject.datetime
 
 		@date.html """
 			#{dt.getDate()}

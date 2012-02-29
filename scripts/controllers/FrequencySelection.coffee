@@ -1,10 +1,16 @@
 Spine = require 'Spine'
 
 class FrequencySelection extends Spine.Controller
-	startAt: NaN
-	model: null
+	range: null
+
+	constructor: ->
+		super
+		@range.bind 'change', @onRangeChange
 
 	# Called when the mouse is initially put down on the sonogram
-	beginSelection: (percent) ->
+	begin: (percent) ->
+
+	onRangeChange: =>
+		@log 'Range changed', @range.toJSON()
 
 exports = FrequencySelection

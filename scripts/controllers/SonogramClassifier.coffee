@@ -4,6 +4,9 @@ SonogramPlayer = require 'controllers/SonogramPlayer'
 FrequencySelection = require 'controllers/FrequencySelection'
 
 class SonogramClassifier extends SonogramPlayer
+	subject: null
+	classification: null
+
 	classifierEvents:
 		'mousedown .sonogram': 'addFrequencyRange'
 
@@ -11,13 +14,15 @@ class SonogramClassifier extends SonogramPlayer
 		$.extend @events, @classifierEvents
 		super
 
-	addFrequencyRange: (e) =>
-		coord = e.pageY - @sonogram.offset().top
+	setSubject: (@subject) =>
+		super
+		@classification = @subject.classifications().create {}
+
+	addFrequencyRange: ({pageY}) =>
+		clickY = pageY - @sonogram.offset().top
 		percent = (clickY / @sonogram.height()) * 100
 
 		@selection = new FrequencySelection
-			model: @model.sounds().create()
-
-		@selection.begin percent
+			range: @classification.frequencyRanges().create {}
 
 exports = SonogramClassifier

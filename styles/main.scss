@@ -13,9 +13,9 @@ html {
 }
 
 // Only show the current translation.
-html[lang="en"] [lang]:not([lang="en"]),
-html[lang="de"] [lang]:not([lang="de"]),
-html[lang="pl"] [lang]:not([lang="pl"]) {
+[lang="en"] [lang="de"], [lang="en"] [lang="pl"],
+[lang="de"] [lang="en"], [lang="de"] [lang="pl"],
+[lang="pl"] [lang="en"], [lang="pl"] [lang="de"] {
 	display: none;
 }
 
