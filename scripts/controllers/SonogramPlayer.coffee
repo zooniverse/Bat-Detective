@@ -15,7 +15,7 @@ class SonogramPlayer extends Spine.Controller
 	seeking: false
 	wasPlaying: false
 
-	className: 'sound-classifier'
+	className: 'sonogram-classifier'
 	template: PLAYER_TEMPLATE
 
 	events:
@@ -27,6 +27,7 @@ class SonogramPlayer extends Spine.Controller
 		'.seek .track': 'track'
 		'.seek .fill': 'fill'
 		'.seek .thumb': 'thumb'
+		'.image': 'imageContainer'
 		'.image > .sonogram': 'sonogram'
 		'.image > .seek-line': 'seekLine'
 		'.details > .location > .value': 'location'

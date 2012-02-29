@@ -1,6 +1,6 @@
 @import "constants";
 
-.sound-classifier {
+.sonogram-classifier {
 	@include box-sizing(border-box);
 	background: transparentize($black, 0.33);
 	border: 1px solid;
@@ -71,6 +71,51 @@
 			position: absolute;
 			top: 0;
 			width: 2px;
+		}
+
+		> .frequency-selector {
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+
+			> .times {
+				left: 0;
+				position: absolute;
+				width: 100%;
+			}
+
+			> .cover {
+				background: rgba(0, 0, 0, 0.75);
+				left: 0;
+				position: absolute;
+				width: 100%;
+
+				> .handle {
+					background: gray;
+					height: 8px;
+					position: absolute;
+					left: 0;
+					width: 100%
+				}
+
+				&.high {
+					top: 0;
+
+					> .handle {
+						bottom: 0;
+					}
+				}
+
+				&.low {
+					bottom: 0;
+
+					> .handle {
+						top: 0;
+					}
+				}
+			}
 		}
 	}
 

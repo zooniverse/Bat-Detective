@@ -18,11 +18,17 @@ class SonogramClassifier extends SonogramPlayer
 		super
 		@classification = @subject.classifications().create {}
 
-	addFrequencyRange: ({pageY}) =>
-		clickY = pageY - @sonogram.offset().top
-		percent = (clickY / @sonogram.height()) * 100
+	addFrequencyRange: (e) =>
+		e.preventDefault()
+
+		y = 1 - (e.pageY - @sonogram.offset().top) / @sonogram.height()
 
 		@selection = new FrequencySelector
-			range: @classification.frequencyRanges().create {}
+			range: @classification.frequencyRanges().create
+				low: y - 0.005
+				high: y + 0.005
+			mouseDown: e
+
+		@selection.el.appendTo @imageContainer
 
 exports = SonogramClassifier
