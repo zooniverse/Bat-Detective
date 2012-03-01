@@ -221,6 +221,7 @@
 				> .time-selector {
 					background: transparentize(yellow, 0.67);
 					height: 100%;
+					pointer-events: auto;
 					position: absolute;
 
 					> .delete {
@@ -289,6 +290,7 @@
 				position: absolute;
 				top: 0;
 				width: 100%;
+				z-index: 1;
 
 				> .cover {
 					display: block;

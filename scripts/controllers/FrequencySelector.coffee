@@ -44,11 +44,18 @@ class FrequencySelector extends Spine.Controller
 			question: workflowQuestion
 
 		@el.addClass 'active'
-		@range.bind 'finish', => @el.removeClass 'active'
+		@range.bind 'finish', @deselect
 
-	onMouseDown: (e) => e.preventDefault(); e.stopPropagation(); @mouseDown = e
-	onMouseMove: (e) => @onDrag e if @mouseDown
-	onMouseUp: (e) => delete @mouseDown
+	onMouseDown: (e) =>
+		e.preventDefault()
+		e.stopPropagation()
+		@mouseDown = e
+
+	onMouseMove: (e) =>
+		@onDrag e if @mouseDown
+
+	onMouseUp: (e) =>
+		delete @mouseDown
 
 	onDrag: (e) =>
 		target = $(@mouseDown.target)
@@ -96,9 +103,14 @@ class FrequencySelector extends Spine.Controller
 				end: x + 0.005
 			mouseDown: e
 
-		window.range = @timeRange.range
-
+		@timeRange.bind 'select', @select
 		@timeRange.el.appendTo @timesContainer
+
+	select: =>
+		@el.addClass 'active'
+
+	deselect: =>
+		@el.removeClass 'active'
 
 	onDeleteClick: (e) =>
 		e.stopPropagation()

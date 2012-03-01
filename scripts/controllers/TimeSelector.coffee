@@ -30,9 +30,17 @@ class TimeSelector extends Spine.Controller
 		$(document).on 'mousemove', @onDocMouseMove
 		$(document).on 'mouseup', @onDocMouseUp
 
-	onMouseDown: (e) => e.preventDefault(); e.stopPropagation(); @mouseDown = e
-	onDocMouseMove: (e) => @onDrag e if @mouseDown
-	onDocMouseUp: (e) => delete @mouseDown
+	onMouseDown: (e) =>
+		e.preventDefault()
+		e.stopPropagation()
+		@mouseDown = e
+		@trigger 'select'
+
+	onDocMouseMove: (e) =>
+		@onDrag e if @mouseDown
+
+	onDocMouseUp: (e) =>
+		delete @mouseDown
 
 	onDrag: (e) =>
 		e.stopPropagation()
