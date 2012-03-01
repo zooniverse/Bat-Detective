@@ -80,50 +80,16 @@
 			top: 0;
 			width: 100%;
 
-			> .times {
-				left: 0;
-				position: absolute;
-				width: 100%;
-
-				> .time-selector {
-					background: rgba(255, 0, 0, 0.25);
-					height: 100%;
-					position: absolute;
-
-					> .handle {
-						cursor: ew-resize;
-						height: 100%;
-						position: absolute;
-						top: 0;
-						width: 5px;
-
-						&.start {
-							left: 0;
-						}
-
-						&.end {
-							right: 0;
-						}
-					}
-
-					&:hover {
-						> .handle {
-							background: red
-						}
-					}
-				}
-			}
-
 			> .cover {
-				background: rgba(0, 0, 0, 0.75);
+				background: transparentize($black, 0.25);
 				left: 0;
 				position: absolute;
 				width: 100%;
 
 				> .handle {
-					background: gray;
+					background: $gray-light;
 					cursor: ns-resize;
-					height: 8px;
+					height: 5px;
 					position: absolute;
 					left: 0;
 					width: 100%
@@ -142,6 +108,41 @@
 
 					> .handle {
 						top: 0;
+					}
+				}
+			}
+
+			> .times {
+				left: 0;
+				position: absolute;
+				width: 100%;
+
+				> .time-selector {
+					background: transparentize($black, 0.75);
+					height: 100%;
+					position: absolute;
+
+					> .handle {
+						@include transition(background 0.25s ease-in-out);
+						cursor: ew-resize;
+						height: 100%;
+						position: absolute;
+						top: 0;
+						width: 5px;
+
+						&.start {
+							left: 0;
+						}
+
+						&.end {
+							right: 0;
+						}
+					}
+
+					&:hover {
+						> .handle {
+							background: $gray
+						}
 					}
 				}
 			}
