@@ -1,11 +1,15 @@
 Spine = require 'Spine'
 
+Workflow = require 'controllers/Workflow'
+workflowQuestion = require 'workflowQuestion'
+
 TimeSelector = require 'controllers/TimeSelector'
 
 FREQUENCY_TEMPLATE = require 'lib/text!views/FrequencySelector.html'
 
 class FrequencySelector extends Spine.Controller
 	range: null
+	workflow: null
 
 	className: 'frequency-selector'
 	template: FREQUENCY_TEMPLATE
@@ -21,7 +25,7 @@ class FrequencySelector extends Spine.Controller
 		'.low.cover': 'lowCover'
 		'.high.cover > .handle': 'highHandle'
 		'.low.cover > .handle': 'lowHandle'
-		'.workflow': 'workflowContainer'
+		'.cover > .workflow': 'workflowContainer'
 		'.times': 'timesContainer'
 
 	constructor: ->
@@ -30,7 +34,13 @@ class FrequencySelector extends Spine.Controller
 		@refreshElements()
 
 		@range.bind 'change', @onRangeChange
+		@range.bind 'destroy', @release
 		@range.trigger 'change'
+
+		@workflow = new Workflow
+			el: @workflowContainer
+			model: @range
+			question: workflowQuestion
 
 	onMouseDown: (e) => e.preventDefault(); e.stopPropagation(); @mouseDown = e
 	onMouseMove: (e) => @onDrag e if @mouseDown
@@ -65,6 +75,9 @@ class FrequencySelector extends Spine.Controller
 		@timesContainer.css
 			top: highHeight
 			bottom: lowHeight
+
+		workflowTarget = if highHeight > lowHeight then @highCover else @lowCover
+		@workflowContainer.appendTo workflowTarget
 
 	addTimeRange: (e) =>
 		e.preventDefault()
