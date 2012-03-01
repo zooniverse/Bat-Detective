@@ -11,7 +11,11 @@ class FrequencyRange extends Spine.Model
 		return '"Low" must be greater than or equal to zero' unless @low >= 0
 		return '"High" must be less than or equal to one' unless @high <= 1
 		return '"Low" must be less than "high"' unless @low < @high
-		return 'Minimum range is 1%' unless @high - @low >= 0.01
+		return 'Minimum range is 1%' unless @high - @low >= 0.009
+
+	destroy: =>
+		range.destroy() for range in @timeRanges().all()
+		super
 
 TimeRange.belongsTo 'frequencyRange', FrequencyRange, 'frequency_range_id'
 

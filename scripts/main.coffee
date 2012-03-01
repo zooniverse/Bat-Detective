@@ -1,5 +1,8 @@
 $ = require 'jQuery'
 
+# Clear out local storage between views.
+localStorage?.clear()
+
 parallax = require 'parallax'
 
 Pager = require 'controllers/Pager'

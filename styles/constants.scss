@@ -15,6 +15,12 @@ $white-trans-high: transparentize($white, 0.75);
 $white-trans-medium: transparentize($white, 0.5);
 $white-trans-low: transparentize($white, 0.25);
 
+@mixin box-shadow($args) {
+	-moz-box-shadow: $args;
+	-webkit-box-shadow: $args;
+	box-shadow: $args;
+}
+
 @mixin box-sizing($args) {
 	-moz-box-sizing: $args;
 	box-sizing: $args;

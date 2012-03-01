@@ -1,13 +1,9 @@
 {Question, Answer} = require 'controllers/Workflow'
 
 finish = new Question '',
-	new Answer 'Clear',
-		{}
-		-> @model.destroy()
-
 	new Answer 'Finish',
 		{}
-		-> @model.trigger 'finished'
+		-> @model.trigger 'finish'
 
 exports = new Question 'What do you hear?',
 	new Answer 'Bat Call',
@@ -26,9 +22,9 @@ exports = new Question 'What do you hear?',
 				finish
 
 	new Answer 'Insect',
-		type: 'insect',
+		source: 'insect', type: null
 		finish
 
 	new Answer 'Machine',
-		type: 'machine',
+		source: 'machine', type: null
 		finish

@@ -19,6 +19,7 @@ class FrequencySelector extends Spine.Controller
 		'mousemove': 'onMouseMove'
 		'mouseup': 'onMouseUp'
 		'mousedown .times': 'addTimeRange'
+		'click .delete': 'onDeleteClick'
 
 	elements:
 		'.high.cover': 'highCover'
@@ -41,6 +42,9 @@ class FrequencySelector extends Spine.Controller
 			el: @workflowContainer
 			model: @range
 			question: workflowQuestion
+
+		@el.addClass 'active'
+		@range.bind 'finish', => @el.removeClass 'active'
 
 	onMouseDown: (e) => e.preventDefault(); e.stopPropagation(); @mouseDown = e
 	onMouseMove: (e) => @onDrag e if @mouseDown
@@ -67,6 +71,8 @@ class FrequencySelector extends Spine.Controller
 			@range.updateAttribute attribute, y
 
 	onRangeChange: =>
+		@el.attr 'data-source', @range.source
+
 		highHeight = ((1 - @range.high) * 100) + '%'
 		lowHeight = (@range.low * 100) + '%'
 
@@ -93,5 +99,9 @@ class FrequencySelector extends Spine.Controller
 		window.range = @timeRange.range
 
 		@timeRange.el.appendTo @timesContainer
+
+	onDeleteClick: (e) =>
+		e.stopPropagation()
+		@range.destroy()
 
 exports = FrequencySelector

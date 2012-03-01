@@ -32,8 +32,11 @@ class Workflow extends Spine.Controller
 		if @path.length > 1 then @el.append '<button class="back">Back</button>'
 
 		@el.append "<div class=\"question\">#{@question.question}</div>"
+
+		@answersContainer = @$('<div class="answers"></div>')
+		@answersContainer.appendTo @el
 		for answer, i in @question.answers
-			@el.append "<button data-index=\"#{i}\" class=\"answer\">#{answer.answer}</button>"
+			@answersContainer.append "<button data-index=\"#{i}\" class=\"answer\">#{answer.answer}</button>"
 
 	goBack: =>
 		@path.pop()

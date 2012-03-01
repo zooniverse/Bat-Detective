@@ -10,6 +10,7 @@ class TimeSelector extends Spine.Controller
 
 	events:
 		'mousedown': 'onMouseDown'
+		'click .delete': 'onDeleteClick'
 
 	elements:
 		'.start.handle': 'startHandle'
@@ -21,6 +22,7 @@ class TimeSelector extends Spine.Controller
 		@refreshElements()
 
 		@range.bind 'change', @onRangeChange
+		@range.bind 'destroy', @release
 		@range.trigger 'change'
 
 	delegateEvents: ->
@@ -55,8 +57,11 @@ class TimeSelector extends Spine.Controller
 				attribute = 'end'
 
 		if attribute
-			@log attribute, x
 			@range.updateAttribute attribute, x
+
+	onDeleteClick: (e) =>
+		e.stopPropagation()
+		@range.destroy()
 
 	onRangeChange: =>
 		@el.css

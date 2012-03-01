@@ -74,37 +74,95 @@
 		}
 
 		> .frequency-selector {
-			height: 100%;
-			left: 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
-
 			> .cover {
-				background: transparentize($black, 0.25);
+				background: transparentize($black, 0.2);
+				display: none;
 				left: 0;
 				position: absolute;
 				width: 100%;
 
 				> .workflow {
+					color: $white;
 					left: 0;
+					margin: 50px 0;
 					position: absolute;
 					text-align: center;
 					width: 100%;
+
+					> .question {
+						font: {
+							size: 18px;
+							weight: bold;
+						}
+						margin: 25px 0;
+						text-transform: uppercase;
+					}
+
+					> .answers {
+						> .answer {
+							background: transparent;
+							border: 1px solid $gray-light {
+								width: 1px 0 1px 1px
+							};
+							color: inherit;
+							cursor: pointer;
+							font: {
+								family: inherit;
+								size: 40px;
+							}
+							padding: 15px 20px 10px;
+							text-transform: uppercase;
+
+							@media (max-width: 900px) {
+								font-size: 30px;
+							}
+
+							&:first-child {
+								border-left: 0
+							}
+						}
+					}
 				}
 
 				> .handle {
 					background: $gray-light;
+					border-top: 1px solid $gray-lighter;
 					cursor: ns-resize;
 					height: 5px;
 					position: absolute;
 					left: 0;
 					width: 100%;
 					z-index: 1;
+
+					&:after {
+						border: 8px solid transparentize($gray-light, 1);
+						content: " ";
+						display: block;
+						height: 0;
+						left: 50%;
+						margin-left: -8px;
+						position: absolute;
+						width: 0;
+					}
 				}
 
 				&.high {
 					top: 0;
+
+					> .delete {
+						background: transparent;
+						border: 0;
+						bottom: 10px;
+						color: $white;
+						height: 20px;
+						line-height: 20px;
+						padding: 0;
+						position: absolute;
+						right: 0;
+						text-align: center;
+						width: 20px;
+						z-index: 2;
+					}
 
 					> .workflow {
 						bottom: 0
@@ -112,6 +170,11 @@
 
 					> .handle {
 						bottom: 0;
+
+						&:after {
+							border-bottom-color: $gray-light;
+							bottom: 100%;
+						}
 					}
 				}
 
@@ -124,22 +187,42 @@
 
 					> .handle {
 						top: 0;
+
+						&:after {
+							border-top-color: $gray-light;
+							top: 100%;
+						}
 					}
 				}
 			}
 
 			> .times {
 				left: 0;
+				pointer-events: none;
 				position: absolute;
 				width: 100%;
 
 				> .time-selector {
-					background: transparentize($black, 0.75);
+					background: transparentize(yellow, 0.67);
 					height: 100%;
 					position: absolute;
 
+					> .delete {
+						background: transparent;
+						border: 0;
+						height: 20px;
+						line-height: 20px;
+						opacity: 0;
+						padding: 0;
+						position: absolute;
+						right: 10px;
+						text-align: center;
+						top: 5px;
+						width: 20px;
+						z-index: 1;
+					}
+
 					> .handle {
-						@include transition(background 0.25s ease-in-out);
 						cursor: ew-resize;
 						height: 100%;
 						position: absolute;
@@ -156,10 +239,43 @@
 					}
 
 					&:hover {
+						> .delete {
+							opacity: 1;
+						}
+
 						> .handle {
-							background: $gray
+							background: transparentize($gray, 0.5);
 						}
 					}
+				}
+			}
+
+			&[data-source="bat"] > .times > .time-selector {
+				background: transparentize(black, 0.67)
+			}
+
+			&[data-source="insect"] > .times > .time-selector {
+				background: transparentize(green, 0.67)
+			}
+
+			&[data-source="machine"] > .times > .time-selector {
+				background: transparentize(blue, 0.67)
+			}
+
+			&.active {
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
+
+				> .cover {
+					display: block;
+				}
+
+				> .times {
+					@include box-shadow(1px 1px 5px $black inset);
+					pointer-events: all;
 				}
 			}
 		}
