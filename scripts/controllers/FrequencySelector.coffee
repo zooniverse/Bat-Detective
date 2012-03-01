@@ -32,7 +32,7 @@ class FrequencySelector extends Spine.Controller
 		@range.bind 'change', @onRangeChange
 		@range.trigger 'change'
 
-	onMouseDown: (e) => e.preventDefault(); @mouseDown = e
+	onMouseDown: (e) => e.preventDefault(); e.stopPropagation(); @mouseDown = e
 	onMouseMove: (e) => @onDrag e if @mouseDown
 	onMouseUp: (e) => delete @mouseDown
 
@@ -44,7 +44,7 @@ class FrequencySelector extends Spine.Controller
 		else if target.is @lowHandle
 			attribute = 'low'
 		else if @el.has(target).length is 0
-			# A target outside the FrequencySelector means it's brnad new.
+			# A target outside the FrequencySelector means it's brand new.
 			# If it moves up, change the high.
 			# If it moves down, change the low.
 			if e.pageY < @mouseDown.pageY
@@ -67,13 +67,17 @@ class FrequencySelector extends Spine.Controller
 			bottom: lowHeight
 
 	addTimeRange: (e) =>
+		e.preventDefault()
+
 		x = (e.pageX - @timesContainer.offset().left) / @timesContainer.width()
 
 		@timeRange = new TimeSelector
 			range: @range.timeRanges().create
 				start: x - 0.005
 				end: x + 0.005
-			mouseDown: true
+			mouseDown: e
+
+		window.range = @timeRange.range
 
 		@timeRange.el.appendTo @timesContainer
 

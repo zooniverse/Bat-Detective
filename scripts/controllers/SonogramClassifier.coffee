@@ -1,6 +1,7 @@
 $ = require 'jQuery'
 
 SonogramPlayer = require 'controllers/SonogramPlayer'
+
 FrequencySelector = require 'controllers/FrequencySelector'
 
 class SonogramClassifier extends SonogramPlayer

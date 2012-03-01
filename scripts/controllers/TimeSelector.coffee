@@ -8,6 +8,9 @@ class TimeSelector extends Spine.Controller
 	className: 'time-selector'
 	template: TIME_TEMPLATE
 
+	events:
+		'mousedown': 'onMouseDown'
+
 	elements:
 		'.start.handle': 'startHandle'
 		'.end.handle': 'endHandle'
@@ -20,25 +23,40 @@ class TimeSelector extends Spine.Controller
 		@range.bind 'change', @onRangeChange
 		@range.trigger 'change'
 
-	onMouseDown: (e) => e.preventDefault(); @mouseDown = e
-	onMouseMove: (e) => @onDrag e if @mouseDown
-	onMouseUp: (e) => delete @mouseDown
+	delegateEvents: ->
+		super
+		$(document).on 'mousemove', @onDocMouseMove
+		$(document).on 'mouseup', @onDocMouseUp
+
+	onMouseDown: (e) => e.preventDefault(); e.stopPropagation(); @mouseDown = e
+	onDocMouseMove: (e) => @onDrag e if @mouseDown
+	onDocMouseUp: (e) => delete @mouseDown
 
 	onDrag: (e) =>
+		e.stopPropagation()
+
 		target = $(@mouseDown.target)
 
-		@log target
+		x = (e.pageX - @el.parent().offset().left) / @el.parent().width()
 
 		if target.is @startHandle
 			attribute = 'start'
 		else if target.is @endHandle
 			attribute = 'end'
-		else if target is @el
-			@log 'MOVE'
+		else if target.is @el
+			size = @range.end - @range.start
+			@range.updateAttributes
+				start: x - (size / 2)
+				end: x + (size / 2)
+		else if @el.has(target).length is 0
+			if e.pageX < @mouseDown.pageX
+				attribute = 'start'
+			else
+				attribute = 'end'
 
 		if attribute
-			x = (e.pageX - @el.parent().offset().left) / @el.parent().width()
-			@range.updateAttribute attribute, y
+			@log attribute, x
+			@range.updateAttribute attribute, x
 
 	onRangeChange: =>
 		@el.css
