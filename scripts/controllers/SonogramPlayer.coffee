@@ -53,7 +53,7 @@ class SonogramPlayer extends Spine.Controller
 		soundManager.onready =>
 			@sound = soundManager.createSound
 				id: @subject.id or '_' + Math.floor Math.random() * 1000
-				url: @subject.url
+				url: @subject.audio
 
 				autoload: true
 				onload: @playerFinished
