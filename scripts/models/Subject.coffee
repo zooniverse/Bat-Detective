@@ -7,6 +7,12 @@ class Subject extends Spine.Model
 	@hasMany 'classifications', Classification
 	@extend Spine.Model.Local
 
+	@next: ->
+		noClassifications = @select (subject) ->
+			subject.classifications().all().length is 0
+
+		noClassifications[0]
+
 Classification.belongsTo 'subject', Subject
 
 exports = Subject
