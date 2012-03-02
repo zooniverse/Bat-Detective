@@ -80,14 +80,14 @@ class FrequencySelector extends Spine.Controller
 	onRangeChange: =>
 		@el.attr 'data-source', @range.source
 
-		highHeight = ((1 - @range.high) * 100) + '%'
-		lowHeight = (@range.low * 100) + '%'
+		highHeight = (1 - @range.high) * 100
+		lowHeight = @range.low * 100
 
-		@highCover.css 'height', highHeight
-		@lowCover.css 'height', lowHeight
+		@highCover.css 'height', highHeight + '%'
+		@lowCover.css 'height', lowHeight + '%'
 		@timesContainer.css
-			top: highHeight
-			bottom: lowHeight
+			top: highHeight + '%'
+			bottom: lowHeight + '%'
 
 		workflowTarget = if highHeight > lowHeight then @highCover else @lowCover
 		@workflowContainer.appendTo workflowTarget
