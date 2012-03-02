@@ -11,8 +11,8 @@ pagers = $('[data-page]').parent().map ->
 		el: @
 
 Subject = require 'models/Subject'
-window.exampleSonogram = Subject.create
-	image: '/example-data/sonogram.jpg'
+for i in [1..10] then Subject.create
+	image: "example-data/#{i}.png"
 	audio: ['http://upload.wikimedia.org/wikipedia/commons/9/94/Pipistrellus.ogg']
 	location: 'Oxford, United Kingdom'
 	environment: 'Residential area'
@@ -21,7 +21,7 @@ window.exampleSonogram = Subject.create
 SonogramClassifier = require 'controllers/SonogramClassifier'
 window.classifier = new SonogramClassifier
 	el: $('#sound-classifier')
-	subject: window.exampleSonogram
+	subject: Subject.first()
 
 NestedRoute = require 'NestedRoute'
 NestedRoute.setup()
