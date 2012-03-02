@@ -18,7 +18,7 @@ class FrequencySelector extends Spine.Controller
 		'mousedown': 'onMouseDown'
 		'mousemove': 'onMouseMove'
 		'mouseup': 'onMouseUp'
-		'mousedown .times': 'addTimeRange'
+		'mousedown .times': 'onTimesMouseDown'
 		'click .delete': 'onDeleteClick'
 
 	elements:
@@ -92,24 +92,30 @@ class FrequencySelector extends Spine.Controller
 		workflowTarget = if highHeight > lowHeight then @highCover else @lowCover
 		@workflowContainer.appendTo workflowTarget
 
-	addTimeRange: (e) =>
+	onTimesMouseDown: (e) =>
 		e.preventDefault()
-
 		x = (e.pageX - @timesContainer.offset().left) / @timesContainer.width()
 
-		@timeRange = new TimeSelector
-			range: @range.timeRanges().create
-				start: x - 0.005
-				end: x + 0.005
-			mouseDown: e
+		@addTimeRange x - 0.005, x + 0.005, e
 
-		@timeRange.bind 'select', @select
-		@timeRange.el.appendTo @timesContainer
+	addTimeRange: (start, end, mouseDown) =>
+		timeRange = new TimeSelector
+			range: @range.timeRanges().create
+				start: start
+				end: end
+			mouseDown: mouseDown
+
+		timeRange.bind 'select', @select
+		timeRange.el.appendTo @timesContainer
 
 	select: =>
 		@el.addClass 'active'
 
 	deselect: =>
+		# If there are no time range selections,
+		# assume the whole thing should be selected.
+		if @range.timeRanges().all().length is 0
+			@addTimeRange 0, 1
 		@el.removeClass 'active'
 
 	onDeleteClick: (e) =>
