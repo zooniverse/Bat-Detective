@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+for file in "$@"
+do
+	echo "=> Fixing WAV header of $file"
+	cp $file .temp.raw
+	sox -r 44k -e signed -b 16 -c 1 .temp.raw ${file/wav/fixed.wav} trim 0.05
+	rm .temp.raw
+done

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+for file in "$@"
+do
+	echo "=> Creating MP3 and OGG from $file"
+	lame $file
+	sndfile-convert $file ${file/wav/ogg}
+done

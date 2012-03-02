@@ -18,7 +18,7 @@ do
 	sox ~/Desktop/.spec.temp.wav ~/Desktop/.spec.temp2.wav spectrogram -r -x 720 -y 1025 -z 60 -l -S 0:00:0.05 -o ~/Desktop/.spec.temp.png
 
 	# Crop to normal height(110KHz).
-	convert ~/Desktop/.spec.temp.png -crop 100%x50%+0+512 "$file.png"
+	convert ~/Desktop/.spec.temp.png -crop 100%x50%+0+512 ${file/wav/png}
 
 	# Cleanup.
 	rm ~/Desktop/.spec.temp.raw
