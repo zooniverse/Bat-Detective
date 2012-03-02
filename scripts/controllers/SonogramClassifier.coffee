@@ -39,6 +39,11 @@ class SonogramClassifier extends SonogramPlayer
 		@selections.push selection
 
 	nextSubject: (e) =>
-		@setSubject Subject.next()
+		nextSubject = Subject.next()
+
+		if nextSubject
+			@setSubject nextSubject
+		else
+			alert 'There are no more subjects to classify!'
 
 exports = SonogramClassifier
