@@ -6,6 +6,7 @@ unless window.SM2_DEFER is true
 window.soundManager = new SoundManager()
 window.soundManager.url = 'scripts/lib/soundmanager/swf'
 window.soundManager.preferFlash = false
+window.soundManager.html5PollingInterval = 50
 window.soundManager.beginDelayedInit()
 
 exports = window.soundManager
