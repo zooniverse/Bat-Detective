@@ -1,7 +1,7 @@
 require 'lib/soundmanager/script/soundmanager2'
 
-# This must be in your markup before this module can be required:
-# <script type="text/javascript">window.SM2_DEFER = true;</script>
+unless window.SM2_DEFER is true
+	console.log 'window.SM2_DEFER must be true before loading SoundManager'
 
 window.soundManager = new SoundManager()
 window.soundManager.url = 'scripts/lib/soundmanager/swf'

@@ -55,12 +55,13 @@ class SonogramPlayer extends Spine.Controller
 				id: @subject.id or '_' + Math.floor Math.random() * 1000
 				url: @subject.audio
 
-				autoload: true
 				onload: @playerFinished
 				onplay: @playerPlayed
 				onpause: @playerPaused
 				whileplaying: @playerTimeUpdated
 				onfinish: @playerFinished
+
+			@sound.load()
 
 		@sonogram.attr 'src', @subject.image
 
@@ -128,7 +129,7 @@ class SonogramPlayer extends Spine.Controller
 
 	playerFinished: =>
 		# We always want the sound to be "playing", even when it's paused,
-		# so that the whileplaying callback fires as we seek.
+		# so that the "whileplaying" callback fires as we seek.
 		@sound.play()
 		@sound.pause()
 

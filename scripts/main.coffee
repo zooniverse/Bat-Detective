@@ -13,7 +13,7 @@ pagers = $('[data-page]').parent().map ->
 Subject = require 'models/Subject'
 for i in [1..10] then Subject.create
 	image: "example-data/images/#{i}.png"
-	audio: ["/example-data/audio/#{i}.wav"]
+	audio: "example-data/audio/#{i}.mp3"
 	location: 'Oxford, United Kingdom'
 	environment: 'Residential area'
 	datetime: +new Date()
