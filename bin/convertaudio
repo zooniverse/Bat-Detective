@@ -2,7 +2,6 @@
 
 for file in "$@"
 do
-	echo "=> Creating MP3 and OGG from $file"
-	lame $file
-	sndfile-convert $file ${file/wav/ogg}
+	echo "=> Creating MP3 from $file"
+	lame --quiet $file
 done

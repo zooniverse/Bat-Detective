@@ -8,21 +8,11 @@ for file in "$@"
 do
 	echo "=> Generating spectrogram for $file"
 
-	# sox can't read corrupt WAVs if they end in "wav".
-	cp $file ~/Desktop/.spec.temp.raw
-
-	# Convert the raw data to a wav.
-	sox -r 44k -e signed -b 16 -c 1 ~/Desktop/.spec.temp.raw ~/Desktop/.spec.temp.wav
-
 	# Generate a double-height spectrogram (220KHz).
-	sox ~/Desktop/.spec.temp.wav ~/Desktop/.spec.temp2.wav spectrogram -r -x 720 -y 1025 -z 60 -l -S 0:00:0.05 -o ~/Desktop/.spec.temp.png
+	sox $file .temp.wav spectrogram -r -x 720 -y 1025 -z 60 -l -o .temp.png
+	rm .temp.wav
 
-	# Crop to normal height(110KHz).
-	convert ~/Desktop/.spec.temp.png -crop 100%x50%+0+512 ${file/wav/png}
-
-	# Cleanup.
-	rm ~/Desktop/.spec.temp.raw
-	rm ~/Desktop/.spec.temp.wav
-	rm ~/Desktop/.spec.temp2.wav
-	rm ~/Desktop/.spec.temp.png
+	# Crop to normal height (110KHz).
+	convert .temp.png -crop 100%x50%+0+512 ${file/wav/png}
+	rm .temp.png
 done
