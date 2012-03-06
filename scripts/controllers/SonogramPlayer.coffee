@@ -2,6 +2,7 @@ Spine = require 'Spine'
 $ = require 'jQuery'
 soundManager = require 'soundManager'
 
+AudioButton = require 'controllers/AudioButton'
 translations = require 'translations'
 {delay} = require 'util'
 
@@ -19,8 +20,9 @@ class SonogramPlayer extends Spine.Controller
 	template: PLAYER_TEMPLATE
 
 	events:
-		'click .play': 'play'
-		'click .pause': 'pause'
+		'click .controls .play': 'play'
+		'click .controls .pause': 'pause'
+		'click .controls .field-guide': 'toggleFieldGuide'
 		'mousedown .seek': 'seekStart'
 
 	elements:
@@ -28,18 +30,23 @@ class SonogramPlayer extends Spine.Controller
 		'.seek .fill': 'fill'
 		'.seek .thumb': 'thumb'
 		'.image': 'imageContainer'
-		'.image > .sonogram': 'sonogram'
-		'.image > .seek-line': 'seekLine'
-		'.details > .location > .value': 'location'
-		'.details > .environment > .value': 'environment'
-		'.details > .date > .value': 'date'
-		'.details > .time > .value': 'time'
+		'.image .sonogram': 'sonogram'
+		'.image .seek-line': 'seekLine'
+		'.controls .field-guide': 'fieldGuideButton'
+		'.details .location > .value': 'location'
+		'.details .environment > .value': 'environment'
+		'.details .date > .value': 'date'
+		'.details .time > .value': 'time'
+		'.field-guide:not(button)': 'fieldGuide'
 
 	constructor: ->
 		super
 
 		@el.html @template
 		@refreshElements()
+
+		for audioButton in @$('.field-guide [data-audio-src]')
+			new AudioButton el: audioButton
 
 		@setSubject @subject
 
@@ -52,7 +59,7 @@ class SonogramPlayer extends Spine.Controller
 		@sound?.destruct()
 		soundManager.onready =>
 			@sound = soundManager.createSound
-				id: @subject.id or '_' + Math.floor Math.random() * 1000
+				id: '_' + Math.floor Math.random() * 1000
 				url: @subject.audio
 
 				onload: @playerLoaded
@@ -75,6 +82,7 @@ class SonogramPlayer extends Spine.Controller
 			#{translations.months[dt.getMonth()]}
 			#{dt.getFullYear()}
 		"""
+
 		@time.html """
 			#{(dt.getHours() % 12) or 12}:#{dt.getMinutes()}
 			#{if dt.getHours() < 12 then 'am' else 'pm'}
@@ -146,5 +154,8 @@ class SonogramPlayer extends Spine.Controller
 		delay 250, =>
 			@sound.setPosition 0
 			@playerTimeUpdated()
+
+	toggleFieldGuide: =>
+		@fieldGuide.add(@fieldGuideButton).toggleClass 'active'
 
 exports = SonogramPlayer

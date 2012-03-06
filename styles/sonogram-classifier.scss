@@ -327,125 +327,149 @@
 	}
 
 	> .controls {
-		text-align: right;
+		$controls-height: 40px;
 
-		button,
-		.field {
-			@include box-sizing(content-box);
-			background: transparent;
-			border: 0 {
-				left: 1px solid;
-			};
-			color: inherit;
-			line-height: 1;
-			margin: 0;
-			padding: 13px 17px;
-			vertical-align: top;
-		}
+		border-bottom: 1px solid $gray-dark;
+		float: left;
+		height: $controls-height;
+		width: 100%;
 
-		button {
-			cursor: pointer;
-			font: {
-				family: inherit;
-				size: inherit;
-			};
-			text-transform: uppercase;
-		}
+		> .group {
+			&.leading {
+				float: left;
 
-		> .play,
-		> .pause {
-			border: {
-				left: 0;
-				right: 1px solid;
-			};
-			float: left;
-		}
+				> button,
+				> .details > .field {
+					border-right: 1px solid $gray-dark;
+				}
+			}
 
-		> .pause {
-			display: none;
-		}
+			&.trailing {
+				float: right;
 
-		> .details {
-			display: inline-block;
+				> button,
+				> .details > .field {
+					border-left: 1px solid $gray-dark;
+				}
+			}
 
-			> .field {
-				background: url("sonogram-details-icons.png") 0 0 no-repeat;
-				display: inline-block;
-				height: 1em;
-				position: relative;
-				width: 4px;
+			> button {
+				@include box-sizing(content-box);
+				background: transparent;
+				border: 0;
+				color: inherit;
+				cursor: pointer;
+				font: {
+					family: inherit;
+					size: inherit;
+				};
+				height: $controls-height;
+				line-height: $controls-height + ($controls-height / 8);
+				margin: 0;
+				padding: 0 20px;
+				text-transform: uppercase;
+				vertical-align: top;
 
-				&.location {
-					background-position: 0px center;
+				&.play {
+					width: 50px;
 				}
 
-				&.environment {
-					background-position: -35px center;
-					width: 8px;
+				&.pause {
+					display: none;
+					width: 50px;
 				}
 
-				&.date {
-					background-position: -74px center;
-				}
-
-				&.time {
-					background-position: -108px center;
-				}
-
-				> .icon {
-					height: 15px;
-					float: left;
-				}
-
-				> .value {
-					@include transition(#{opacity 0.25s ease-in-out, top 0.25s ease-in-out});
-					background: $gold;
-					color: $black;
-					font: {
-						size: 10px;
-						weight: bold;
-					};
-					letter-spacing: 1px;
-					opacity: 0;
-					padding: 6px 18px;
-					position: absolute;
-					left: 0;
-					text-transform: uppercase;
-					top: 67%;
-					white-space: nowrap;
-
-					&:before {
-						background: transparent;
-						border: 10px solid transparentize($gold, 1) {
-							left-color: $gold;
-						};
-						content: " ";
-						display: block;
-						position: absolute;
-						top: -5px;
-						left: 0;
+				&.field-guide {
+					&.active {
+						background: $gold;
+						color: $black;
 					}
 				}
 
-				&:hover {
+				&.done {}
+			}
+
+			> .details {
+				display: inline-block;
+
+				> .field {
+					background: url("sonogram-details-icons.png") 0 0 no-repeat;
+					display: inline-block;
+					height: $controls-height;
+					position: relative;
+					width: $controls-height;
+
+					&.location {
+						background-position: 0px center;
+					}
+
+					&.environment {
+						background-position: -35px center;
+					}
+
+					&.date {
+						background-position: -74px center;
+					}
+
+					&.time {
+						background-position: -108px center;
+					}
+
+					> .icon {
+						height: 15px;
+						float: left;
+					}
+
 					> .value {
-						opacity: 1;
-						top: 100%;
-						z-index: 1;
+						@include transition(#{opacity 0.25s ease-in-out, top 0.25s ease-in-out});
+						background: $gold;
+						color: $black;
+						font: {
+							size: 10px;
+							weight: bold;
+						};
+						letter-spacing: 1px;
+						opacity: 0;
+						padding: 6px 18px;
+						pointer-events: none;
+						position: absolute;
+						left: 0;
+						text-transform: uppercase;
+						top: 67%;
+						white-space: nowrap;
+
+						&:before {
+							background: transparent;
+							border: 10px solid transparentize($gold, 1) {
+								left-color: $gold;
+							};
+							content: " ";
+							display: block;
+							position: absolute;
+							top: -5px;
+							left: 0;
+						}
+					}
+
+					&:hover {
+						> .value {
+							opacity: 1;
+							pointer-events: auto;
+							top: 100%;
+							z-index: 1;
+						}
 					}
 				}
 			}
 		}
-
-		> .actions {
-			display: inline-block;
-
-			> button {}
-		}
 	}
 
 	&.playing {
-		> .controls {
+		> .image > .seek-line {
+			display: block;
+		}
+
+		> .controls > .group {
 			> .play {
 				display: none;
 			}
@@ -454,13 +478,107 @@
 				display: inline-block;
 			}
 		}
-
-		> .image > .seek-line {
-			display: block;
-		}
 	}
 
 	&.seeking > .image > .seek-line {
 		display: block;
+	}
+
+	> .field-guide {
+		@include transition(#{
+			max-height 0.25s ease-in-out,
+			padding 0.25s ease-in-out
+		});
+		background: $gold;
+		clear: left;
+		color: $black;
+		font-size: 14px;
+		max-height: 0;
+		padding: 0 20px;
+		overflow-y: auto;
+
+		&.active {
+			max-height: 500px;
+			padding: 20px;
+		}
+
+		> header {
+			font-size: 20px;
+			text-transform: uppercase;
+
+			&:first-child {
+				font-size: 24px;
+			};
+		}
+
+		> .examples {
+			margin: 0;
+			overflow: hidden;
+			padding: 0;
+
+			> li {
+				@include box-sizing(border-box);
+				display: block;
+				float: left;
+				padding: 20px;
+				text-align: center;
+				width: 33%;
+
+				> .description {
+					display: block;
+				}
+
+				> img {
+					display: block;
+					width: 100%;
+				}
+
+				> button {
+					background: transparentize($black, 0.2);
+					border: 0;
+					color: $white;
+					cursor: pointer;
+					display: block;
+					font: {
+						family: inherit;
+						size: inherit;
+					}
+					letter-spacing: 1px;
+					opacity: 0.5;
+					padding: 6px 10px 2px;
+					position: relative;
+					text: {
+						align: left;
+						transform: uppercase;
+					};
+					width: 100%;
+
+					&:after {
+						@include box-sizing(border-box);
+						content: "\B7 \B7 \B7";
+						height: 100%;
+						line-height: 1.75;
+						position: absolute;
+						right: 0;
+						top: 0;
+						padding: 0 5px;
+					}
+
+					&.loaded {
+						opacity: 1;
+
+						&:after {
+							content: "\25B6";
+						}
+					}
+
+					&.playing {
+						&:after {
+							content: "\25A0";
+						}
+					}
+				}
+			}
+		}
 	}
 }
