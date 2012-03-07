@@ -96,7 +96,6 @@ class SonogramPlayer extends Spine.Controller
 		@sound.pause()
 
 	seekStart: (e) =>
-		@log 'Player will seek'
 		e.preventDefault()
 
 		@wasPlaying = @playing
@@ -110,7 +109,6 @@ class SonogramPlayer extends Spine.Controller
 	seekMove: (e) =>
 		if not @seeking then return
 
-		@log 'Player seeking'
 		targetX = e.pageX - @track.offset().left
 		percent = targetX / @track.width()
 		percent = Math.min(Math.max(percent, 0), 1)
@@ -121,27 +119,22 @@ class SonogramPlayer extends Spine.Controller
 	seekEnd: =>
 		if not @seeking then return
 
-		@log 'Player done seeking'
 		@seeking = false
 		@el.removeClass 'seeking'
 
 		if @wasPlaying then @play()
 
 	playerLoaded: =>
-		@log 'Player loaded'
 
 	playerPlayed: =>
-		@log 'Player will play'
 		@playing = true
 		@el.addClass 'playing'
 
 	playerPaused: =>
-		@log 'Player will pause'
 		@playing = false
 		@el.removeClass 'playing'
 
 	playerTimeUpdated: =>
-		@log 'Player time updated'
 		percent = (@sound.position / @sound.duration) * 100
 
 		@seekLine.css 'left', percent + '%'
@@ -149,7 +142,6 @@ class SonogramPlayer extends Spine.Controller
 		@thumb.css 'left', percent + '%'
 
 	playerFinished: =>
-		@log 'Player finished'
 		@playerPaused()
 
 		delay 250, =>
