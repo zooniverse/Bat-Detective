@@ -4,7 +4,7 @@ soundManager = require 'soundManager'
 
 AudioButton = require 'controllers/AudioButton'
 translations = require 'translations'
-{delay} = require 'util'
+{delay, limit} = require 'util'
 
 PLAYER_TEMPLATE = require 'lib/text!views/SonogramPlayer.html'
 
@@ -54,6 +54,7 @@ class SonogramPlayer extends Spine.Controller
 		super
 		$(document).on 'mousemove', @seekMove
 		$(document).on 'mouseup', @seekEnd
+		$(document).on 'keydown', @onDocKeyDown
 
 	setSubject: (@subject) =>
 		@sound?.destruct()
@@ -157,5 +158,24 @@ class SonogramPlayer extends Spine.Controller
 
 	toggleFieldGuide: =>
 		@fieldGuide.add(@fieldGuideButton).toggleClass 'active'
+
+	SPACE = 32
+	LEFT = 37
+	RIGHT = 39
+
+	onDocKeyDown: (e) =>
+		# Only respond if we're on the classification page.
+		return if @el.parents('[data-page]:not(.active)').length isnt 0
+
+		if e.which in [SPACE, LEFT, RIGHT] then e.preventDefault()
+
+		if e.which is SPACE
+			if @playing then @pause() else @play()
+		else if e.which is LEFT
+			@sound.setPosition limit @sound.position - 333, 0, @sound.duration
+			@playerTimeUpdated()
+		else if e.which is RIGHT
+			@sound.setPosition limit @sound.position + 333, 0, @sound.duration
+			@playerTimeUpdated()
 
 exports = SonogramPlayer
