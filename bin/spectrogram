@@ -1,9 +1,5 @@
 #!/usr/bin/env sh
 
-# Generate Bat Detective-ready spectrograms from corrupt WAVs.
-# requires sox and imagemagick.
-# Try this: `cd /path/to/sounds; spectrogram *.wav`
-
 for file in "$@"
 do
 	echo "=> Generating spectrogram for $file"
