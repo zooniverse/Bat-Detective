@@ -58,6 +58,7 @@
 		}
 
 		> .sonogram {
+			cursor: ns-resize;
 			display: block;
 			width: 100%;
 		}
@@ -213,6 +214,7 @@
 			}
 
 			> .times {
+				cursor: ew-resize;
 				left: 0;
 				pointer-events: none;
 				position: absolute;
