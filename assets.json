@@ -1,17 +1,25 @@
 [
-	{"https://raw.github.com/brian-c/jekyll-plugins/master/_plugins/extension_converter.rb": "_plugins/extension_converter.rb"},
-	{"https://raw.github.com/brian-c/jekyll-plugins/master/_plugins/coffee.rb": "_plugins/coffee.rb"},
-	{"https://raw.github.com/brian-c/jekyll-plugins/master/_plugins/sass.rb": "_plugins/sass.rb"},
+	{"git@github.com:zooniverse/Front-End-Assets.git": [
+		{"zooniverse-bar/ZooniverseBar.js": "scripts/lib/ZooniverseBar.js"},
+		{"zooniverse-bar/zooniverse-bar.css": "styles/lib/zooniverse-bar.css"}
+	]},
+
+	{"git://github.com/brian-c/jekyll-plugins.git": {"_plugins": "_plugins"}},
 
 	{"http://requirejs.org/docs/release/1.0.7/comments/require.js": "scripts/lib/require.js"},
 	{"http://requirejs.org/docs/release/1.0.5/comments/order.js": "scripts/lib/order.js"},
 	{"http://requirejs.org/docs/release/1.0.7/comments/text.js": "scripts/lib/text.js"},
 
 	{"http://code.jquery.com/jquery-1.7.1.js": "scripts/lib/jquery.js"},
-	{"https://github.com/maccman/spine/zipball/master": "scripts/lib/spine"},
-	{"http://www.schillmania.com/projects/soundmanager2/download/soundmanagerv297a-20111220.zip": "scripts/lib/soundmanager"},
+
+	{"https://github.com/maccman/spine.git": {"lib": "scripts/lib/spine"}},
+
+	{"http://www.schillmania.com/projects/soundmanager2/download/soundmanagerv297a-20111220.zip": [
+		{"script/soundmanager2.js": "scripts/lib/soundmanager/soundmanager2.js"},
+		{"swf": "scripts/lib/soundmanager/swf"}
+	]},
 
 	{"https://raw.github.com/aFarkas/html5shiv/6d46e08c69/src/html5shiv.js": "scripts/lib/html5shiv.js"},
 
-	{"http://www.fontsquirrel.com/fontfacekit/TitilliumText": "styles/lib/TitilliumText"}
+	{"http://www.fontsquirrel.com/fontfacekit/TitilliumText": {"*.{eot,svg,ttf,woff}": "styles/lib/titillium"}}
 ]

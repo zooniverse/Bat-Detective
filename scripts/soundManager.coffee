@@ -1,4 +1,4 @@
-require 'lib/soundmanager/script/soundmanager2'
+require 'lib/soundmanager/soundmanager2'
 
 unless window.SM2_DEFER is true
 	console.log 'window.SM2_DEFER must be true before loading SoundManager'
