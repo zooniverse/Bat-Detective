@@ -16,7 +16,7 @@ class SonogramPlayer extends Spine.Controller
 	seeking: false
 	wasPlaying: false
 
-	className: 'sonogram-classifier'
+	className: 'sonogram-player'
 	template: PLAYER_TEMPLATE
 
 	events:

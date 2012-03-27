@@ -9,6 +9,8 @@ FREQUENCY_TEMPLATE = require 'lib/text!views/FrequencySelector.html'
 
 class FrequencySelector extends Spine.Controller
 	range: null
+	workflowContainer: null
+
 	workflow: null
 
 	className: 'frequency-selector'
@@ -26,7 +28,6 @@ class FrequencySelector extends Spine.Controller
 		'.low.cover': 'lowCover'
 		'.high.cover > .handle': 'highHandle'
 		'.low.cover > .handle': 'lowHandle'
-		'.cover > .workflow': 'workflowContainer'
 		'.times': 'timesContainer'
 
 	constructor: ->
@@ -38,12 +39,15 @@ class FrequencySelector extends Spine.Controller
 		@range.bind 'destroy', @release
 		@range.trigger 'change'
 
+		console.log @workflowContainer
+
 		@workflow = new Workflow
-			el: @workflowContainer
 			model: @range
 			question: workflowQuestion
 
-		@el.addClass 'active'
+		@workflow.el.appendTo @workflowContainer
+
+		@select()
 		@range.bind 'finish', @deselect
 
 	onMouseDown: (e) =>
@@ -66,12 +70,8 @@ class FrequencySelector extends Spine.Controller
 			attribute = 'low'
 		else if @el.has(target).length is 0
 			# A target outside the FrequencySelector means it's brand new.
-			# If it moves up, change the high.
-			# If it moves down, change the low.
-			if e.pageY < @mouseDown.pageY
-				attribute = 'high'
-			else
-				attribute = 'low'
+			# If it moves up, change the high. If it moves down, change the low.
+			attribute = if e.pageY < @mouseDown.pageY then 'high' else 'low'
 
 		if attribute
 			y = 1 - ((e.pageY - @el.offset().top) / @el.height())
@@ -88,9 +88,6 @@ class FrequencySelector extends Spine.Controller
 		@timesContainer.css
 			top: highHeight + '%'
 			bottom: lowHeight + '%'
-
-		workflowTarget = if highHeight > lowHeight then @highCover else @lowCover
-		@workflowContainer.appendTo workflowTarget
 
 	onTimesMouseDown: (e) =>
 		e.preventDefault()
@@ -110,13 +107,16 @@ class FrequencySelector extends Spine.Controller
 
 	select: =>
 		@el.addClass 'active'
+		@workflow.select()
 
 	deselect: =>
 		# If there are no time range selections,
 		# assume the whole thing should be selected.
 		if @range.timeRanges().all().length is 0
 			@addTimeRange 0, 1
+
 		@el.removeClass 'active'
+		@workflow.deselect()
 
 	onDeleteClick: (e) =>
 		e.stopPropagation()

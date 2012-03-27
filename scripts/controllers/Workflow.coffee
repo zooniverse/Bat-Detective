@@ -52,4 +52,10 @@ class Workflow extends Spine.Controller
 		else if answer.next instanceof Function
 			answer.next.call @
 
+	select: =>
+		@el.addClass 'selected'
+
+	deselect: =>
+		@el.removeClass 'selected'
+
 exports = Workflow

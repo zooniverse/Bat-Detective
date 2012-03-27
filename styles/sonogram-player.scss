@@ -1,0 +1,155 @@
+@import "constants";
+
+.sonogram-player {
+	@include box-sizing(border-box);
+	background: transparentize($black, 0.33);
+	border: 1px solid;
+	color: $gray;
+	position: relative;
+
+	> .image {
+		position: relative;
+
+		> .axis {
+			@include box-sizing(border-box);
+			border-bottom: 1px solid;
+			color: $gray-lighter;
+			font-size: 9px;
+			height: 100%;
+			opacity: 0.33;
+			position: absolute;
+			right: 101%;
+			top: 0;
+			width: 15px;
+
+			> .space {
+				@include box-sizing(border-box);
+				border-top: 1px solid;
+				height: 8.33%;
+				margin-left: 25%;
+				position: relative;
+				width: 50%;
+
+				&:first-child {
+					margin-left: 0;
+					width: 100%;
+				}
+
+				> .label {
+					line-height: 1;
+					margin-right: 5px;
+					position: absolute;
+					right: 100%;
+					top: -0.5em;
+					white-space: nowrap;
+				}
+			}
+
+			&:after {
+				border-right: 1px solid;
+				content: " ";
+				display: block;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 50%;
+			}
+		}
+
+		> .sonogram {
+			cursor: ns-resize;
+			display: block;
+			width: 100%;
+		}
+
+		> .seek-line {
+			background: transparentize($gold, 0.5);
+			display: none;
+			height: 100%;
+			left: 0;
+			margin-left: -1px;
+			position: absolute;
+			top: 0;
+			width: 2px;
+		}
+	}
+
+	> .seek {
+		background: $gray-dark;
+
+		> .track {
+			height: 6px;
+			position: relative;
+
+			> .fill {
+				background: $gold;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 0; // Updates on play
+			}
+
+			> .thumb {
+				display: none;
+			}
+		}
+	}
+
+	> .controls {
+		$controls-height: 40px;
+
+		border-bottom: 1px solid $gray-dark;
+		float: left;
+		height: $controls-height;
+		width: 100%;
+
+		> button {
+			@include box-sizing(content-box);
+			background: transparent;
+			border: 0;
+			color: inherit;
+			cursor: pointer;
+			font: {
+				family: inherit;
+				size: inherit;
+			};
+			height: $controls-height;
+			line-height: $controls-height + ($controls-height / 8);
+			margin: 0;
+			padding: 0 20px;
+			text-transform: uppercase;
+			vertical-align: top;
+
+			&.play {
+				width: 50px;
+			}
+
+			&.pause {
+				display: none;
+				width: 50px;
+			}
+		}
+	}
+
+	&.playing {
+		> .image > .seek-line {
+			display: block;
+		}
+
+		> .controls {
+			> .play {
+				display: none;
+			}
+
+			> .pause {
+				display: inline-block;
+			}
+		}
+	}
+
+	&.seeking > .image > .seek-line {
+		display: block;
+	}
+}
