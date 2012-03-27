@@ -1,3 +1,5 @@
+server_port: 3475 # BATS
+
 coffee:
   amd: true
   paths:
