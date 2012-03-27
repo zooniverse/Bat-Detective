@@ -1,11 +1,13 @@
 #!/usr/bin/env sh
 
+# NOTE: This'll choke on weird filenames. Try `rename --sanitize *.wav` first.
+
 for file in "$@"
 do
 	echo "=> Generating spectrogram for $file"
 
 	# Generate a double-height spectrogram (220KHz).
-	sox $file .temp.wav spectrogram -r -x 720 -y 1025 -z 60 -l -o .temp.png
+	sox "$file" .temp.wav spectrogram -r -x 720 -y 1025 -z 60 -l -o .temp.png
 	rm .temp.wav
 
 	# Crop to normal height (110KHz).
