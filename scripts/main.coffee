@@ -17,11 +17,17 @@ for i in [1..10] then Subject.create
 	location: 'Oxford, United Kingdom'
 	environment: 'Residential area'
 	datetime: +new Date()
+	commonSpecies: 'Vampire bats'
 
 SonogramClassifier = require 'controllers/SonogramClassifier'
 window.classifier = new SonogramClassifier
 	el: $('#sound-classifier')
 	subject: Subject.first()
+
+FieldGuide = require 'controllers/FieldGuide'
+window.fieldGuide = new FieldGuide
+	el: $('#field-guide')
+	classifier: window.classifier
 
 NestedRoute = require 'NestedRoute'
 NestedRoute.setup()

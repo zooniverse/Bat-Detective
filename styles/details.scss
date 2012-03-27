@@ -1,0 +1,55 @@
+@import "constants";
+
+$text-color: rgb(26, 26, 26);
+$text-color-off: transparentize($text-color, 0.33);
+$paper-color: rgb(243, 241, 237);
+$paper-color-off: transparentize($paper-color, 0.25);
+
+#app .details {
+	margin: 2em 0;
+
+	> nav {
+		> ul {
+			display: table;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+
+			> li {
+				display: table-cell;
+
+				> a {
+					background: $paper-color-off;
+					color: $text-color-off;
+					display: block;
+					font-weight: bold;
+					letter-spacing: 1px;
+					padding: 15px 0 10px;
+					text: {
+						align: center;
+						transform: uppercase;
+					};
+
+					&.active {
+						background: $paper-color;
+						border-radius: 3px 3px 0 0;
+						color: $text-color;
+						opacity: 1;
+						padding-top: 20px;
+					}
+				}
+			}
+		}
+	}
+
+	> section {
+		background: $paper-color;
+		color: $text-color;
+		display: none;
+		padding: 30px;
+
+		&.active {
+			display: block;
+		}
+	}
+}
