@@ -1,149 +1,154 @@
 @import "constants";
 
 .sonogram-player {
-	$main-width: 710px;
-	$workflow-width: 230px;
-
-	background: transparentize($black, 0.33);
-	border: 2px solid $gray;
-	border-radius: 2px;
 	position: relative;
 
-	> .image {
+	> .player {
+		background: transparentize($black, 0.33);
+		border: 2px solid $gray {
+			radius: 2px;
+		};
+		box-shadow: 0 3px 5px $black;
+		margin-left: -2px;
 		position: relative;
-		width: $main-width;
+		width: 700px;
 
-		> .axis {
-			@include box-sizing(border-box);
-			border-bottom: 1px solid;
-			color: $gray-lighter;
-			font-size: 9px;
-			height: 100%;
-			opacity: 0.33;
-			position: absolute;
-			right: 101%;
-			top: 0;
-			width: 15px;
-
-			> .space {
-				@include box-sizing(border-box);
-				border-top: 1px solid;
-				height: 8.33%;
-				margin-left: 25%;
-				position: relative;
-				width: 50%;
-
-				&:first-child {
-					margin-left: 0;
-					width: 100%;
-				}
-
-				> .label {
-					line-height: 1;
-					margin-right: 5px;
-					position: absolute;
-					right: 100%;
-					top: -0.5em;
-					white-space: nowrap;
-				}
-			}
-
-			&:after {
-				border-right: 1px solid;
-				content: " ";
-				display: block;
-				height: 100%;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 50%;
-			}
-		}
-
-		> .sonogram {
-			cursor: ns-resize;
-			display: block;
-			height: 400px;
-			width: 100%;
-		}
-
-		> .seek-line {
-			background: transparentize($gold, 0.5);
-			display: none;
-			height: 100%;
-			left: 0;
-			margin-left: -1px;
-			position: absolute;
-			top: 0;
-			width: 2px;
-		}
-	}
-
-	> .seek {
-		background: $gray;
-		width: $main-width;
-
-		> .track {
-			height: 4px;
+		> .image {
 			position: relative;
+			width: 100%;
 
-			> .fill {
-				background: $gold;
+			> .axis {
+				@include box-sizing(border-box);
+				border-bottom: 1px solid;
+				color: $gray-lighter;
+				font-size: 9px;
+				height: 100%;
+				opacity: 0.33;
+				position: absolute;
+				right: 103%;
+				top: 0;
+				width: 15px;
+
+				> .space {
+					@include box-sizing(border-box);
+					border-top: 1px solid;
+					height: 8.33%;
+					margin-left: 25%;
+					position: relative;
+					width: 50%;
+
+					&:first-child {
+						margin-left: 0;
+						width: 100%;
+					}
+
+					> .label {
+						line-height: 1;
+						margin-right: 5px;
+						position: absolute;
+						right: 100%;
+						top: -0.5em;
+						white-space: nowrap;
+					}
+				}
+
+				&:after {
+					border-right: 1px solid;
+					content: " ";
+					display: block;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 50%;
+				}
+			}
+
+			> .sonogram {
+				cursor: ns-resize;
+				display: block;
+				height: 400px;
+				width: 100%;
+			}
+
+			> .seek-line {
+				background: transparentize($gold, 0.5);
+				display: none;
 				height: 100%;
 				left: 0;
+				margin-left: -1px;
 				position: absolute;
 				top: 0;
-				width: 0; // Updates on play
-			}
-
-			> .thumb {
-				display: none;
+				width: 2px;
 			}
 		}
-	}
 
-	> .controls {
-		width: $main-width;
+		> .seek {
+			background: $gray;
+			width: 100%;
 
-		> button {
-			@include box-sizing(content-box);
-			background: transparent;
-			border: 0;
-			color: $gold;
-			cursor: pointer;
-			font: {
-				family: inherit;
-				size: inherit;
-			};
-			height: 30px;
-			line-height: 32px;
-			margin: 0;
-			padding: 0;
-			width: 30px;
+			> .track {
+				height: 4px;
+				position: relative;
 
-			&.pause {
-				display: none;
+				> .fill {
+					background: $gold;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 0; // Updates on play
+				}
+
+				> .thumb {
+					display: none;
+				}
 			}
-		}
-	}
-
-	&.playing {
-		> .image > .seek-line {
-			display: block;
 		}
 
 		> .controls {
-			> .play {
-				display: none;
-			}
+			width: 100%;
 
-			> .pause {
-				display: inline-block;
+			> button {
+				@include box-sizing(content-box);
+				background: transparent;
+				border: 0;
+				color: $gold;
+				cursor: pointer;
+				font: {
+					family: inherit;
+					size: inherit;
+				};
+				height: 30px;
+				line-height: 32px;
+				margin: 0;
+				padding: 0;
+				width: 30px;
+
+				&.pause {
+					display: none;
+				}
 			}
 		}
-	}
 
-	&.seeking > .image > .seek-line {
-		display: block;
+		&.playing {
+			> .image > .seek-line {
+				display: block;
+			}
+
+			> .controls {
+				> .play {
+					display: none;
+				}
+
+				> .pause {
+					display: inline-block;
+				}
+			}
+		}
+
+		&.seeking > .image > .seek-line {
+			display: block;
+		}
 	}
 }

@@ -1,133 +1,44 @@
 @import "constants";
 
 .sonogram-classifier {
-	> .image {
-		> .frequency-selector {
-			> .cover {
-				background: transparentize($black, 0.2);
-				display: none;
-				left: 0;
-				position: absolute;
-				width: 100%;
-
-				> .handle {
-					background: $gray-light;
-					cursor: ns-resize;
-					height: 4px;
-					position: absolute;
-					left: 0;
-					width: 100%;
-					z-index: 1;
-				}
-
-				&.high {
-					top: 0;
-
-					> .delete {
-						background: transparent;
-						border: 0;
-						bottom: 10px;
-						color: $white;
-						cursor: pointer;
-						height: 20px;
-						line-height: 20px;
-						opacity: 0.5;
-						padding: 0;
-						position: absolute;
-						right: 0;
-						text-align: center;
-						width: 20px;
-						z-index: 2;
-
-						&:hover {
-							opacity: 1;
-						}
-					}
-
-					> .handle {
-						bottom: 0;
-					}
-				}
-
-				&.low {
-					bottom: 0;
-
-					> .handle {
-						top: 0;
-					}
-				}
-			}
-
-			> .times {
-				cursor: ew-resize;
-				left: 0;
-				pointer-events: none;
-				position: absolute;
-				width: 100%;
-
-				> .handle {
-					background: $gray-light;
-					bottom: -4px;
-					cursor: move;
+	> .player {
+		> .image {
+			> .frequency-selector {
+				> .cover {
+					background: transparentize($black, 0.2);
 					display: none;
+					left: 0;
 					position: absolute;
-					right: 100%;
-					top: -4px;
-					width: 8px;
+					width: 100%;
 
-					&:after {
-						color: $black;
-						content: "- - -";
-						line-height: 3px;
-						overflow: hidden;
+					> .handle {
+						background: $gray-light;
+						cursor: ns-resize;
+						height: 4px;
 						position: absolute;
-						top: 45%;
-						text-shadow: 0 1px 0 $white;
-					}
-				}
-
-				> .time-selector {
-					background: transparentize(yellow, 0.67);
-					cursor: move;
-					height: 100%;
-					pointer-events: auto;
-					position: absolute;
-
-					> .delete {
-						background: transparent;
-						border: 0;
-						cursor: pointer;
-						height: 10px;
-						line-height: 10px;
-						opacity: 0;
-						padding: 0;
-						position: absolute;
-						right: 10px;
-						text-align: center;
-						top: 5px;
-						width: 10px;
+						left: 0;
+						width: 100%;
 						z-index: 1;
 					}
 
-					> .handle {
-						cursor: ew-resize;
-						height: 100%;
-						position: absolute;
+					&.high {
 						top: 0;
-						width: 5px;
 
-						&.start {
-							left: 0;
-						}
-
-						&.end {
-							right: 0;
-						}
-					}
-
-					&:hover {
 						> .delete {
+							background: transparent;
+							border: 0;
+							bottom: 10px;
+							color: $white;
+							cursor: pointer;
+							height: 20px;
+							line-height: 20px;
 							opacity: 0.5;
+							padding: 0;
+							position: absolute;
+							right: 0;
+							text-align: center;
+							width: 20px;
+							z-index: 2;
 
 							&:hover {
 								opacity: 1;
@@ -135,41 +46,140 @@
 						}
 
 						> .handle {
-							background: transparentize($gray, 0.5);
+							bottom: 0;
+						}
+					}
+
+					&.low {
+						bottom: 0;
+
+						> .handle {
+							top: 0;
 						}
 					}
 				}
-			}
-
-			&[data-source="bat"] > .times > .time-selector {
-				background: transparentize(black, 0.67)
-			}
-
-			&[data-source="insect"] > .times > .time-selector {
-				background: transparentize(green, 0.67)
-			}
-
-			&[data-source="machine"] > .times > .time-selector {
-				background: transparentize(blue, 0.67)
-			}
-
-			&.active {
-				height: 100%;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 100%;
-				z-index: 1;
-
-				> .cover {
-					display: block;
-				}
 
 				> .times {
-					pointer-events: all;
+					cursor: ew-resize;
+					left: 0;
+					pointer-events: none;
+					position: absolute;
+					width: 100%;
 
 					> .handle {
+						background: $gray-light;
+						bottom: -4px;
+						cursor: move;
+						display: none;
+						position: absolute;
+						top: -4px;
+
+						&.start {
+							right: 100%;
+							width: 8px;
+
+							&:after {
+								color: $black;
+								content: "- - -";
+								line-height: 3px;
+								overflow: hidden;
+								position: absolute;
+								top: 45%;
+								text-shadow: 0 1px 0 $white;
+							}
+						}
+
+						&.end {
+							left: 100%;
+							width: 4px;
+						}
+					}
+
+					> .time-selector {
+						background: transparentize(yellow, 0.67);
+						cursor: move;
+						height: 100%;
+						pointer-events: auto;
+						position: absolute;
+
+						> .delete {
+							background: transparent;
+							border: 0;
+							cursor: pointer;
+							height: 10px;
+							line-height: 10px;
+							opacity: 0;
+							padding: 0;
+							position: absolute;
+							right: 10px;
+							text-align: center;
+							top: 5px;
+							width: 10px;
+							z-index: 1;
+						}
+
+						> .handle {
+							cursor: ew-resize;
+							height: 100%;
+							position: absolute;
+							top: 0;
+							width: 5px;
+
+							&.start {
+								left: 0;
+							}
+
+							&.end {
+								right: 0;
+							}
+						}
+
+						&:hover {
+							> .delete {
+								opacity: 0.5;
+
+								&:hover {
+									opacity: 1;
+								}
+							}
+
+							> .handle {
+								background: transparentize($gray, 0.5);
+							}
+						}
+					}
+				}
+
+				&[data-source="bat"] > .times > .time-selector {
+					background: transparentize(black, 0.67)
+				}
+
+				&[data-source="insect"] > .times > .time-selector {
+					background: transparentize(green, 0.67)
+				}
+
+				&[data-source="machine"] > .times > .time-selector {
+					background: transparentize(blue, 0.67)
+				}
+
+				&.active {
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+					z-index: 1;
+
+					> .cover {
 						display: block;
+					}
+
+					> .times {
+						pointer-events: all;
+
+						> .handle {
+							display: block;
+						}
 					}
 				}
 			}
@@ -177,13 +187,20 @@
 	}
 
 	> .classification {
-		border-left: 2px solid $gray;
+		@include box-sizing(border-box);
+		background: transparentize($black, 0.2);
+		background: transparentize($black, 0.33);
+		border: 2px solid $gray {
+			radius: 2px;
+		};
+		box-shadow: 0 3px 5px $black;
 		font: {
 			size: 14px;
 			weight: bold;
 		};
 		height: 100%;
 		letter-spacing: 1px;
+		padding: 20px;
 		position: absolute;
 		right: 0;
 		text: {
@@ -191,7 +208,7 @@
 			transform: uppercase;
 		};
 		top: 0;
-		width: 230px;
+		width: 220px;
 
 		button {
 			@include box-sizing(content-box);
@@ -219,7 +236,6 @@
 		> .workflows {
 			> .workflow {
 				display: none;
-				padding: 30px;
 
 				&.selected {
 					display: block;
@@ -251,9 +267,8 @@
 		> .continue {
 			@include box-sizing(border-box);
 			bottom: 0;
-			border-top: 2px solid $gray;
 			left: 0;
-			padding: 30px;
+			padding: 20px;
 			position: absolute;
 			width: 100%;
 

@@ -10,17 +10,36 @@ $paper-color-off: transparentize($paper-color, 0.25);
 
 	> nav {
 		> ul {
-			display: table;
 			margin: 0;
+			overflow: hidden;
 			padding: 0;
+			position: relative;
 			width: 100%;
+			word-spacing: -0.33em;
+
+			&:before {
+				background: $paper-color-off;
+				bottom: 0;
+				content: " ";
+				height: 1em;
+				left: 0;
+				padding: 15px 0 10px;
+				position: absolute;
+				width: 100%;
+				z-index: -1;
+			}
 
 			> li {
-				display: table-cell;
-				width: 1%;
+				display: inline-block;
+				margin-left: 20px;
+				word-spacing: normal;
+
+				&:first-child {
+					margin-left: 0;
+				}
 
 				> a {
-					background: $paper-color-off;
+					@include box-sizing(border-box);
 					color: $text-color-off;
 					display: block;
 					font-weight: bold;
@@ -30,6 +49,7 @@ $paper-color-off: transparentize($paper-color, 0.25);
 						align: center;
 						transform: uppercase;
 					};
+					width: 220px;
 
 					&.active {
 						background: $paper-color;

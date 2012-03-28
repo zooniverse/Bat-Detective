@@ -49,7 +49,7 @@ html {
 	@include contain-floats;
 	margin: 0 auto 50px;
 	position: relative;
-	width: 945px;
+	width: 940px;
 
 	> header {
 		background: url("rule.png") center bottom no-repeat;
@@ -69,13 +69,8 @@ html {
 				width: 100%;
 				z-index: 1;
 
-				@media (max-width: 550px) {
-					display: block;
-				}
-
 				> li {
 					display: table-cell;
-					padding: 0 10px;
 					text-align: center;
 					width: 1%;
 
@@ -95,29 +90,12 @@ html {
 								width: 100%;
 								max-width: 213px;
 								min-width: 140px;
-
-								@media (max-width: 550px) {
-									min-width: 0;
-									width: 33%;
-								}
 							}
 						}
 					}
 
 					&:last-child {
-						padding: 0;
 						text-align: right;
-					}
-
-					@media (max-width: 550px) {
-						background: url("rule.png") center top no-repeat;
-						display: block !important;
-						text-align: center !important;
-						width: auto !important;
-
-						&:first-child {
-							background: none;
-						}
 					}
 
 					> a {
@@ -129,11 +107,6 @@ html {
 						&:hover,
 						&.active {
 							color: $gold;
-						}
-
-						@media (max-width: 550px) {
-							display: inline-block;
-							padding: 15px 0 10px;
 						}
 					}
 				}
