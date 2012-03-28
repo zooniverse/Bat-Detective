@@ -2,6 +2,7 @@
 @import "sonogram-player";
 @import "sonogram-classifier";
 @import "details";
+@import "lib/zooniverse-bar.css";
 
 html {
 	background: #000;
@@ -23,7 +24,7 @@ html {
 
 #zooniverse-bar {
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 }
 
 // Parallax backgrounds (see parallax.coffee)
