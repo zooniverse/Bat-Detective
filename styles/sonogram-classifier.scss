@@ -87,6 +87,16 @@
 				position: absolute;
 				width: 100%;
 
+				> .handle {
+					background: $gray;
+					bottom: -6px;
+					cursor: move;
+					position: absolute;
+					right: 100%;
+					top: -6px;
+					width: 6px;
+				}
+
 				> .time-selector {
 					background: transparentize(yellow, 0.67);
 					cursor: move;

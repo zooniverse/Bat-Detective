@@ -29,6 +29,7 @@ class FrequencySelector extends Spine.Controller
 		'.high.cover > .handle': 'highHandle'
 		'.low.cover > .handle': 'lowHandle'
 		'.times': 'timesContainer'
+		'.times > .handle': 'timesHandle'
 
 	constructor: ->
 		super
@@ -68,6 +69,15 @@ class FrequencySelector extends Spine.Controller
 			attribute = 'high'
 		else if target.is @lowHandle
 			attribute = 'low'
+		else if target.is @timesHandle
+			# TODO: This is kinda nasty.
+			# Remember what the state is at mouse down.
+			# Delegate mousemove and mouseup events to the document.
+			change = (@mouseDown.pageY - e.pageY) / @el.height()
+			@range.updateAttributes
+				low: @range.low + change
+				high: @range.high + change
+			@mouseDown = e
 		else if @el.has(target).length is 0
 			# A target outside the FrequencySelector means it's brand new.
 			# If it moves up, change the high. If it moves down, change the low.
@@ -91,6 +101,8 @@ class FrequencySelector extends Spine.Controller
 
 	onTimesMouseDown: (e) =>
 		e.preventDefault()
+		return if $(e.target).is @timesHandle
+
 		x = (e.pageX - @timesContainer.offset().left) / @timesContainer.width()
 
 		@addTimeRange x - 0.005, x + 0.005, e
