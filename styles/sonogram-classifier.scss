@@ -89,6 +89,7 @@
 
 				> .time-selector {
 					background: transparentize(yellow, 0.67);
+					cursor: move;
 					height: 100%;
 					pointer-events: auto;
 					position: absolute;
@@ -169,6 +170,23 @@
 					@include box-shadow(1px 1px 5px $black inset);
 					pointer-events: all;
 				}
+			}
+		}
+	}
+
+	> .workflows {
+		border-left: 2px solid $gray;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 230px;
+
+		> .workflow {
+			display: none;
+
+			&.selected {
+				display: block;
 			}
 		}
 	}

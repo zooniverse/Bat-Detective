@@ -1,14 +1,17 @@
 @import "constants";
 
 .sonogram-player {
-	@include box-sizing(border-box);
+	$main-width: 710px;
+	$workflow-width: 230px;
+
 	background: transparentize($black, 0.33);
-	border: 1px solid;
-	color: $gray;
+	border: 2px solid $gray;
+	border-radius: 2px;
 	position: relative;
 
 	> .image {
 		position: relative;
+		width: $main-width;
 
 		> .axis {
 			@include box-sizing(border-box);
@@ -60,6 +63,7 @@
 		> .sonogram {
 			cursor: ns-resize;
 			display: block;
+			height: 400px;
 			width: 100%;
 		}
 
@@ -76,10 +80,11 @@
 	}
 
 	> .seek {
-		background: $gray-dark;
+		background: $gray;
+		width: $main-width;
 
 		> .track {
-			height: 6px;
+			height: 4px;
 			position: relative;
 
 			> .fill {
@@ -98,37 +103,26 @@
 	}
 
 	> .controls {
-		$controls-height: 40px;
-
-		border-bottom: 1px solid $gray-dark;
-		float: left;
-		height: $controls-height;
-		width: 100%;
+		width: $main-width;
 
 		> button {
 			@include box-sizing(content-box);
 			background: transparent;
 			border: 0;
-			color: inherit;
+			color: $gold;
 			cursor: pointer;
 			font: {
 				family: inherit;
 				size: inherit;
 			};
-			height: $controls-height;
-			line-height: $controls-height + ($controls-height / 8);
+			height: 30px;
+			line-height: 32px;
 			margin: 0;
-			padding: 0 20px;
-			text-transform: uppercase;
-			vertical-align: top;
-
-			&.play {
-				width: 50px;
-			}
+			padding: 0;
+			width: 30px;
 
 			&.pause {
 				display: none;
-				width: 50px;
 			}
 		}
 	}

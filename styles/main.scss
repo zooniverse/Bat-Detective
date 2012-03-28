@@ -5,7 +5,7 @@
 @import "lib/zooniverse-bar.css";
 
 html {
-	background: #000;
+	background: $black;
 	color: $white;
 	font: 12px Titillium, "Helvetica Neue", Arial, sans-serif;
 	overflow-y: scroll; // Force scroll bar to prevent jumping.
@@ -48,10 +48,8 @@ html {
 #app {
 	@include contain-floats;
 	margin: 0 auto 50px;
-	max-width: 960px; // Width of the sonograms
-	min-width: 300px;
 	position: relative;
-	width: 75%;
+	width: 945px;
 
 	> header {
 		background: url("rule.png") center bottom no-repeat;
