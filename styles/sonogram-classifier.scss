@@ -12,24 +12,12 @@
 
 				> .handle {
 					background: $gray-light;
-					border-top: 1px solid $gray-lighter;
 					cursor: ns-resize;
-					height: 5px;
+					height: 4px;
 					position: absolute;
 					left: 0;
 					width: 100%;
 					z-index: 1;
-
-					&:after {
-						border: 8px solid transparentize($gray-light, 1);
-						content: " ";
-						display: block;
-						height: 0;
-						left: 50%;
-						margin-left: -8px;
-						position: absolute;
-						width: 0;
-					}
 				}
 
 				&.high {
@@ -58,11 +46,6 @@
 
 					> .handle {
 						bottom: 0;
-
-						&:after {
-							border-bottom-color: $gray-light;
-							bottom: 100%;
-						}
 					}
 				}
 
@@ -71,11 +54,6 @@
 
 					> .handle {
 						top: 0;
-
-						&:after {
-							border-top-color: $gray-light;
-							top: 100%;
-						}
 					}
 				}
 			}
@@ -88,13 +66,24 @@
 				width: 100%;
 
 				> .handle {
-					background: $gray;
-					bottom: -6px;
+					background: $gray-light;
+					bottom: -4px;
 					cursor: move;
+					display: none;
 					position: absolute;
 					right: 100%;
-					top: -6px;
-					width: 6px;
+					top: -4px;
+					width: 8px;
+
+					&:after {
+						color: $black;
+						content: "- - -";
+						line-height: 3px;
+						overflow: hidden;
+						position: absolute;
+						top: 45%;
+						text-shadow: 0 1px 0 $white;
+					}
 				}
 
 				> .time-selector {
@@ -177,26 +166,113 @@
 				}
 
 				> .times {
-					@include box-shadow(1px 1px 5px $black inset);
 					pointer-events: all;
+
+					> .handle {
+						display: block;
+					}
 				}
 			}
 		}
 	}
 
-	> .workflows {
+	> .classification {
 		border-left: 2px solid $gray;
+		font: {
+			size: 14px;
+			weight: bold;
+		};
 		height: 100%;
+		letter-spacing: 1px;
 		position: absolute;
 		right: 0;
+		text: {
+			align: center;
+			transform: uppercase;
+		};
 		top: 0;
 		width: 230px;
 
-		> .workflow {
-			display: none;
+		button {
+			@include box-sizing(content-box);
+			@include linear-gradient(top, lighten($gold, 15%), $gold);
+			border: 0 {
+				top: 1px solid lighten($gold, 30%);
+			};
+			color: $black;
+			cursor: pointer;
+			display: inline-block;
+			font: {
+				family: inherit;
+				size: inherit;
+				weight: inherit;
+			};
+			margin: 0;
+			padding: 5px 0 3px;
+			text: {
+				align: inherit;
+				transform: inherit;
+			};
+			width: 100%;
+		}
 
-			&.selected {
-				display: block;
+		> .workflows {
+			> .workflow {
+				display: none;
+				padding: 30px;
+
+				&.selected {
+					display: block;
+				}
+
+				> .back {
+					background: transparent;
+					border: 0;
+					color: inherit;
+					cursor: pointer;
+					float: left;
+					padding: 0;
+				}
+
+				> .question {
+					clear: left;
+				}
+
+				> .answers {
+					margin: 1em 0;
+
+					> .answer {
+						margin: 0.25em 0;
+					}
+				}
+			}
+		}
+
+		> .continue {
+			@include box-sizing(border-box);
+			bottom: 0;
+			border-top: 2px solid $gray;
+			left: 0;
+			padding: 30px;
+			position: absolute;
+			width: 100%;
+
+			> .followup {
+				display: none;
+
+				> button {
+					width: 45%;
+				}
+			}
+
+			&.active {
+				> button {
+					display: none;
+				}
+
+				> .followup {
+					display: block;
+				}
 			}
 		}
 	}

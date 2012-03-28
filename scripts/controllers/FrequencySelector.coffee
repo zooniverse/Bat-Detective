@@ -18,29 +18,26 @@ class FrequencySelector extends Spine.Controller
 
 	events:
 		'mousedown': 'onMouseDown'
-		'mousemove': 'onMouseMove'
-		'mouseup': 'onMouseUp'
-		'mousedown .times': 'onTimesMouseDown'
 		'click .delete': 'onDeleteClick'
 
 	elements:
 		'.high.cover': 'highCover'
 		'.low.cover': 'lowCover'
+		'.times': 'timesContainer'
 		'.high.cover > .handle': 'highHandle'
 		'.low.cover > .handle': 'lowHandle'
-		'.times': 'timesContainer'
 		'.times > .handle': 'timesHandle'
 
 	constructor: ->
 		super
+
 		@el.html @template
 		@refreshElements()
 
 		@range.bind 'change', @onRangeChange
 		@range.bind 'destroy', @release
-		@range.trigger 'change'
 
-		console.log @workflowContainer
+		@range.trigger 'change'
 
 		@workflow = new Workflow
 			model: @range
@@ -48,44 +45,51 @@ class FrequencySelector extends Spine.Controller
 
 		@workflow.el.appendTo @workflowContainer
 
+		@release @workflow.release
+
 		@select()
 		@range.bind 'finish', @deselect
+
+	delegateEvents: =>
+		super
+
+		doc = $(document)
+		doc.on 'mousemove', @onDocMouseMove
+		doc.on 'mouseup', @onDocMouseUp
 
 	onMouseDown: (e) =>
 		e.preventDefault()
 		e.stopPropagation()
 		@mouseDown = e
 
-	onMouseMove: (e) =>
+		@onTimesMouseDown e if $(e.target).is @timesContainer
+
+	onDocMouseMove: (e) =>
 		@onDrag e if @mouseDown
 
-	onMouseUp: (e) =>
+	onDocMouseUp: (e) =>
 		delete @mouseDown
 
 	onDrag: (e) =>
 		target = $(@mouseDown.target)
+
+		y = 1 - ((e.pageY - @el.offset().top) / @el.height())
 
 		if target.is @highHandle
 			attribute = 'high'
 		else if target.is @lowHandle
 			attribute = 'low'
 		else if target.is @timesHandle
-			# TODO: This is kinda nasty.
-			# Remember what the state is at mouse down.
-			# Delegate mousemove and mouseup events to the document.
-			change = (@mouseDown.pageY - e.pageY) / @el.height()
+			half = (@range.high - @range.low) / 2
 			@range.updateAttributes
-				low: @range.low + change
-				high: @range.high + change
-			@mouseDown = e
+				low: y - half
+				high: y + half
 		else if @el.has(target).length is 0
 			# A target outside the FrequencySelector means it's brand new.
 			# If it moves up, change the high. If it moves down, change the low.
 			attribute = if e.pageY < @mouseDown.pageY then 'high' else 'low'
 
-		if attribute
-			y = 1 - ((e.pageY - @el.offset().top) / @el.height())
-			@range.updateAttribute attribute, y
+		if attribute then @range.updateAttribute attribute, y
 
 	onRangeChange: =>
 		@el.attr 'data-source', @range.source
@@ -100,12 +104,12 @@ class FrequencySelector extends Spine.Controller
 			bottom: lowHeight + '%'
 
 	onTimesMouseDown: (e) =>
-		e.preventDefault()
 		return if $(e.target).is @timesHandle
 
 		x = (e.pageX - @timesContainer.offset().left) / @timesContainer.width()
-
 		@addTimeRange x - 0.005, x + 0.005, e
+
+		@onDocMouseUp()
 
 	addTimeRange: (start, end, mouseDown) =>
 		timeRange = new TimeSelector
@@ -122,10 +126,8 @@ class FrequencySelector extends Spine.Controller
 		@workflow.select()
 
 	deselect: =>
-		# If there are no time range selections,
-		# assume the whole thing should be selected.
-		if @range.timeRanges().all().length is 0
-			@addTimeRange 0, 1
+		# If there are no time range selections, assume the whole thing should be selected.
+		@addTimeRange 0, 1 if @range.timeRanges().all().length is 0
 
 		@el.removeClass 'active'
 		@workflow.deselect()

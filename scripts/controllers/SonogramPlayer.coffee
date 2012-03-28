@@ -22,7 +22,6 @@ class SonogramPlayer extends Spine.Controller
 	events:
 		'click .controls .play': 'play'
 		'click .controls .pause': 'pause'
-		'click .controls .field-guide': 'toggleFieldGuide'
 		'mousedown .seek': 'seekStart'
 
 	elements:
@@ -32,12 +31,6 @@ class SonogramPlayer extends Spine.Controller
 		'.image': 'imageContainer'
 		'.image .sonogram': 'sonogram'
 		'.image .seek-line': 'seekLine'
-		'.controls .field-guide': 'fieldGuideButton'
-		'.details .location > .value': 'location'
-		'.details .environment > .value': 'environment'
-		'.details .date > .value': 'date'
-		'.details .time > .value': 'time'
-		'.field-guide:not(button)': 'fieldGuide'
 
 	constructor: ->
 		super
@@ -45,16 +38,15 @@ class SonogramPlayer extends Spine.Controller
 		@el.html @template
 		@refreshElements()
 
-		for audioButton in @$('.field-guide [data-audio-src]')
-			new AudioButton el: audioButton
-
 		@setSubject @subject
 
 	delegateEvents: ->
 		super
-		$(document).on 'mousemove', @seekMove
-		$(document).on 'mouseup', @seekEnd
-		$(document).on 'keydown', @onDocKeyDown
+
+		doc = $(document)
+		doc.on 'mousemove', @seekMove
+		doc.on 'mouseup', @seekEnd
+		doc.on 'keydown', @onDocKeyDown
 
 	setSubject: (@subject) =>
 		@sound?.destruct()
@@ -73,21 +65,7 @@ class SonogramPlayer extends Spine.Controller
 
 		@sonogram.attr 'src', @subject.image
 
-		@location.html @subject.location
-		@environment.html @subject.environment
-
-		dt = new Date @subject.datetime
-
-		@date.html """
-			#{dt.getDate()}
-			#{translations.months[dt.getMonth()]}
-			#{dt.getFullYear()}
-		"""
-
-		@time.html """
-			#{(dt.getHours() % 12) or 12}:#{dt.getMinutes()}
-			#{if dt.getHours() < 12 then 'am' else 'pm'}
-		"""
+		@trigger 'change-subject'
 
 	play: =>
 		@sound.play()
@@ -147,9 +125,6 @@ class SonogramPlayer extends Spine.Controller
 		delay 250, =>
 			@sound.setPosition 0
 			@playerTimeUpdated()
-
-	toggleFieldGuide: =>
-		@fieldGuide.add(@fieldGuideButton).toggleClass 'active'
 
 	SPACE = 32
 	LEFT = 37

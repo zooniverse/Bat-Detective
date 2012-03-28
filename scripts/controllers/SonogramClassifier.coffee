@@ -20,11 +20,14 @@ class SonogramClassifier extends SonogramPlayer
 
 	events: $.extend
 		'mousedown .sonogram': 'addFrequencyRange'
-		'click .done': 'nextSubject'
+		'click .done': 'done'
+		'click .followup .yes': 'goToTalk'
+		'click .followup .no': 'nextSubject'
 		SonogramPlayer::events
 
 	elements: $.extend
 		'.workflows': 'workflowContainer'
+		'.continue': 'continueContainer'
 		SonogramPlayer::elements
 
 	setSubject: (@subject) =>
@@ -34,6 +37,7 @@ class SonogramClassifier extends SonogramPlayer
 		super
 
 		@classification = @subject.classifications().create {}
+		@continueContainer.removeClass 'active'
 
 	addFrequencyRange: (e) =>
 		e.preventDefault()
@@ -49,6 +53,13 @@ class SonogramClassifier extends SonogramPlayer
 
 		selection.el.appendTo @imageContainer
 		@selections.push selection
+
+	done: =>
+		selection.deselect() for selection in @selections
+		@continueContainer.addClass 'active'
+
+	goToTalk: =>
+		alert 'TODO: Go to talk!'
 
 	nextSubject: (e) =>
 		nextSubject = Subject.next()

@@ -1,7 +1,7 @@
-require 'lib/soundmanager/soundmanager2'
-
 unless window.SM2_DEFER is true
-	console.log 'window.SM2_DEFER must be true before loading SoundManager'
+	throw new Error 'window.SM2_DEFER must be true before loading SoundManager'
+
+require 'lib/soundmanager/soundmanager2'
 
 window.soundManager = new SoundManager()
 window.soundManager.url = 'scripts/lib/soundmanager/swf'
