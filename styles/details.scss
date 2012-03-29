@@ -6,7 +6,7 @@ $paper-color: rgb(243, 241, 237);
 $paper-color-off: transparentize($paper-color, 0.25);
 
 #app .details {
-	margin: 2em 0;
+	margin: 40px 0;
 
 	> nav {
 		> ul {
@@ -64,13 +64,61 @@ $paper-color-off: transparentize($paper-color, 0.25);
 	}
 
 	> section {
-		background: $paper-color;
+    @include contain-floats;
+  	background: $paper-color;
 		color: $text-color;
 		display: none;
 		padding: 30px;
 
 		&.active {
 			display: block;
+		}
+
+		> .image {
+			@include box-sizing(border-box);
+			border: 5px solid $white;
+      box-shadow: 0 1px 3px transparentize($black, 0.5);
+			float: left;
+			height: 340px;
+			margin-right: 20px;
+			width: 430px;
+
+      [data-page] {
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+		}
+
+		> .content {
+			float: left;
+      width: 430px;
+
+      > nav {
+        > ul {
+          margin: 0;
+          padding: 0;
+
+          > li {
+            display: inline-block;
+
+            a {
+              display: block;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+
+      > section[data-page] {
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
 		}
 	}
 }

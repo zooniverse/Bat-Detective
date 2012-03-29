@@ -1,0 +1,29 @@
+@import "constants";
+
+#field-guide {
+	> .image {
+		> iframe {
+			border: 0;
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	> .content {
+		> section {
+			font: {
+				size: 24px;
+				weight: lighter;
+			};
+			margin-bottom: 24px;
+
+			> header {
+				font-size: 11px;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
+			> .field {}
+		}
+	}
+}
