@@ -8,7 +8,7 @@ localStorage?.clear()
 
 parallax = require 'parallax'
 
-Pager = require 'controllers/Pager'
+Pager = require 'lib/Pager'
 pagers = $('[data-page]').parent().map ->
 	new Pager
 		el: @
@@ -31,8 +31,5 @@ FieldGuide = require 'controllers/FieldGuide'
 window.fieldGuide = new FieldGuide
 	el: $('#field-guide')
 	classifier: window.classifier
-
-NestedRoute = require 'NestedRoute'
-NestedRoute.setup()
 
 exports = window.classifier
