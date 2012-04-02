@@ -1,87 +1,90 @@
 @import "constants";
 
 $text-color: rgb(26, 26, 26);
-$text-color-off: transparentize($text-color, 0.33);
+$text-color-off: rgb(163, 160, 152);
 $paper-color: rgb(243, 241, 237);
-$paper-color-off: transparentize($paper-color, 0.25);
+$paper-color-off: rgb(228, 226, 220);
+
+$panel-padding: 30px;
+$panel-column: (($column-width * 2) + $gutter-width) - $panel-padding;
 
 #app .details {
-	margin: 40px 0;
+  margin: 40px 0;
 
-	> nav {
-		> ul {
-			margin: 0;
-			overflow: hidden;
-			padding: 0;
-			position: relative;
-			width: 100%;
-			word-spacing: -0.33em;
+  > nav {
+    > ul {
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      width: 100%;
+      word-spacing: -0.33em;
 
-			&:before {
-				background: $paper-color-off;
-				bottom: 0;
-				content: " ";
-				height: 1em;
-				left: 0;
-				padding: 15px 0 10px;
-				position: absolute;
-				width: 100%;
-				z-index: -1;
-			}
+      &:before {
+        background: $paper-color-off;
+        bottom: 0;
+        content: " ";
+        height: 1em;
+        left: 0;
+        padding: 15px 0 10px;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+      }
 
-			> li {
-				display: inline-block;
-				margin-left: 20px;
-				word-spacing: normal;
+      > li {
+        display: inline-block;
+        margin-left: $gutter-width;
+        word-spacing: normal;
 
-				&:first-child {
-					margin-left: 0;
-				}
+        &:first-child {
+          margin-left: 0;
+        }
 
-				> a {
-					@include box-sizing(border-box);
-					color: $text-color-off;
-					display: block;
-					font-weight: bold;
-					letter-spacing: 1px;
-					padding: 15px 0 10px;
-					text: {
-						align: center;
-						transform: uppercase;
-					};
-					width: 220px;
+        > a {
+          @include box-sizing(border-box);
+          color: $text-color-off;
+          display: block;
+          font-weight: bold;
+          letter-spacing: 1px;
+          padding: 15px 0 10px;
+          text: {
+            align: center;
+            transform: uppercase;
+          };
+          width: $column-width;
 
-					&.active {
-						background: $paper-color;
-						border-radius: 3px 3px 0 0;
-						color: $text-color;
-						opacity: 1;
-						padding-top: 20px;
-					}
-				}
-			}
-		}
-	}
+          &.active {
+            background: $paper-color;
+            border-radius: 3px 3px 0 0;
+            color: $text-color;
+            opacity: 1;
+            padding-top: 20px;
+          }
+        }
+      }
+    }
+  }
 
-	> section {
+  > section {
     @include contain-floats;
-  	background: $paper-color;
-		color: $text-color;
-		display: none;
-		padding: 30px;
+    background: $paper-color;
+    color: $text-color;
+    display: none;
+    padding: $panel-padding;
 
-		&.active {
-			display: block;
-		}
+    &.active {
+      display: block;
+    }
 
-		> .image {
-			@include box-sizing(border-box);
-			border: 5px solid $white;
+    > .image {
+      @include box-sizing(border-box);
+      border: 5px solid $white;
       box-shadow: 0 1px 3px transparentize($black, 0.5);
-			float: left;
-			height: 340px;
-			margin-right: 20px;
-			width: 430px;
+      float: left;
+      height: 340px;
+      margin-right: $gutter-width;
+      width: $panel-column;
 
       [data-page] {
         display: none;
@@ -90,11 +93,11 @@ $paper-color-off: transparentize($paper-color, 0.25);
           display: block;
         }
       }
-		}
+    }
 
-		> .content {
-			float: left;
-      width: 430px;
+    > .content {
+      float: left;
+      width: $panel-column;
 
       > nav {
         > ul {
@@ -105,8 +108,25 @@ $paper-color-off: transparentize($paper-color, 0.25);
             display: inline-block;
 
             a {
+              @include box-shadow(0 1px 0 $white);
+              @include linear-gradient($paper-color-off, darken($paper-color-off, 5%));
+              border: 1px solid darken($paper-color-off, 10%);
+              color: $text-color-off;
               display: block;
-              text-decoration: none;
+              font-weight: bold;
+              letter-spacing: 1px;
+              padding: 8px 20px 5px;
+              text: {
+                decoration: none;
+                shadow: 0 1px 0 $white;
+                transform: uppercase;
+              };
+
+              &.active {
+                @include linear-gradient($text-color-off);
+                color: $paper-color;
+                text-shadow: none;
+              }
             }
           }
         }
@@ -118,7 +138,38 @@ $paper-color-off: transparentize($paper-color, 0.25);
         &.active {
           display: block;
         }
+
+        > .heading {
+          font-weight: bold;
+          letter-spacing: 1px;
+          margin: 2em 0 1em;
+          text-transform: uppercase;
+        }
+
+        > p {
+          margin: 1em 0;
+        }
+
+        > nav {
+          > ul {
+            margin: 0;
+            padding: 0 1em;
+
+            > li {
+              display: block;
+
+              > a {
+                font-weight: bold;
+                color: $text-color-off;
+
+                &.active {
+                  color: $text-color;
+                }
+              }
+            }
+          }
+        }
       }
-		}
-	}
+    }
+  }
 }

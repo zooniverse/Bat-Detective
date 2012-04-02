@@ -15,6 +15,9 @@ $white-trans-high: transparentize($white, 0.75);
 $white-trans-medium: transparentize($white, 0.5);
 $white-trans-low: transparentize($white, 0.25);
 
+$column-width: 220px;
+$gutter-width: 20px;
+
 @mixin box-shadow($args) {
 	-moz-box-shadow: $args;
 	-webkit-box-shadow: $args;
@@ -34,10 +37,11 @@ $white-trans-low: transparentize($white, 0.25);
 	}
 }
 
-@mixin linear-gradient($position: top, $start: transparent, $end: transparent) {
-	background-image: -webkit-linear-gradient($position, $start, $end);
-	background-image: -moz-linear-gradient($position, $start, $end);
-	background-image: linear-gradient($position, $start, $end);
+@mixin linear-gradient($start: transparent, $end: false, $position: top) {
+	@if $end == false {$end: $start;}
+	background: -webkit-linear-gradient($position, $start, $end);
+	background: -moz-linear-gradient($position, $start, $end);
+	background: linear-gradient($position, $start, $end);
 }
 
 @mixin transition($args) {

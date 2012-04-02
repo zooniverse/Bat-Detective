@@ -17,8 +17,6 @@ sass:
 exclude:
   - assets.json
   - bin
-  - demo # scripts/lib/soundmanager/demo
-  - doc # scripts/lib/soundmanager/doc
   - Gemfile
   - Gemfile.lock
   - README.md
