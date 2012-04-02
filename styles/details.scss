@@ -8,8 +8,43 @@ $paper-color-off: rgb(228, 226, 220);
 $panel-padding: 30px;
 $panel-column: $half-width - $panel-padding;
 
+@mixin details-button {
+  @include box-shadow(0 1px 0 $white);
+  @include linear-gradient($paper-color-off, darken($paper-color-off, 5%));
+  border: 1px solid darken($paper-color-off, 10%);
+  color: $text-color-off;
+  cursor: pointer;
+  display: inline-block;
+  font: {
+    family: inherit;
+    size: inherit;
+    weight: bold;
+  };
+  letter-spacing: 1px;
+  padding: 8px 20px 5px;
+  text: {
+    decoration: none;
+    shadow: 0 1px 0 $white;
+    transform: uppercase;
+  };
+
+  &.active {
+    @include linear-gradient($text-color-off);
+    color: $paper-color;
+    text-shadow: none;
+  }
+}
+
 #app .details {
   margin: 40px 0;
+
+  [data-page] {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
 
   > nav {
     > ul {
@@ -18,7 +53,7 @@ $panel-column: $half-width - $panel-padding;
       padding: 0;
       position: relative;
       width: 100%;
-      word-spacing: -0.33em;
+      word-spacing: -0.33em; // NOTE: This isn't exact. Feel free to adjust.
 
       &:before {
         background: $paper-color-off;
@@ -70,34 +105,33 @@ $panel-column: $half-width - $panel-padding;
     @include contain-floats;
     background: $paper-color;
     color: $text-color;
-    display: none;
     padding: $panel-padding;
 
-    &.active {
-      display: block;
-    }
+    > .samples {
+      text-align: center;
 
-    > .image {
-      @include box-sizing(border-box);
-      border: 5px solid $white;
-      box-shadow: 0 1px 3px transparentize($black, 0.5);
-      float: left;
-      height: 340px;
-      margin-right: $gutter-width;
-      width: $panel-column;
+      img,
+      .image {
+        @include box-sizing(border-box);
+        border: 5px solid $white;
+        box-shadow: 0 1px 3px transparentize($black, 0.5);
+        max-width: 100%;
+      }
 
-      [data-page] {
-        display: none;
-
-        &.active {
-          display: block;
-        }
+      .sample-player {
+        @include details-button;
+        margin-top: 20px;
       }
     }
 
     > .content {
       float: left;
       width: $panel-column;
+      margin-left: $gutter-width;
+
+      &:first-child {
+        margin-left: 0;
+      }
 
       > nav {
         > ul {
@@ -108,37 +142,13 @@ $panel-column: $half-width - $panel-padding;
             display: inline-block;
 
             a {
-              @include box-shadow(0 1px 0 $white);
-              @include linear-gradient($paper-color-off, darken($paper-color-off, 5%));
-              border: 1px solid darken($paper-color-off, 10%);
-              color: $text-color-off;
-              display: block;
-              font-weight: bold;
-              letter-spacing: 1px;
-              padding: 8px 20px 5px;
-              text: {
-                decoration: none;
-                shadow: 0 1px 0 $white;
-                transform: uppercase;
-              };
-
-              &.active {
-                @include linear-gradient($text-color-off);
-                color: $paper-color;
-                text-shadow: none;
-              }
+              @include details-button;
             }
           }
         }
       }
 
-      > section[data-page] {
-        display: none;
-
-        &.active {
-          display: block;
-        }
-
+      > section {
         > .heading {
           font-weight: bold;
           letter-spacing: 1px;
