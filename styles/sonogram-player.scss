@@ -20,7 +20,7 @@
 			> .axis {
 				@include box-sizing(border-box);
 				border-bottom: 1px solid;
-				color: $gray-lighter;
+				color: transparentize($white, 0.25);
 				font-size: 9px;
 				height: 100%;
 				opacity: 0.33;

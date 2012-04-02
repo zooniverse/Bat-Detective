@@ -170,7 +170,7 @@ html {
 							display: inline-block;
 
 							> a {
-								background: $white-trans-medium;
+								background: transparentize($white, 0.75);
 								color: $black;
 								display: block;
 								padding: 5px 10px;
@@ -178,7 +178,7 @@ html {
 								text-transform: uppercase;
 
 								&:hover {
-									background: $white-trans-low;
+									background: transparentize($white, 0.67);
 								}
 
 								&.active {
@@ -226,4 +226,42 @@ html {
 			border: 0;
 		}
 	}
+}
+
+$titillium-dir: "lib/titillium";
+
+@font-face {
+	font-family: "Titillium";
+	font-weight: 100;
+	font-style: normal;
+	src: url($titillium-dir + "/TitilliumText22L001-webfont.eot");
+	src:
+		url($titillium-dir + "/TitilliumText22L001-webfont.eot?#iefix") format("embedded-opentype"),
+		url($titillium-dir + "/TitilliumText22L001-webfont.woff") format("woff"),
+		url($titillium-dir + "/TitilliumText22L001-webfont.ttf") format("truetype"),
+		url($titillium-dir + "/TitilliumText22L001-webfont.svg#TitilliumText22LThin") format("svg");
+}
+
+@font-face {
+	font-family: "Titillium";
+	font-weight: 400;
+	font-style: normal;
+	src: url($titillium-dir + "/TitilliumText22L002-webfont.eot");
+	src:
+		url($titillium-dir + "/TitilliumText22L002-webfont.eot?#iefix") format("embedded-opentype"),
+		url($titillium-dir + "/TitilliumText22L002-webfont.woff") format("woff"),
+		url($titillium-dir + "/TitilliumText22L002-webfont.ttf") format("truetype"),
+		url($titillium-dir + "/TitilliumText22L002-webfont.svg#TitilliumText22LLight") format("svg");
+}
+
+@font-face {
+	font-family: "Titillium";
+	font-weight: 700;
+	font-style: normal;
+	src: url($titillium-dir + "/TitilliumText22L004-webfont.eot");
+	src:
+		url($titillium-dir + "/TitilliumText22L004-webfont.eot?#iefix") format("embedded-opentype"),
+		url($titillium-dir + "/TitilliumText22L004-webfont.woff") format("woff"),
+		url($titillium-dir + "/TitilliumText22L004-webfont.ttf") format("truetype"),
+		url($titillium-dir + "/TitilliumText22L004-webfont.svg#TitilliumText22LMedium") format("svg");
 }

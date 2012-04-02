@@ -1,19 +1,11 @@
-$black: #000;
+// Colors
 
+$black: #000;
+$gray: #64635e;
+$white: #fff;
 $gold: #f5bd00;
 
-$gray: #64635e;
-$gray-light: lighten($gray, 20);
-$gray-lighter: lighten($gray, 40);
-$gray-lightest: lighten($gray, 60);
-$gray-dark: darken($gray, 15);
-$gray-darker: darken($gray, 30);
-$gray-darkest: darken($gray, 45);
-
-$white: #fff;
-$white-trans-high: transparentize($white, 0.75);
-$white-trans-medium: transparentize($white, 0.5);
-$white-trans-low: transparentize($white, 0.25);
+// Grid
 
 $twelfth-width: 65px;
 $gutter-width: 20px;
@@ -24,6 +16,8 @@ $two-third-width: ($third-width * 2) + $gutter-width;
 $three-quarter-width: ($quarter-width * 3) + ($gutter-width * 2);
 $full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 
+// Cross-browser
+
 @mixin box-shadow($args) {
 	-moz-box-shadow: $args;
 	-webkit-box-shadow: $args;
@@ -33,14 +27,6 @@ $full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 @mixin box-sizing($args) {
 	-moz-box-sizing: $args;
 	box-sizing: $args;
-}
-
-@mixin contain-floats {
-	&:after {
-		content: "";
-		clear: both;
-		display: table;
-	}
 }
 
 @mixin linear-gradient($start: transparent, $end: false, $position: top) {
@@ -56,40 +42,12 @@ $full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 	transition: $args;
 }
 
-$titillium-dir: "lib/titillium";
+// Utility
 
-@font-face {
-	font-family: "Titillium";
-	font-weight: 100;
-	font-style: normal;
-	src: url($titillium-dir + "/TitilliumText22L001-webfont.eot");
-	src:
-		url($titillium-dir + "/TitilliumText22L001-webfont.eot?#iefix") format("embedded-opentype"),
-		url($titillium-dir + "/TitilliumText22L001-webfont.woff") format("woff"),
-		url($titillium-dir + "/TitilliumText22L001-webfont.ttf") format("truetype"),
-		url($titillium-dir + "/TitilliumText22L001-webfont.svg#TitilliumText22LThin") format("svg");
-}
-
-@font-face {
-	font-family: "Titillium";
-	font-weight: 400;
-	font-style: normal;
-	src: url($titillium-dir + "/TitilliumText22L002-webfont.eot");
-	src:
-		url($titillium-dir + "/TitilliumText22L002-webfont.eot?#iefix") format("embedded-opentype"),
-		url($titillium-dir + "/TitilliumText22L002-webfont.woff") format("woff"),
-		url($titillium-dir + "/TitilliumText22L002-webfont.ttf") format("truetype"),
-		url($titillium-dir + "/TitilliumText22L002-webfont.svg#TitilliumText22LLight") format("svg");
-}
-
-@font-face {
-	font-family: "Titillium";
-	font-weight: 700;
-	font-style: normal;
-	src: url($titillium-dir + "/TitilliumText22L004-webfont.eot");
-	src:
-		url($titillium-dir + "/TitilliumText22L004-webfont.eot?#iefix") format("embedded-opentype"),
-		url($titillium-dir + "/TitilliumText22L004-webfont.woff") format("woff"),
-		url($titillium-dir + "/TitilliumText22L004-webfont.ttf") format("truetype"),
-		url($titillium-dir + "/TitilliumText22L004-webfont.svg#TitilliumText22LMedium") format("svg");
+@mixin contain-floats {
+	&:after {
+		content: "";
+		clear: both;
+		display: table;
+	}
 }
