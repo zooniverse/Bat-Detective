@@ -3,6 +3,10 @@
 .sonogram-classifier {
 	> .player {
 		> .image {
+			> .sonogram {
+				cursor: ns-resize;
+			}
+
 			> .frequency-selector {
 				> .cover {
 					background: transparentize($black, 0.2);
@@ -208,7 +212,7 @@
 			transform: uppercase;
 		};
 		top: 0;
-		width: 220px;
+		width: $quarter-width;
 
 		button {
 			@include box-sizing(content-box);

@@ -50,7 +50,7 @@ html {
 	@include contain-floats;
 	margin: 0 auto 50px;
 	position: relative;
-	width: 940px;
+	width: $full-width;
 
 	> header {
 		background: url("rule.png") center bottom no-repeat;

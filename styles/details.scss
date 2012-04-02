@@ -6,7 +6,7 @@ $paper-color: rgb(243, 241, 237);
 $paper-color-off: rgb(228, 226, 220);
 
 $panel-padding: 30px;
-$panel-column: (($column-width * 2) + $gutter-width) - $panel-padding;
+$panel-column: $half-width - $panel-padding;
 
 #app .details {
   margin: 40px 0;
@@ -52,7 +52,7 @@ $panel-column: (($column-width * 2) + $gutter-width) - $panel-padding;
             align: center;
             transform: uppercase;
           };
-          width: $column-width;
+          width: $quarter-width;
 
           &.active {
             background: $paper-color;

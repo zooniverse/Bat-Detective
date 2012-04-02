@@ -15,8 +15,14 @@ $white-trans-high: transparentize($white, 0.75);
 $white-trans-medium: transparentize($white, 0.5);
 $white-trans-low: transparentize($white, 0.25);
 
-$column-width: 220px;
+$twelfth-width: 65px;
 $gutter-width: 20px;
+$quarter-width: ($twelfth-width * 3) + ($gutter-width * 2);
+$half-width: ($twelfth-width * 6) + ($gutter-width * 5);
+$third-width: ($twelfth-width * 4) + ($gutter-width * 3);
+$two-third-width: ($third-width * 2) + $gutter-width;
+$three-quarter-width: ($quarter-width * 3) + ($gutter-width * 2);
+$full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 
 @mixin box-shadow($args) {
 	-moz-box-shadow: $args;
