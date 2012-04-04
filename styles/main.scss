@@ -6,7 +6,7 @@
 @import "lib/zooniverse-bar.css";
 
 html {
-	background: $black;
+	background: url("background-noise.jpg"); // TODO: Gradient
 	color: $white;
 	font: 12px Titillium, "Helvetica Neue", Arial, sans-serif;
 	overflow-y: scroll; // Force scroll bar to prevent jumping.
@@ -28,86 +28,50 @@ html {
 	z-index: 2;
 }
 
-// Parallax backgrounds (see parallax.coffee)
-[data-parallax-multiplier] {
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 100%;
-
-	&#road-bg {
-		background: url("road.jpg") center 0 no-repeat;
-	}
-
-	&#bats-bg {
-		background: url("bats.png") center 0 no-repeat;
-		opacity: 0.67;
-	}
-}
-
 #app {
 	@include contain-floats;
-	margin: 0 auto 50px;
+	margin: 0 auto;
 	position: relative;
 	width: $full-width;
 
 	> header {
-		background: url("rule.png") center bottom no-repeat;
+		margin: 10px 0;
 
 		> nav {
-			font-size: 16px;
-			padding: 70px 0 40px;
 			position: relative;
 
 			> ul {
-				display: table;
-				border: 0;
-				border-collapse: collapse;
+				@include contain-floats;
 				margin: 0;
 				padding: 0;
-				position: relative;
-				width: 100%;
-				z-index: 1;
+				text-align: center;
 
 				> li {
-					display: table-cell;
-					text-align: center;
-					width: 1%;
+					display: inline-block;
 
 					&:first-child {
-						padding: 0;
-						text-align: left;
-					}
-
-					&.logo {
-						width: 5%;
-
-						> a {
-							display: block;
-
-							> img {
-								vertical-align: -45px;
-								width: 100%;
-								max-width: 213px;
-								min-width: 140px;
-							}
-						}
-					}
-
-					&:last-child {
-						text-align: right;
+						margin-left: 0;
 					}
 
 					> a {
 						color: inherit;
-						padding: 10px 0;
-						text-decoration: none;
-						text-transform: uppercase;
+						display: block;
+						font-size: 15px;
+						letter-spacing: 1px;
+						padding: 20px 50px;
+						text: {
+							decoration: none;
+							transform: uppercase;
+						};
 
 						&:hover,
 						&.active {
 							color: $gold;
+						}
+
+						> .logo {
+							vertical-align: -25px;
+							width: 120px;
 						}
 					}
 				}
@@ -116,7 +80,6 @@ html {
 	}
 
 	> #main {
-		background: url("rule.png") center bottom no-repeat;
 		margin-bottom: 20px;
 		position: relative;
 
