@@ -22,7 +22,7 @@ do
 	rm .temp.half.png
 
 	# Recolor the image.
-	convert .temp.gray.png .colors.png -clut "${file/wav/png}"
+	convert .temp.gray.png .colors.png -clut "$file.png"
 	rm .temp.gray.png
 done
 
