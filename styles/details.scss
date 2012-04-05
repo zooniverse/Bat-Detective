@@ -36,6 +36,8 @@ $panel-column: $half-width - $panel-padding;
 }
 
 #app .details {
+  font-size: 13px;
+  line-height: 18px;
   margin: 40px 0;
 
   [data-page] {
