@@ -129,25 +129,25 @@
 				}
 			}
 		}
+	}
 
-		&.playing {
-			> .image > .seek-line {
-				display: block;
-			}
-
-			> .controls {
-				> .play {
-					display: none;
-				}
-
-				> .pause {
-					display: inline-block;
-				}
-			}
-		}
-
-		&.seeking > .image > .seek-line {
+	&.playing > .player {
+		> .image > .seek-line {
 			display: block;
 		}
+
+		> .controls {
+			> .play {
+				display: none;
+			}
+
+			> .pause {
+				display: inline-block;
+			}
+		}
+	}
+
+	&.seeking > .image > .seek-line {
+		display: block;
 	}
 }
