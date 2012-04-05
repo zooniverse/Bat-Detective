@@ -9,7 +9,7 @@
 
 			> .frequency-selector {
 				> .cover {
-					background: transparentize($black, 0.2);
+					background: transparentize($black, 0.5);
 					display: none;
 					left: 0;
 					position: absolute;
@@ -158,15 +158,15 @@
 				}
 
 				&[data-source="bat"] > .times > .time-selector {
-					background: transparentize(black, 0.67)
+					background: transparentize(#fff, 0.67);
 				}
 
 				&[data-source="insect"] > .times > .time-selector {
-					background: transparentize(green, 0.67)
+					background: transparentize(#0f0, 0.67);
 				}
 
 				&[data-source="machine"] > .times > .time-selector {
-					background: transparentize(blue, 0.67)
+					background: transparentize(#00f, 0.67);
 				}
 
 				&.active {
