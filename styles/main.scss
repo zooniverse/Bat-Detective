@@ -13,6 +13,24 @@ html {
 
 	> body {
 		margin: 0;
+
+		&:before {
+			$barely-white: transparentize($white, 0.90);
+			$not-white: transparentize($white, 1);
+			$literally-half-width: $full-width / 2;
+
+			@include radial-gradient(#{$barely-white, $not-white, $not-white});
+			content: " ";
+			height: $full-width;
+			left: 50%;
+			margin: {
+				left: -$literally-half-width;
+				top: -$literally-half-width;
+			};
+			position: fixed;
+			top: 50%;
+			width: $full-width;
+		}
 	}
 }
 

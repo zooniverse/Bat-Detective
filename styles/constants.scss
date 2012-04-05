@@ -36,6 +36,12 @@ $full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 	background: linear-gradient($position, $start, $end);
 }
 
+@mixin radial-gradient($args) {
+	background: -moz-radial-gradient($args);
+	background: -webkit-radial-gradient($args);
+	background: radial-gradient($args);
+}
+
 @mixin transition($args) {
 	-moz-transition: $args;
 	-webkit-transition: $args;
