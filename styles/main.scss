@@ -31,6 +31,7 @@ html {
 #app {
 	@include contain-floats;
 	margin: 0 auto;
+	padding: 1px 0;
 	position: relative;
 	width: $full-width;
 
