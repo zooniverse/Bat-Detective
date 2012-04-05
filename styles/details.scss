@@ -55,7 +55,6 @@ $panel-column: $half-width - $panel-padding;
       padding: 0;
       position: relative;
       width: 100%;
-      word-spacing: -0.33em; // NOTE: This isn't exact. Feel free to adjust.
 
       &:before {
         background: $paper-color-off;
@@ -63,7 +62,7 @@ $panel-column: $half-width - $panel-padding;
         content: " ";
         height: 1em;
         left: 0;
-        padding: 15px 0 10px;
+        padding: 10px 0 10px;
         position: absolute;
         width: 100%;
         z-index: -1;
@@ -71,8 +70,8 @@ $panel-column: $half-width - $panel-padding;
 
       > li {
         display: inline-block;
+        float: left;
         margin-left: $gutter-width;
-        word-spacing: normal;
 
         &:first-child {
           margin-left: 0;
@@ -80,11 +79,12 @@ $panel-column: $half-width - $panel-padding;
 
         > a {
           @include box-sizing(border-box);
+          border-radius: 3px 3px 0 0;
           color: $text-color-off;
           display: block;
           font-weight: bold;
           letter-spacing: 1px;
-          padding: 15px 0 10px;
+          padding: 15px 0 5px;
           text: {
             align: center;
             transform: uppercase;
@@ -93,10 +93,8 @@ $panel-column: $half-width - $panel-padding;
 
           &.active {
             background: $paper-color;
-            border-radius: 3px 3px 0 0;
             color: $text-color;
             opacity: 1;
-            padding-top: 20px;
           }
         }
       }
