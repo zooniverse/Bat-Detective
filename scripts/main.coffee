@@ -32,6 +32,9 @@ window.fieldGuide = new FieldGuide
 	el: $('#field-guide')
 	classifier: window.classifier
 
+AudioButton = require 'controllers/AudioButton'
+new AudioButton el: button for button in $('[data-audio-src]')
+
 Route = require 'lib/Route'
 Route.checkRoutes()
 
