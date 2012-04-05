@@ -32,4 +32,7 @@ window.fieldGuide = new FieldGuide
 	el: $('#field-guide')
 	classifier: window.classifier
 
+Route = require 'lib/Route'
+Route.checkRoutes()
+
 exports = window.classifier
