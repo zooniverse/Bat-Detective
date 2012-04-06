@@ -34,6 +34,7 @@
 							bottom: 10px;
 							color: $white;
 							cursor: pointer;
+							font-weight: bold;
 							height: 20px;
 							line-height: 20px;
 							opacity: 0.5;
@@ -112,7 +113,9 @@
 						> .delete {
 							background: transparent;
 							border: 0;
+							color: $white;
 							cursor: pointer;
+							font-weight: bold;
 							height: 10px;
 							line-height: 10px;
 							opacity: 0;
