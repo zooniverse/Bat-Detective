@@ -29,7 +29,7 @@ class Workflow extends Spine.Controller
 		@path.push @question
 
 		@el.empty()
-		if @path.length > 1 then @el.append '<button class="back">&#9668;</button>'
+		if @path.length > 1 then @el.append '<button class="back">Back</button>'
 
 		@el.append "<div class=\"question\">#{@question.question}</div>"
 

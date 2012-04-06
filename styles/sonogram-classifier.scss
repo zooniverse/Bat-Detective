@@ -231,7 +231,7 @@
 				size: inherit;
 				weight: inherit;
 			};
-			margin: 0;
+			margin: 0.25em 0;
 			padding: 5px 0 3px;
 			text: {
 				align: inherit;
@@ -249,12 +249,7 @@
 				}
 
 				> .back {
-					background: transparent;
-					border: 0;
-					color: inherit;
-					cursor: pointer;
-					float: left;
-					padding: 0;
+					margin: 0 0 1em;
 				}
 
 				> .question {
@@ -264,9 +259,7 @@
 				> .answers {
 					margin: 1em 0;
 
-					> .answer {
-						margin: 0.25em 0;
-					}
+					> .answer {}
 				}
 			}
 		}
