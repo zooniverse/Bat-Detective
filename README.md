@@ -6,6 +6,7 @@ Install
 
     bundle install
     grabass assets.json
+    npm install -g requirejs
 
 Run
 ---
@@ -17,8 +18,5 @@ Build
 -----
 
     jekyll
-    npm install -g requirejs
-    cd bat-detective/scripts
-    r.js -o baseUrl=. name=main out=main.build.js
-    mv main.js main.src.js
-    mv main.build.js main.js
+    cd _site/scripts
+    r.js -o baseUrl=. name=main out=main.js
