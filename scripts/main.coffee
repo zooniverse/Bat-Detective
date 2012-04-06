@@ -1,6 +1,6 @@
 $ = require 'jQuery'
 
-ZooniverseBar = require 'lib/Zooniversebar'
+ZooniverseBar = require 'lib/ZooniverseBar'
 new ZooniverseBar el: $('#zooniverse-bar')
 
 # Clear out local storage between views.
