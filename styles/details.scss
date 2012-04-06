@@ -10,7 +10,7 @@ $panel-column: $half-width - $panel-padding;
 
 @mixin details-button {
   @include box-shadow(0 1px 0 $white);
-  @include linear-gradient($paper-color-off, darken($paper-color-off, 5%));
+  @include linear-gradient(#e4e2dc, #d5d3cd);
   border: 1px solid darken($paper-color-off, 10%);
   color: $text-color-off;
   cursor: pointer;
