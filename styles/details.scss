@@ -35,7 +35,8 @@ $panel-column: $half-width - $panel-padding;
   }
 }
 
-#app .details {
+.details {
+  box-shadow: 0 3px 5px transparentize($black, 0.5);
   font-size: 13px;
   line-height: 18px;
   margin: 40px 0;

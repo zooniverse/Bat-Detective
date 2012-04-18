@@ -41,6 +41,7 @@ html {
 	display: none;
 }
 
+// TODO: Shouldn't this should be built in?
 #zooniverse-bar {
 	position: relative;
 	z-index: 2;
@@ -131,82 +132,28 @@ html {
 			&.after {
 				left: 16.67%;
 			}
-
-			// Second-level tabs
-			> section {
-				display: none;
-
-				&.active {
-					display: block;
-				}
-			}
-
-			> header {
-				> nav {
-					font-size: 14px;
-
-					> ul {
-						padding: 0;
-
-						> li {
-							display: inline-block;
-
-							> a {
-								background: transparentize($white, 0.75);
-								color: $black;
-								display: block;
-								padding: 5px 10px;
-								text-decoration: none;
-								text-transform: uppercase;
-
-								&:hover {
-									background: transparentize($white, 0.67);
-								}
-
-								&.active {
-									background: $gold;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		.primary {
-			float: left;
-			max-width: 33%;
-		}
-
-		.secondary {
-			float: right;
-			max-width: 33%;
-		}
-
-		h2 {
-			font: {
-				size: 24px;
-				weight: normal;
-			}
-			text-transform: uppercase;
-		}
-
-		h3 {
-			font: {
-				size: 16px;
-				weight: normal;
-			}
-			text-transform: uppercase;
 		}
 	}
+}
 
-	a {
-		color: $gold;
-		text-decoration: none;
+h2 {
+	font: {
+		size: 32px;
+		weight: inherit;
+	}
+}
 
-		img {
-			border: 0;
-		}
+p {
+	font-size: 14px;
+	line-height: 20px;
+}
+
+a {
+	color: $gold;
+	text-decoration: none;
+
+	img {
+		border: 0;
 	}
 }
 

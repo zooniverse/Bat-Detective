@@ -203,7 +203,7 @@
 		border: 2px solid $gray {
 			radius: 2px;
 		};
-		box-shadow: 0 3px 5px $black;
+		box-shadow: 0 3px 5px transparentize($black, 0.5);
 		font: {
 			size: 14px;
 			weight: bold;
