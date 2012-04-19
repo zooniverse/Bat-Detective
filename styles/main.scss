@@ -1,8 +1,10 @@
 @import "constants";
+@import "details";
+@import "home";
 @import "sonogram-player";
 @import "sonogram-classifier";
 @import "field-guide";
-@import "details";
+@import "profile";
 @import "lib/zooniverse-bar.css";
 
 html {
@@ -17,19 +19,21 @@ html {
 		&:before {
 			$barely-white: transparentize($white, 0.90);
 			$not-white: transparentize($white, 1);
-			$literally-half-width: $full-width / 2;
+
+			$gradient-width: $full-width * 1.5;
+			$gradient-half-width: $gradient-width / 2;
 
 			@include radial-gradient(#{$barely-white, $not-white, $not-white});
 			content: " ";
-			height: $full-width;
+			height: $gradient-width;
 			left: 50%;
 			margin: {
-				left: -$literally-half-width;
-				top: -$literally-half-width;
+				left: -$gradient-half-width;
+				top: -$gradient-half-width;
 			};
 			position: fixed;
 			top: 50%;
-			width: $full-width;
+			width: $gradient-width;
 		}
 	}
 }
@@ -45,31 +49,6 @@ html {
 #zooniverse-bar {
 	position: relative;
 	z-index: 2;
-}
-
-#home-map {
-	@include transition(opacity 0.5s ease-in-out);
-	border-bottom: 1px solid transparentize($white, 0.67);
-	height: 470px;
-	left: 0;
-	opacity: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-
-	&.active {
-		opacity: 1;
-	}
-
-	&:after {
-		@include linear-gradient($black, transparentize($black, 1));
-		content: " ";
-		height: 100px;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
-	}
 }
 
 #app {
@@ -130,13 +109,14 @@ html {
 		position: relative;
 
 		// Main pages
+		// TODO: Height limit of inactive pages isn't quite right.
 		> section {
 			@include transition(#{
 				left 0.25s ease-in-out,
+				max-height 1s ease-in-out,
 				opacity 0.25s ease-in-out
 			});
 			left: 0;
-			max-height: 100%;
 			opacity: 0;
 			overflow: hidden;
 			position: absolute;
@@ -159,53 +139,25 @@ html {
 				left: 16.67%;
 			}
 		}
-
-		> [data-page="home"] {
-			padding-top: 340px;
-
-			h2 {
-				font: {
-					size: 50px;
-					weight: bold;
-				};
-
-				a {
-					color: inherit;
-					position: relative;
-
-					&:after {
-						border-bottom: 1px dashed transparentize($white, 0.75);
-						bottom: 5px;
-						content: " ";
-						height: 0;
-						left: 0;
-						position: absolute;
-						width: 100%;
-					}
-				}
-			}
-		}
 	}
 }
 
 .columns {
 	@include contain-floats;
+	clear: both;
 
 	> * {
+		@include trim-child-margins;
 		float: left;
 		margin-left: $gutter-width;
 
 		&:first-child {
 			margin-left: 0;
 		}
+	}
 
-		> :first-child {
-			margin-top: 0;
-		}
-
-		> :last-child {
-			margin-bottom: 0;
-		}
+	&.two > * {
+		width: $half-width;
 	}
 
 	&.three > * {
@@ -252,9 +204,17 @@ h2 {
 
 h3 {
 	font: {
-		size: 24px;
+		size: 22px;
 		weight: inherit;
-	}
+	};
+	margin: 0.5em 0;
+}
+
+h4 {
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 2em 0 1em;
+  text-transform: uppercase;
 }
 
 hr {
@@ -268,6 +228,24 @@ hr {
 p {
 	font-size: 14px;
 	line-height: 20px;
+  margin: 1em 0;
+}
+
+img,
+.image {
+  max-width: 100%;
+
+  &.framed {
+	  @include box-sizing(border-box);
+	  background: $black;
+	  border: 5px solid $white;
+	  box-shadow: 0 1px 3px transparentize($black, 0.5);
+	  text-align: center;
+
+	  > img {
+	  	margin: $gutter-width / 2;
+	  }
+	}
 }
 
 a {
@@ -277,6 +255,10 @@ a {
 	img {
 		border: 0;
 	}
+}
+
+.todo {
+	outline: 2px dashed red;
 }
 
 $titillium-dir: "lib/titillium";

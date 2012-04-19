@@ -57,3 +57,13 @@ $full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 		display: table;
 	}
 }
+
+@mixin trim-child-margins {
+	> :first-child {
+		margin-top: 0;
+	}
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+}

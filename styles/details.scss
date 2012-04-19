@@ -5,7 +5,7 @@ $text-color-off: rgb(110, 110, 100);
 $paper-color: rgb(243, 241, 237);
 $paper-color-off: rgb(200, 200, 190);
 
-$panel-padding: 30px;
+$panel-padding: $gutter-width * 1.5;
 $panel-column: $half-width - $panel-padding;
 
 @mixin details-button {
@@ -49,6 +49,7 @@ $panel-column: $half-width - $panel-padding;
     }
   }
 
+  // Primary tab-style navigation
   > nav {
     > ul {
       margin: 0;
@@ -104,28 +105,25 @@ $panel-column: $half-width - $panel-padding;
 
   > section {
     @include contain-floats;
+    @include trim-child-margins;
     background: $paper-color;
     color: $text-color;
     padding: $panel-padding;
 
-    > .samples {
-      text-align: center;
+    > section {
+      @include contain-floats;
+      @include trim-child-margins;
+      clear: both;
+      margin-top: $gutter-width;
 
-      img,
-      .image {
-        @include box-sizing(border-box);
-        border: 5px solid $white;
-        box-shadow: 0 1px 3px transparentize($black, 0.5);
-        max-width: 100%;
-      }
-
-      .sample-player {
-        @include details-button;
-        margin-top: 20px;
+      &:first-child {
+        margin-top: 0;
       }
     }
 
-    > .content {
+    > .column,
+    > section > .column {
+      @include trim-child-margins;
       float: left;
       width: $panel-column;
       margin-left: $gutter-width;
@@ -134,6 +132,7 @@ $panel-column: $half-width - $panel-padding;
         margin-left: 0;
       }
 
+      // Secondary button-style navigation
       > nav {
         > ul {
           margin: 0;
@@ -150,17 +149,9 @@ $panel-column: $half-width - $panel-padding;
       }
 
       > section {
-        > .heading {
-          font-weight: bold;
-          letter-spacing: 1px;
-          margin: 2em 0 1em;
-          text-transform: uppercase;
-        }
+        @include trim-child-margins;
 
-        > p {
-          margin: 1em 0;
-        }
-
+        // Tertiary list-style navigation
         > nav {
           > ul {
             margin: 0;
