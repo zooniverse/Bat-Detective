@@ -6,8 +6,6 @@ new ZooniverseBar el: $('#zooniverse-bar')
 # Clear out local storage between views.
 localStorage?.clear()
 
-parallax = require 'parallax'
-
 Pager = require 'lib/Pager'
 pagers = $('[data-page]').parent().map ->
 	new Pager
@@ -31,6 +29,10 @@ FieldGuide = require 'controllers/FieldGuide'
 window.fieldGuide = new FieldGuide
 	el: $('#field-guide')
 	classifier: window.classifier
+
+Profile = require 'controllers/Profile'
+window.profile = new Profile
+	el: $('#profile')
 
 AudioButton = require 'controllers/AudioButton'
 new AudioButton el: button for button in $('[data-audio-src]')

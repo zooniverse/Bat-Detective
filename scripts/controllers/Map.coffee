@@ -5,6 +5,7 @@ class Map extends Spine.Controller
   center: null
 
   constructor: ->
+    super
     @setCenter @lat, @lng
 
   setCenter: (@lat, @lng) ->
