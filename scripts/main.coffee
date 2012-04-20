@@ -25,17 +25,17 @@ for i in [1..10] then Subject.create
 	commonSpecies: 'Vampire bats'
 
 SonogramClassifier = require 'controllers/SonogramClassifier'
-window.classifier = new SonogramClassifier
+classifier = new SonogramClassifier
 	el: $('#sound-classifier')
 	subject: Subject.first()
 
 FieldGuide = require 'controllers/FieldGuide'
-window.fieldGuide = new FieldGuide
+fieldGuide = new FieldGuide
 	el: $('#field-guide')
 	classifier: window.classifier
 
 Profile = require 'controllers/Profile'
-window.profile = new Profile
+profile = new Profile
 	el: $('#profile')
 
 AudioButton = require 'controllers/AudioButton'
@@ -44,3 +44,10 @@ new AudioButton el: button for button in $('[data-audio-src]')
 Route = require 'lib/Route'
 Route.checkRoutes()
 
+# Globals for dev
+window.User = require 'models/User'
+window.Subject = require 'models/Subject'
+window.Classification = require 'models/Classification'
+window.classifier = classifier
+window.fieldGuide = fieldGuide
+window.profile = profile
