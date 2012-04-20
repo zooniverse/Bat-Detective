@@ -9,7 +9,7 @@ class Profile extends Spine.Controller
 
   elements:
     'header .username': 'username'
-    'favorites': 'favoritesList'
+    '.favorites': 'favoritesList'
     '.recent .location': 'recentLocation'
     '.recent .date': 'recentDate'
     '.findings .scenes .count': 'scenesCount'
@@ -21,8 +21,13 @@ class Profile extends Spine.Controller
   constructor: ->
     super
     @html @template
-    User.bind 'change-current', @render
+    User.bind 'change-current', @userChanged
 
+    @userChanged User.current
+
+  userChanged: (user) =>
+    return unless user
+    user.bind 'change', @render
     @render()
 
   render: =>
@@ -31,5 +36,9 @@ class Profile extends Spine.Controller
     return unless User.current?
 
     @username.html User.current.username
+
+    @favoritesList.empty()
+    for favorite in User.current.favorites
+      @favoritesList.append "<li>#{favorite.location}</li>" # TODO
 
 exports = Profile

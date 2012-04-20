@@ -1,5 +1,3 @@
-console.warn 'HERE'
-
 Spine = require 'Spine'
 
 class User extends Spine.Model
@@ -19,7 +17,15 @@ class User extends Spine.Model
     @trigger 'change-recents', @recents
 
   addFavorite: (subject) =>
+    @removeFavorite subject if subject in @favorites
     @favorites.push subject
+    # TODO: Tell the server.
+    @trigger 'change', @favorites
+    @trigger 'change-favorites', @favorites
+
+  removeFavorite: (subject) =>
+    @favorites.splice i, 1 for s, i in @favorites when s is subject
+    # TODO: Tell the server.
     @trigger 'change', @favorites
     @trigger 'change-favorites', @favorites
 

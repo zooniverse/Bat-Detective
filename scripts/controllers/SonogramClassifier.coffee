@@ -22,6 +22,7 @@ class SonogramClassifier extends SonogramPlayer
   events: $.extend
     'mousedown .sonogram': 'addFrequencyRange'
     'click .done': 'done'
+    'click .followup .favorite': 'markAsFavorite'
     'click .followup .yes': 'goToTalk'
     'click .followup .no': 'nextSubject'
     SonogramPlayer::events
@@ -58,6 +59,9 @@ class SonogramClassifier extends SonogramPlayer
   done: =>
     selection.deselect() for selection in @selections
     @continueContainer.addClass 'active'
+
+  markAsFavorite: =>
+    User.current?.addFavorite @subject
 
   goToTalk: =>
     alert 'TODO: Go to talk!'

@@ -278,7 +278,8 @@
 			> .followup {
 				display: none;
 
-				> button {
+				> .yes,
+				> .no {
 					width: 45%;
 				}
 			}
