@@ -38,7 +38,7 @@ class Profile extends Spine.Controller
     @username.html User.current.username
 
     @favoritesList.empty()
-    for favorite in User.current.favorites
-      @favoritesList.append "<li>#{favorite.location}</li>" # TODO
+    for favorite in User.current.favorites().all()
+      @favoritesList.append "<li>#{favorite.subject.location}</li>" # TODO
 
 exports = Profile

@@ -61,7 +61,14 @@ class SonogramClassifier extends SonogramPlayer
     @continueContainer.addClass 'active'
 
   markAsFavorite: =>
-    User.current?.addFavorite @subject
+    return unless User.current?
+
+    favorite = User.current.favorites().create
+      subject: @subject
+      classification: @classification
+
+    favorite.save()
+    User.current.trigger 'change'
 
   goToTalk: =>
     alert 'TODO: Go to talk!'
