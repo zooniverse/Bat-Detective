@@ -1,5 +1,7 @@
 Spine = require 'Spine'
 
+User = require 'models/User'
+
 template = require 'lib/text!views/Profile.html'
 
 class Profile extends Spine.Controller
@@ -19,7 +21,15 @@ class Profile extends Spine.Controller
   constructor: ->
     super
     @html @template
+    User.bind 'change-current', @render
 
-  render: ->
+    @render()
+
+  render: =>
+    @el.toggleClass 'signed-in', User.current?
+
+    return unless User.current?
+
+    @username.html User.current.username
 
 exports = Profile

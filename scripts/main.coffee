@@ -1,5 +1,9 @@
 $ = require 'jQuery'
 
+User = require 'models/User'
+johnDoe = User.create username: 'john-doe'
+User.signIn johnDoe
+
 ZooniverseBar = require 'lib/ZooniverseBar'
 new ZooniverseBar el: $('#zooniverse-bar')
 
@@ -40,4 +44,3 @@ new AudioButton el: button for button in $('[data-audio-src]')
 Route = require 'lib/Route'
 Route.checkRoutes()
 
-exports = window.classifier

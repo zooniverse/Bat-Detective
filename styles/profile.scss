@@ -1,0 +1,15 @@
+#profile {
+  > .profile {
+    display: none;
+  }
+
+  &.signed-in {
+    > .sign-in-or-up {
+      display: none;
+    }
+
+    > .profile {
+      display: block;
+    }
+  }
+}
