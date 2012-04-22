@@ -5,7 +5,6 @@ TimeRange = require 'models/TimeRange'
 class FrequencyRange extends Spine.Model
   @configure 'FrequencyRange', 'low', 'high', 'source', 'type'
   @hasMany 'timeRanges', TimeRange
-  @extend Spine.Model.Local
 
   validate: ->
     return '"Low" must be greater than or equal to zero' unless @low >= 0

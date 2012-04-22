@@ -1,15 +1,14 @@
 Spine = require 'Spine'
 
-User = require 'models/User'
 FrequencyRange = require 'models/FrequencyRange'
 
 class Classification extends Spine.Model
-  @configure 'Classification'
+  @configure 'Classification', 'subject'
   @hasMany 'frequencyRanges', FrequencyRange
-  @extend Spine.Model.Local
 
   serialize: =>
-    user: User.current.id
+    user: @user().id
+    subject: @subject.id
     frequencyRanges: (range.serialize() for range in @frequencyRanges().all())
 
   saveRemotely: =>

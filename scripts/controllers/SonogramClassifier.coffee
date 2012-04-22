@@ -38,7 +38,7 @@ class SonogramClassifier extends SonogramPlayer
 
     super
 
-    @classification = @subject.classifications().create {}
+    @classification = User.current?.classifications().create subject: @subject
     @continueContainer.removeClass 'active'
 
   addFrequencyRange: (e) =>
@@ -75,7 +75,9 @@ class SonogramClassifier extends SonogramPlayer
 
   nextSubject: (e) =>
     @classification.save()
-    User.current?.addRecent @classification
+    User.current?.recents().create
+      subject: @subject
+      classification: @classification
 
     nextSubject = Subject.next()
 

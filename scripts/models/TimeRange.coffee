@@ -2,7 +2,6 @@ Spine = require 'Spine'
 
 class TimeRange extends Spine.Model
   @configure 'TimeRange', 'start', 'end'
-  @extend Spine.Model.Local
 
   validate: ->
     return '"Start" must be greater than zero' unless @start >= 0

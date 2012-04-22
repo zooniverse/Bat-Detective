@@ -7,9 +7,6 @@ User.signIn johnDoe
 ZooniverseBar = require 'lib/ZooniverseBar'
 new ZooniverseBar el: $('#zooniverse-bar')
 
-# Clear out local storage between views.
-localStorage?.clear()
-
 Pager = require 'lib/Pager'
 pagers = $('[data-page]').parent().map ->
 	new Pager
@@ -32,7 +29,7 @@ classifier = new SonogramClassifier
 FieldGuide = require 'controllers/FieldGuide'
 fieldGuide = new FieldGuide
 	el: $('#field-guide')
-	classifier: window.classifier
+	classifier: classifier
 
 Profile = require 'controllers/Profile'
 profile = new Profile
