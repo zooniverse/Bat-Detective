@@ -4,6 +4,9 @@ User = require 'models/User'
 johnDoe = User.create username: 'john-doe'
 User.signIn johnDoe
 
+Map = require 'controllers/Map'
+map = new Map el: $('#home-map')
+
 ZooniverseBar = require 'lib/ZooniverseBar'
 new ZooniverseBar el: $('#zooniverse-bar')
 
@@ -40,6 +43,7 @@ Route = require 'lib/Route'
 Route.checkRoutes()
 
 # Globals for dev
+window.map = map
 window.User = require 'models/User'
 window.Subject = require 'models/Subject'
 window.Classification = require 'models/Classification'

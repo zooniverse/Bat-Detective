@@ -2,6 +2,7 @@
 
 #home-map {
   @include transition(opacity 0.5s ease-in-out);
+  background: transparent;
   border-bottom: 1px solid transparentize($white, 0.67);
   height: 470px;
   left: 0;
@@ -12,6 +13,10 @@
 
   &.active {
     opacity: 1;
+
+    + #app {
+      margin-top: 340px;
+    }
   }
 
   &:after {
@@ -19,15 +24,15 @@
     content: " ";
     height: 100px;
     left: 0;
+    pointer-events: none;
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: 2;
   }
 }
 
 #main > [data-page="home"] {
-  padding-top: 340px;
-
   h2 {
     font: {
       size: 50px;

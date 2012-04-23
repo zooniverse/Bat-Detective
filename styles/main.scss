@@ -35,6 +35,53 @@ html {
 			top: 50%;
 			width: $gradient-width;
 		}
+
+		> header {
+			margin: 10px 0;
+			position: relative;
+			z-index: 5;
+
+			> nav {
+				position: relative;
+
+				> ul {
+					@include contain-floats;
+					margin: 0;
+					padding: 0;
+					text-align: center;
+
+					> li {
+						display: inline-block;
+
+						&:first-child {
+							margin-left: 0;
+						}
+
+						> a {
+							color: inherit;
+							display: block;
+							font-size: 15px;
+							letter-spacing: 1px;
+							padding: 20px 35px;
+							text: {
+								decoration: none;
+								transform: uppercase;
+							};
+
+							&:hover,
+							&.active {
+								color: $gold;
+							}
+
+							> .logo {
+								vertical-align: -25px;
+								width: 120px;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -47,61 +94,20 @@ html {
 
 // TODO: Shouldn't this should be built in?
 #zooniverse-bar {
-	position: relative;
-	z-index: 2;
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: 10;
 }
 
 #app {
 	@include contain-floats;
+	@include transition(margin-top 0.25s ease-in-out);
 	margin: 0 auto $twelfth-width;
 	padding: 1px 0;
 	position: relative;
 	width: $full-width;
-
-	> header {
-		margin: 10px 0;
-
-		> nav {
-			position: relative;
-
-			> ul {
-				@include contain-floats;
-				margin: 0;
-				padding: 0;
-				text-align: center;
-
-				> li {
-					display: inline-block;
-
-					&:first-child {
-						margin-left: 0;
-					}
-
-					> a {
-						color: inherit;
-						display: block;
-						font-size: 15px;
-						letter-spacing: 1px;
-						padding: 20px 35px;
-						text: {
-							decoration: none;
-							transform: uppercase;
-						};
-
-						&:hover,
-						&.active {
-							color: $gold;
-						}
-
-						> .logo {
-							vertical-align: -25px;
-							width: 120px;
-						}
-					}
-				}
-			}
-		}
-	}
+	z-index: 3;
 
 	> #main {
 		@include contain-floats;
