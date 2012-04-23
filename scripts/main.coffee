@@ -8,9 +8,7 @@ ZooniverseBar = require 'lib/ZooniverseBar'
 new ZooniverseBar el: $('#zooniverse-bar')
 
 Pager = require 'lib/Pager'
-pagers = $('[data-page]').parent().map ->
-	new Pager
-		el: @
+pagers = (new Pager el: parent for parent in $('[data-page]').parent())
 
 Subject = require 'models/Subject'
 for i in [1..10] then Subject.create
