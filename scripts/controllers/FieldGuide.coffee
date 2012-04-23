@@ -15,11 +15,9 @@ class FieldGuide extends Spine.Controller
 		@elements = {}
 		@elements["> .#{name} > .field"] = "#{name}Field" for name in @fields
 
-		@el.html @template
-		@refreshElements()
+		@html @template
 
 	render: =>
-		# TODO: Update the map.
-		@["#{name}Field"].html @classifier.subject[name] for name in @fields
+		# TODO
 
 exports = FieldGuide

@@ -11,14 +11,6 @@
   top: 0;
   width: 100%;
 
-  &.active {
-    opacity: 1;
-
-    + #app {
-      margin-top: 340px;
-    }
-  }
-
   &:after {
     @include linear-gradient($black, transparentize($black, 1));
     content: " ";
@@ -29,6 +21,14 @@
     top: 0;
     width: 100%;
     z-index: 2;
+  }
+
+  &.active {
+    opacity: 1;
+
+    + #app {
+      margin-top: 340px;
+    }
   }
 }
 

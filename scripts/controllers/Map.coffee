@@ -9,8 +9,11 @@ class Map extends Spine.Controller
 
   scrollWheelZoom: false
 
-  apiKey: '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's. Is there a Zooniverse one?
-  tilesId: 35905
+  # Set these before use.
+  # Map = require 'controllers/map'
+  # Map::apiKey = '1234567890'
+  apiKey: ''
+  tilesId: 997
 
   map: null
 
