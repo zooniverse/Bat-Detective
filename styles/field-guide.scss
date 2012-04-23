@@ -1,15 +1,12 @@
 @import "constants";
 
 #field-guide {
-	> .samples {
-		> iframe {
-			border: 0;
-			height: 340px;
+	> .column {
+		> .map {
+			height: 330px;
 			width: 100%;
 		}
-	}
 
-	> .content {
 		> section {
 			font: {
 				size: 24px;

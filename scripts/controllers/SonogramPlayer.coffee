@@ -10,6 +10,7 @@ PLAYER_TEMPLATE = require 'lib/text!views/SonogramPlayer.html'
 
 class SonogramPlayer extends Spine.Controller
 	subject: null
+	fieldGuide: null
 
 	sound: null
 	playing: false
@@ -64,6 +65,8 @@ class SonogramPlayer extends Spine.Controller
 			@sound.load()
 
 		@sonogram.attr 'src', @subject.image
+
+		@fieldGuide?.setSubject @subject
 
 		@trigger 'change-subject'
 

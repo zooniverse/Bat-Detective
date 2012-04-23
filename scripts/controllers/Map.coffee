@@ -29,7 +29,7 @@ class Map extends Spine.Controller
       zoomControl: false      
 
   setCenter: (@latitude, @longitude) =>
-    @map.setView new Leaflet.LatLng @latitude, @longitude
+    @map.setView new Leaflet.LatLng(@latitude, @longitude), @map.getZoom()
 
   setZoom: (@zoom) =>
     @map.setZoom @zoom
