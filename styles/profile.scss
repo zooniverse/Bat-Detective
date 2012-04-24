@@ -1,6 +1,106 @@
+@import "constants";
+
 #profile {
+  $info-column-color: #f3f1ed;
+  $stats-column-color: #e7e5e0;
+  $profile-border-color: #d0cec9;
+
+  color: $black;
+
+  > .sign-in-or-up {}
+
   > .profile {
+    @include contain-floats;
+    @include vertical-stripe($info-column-color, $two-third-width, $stats-column-color);
     display: none;
+
+    > .map {
+      display: none;
+      height: 250px;
+    }
+
+    > .info {
+      @include box-sizing(border-box);
+      float: left;
+      padding: $gutter-width;
+      width: $two-third-width;
+    }
+
+    > .stats {
+      float: right;
+      position: relative;
+      width: $third-width + $gutter-width;
+      z-index: 2;
+
+      > section {
+        padding: $gutter-width;
+        border-bottom: 3px solid $profile-border-color;
+      }
+
+      > .recent {
+        display: none;
+      }
+
+      > .findings {}
+
+      > .associations {
+        > .groups {
+          display: none;
+        }
+      }
+
+      .value {
+        font-size: 30px;
+      }
+
+      h3 {
+        color: $red;
+        font: {
+          size: 14px;
+          weight: bold;
+        };
+      }
+    }
+  }
+
+  &.has-recents {
+    > .profile {
+      > .map {
+        display: block;
+      }
+
+      > .stats {
+        &:before {
+          bottom: 100%;
+          border: {
+            color: transparent transparent $stats-column-color;
+            style: solid;
+            width: 0 20px 20px;
+          };
+          content: " ";
+          height: 0;
+          left: $gutter-width;
+          position: absolute;
+          width: 0;
+        }
+
+        > .recent {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.has-associations {
+    > .profile > .stats > .associations {
+      .none {
+        display: none;
+      }
+
+      .groups {
+        display: block;
+      }
+    }
   }
 
   &.signed-in {

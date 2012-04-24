@@ -2,13 +2,18 @@ Spine = require 'Spine'
 
 User = require 'models/User'
 
+Map = require 'controllers/Map'
+
 template = require 'lib/text!views/Profile.html'
 
 class Profile extends Spine.Controller
   template: template
 
+  map: null
+
   elements:
     'header .username': 'username'
+    '.map': 'mapContainer'
     '.favorites': 'favoritesList'
     '.recent .location': 'recentLocation'
     '.recent .date': 'recentDate'
@@ -20,14 +25,20 @@ class Profile extends Spine.Controller
 
   constructor: ->
     super
+
     @html @template
-    User.bind 'change-current', @userChanged
+
+    @map = new Map el: @mapContainer, zoom: 6
+
+    User.bind 'sign-in', @userChanged
 
     @userChanged User.current
 
   userChanged: (user) =>
-    return unless user
-    user.bind 'change', @render
+    return unless User.current
+
+    User.current.bind 'change', @render
+
     @render()
 
   render: =>
@@ -40,5 +51,21 @@ class Profile extends Spine.Controller
     @favoritesList.empty()
     for favorite in User.current.favorites().all()
       @favoritesList.append "<li>#{favorite.subject.location}</li>" # TODO
+
+    recentClassification = User.current.recents().all()[0]
+
+    @el.toggleClass 'has-recents', recentClassification?
+    @map.resized()
+
+    if recentClassification?
+      @map.setCenter recentClassification.subject.latitude, recentClassification.subject.longitude
+      @recentLocation.html recentClassification.subject.location
+      @recentDate.html new Date # TODO
+
+
+    if false # TODO: Groups
+      groups = User.current.groups().all()
+      @el.toggleClass 'has-groups', groups.length > 0
+
 
 exports = Profile

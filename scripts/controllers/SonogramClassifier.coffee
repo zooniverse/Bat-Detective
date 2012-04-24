@@ -79,6 +79,8 @@ class SonogramClassifier extends SonogramPlayer
       subject: @subject
       classification: @classification
 
+    User.current?.trigger 'change'
+
     nextSubject = Subject.next()
 
     if nextSubject

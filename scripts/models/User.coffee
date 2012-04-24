@@ -13,9 +13,10 @@ class User extends Spine.Model
   @current: null
 
   @signIn: (@current) ->
-    @trigger 'change-current', @current
+    @trigger 'sign-in', @current
 
   @signOut: ->
+    @current?.unbind()
     @signIn null
 
 Recent.belongsTo 'user', User

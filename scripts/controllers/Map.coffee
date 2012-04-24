@@ -8,6 +8,7 @@ class Map extends Spine.Controller
   zoom: 5
 
   scrollWheelZoom: false
+  doubleClickZoom: false
 
   # Set these before use.
   # Map = require 'controllers/map'
@@ -25,13 +26,17 @@ class Map extends Spine.Controller
       zoom: @zoom
       layers: new Leaflet.TileLayer "http://{s}.tile.cloudmade.com/#{@apiKey}/#{@tilesId}/256/{z}/{x}/{y}.png"
       scrollWheelZoom: @scrollWheelZoom
+      doubleClickZoom: @doubleClickZoom
       attributionControl: false
-      zoomControl: false      
+      zoomControl: false
 
   setCenter: (@latitude, @longitude) =>
     @map.setView new Leaflet.LatLng(@latitude, @longitude), @map.getZoom()
 
   setZoom: (@zoom) =>
     @map.setZoom @zoom
+
+  resized: =>
+    @map.invalidateSize()
 
 exports = Map

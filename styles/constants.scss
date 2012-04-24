@@ -3,6 +3,7 @@
 $black: #000;
 $gray: #64635e;
 $white: #fff;
+$red: #8e1e00;
 $gold: #f5bd00;
 
 // Grid
@@ -56,6 +57,12 @@ $full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 		clear: both;
 		display: table;
 	}
+}
+
+@mixin vertical-stripe($left-color: transparent, $left-width: 50%, $right-color: transparent) {
+	background: -moz-linear-gradient(left, $left-color, $left-color $left-width, $right-color $left-width, $right-color);
+	background: -webkit-linear-gradient(left, $left-color, $left-color $left-width, $right-color $left-width, $right-color);
+	background: linear-gradient(left, $left-color, $left-color $left-width, $right-color $left-width, $right-color);
 }
 
 @mixin trim-child-margins {

@@ -6,7 +6,7 @@ User.signIn johnDoe
 
 Map = require 'controllers/Map'
 Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's. Does Zooniverse have one?
-Map::tilesId = 31408
+Map::tilesId = 61165
 map = new Map el: $('#home-map')
 
 ZooniverseBar = require 'lib/ZooniverseBar'
