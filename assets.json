@@ -13,7 +13,7 @@
 
 	{"http://code.jquery.com/jquery-1.7.1.js": "scripts/lib/jquery.js"},
 
-	{"https://github.com/maccman/spine.git": {"lib": "scripts/lib/spine"}},
+	{"https://github.com/maccman/spine/zipball/v1.0.6": {"lib": "scripts/lib/spine"}},
 
 	{"git://github.com/brian-c/route.git": {"Route.js": "scripts/lib/Route.js"}},
 
