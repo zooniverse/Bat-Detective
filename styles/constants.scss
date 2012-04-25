@@ -32,6 +32,7 @@ $full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 
 @mixin linear-gradient($start: transparent, $end: false, $position: top) {
 	@if $end == false {$end: $start;}
+	background: mix($start, $end);
 	background: -webkit-linear-gradient($position, $start, $end);
 	background: -moz-linear-gradient($position, $start, $end);
 	background: linear-gradient($position, $start, $end);
@@ -60,6 +61,7 @@ $full-width: ($twelfth-width * 12) + ($gutter-width * 11);
 }
 
 @mixin vertical-stripe($left-color: transparent, $left-width: 50%, $right-color: transparent) {
+	background: mix($left-color, $right-color);
 	background: -moz-linear-gradient(left, $left-color, $left-color $left-width, $right-color $left-width, $right-color);
 	background: -webkit-linear-gradient(left, $left-color, $left-color $left-width, $right-color $left-width, $right-color);
 	background: linear-gradient(left, $left-color, $left-color $left-width, $right-color $left-width, $right-color);
