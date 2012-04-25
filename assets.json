@@ -1,5 +1,6 @@
 [
 	{"git@github.com:zooniverse/Front-End-Assets.git": [
+		{"i18n/zooniverse-i18n.css": "styles/lib/zooniverse-i18n.css"},
 		{"zooniverse-bar/ZooniverseBar.js": "scripts/lib/ZooniverseBar.js"},
 		{"zooniverse-bar/zooniverse-bar.css": "styles/lib/zooniverse-bar.css"},
 		{"pager/Pager.js": "scripts/lib/Pager.js"}

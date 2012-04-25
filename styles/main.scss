@@ -1,3 +1,6 @@
+@import "lib/zooniverse-i18n.css";
+@import "lib/zooniverse-bar.css";
+
 @import "constants";
 @import "details";
 @import "home";
@@ -5,7 +8,6 @@
 @import "sonogram-classifier";
 @import "field-guide";
 @import "profile";
-@import "lib/zooniverse-bar.css";
 
 html {
 	background: url("background-noise.jpg"); // TODO: Gradient
@@ -84,21 +86,6 @@ html {
 			}
 		}
 	}
-}
-
-// Only show the current translation.
-[lang="en"] [lang="de"], [lang="en"] [lang="pl"],
-[lang="de"] [lang="en"], [lang="de"] [lang="pl"],
-[lang="pl"] [lang="en"], [lang="pl"] [lang="de"] {
-	display: none;
-}
-
-// TODO: Shouldn't this should be built in?
-#zooniverse-bar {
-	left: 0;
-	position: absolute;
-	top: 0;
-	z-index: 10;
 }
 
 #app {
