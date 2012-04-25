@@ -14,31 +14,26 @@ class Profile extends Spine.Controller
   elements:
     'header .username': 'username'
     '.map': 'mapContainer'
-    '.favorites': 'favoritesList'
+    '.favorites ul': 'favoritesList'
     '.recent .location': 'recentLocation'
     '.recent .date': 'recentDate'
     '.findings .scenes .count': 'scenesCount'
     '.findings .bats .count': 'batsCount'
     '.findings .insects .count': 'insectsCount'
     '.findings .machines .count': 'machinesCount'
-    '.associations .groups': 'groupsList'
+    '.groups ul': 'groupsList'
 
   constructor: ->
     super
 
     @html @template
-
     @map = new Map el: @mapContainer, zoom: 6
 
     User.bind 'sign-in', @userChanged
+    @userChanged()
 
-    @userChanged User.current
-
-  userChanged: (user) =>
-    return unless User.current
-
-    User.current.bind 'change', @render
-
+  userChanged: =>
+    User.current?.bind 'change', @render
     @render()
 
   render: =>
@@ -48,8 +43,11 @@ class Profile extends Spine.Controller
 
     @username.html User.current.username
 
+    favorites = User.current.favorites().all()
+
+    @el.toggleClass 'has-favorites', favorites.length > 0
     @favoritesList.empty()
-    for favorite in User.current.favorites().all()
+    for favorite in favorites
       @favoritesList.append "<li>#{favorite.subject.location}</li>" # TODO
 
     recentClassification = User.current.recents().all()[0]
@@ -61,7 +59,6 @@ class Profile extends Spine.Controller
       @map.setCenter recentClassification.subject.latitude, recentClassification.subject.longitude
       @recentLocation.html recentClassification.subject.location
       @recentDate.html new Date # TODO
-
 
     if false # TODO: Groups
       groups = User.current.groups().all()

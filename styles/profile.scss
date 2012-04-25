@@ -24,6 +24,12 @@
       float: left;
       padding: $gutter-width;
       width: $two-third-width;
+
+      > .favorites {
+        > ul {
+          display: none;
+        }
+      }
     }
 
     > .stats {
@@ -35,17 +41,17 @@
       > section {
         padding: $gutter-width;
         border-bottom: 3px solid $profile-border-color;
-      }
 
-      > .recent {
-        display: none;
-      }
-
-      > .findings {}
-
-      > .associations {
-        > .groups {
+        &.recent {
           display: none;
+        }
+
+        &.findings {}
+
+        &.groups {
+          > ul {
+            display: none;
+          }
         }
       }
 
@@ -59,6 +65,18 @@
           size: 14px;
           weight: bold;
         };
+      }
+    }
+  }
+
+  &.has-favorites {
+    > .profile > .info > .favorites {
+      > .none {
+        display: none;
+      }
+
+      > ul {
+        display: block;
       }
     }
   }
