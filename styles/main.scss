@@ -10,7 +10,7 @@
 @import "profile";
 
 html {
-	background: url("background-noise.jpg"); // TODO: Gradient
+	background: url("background-noise.jpg");
 	color: $white;
 	font: 12px Titillium, "Helvetica Neue", Arial, sans-serif;
 	overflow-y: scroll; // Force scroll bar to prevent jumping.
@@ -102,8 +102,6 @@ html {
 		margin-bottom: 20px;
 		position: relative;
 
-		// Main pages
-		// TODO: Height limit of inactive pages isn't quite right.
 		> section {
 			@include transition(#{
 				left 0.25s ease-in-out,
@@ -111,6 +109,7 @@ html {
 				opacity 0.25s ease-in-out
 			});
 			left: 0;
+			max-height: 100%;
 			opacity: 0;
 			overflow: hidden;
 			position: absolute;
