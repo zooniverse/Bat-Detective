@@ -103,6 +103,14 @@ $panel-column: $half-width - $panel-padding;
     }
   }
 
+  .sample {
+    text-align: center;
+
+    .sample-player {
+      @include details-button;
+    }
+  }
+
   > section {
     @include contain-floats;
     @include trim-child-margins;
@@ -134,6 +142,8 @@ $panel-column: $half-width - $panel-padding;
 
       // Secondary button-style navigation
       > nav {
+        margin: 1em 0;
+
         > ul {
           margin: 0;
           padding: 0;
@@ -161,8 +171,12 @@ $panel-column: $half-width - $panel-padding;
               display: block;
 
               > a {
-                font-weight: bold;
+                border-bottom: 1px dashed $paper-color-off;
                 color: $text-color-off;
+                display: inline-block;
+                font-weight: bold;
+                line-height: 1;
+                margin-bottom: 10px;
 
                 &.active {
                   color: $text-color;

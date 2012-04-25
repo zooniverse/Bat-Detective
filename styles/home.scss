@@ -2,7 +2,7 @@
 
 #home-map {
   @include transition(opacity 0.5s ease-in-out);
-  background: transparent;
+  background: $black;
   border-bottom: 1px solid transparentize($white, 0.67);
   height: 470px;
   left: 0;
