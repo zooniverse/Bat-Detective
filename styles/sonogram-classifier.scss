@@ -65,6 +65,7 @@
 				}
 
 				> .times {
+					background: transparentize($white, 0.99);
 					cursor: ew-resize;
 					left: 0;
 					pointer-events: none;
