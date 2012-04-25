@@ -177,9 +177,20 @@ $panel-column: $half-width - $panel-padding;
                 font-weight: bold;
                 line-height: 1;
                 margin-bottom: 10px;
+                position: relative;
 
                 &.active {
                   color: $text-color;
+
+                  &:before {
+                    color: $text-color-off;
+                    content: "\25C4";
+                    margin-right: 5px;
+                    font-size: 12px;
+                    position: absolute;
+                    right: 100%;
+                    top: 0;
+                  }
                 }
               }
             }
