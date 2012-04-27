@@ -46,6 +46,7 @@ html {
 
 			> nav {
 				position: relative;
+				-webkit-text-stroke: 0.5px; // WebKit draws Titillium really really thin.
 
 				> ul {
 					@include contain-floats;
