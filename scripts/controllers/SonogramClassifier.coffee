@@ -5,6 +5,7 @@ FrequencySelector = require 'controllers/FrequencySelector'
 
 User = require 'models/User'
 Subject = require 'models/Subject'
+Classification = require 'models/Classification'
 
 CLASSIFIER_TEMPLATE = require 'lib/text!views/SonogramClassifier.html'
 
@@ -32,6 +33,13 @@ class SonogramClassifier extends SonogramPlayer
     '.continue': 'continueContainer'
     SonogramPlayer::elements
 
+  constructor: ->
+    super
+    User.bind 'sign-in', =>
+      @classification?.destroy()
+      @classification = User.current?.classifications().create subject: @subject
+      @classification ||= new Classification subject: @subject
+
   setSubject: (@subject) =>
     selection.release() for selection in @selections or []
     @selections = []
@@ -39,6 +47,7 @@ class SonogramClassifier extends SonogramPlayer
     super
 
     @classification = User.current?.classifications().create subject: @subject
+    @classification ||= new Classification subject: @subject
     @continueContainer.removeClass 'active'
 
   addFrequencyRange: (e) =>

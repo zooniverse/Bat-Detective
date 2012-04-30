@@ -14,6 +14,10 @@ class Classification extends Spine.Model
   saveRemotely: =>
     console.info 'POSTing', @serialize()
 
+  destroy: ->
+    range.destroy() for range in @frequencyRanges().all()
+    super
+
 FrequencyRange.belongsTo 'classification', Classification
 
 exports = Classification

@@ -16,7 +16,7 @@ class Authentication extends Spine.Module
   @post = (message) ->
     @external.postMessage message, @host
 
-  @authenticate = (username, password) ->
+  @logIn = (username, password) ->
     @post login: {username, password}
 
   @logOut = ->

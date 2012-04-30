@@ -29,7 +29,7 @@ class SignInForm extends Spine.Controller
     e.preventDefault()
     @el.removeClass 'has-error'
     @errors.empty()
-    authentication.authenticate @usernameField.val(), @passwordField.val()
+    authentication.logIn @usernameField.val(), @passwordField.val()
 
   onError: (error) =>
     @el.removeClass 'signed-in'
