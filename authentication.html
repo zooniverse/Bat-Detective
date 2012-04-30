@@ -12,28 +12,28 @@
       var host = 'https://login.zooniverse.org/';
       if (!!~location.host.indexOf('localhost')) host = 'http://localhost:3000';
 
-      var commandMap = {
-        'authenticate': '/login',
-        'log-out': '/logout'
-      };
+      function postBack(command, response) {
+        parent.postMessage({command: command, response: response}, location.protocol + '//' + location.host);
+      }
 
       $(window).on('message', function(e) {
         var commands = e.originalEvent.data;
 
         for (var command in commands) {
-          var url = host + commandMap[command]
-          var params = commands[command];
+          var url = host + '/' + command
+          var params = commands[command] || {};
+
+          console.log('Getting', url, params);
 
           $.getJSON(url + '?callback=?', params, function(response) {
-            parent.postMessage({command: command, response: response}, location.protocol + '//' + location.host);
+            postBack(command, response);
           });
         }
       });
 
       // Check for current user.
       $.getJSON(host + '/current_user?callback=?', function(response) {
-        if (response.success !== true) return;
-        parent.postMessage({command: 'authenticate', response: response}, location.protocol + '//' + location.host);
+        if (response.success === true) postBack('login', response);
       })
     </script>
   </body>

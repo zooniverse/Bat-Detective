@@ -17,13 +17,15 @@ class Authentication extends Spine.Module
     @external.postMessage message, @host
 
   @authenticate = (username, password) ->
-    @post authenticate: {username, password}
+    @post login: {username, password}
 
   @logOut = ->
-    @post 'log-out': {}
+    @post logout: null
 
 # Event data comes as: {command: '', response: {}}
 $(window).on 'message', ({originalEvent: e}) ->
+  console.log 'Auth got message', e
+
   if e.data.response.success is true
     Authentication.trigger e.data.command, e.data.response
   else

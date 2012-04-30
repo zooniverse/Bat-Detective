@@ -1,6 +1,7 @@
 Spine = require 'Spine'
 
 User = require 'models/User'
+authentication = require 'authentication'
 
 Map = require 'controllers/Map'
 SignInForm = require 'controllers/SignInForm'
@@ -11,6 +12,9 @@ class Profile extends Spine.Controller
   template: template
 
   map: null
+
+  events:
+    'click header .sign-out': 'signOut'
 
   elements:
     '.sign-in-or-up': 'signInFormContainer'
@@ -67,5 +71,8 @@ class Profile extends Spine.Controller
       groups = User.current.groups().all()
       @el.toggleClass 'has-groups', groups.length > 0
 
+  signOut: (e) =>
+    e.preventDefault()
+    authentication.logOut()
 
 exports = Profile

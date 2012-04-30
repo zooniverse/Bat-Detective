@@ -28,13 +28,13 @@ Recent.belongsTo 'user', User
 Favorite.belongsTo 'user', User
 Classification.belongsTo 'user', User
 
-authentication.bind 'authenticate', (data) ->
+authentication.bind 'login', (data) ->
   User.signIn User.create
     username: data.name
     id: data.zooniverse_id
     apiKey: data.api_key
 
-authentication.bind 'log-out', ->
+authentication.bind 'logout', ->
   User.signOut()
 
 exports = User
