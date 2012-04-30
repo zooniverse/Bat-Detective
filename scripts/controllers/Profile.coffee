@@ -3,6 +3,7 @@ Spine = require 'Spine'
 User = require 'models/User'
 
 Map = require 'controllers/Map'
+SignInForm = require 'controllers/SignInForm'
 
 template = require 'lib/text!views/Profile.html'
 
@@ -12,6 +13,7 @@ class Profile extends Spine.Controller
   map: null
 
   elements:
+    '.sign-in-or-up': 'signInFormContainer'
     'header .username': 'username'
     '.map': 'mapContainer'
     '.favorites ul': 'favoritesList'
@@ -27,6 +29,7 @@ class Profile extends Spine.Controller
     super
 
     @html @template
+    @signInForm = new SignInForm el: @signInFormContainer
     @map = new Map el: @mapContainer, zoom: 6
 
     User.bind 'sign-in', @userChanged

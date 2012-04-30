@@ -1,13 +1,5 @@
 $ = require 'jQuery'
 
-# NOTE: Sign-in will eventually be built into the Zooniverse Bar.
-authentication = require 'authentication'
-$(document).on 'submit', '.zooniverse-sign-in', (e) ->
-	e.preventDefault()
-	username = $(e.target).find('[name="username"]').val()
-	password = $(e.target).find('[name="password"]').val()
-	authentication.authenticate username, password
-
 Map = require 'controllers/Map'
 Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's. Does Zooniverse have one?
 Map::tilesId = 61165

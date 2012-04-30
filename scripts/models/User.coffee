@@ -15,7 +15,9 @@ class User extends Spine.Model
 
   @current: null
 
-  @signIn: (@current) ->
+  @signIn: (newCurrent) ->
+    return if newCurrent is @current
+    @current = newCurrent
     @trigger 'sign-in', @current
 
   @signOut: ->
@@ -26,11 +28,13 @@ Recent.belongsTo 'user', User
 Favorite.belongsTo 'user', User
 Classification.belongsTo 'user', User
 
-authentication.on 'sign_in', (data) ->
-  User.signOut()
+authentication.bind 'authenticate', (data) ->
   User.signIn User.create
     username: data.name
     id: data.zooniverse_id
     apiKey: data.api_key
+
+authentication.bind 'log-out', ->
+  User.signOut()
 
 exports = User

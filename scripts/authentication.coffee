@@ -1,33 +1,32 @@
+Spine = require 'Spine'
 $ = require 'jQuery'
 
-eventHub = $({})
+class Authentication extends Spine.Module
+  @extend Spine.Events
 
-# Production
-authHost = 'http://login.zooniverse.org:3000'
-authPath = '/'
+  @host = "#{location.protocol}//#{location.host}"
+  @path = '/authentication.html'
 
-# Development
-if parseFloat(location.port) is 3475
-  authHost = "#{location.protocol}//#{location.host}"
-  authPath = '/mock-login.html'
+  @frame = $("<iframe src='#{@host}#{@path}'></iframe>")
+  @frame.css display: 'none'
+  @frame.appendTo 'body'
 
-frameMarkup = "<iframe src='#{authHost}#{authPath}' style='display: none'></iframe>"
-authenticator = $(frameMarkup).appendTo('body')[0].contentWindow
+  @external = @frame.get(0).contentWindow
 
+  @post = (message) ->
+    @external.postMessage message, @host
+
+  @authenticate = (username, password) ->
+    @post authenticate: {username, password}
+
+  @logOut = ->
+    @post 'log-out': {}
+
+# Event data comes as: {command: '', response: {}}
 $(window).on 'message', ({originalEvent: e}) ->
-  return unless e.origin is authHost
-  eventHub.trigger action, data for action, data of e.data
+  if e.data.response.success is true
+    Authentication.trigger e.data.command, e.data.response
+  else
+    Authentication.trigger 'error', e.data.response.message
 
-exports =
-  on: (event, callback) ->
-    eventHub.on event, (e, args...) ->
-      callback args...
-
-  off: (args...) ->
-    eventHub.off args...
-
-  authenticate: (username, password) ->
-    authenticator.postMessage authenticate: {username, password}, authHost
-
-  checkCurrent: ->
-    authenticator.postMessage 'current', authHost
+exports = Authentication
