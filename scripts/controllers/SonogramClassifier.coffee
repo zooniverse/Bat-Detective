@@ -83,7 +83,8 @@ class SonogramClassifier extends SonogramPlayer
     alert 'TODO: Go to talk!'
 
   nextSubject: (e) =>
-    @classification.save()
+    @classification.persist()
+
     User.current?.recents().create
       subject: @subject
       classification: @classification
