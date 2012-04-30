@@ -29,6 +29,12 @@
           });
         }
       });
+
+      // Check for current user.
+      $.getJSON(host + '/current_user?callback=?', function(response) {
+        if (response.success !== true) return;
+        parent.postMessage({command: 'authenticate', response: response}, location.protocol + '//' + location.host);
+      })
     </script>
   </body>
 </html>
