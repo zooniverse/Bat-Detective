@@ -91,11 +91,6 @@ class SonogramClassifier extends SonogramPlayer
 
     User.current?.trigger 'change'
 
-    nextSubject = Subject.next()
-
-    if nextSubject
-      @setSubject nextSubject
-    else
-      alert 'There are no more subjects to classify!'
+    Subject.fetch()
 
 exports = SonogramClassifier

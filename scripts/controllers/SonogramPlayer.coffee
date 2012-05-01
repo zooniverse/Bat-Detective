@@ -2,6 +2,8 @@ Spine = require 'Spine'
 $ = require 'jQuery'
 soundManager = require 'soundManager'
 
+Subject = require 'models/Subject'
+
 AudioButton = require 'controllers/AudioButton'
 translations = require 'translations'
 {delay, limit} = require 'util'
@@ -39,7 +41,8 @@ class SonogramPlayer extends Spine.Controller
 		@el.html @template
 		@refreshElements()
 
-		@setSubject @subject
+		Subject.bind 'fetch', @setSubject
+		@setSubject @subject if @subject?
 
 	delegateEvents: ->
 		super
