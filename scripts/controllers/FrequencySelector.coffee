@@ -124,6 +124,7 @@ class FrequencySelector extends Spine.Controller
 	select: =>
 		@el.addClass 'active'
 		@workflow.select()
+		@workflowContainer.addClass 'has-selection'
 
 	deselect: =>
 		# If there are no time range selections, assume the whole thing should be selected.
@@ -131,6 +132,7 @@ class FrequencySelector extends Spine.Controller
 
 		@el.removeClass 'active'
 		@workflow.deselect()
+		@workflowContainer.removeClass 'has-selection'
 
 	onDeleteClick: (e) =>
 		e.stopPropagation()

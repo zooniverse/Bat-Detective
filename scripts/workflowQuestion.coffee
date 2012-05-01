@@ -1,7 +1,7 @@
 {Question, Answer} = require 'controllers/Workflow'
 
 finish = new Question '',
-	new Answer 'Finish',
+	new Answer 'Next range',
 		{}
 		-> @model.trigger 'finish'
 

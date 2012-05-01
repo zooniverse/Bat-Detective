@@ -266,6 +266,11 @@
 					> .answer {}
 				}
 			}
+
+			&.has-selection + .continue {
+				opacity: 0.33;
+				pointer-events: none;
+			}
 		}
 
 		> .continue {
