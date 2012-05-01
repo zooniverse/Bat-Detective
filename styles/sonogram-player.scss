@@ -19,20 +19,25 @@
 
 			> .axis {
 				@include box-sizing(border-box);
+				@include transition(opacity 0.25s ease-in-out);
 				border-bottom: 1px solid;
 				color: transparentize($white, 0.25);
 				font-size: 9px;
 				height: 100%;
 				opacity: 0.33;
 				position: absolute;
-				right: 103%;
+				right: 101%;
 				top: 0;
-				width: 15px;
+				width: 25px;
+
+				&:hover {
+					opacity: 0.67;
+				}
 
 				> .space {
 					@include box-sizing(border-box);
 					border-top: 1px solid;
-					height: 8.33%;
+					height: 7.69%;
 					margin-left: 25%;
 					position: relative;
 					width: 50%;
