@@ -4,6 +4,8 @@ Map = require 'controllers/Map'
 
 TEMPLATE = require 'lib/text!views/FieldGuide.html'
 
+months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
 class FieldGuide extends Spine.Controller
 	subject: null
 
@@ -15,7 +17,6 @@ class FieldGuide extends Spine.Controller
 		'.map': 'mapContainer'
 		'.location > .field': 'locationField'
 		'.habitat > .field': 'habitatField'
-		'.commonSpecies > .field': 'commonSpeciesField'
 		'.date > .field': 'dateField'
 		'.time > .field': 'timeField'
 
@@ -35,6 +36,14 @@ class FieldGuide extends Spine.Controller
 
 		@locationField.html @subject.location
 		@habitatField.html @subject.habitat
-		@commonSpeciesField.html @subject.commonSpecies
+
+		captured = new Date @subject.captured
+
+		@dateField.html """
+			#{captured.getDate()}
+			#{months[captured.getMonth()]},
+			#{captured.getFullYear()}
+		"""
+		@timeField.html """#{captured.getHours()}:#{captured.getMinutes()}"""
 
 exports = FieldGuide

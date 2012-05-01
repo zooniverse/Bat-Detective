@@ -19,8 +19,7 @@ for i in [1..10] then Subject.create
 	longitude: (Math.random() * 20)
 	location: "Oxford, United Kingdom ##{i}"
 	habitat: 'Residential area'
-	datetime: +new Date()
-	commonSpecies: 'Vampire bats'
+	captured: +new Date()
 
 SonogramClassifier = require 'controllers/SonogramClassifier'
 FieldGuide = require 'controllers/FieldGuide'

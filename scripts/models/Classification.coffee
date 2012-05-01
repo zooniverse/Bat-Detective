@@ -10,7 +10,7 @@ class Classification extends Spine.Model
   serialize: =>
     user_id: @user().id
     # subject_ids: [@subject.id]
-    subject_ids: ['4f9efd7754558f074e000003']
+    subject_ids: ['4fa0034b54558f074e000006']
     annotations: (range.serialize() for range in @frequencyRanges().all())
 
   persist: =>
