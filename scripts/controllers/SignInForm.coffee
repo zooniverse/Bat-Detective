@@ -1,6 +1,6 @@
 Spine = require 'Spine'
 
-authentication = require 'authentication'
+Authentication = require 'Authentication'
 User = require 'models/User'
 
 SIGN_IN_FORM_TEMPLATE = require 'lib/text!views/SignInForm.html'
@@ -23,13 +23,13 @@ class SignInForm extends Spine.Controller
     @html @template
 
     User.bind 'sign-in', @onSignIn
-    authentication.bind 'error', @onError
+    Authentication.bind 'error', @onError
 
   onSubmit: (e) =>
     e.preventDefault()
     @el.removeClass 'has-error'
     @errors.empty()
-    authentication.logIn @usernameField.val(), @passwordField.val()
+    Authentication.logIn @usernameField.val(), @passwordField.val()
 
   onError: (error) =>
     @el.removeClass 'signed-in'
@@ -41,6 +41,6 @@ class SignInForm extends Spine.Controller
     @usernameField.add(@passwordField).val ''
 
   signOut: =>
-    authentication.logOut()
+    Authentication.logOut()
 
 exports = SignInForm
