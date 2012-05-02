@@ -14,6 +14,13 @@ class User extends Spine.Model
   @hasMany 'recents', Recent
   @hasMany 'favorites', Favorite
 
+  @fromJSON: (raw) ->
+    super
+      id: raw.id
+      zooniverseId: raw.zooniverse_id
+      username: raw.name
+      apiKey: raw.api_key
+
   @current: null
 
   @signIn: (newCurrent) ->
@@ -34,11 +41,7 @@ Favorite.belongsTo 'user', User
 Classification.belongsTo 'user', User
 
 Authentication.bind 'login', (data) ->
-  User.signIn User.create
-    id: data.id
-    zooniverseId: data.zooniverse_id
-    username: data.name
-    apiKey: data.api_key
+  User.signIn User.fromJSON(data)
 
 Authentication.bind 'logout', ->
   User.signOut()

@@ -10,24 +10,28 @@ class Subject extends Spine.Model
 
   @current: null
 
-  @deserialize: (raw) ->
-    id: raw.id
-    zooniverseId: raw.zooniverse_id
-    image: raw.location.image
-    audio: raw.location.audio
-    latitude: raw.coords[0]
-    longitude: raw.coords[1]
-    location: raw.metadata.location
-    habitat: raw.metadata.habitat
-    captured: +(new Date raw.metadata.captured_at)
+  @fromJSON: (raw) ->
+    processed =
+      id: raw.id
+      zooniverseId: raw.zooniverse_id
+      image: raw.location.image
+      audio: raw.location.audio
+      latitude: raw.coords[0]
+      longitude: raw.coords[1]
+      location: raw.metadata.location
+      habitat: raw.metadata.habitat
+      captured: +(new Date raw.metadata.captured_at)
+
+    super processed
 
   @fetch: ->
     url = "#{@server}/projects/#{@projectId}/workflows/#{@workflowId}/subjects"
     def = new $.Deferred
 
     @trigger 'fetching'
+
     $.getJSON url, (response) =>
-      def.resolve @create @deserialize response[0]
+      def.resolve @fromJSON response[0]
 
     def.then (subject) =>
       @trigger 'fetch', subject

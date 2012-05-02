@@ -8,7 +8,7 @@ class Classification extends Spine.Model
   @configure 'Classification', 'subject'
   @hasMany 'frequencyRanges', FrequencyRange
 
-  serialize: =>
+  toJSON: =>
     classification:
       subject_ids: [Subject.current.id]
       annotations: (range.serialize() for range in @frequencyRanges().all())
@@ -19,7 +19,7 @@ class Classification extends Spine.Model
     # Temporary:
     savePoint = "#{Subject.server}/projects/#{Subject.projectId}/workflows/#{Subject.workflowId}/classifications"
 
-    $.post savePoint, @serialize(), => @trigger 'persist'
+    $.post savePoint, @toJSON(), => @trigger 'persist'
 
   destroy: ->
     range.destroy() for range in @frequencyRanges().all()
