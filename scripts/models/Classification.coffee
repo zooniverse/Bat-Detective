@@ -1,6 +1,7 @@
 Spine = require 'Spine'
 $ = require 'jQuery'
 
+Subject = require 'models/Subject'
 FrequencyRange = require 'models/FrequencyRange'
 
 class Classification extends Spine.Model
@@ -9,17 +10,16 @@ class Classification extends Spine.Model
 
   serialize: =>
     classification:
-      subject_ids: [@subject.id]
+      subject_ids: [Subject.current.id]
       annotations: (range.serialize() for range in @frequencyRanges().all())
 
   persist: =>
     @trigger 'persisting'
 
     # Temporary:
-    ouroboros = "http://localhost:3000"
-    savePoint = "#{ouroboros}/projects/#{@subject.projectId}/workflows/#{@subject.workflowIds[0]}/classifications"
+    savePoint = "#{Subject.server}/projects/#{Subject.projectId}/workflows/#{Subject.workflowId}/classifications"
 
-    $.post savePoint, @serialize()
+    $.post savePoint, @serialize(), => @trigger 'persist'
 
   destroy: ->
     range.destroy() for range in @frequencyRanges().all()
