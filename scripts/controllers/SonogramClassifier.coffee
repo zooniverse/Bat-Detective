@@ -72,7 +72,6 @@ class SonogramClassifier extends SonogramPlayer
     @continueContainer.addClass 'active'
     @fetching = Subject.fetch()
 
-
   markAsFavorite: =>
     return unless User.current?
 

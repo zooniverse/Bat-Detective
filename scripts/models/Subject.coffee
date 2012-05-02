@@ -4,7 +4,7 @@ $ = require 'jQuery'
 Classification = require 'models/Classification'
 
 class Subject extends Spine.Model
-  @configure 'Subject', 'image', 'audio', 'latitude', 'longitude', 'location', 'habitat', 'captured'
+  @configure 'Subject', 'zooniverseId', 'projectId', 'workflowIds', 'image', 'audio', 'latitude', 'longitude', 'location', 'habitat', 'captured'
 
   @projectId: '4fa0321854558f2fbf000002'
   @workflowId: '4fa0321854558f2fbf000003'
@@ -13,6 +13,9 @@ class Subject extends Spine.Model
 
   @deserialize: (raw) ->
     id: raw.id
+    zooniverseId: raw.zooniverse_id
+    projectId: raw.project_id
+    workflowIds: raw.workflow_ids
     image: raw.location.image
     audio: raw.location.audio
     latitude: raw.coords[0]
@@ -34,7 +37,9 @@ class Subject extends Spine.Model
 
     def
 
-  @setCurrent: (subject) ->
-    @trigger 'change-current', subject
+  @setCurrent: (newCurrent) ->
+    return if newCurrent is @current
+    @current = newCurrent
+    @trigger 'change-current', newCurrent
 
 exports = Subject

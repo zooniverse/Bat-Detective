@@ -8,7 +8,7 @@ Classification = require 'models/Classification'
 authentication = require 'authentication'
 
 class User extends Spine.Model
-  @configure 'User', 'id', 'username', 'apiKey', 'finishedTutorial'
+  @configure 'User', 'zooniverseId', 'username', 'apiKey', 'finishedTutorial'
   @hasMany 'recents', Recent
   @hasMany 'favorites', Favorite
   @hasMany 'classifications', Classification
@@ -30,8 +30,9 @@ Classification.belongsTo 'user', User
 
 authentication.bind 'login', (data) ->
   User.signIn User.create
+    id: data.id
+    zooniverseId: data.zooniverse_id
     username: data.name
-    id: data.zooniverse_id
     apiKey: data.api_key
 
 authentication.bind 'logout', ->

@@ -8,19 +8,18 @@ class Classification extends Spine.Model
   @hasMany 'frequencyRanges', FrequencyRange
 
   serialize: =>
-    user_id: @user().id
-    # subject_ids: [@subject.id]
-    subject_ids: ['4fa0034b54558f074e000006']
-    annotations: (range.serialize() for range in @frequencyRanges().all())
+    classification:
+      subject_ids: [@subject.id]
+      annotations: (range.serialize() for range in @frequencyRanges().all())
 
   persist: =>
-    # Temporary:
-    ouroboros = 'http://localhost:3000'
-    projectId = '4f9efc7754558f05eb000002'
-    workflowId = '4f9efca154558f074e000001'
+    @trigger 'persisting'
 
-    $.post "#{ouroboros}/projects/#{projectId}/workflows/#{workflowId}/classifications",
-      classification: @serialize()
+    # Temporary:
+    ouroboros = "http://localhost:3000"
+    savePoint = "#{ouroboros}/projects/#{@subject.projectId}/workflows/#{@subject.workflowIds[0]}/classifications"
+
+    $.post savePoint, @serialize()
 
   destroy: ->
     range.destroy() for range in @frequencyRanges().all()
