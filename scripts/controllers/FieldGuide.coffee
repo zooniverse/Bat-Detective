@@ -1,5 +1,6 @@
 Spine = require 'Spine'
 
+Subject = require 'models/Subject'
 Map = require 'controllers/Map'
 
 TEMPLATE = require 'lib/text!views/FieldGuide.html'
@@ -29,7 +30,7 @@ class FieldGuide extends Spine.Controller
 
 		@map = new Map el: @mapContainer[0], latitude: 50, longitude: 0, zoom: 4
 
-		@setSubject @subject if @subject?
+		Subject.bind 'change-current', @setSubject
 
 	setSubject: (@subject) =>
 		@map.setCenter @subject.latitude, @subject.longitude

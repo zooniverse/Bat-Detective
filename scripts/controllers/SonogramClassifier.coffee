@@ -40,6 +40,8 @@ class SonogramClassifier extends SonogramPlayer
       @classification = User.current?.classifications().create subject: @subject
       @classification ||= new Classification subject: @subject
 
+    Subject.bind 'change-current', @setSubject
+
   setSubject: (@subject) =>
     selection.release() for selection in @selections or []
     @selections = []
@@ -68,6 +70,8 @@ class SonogramClassifier extends SonogramPlayer
   done: =>
     selection.deselect() for selection in @selections
     @continueContainer.addClass 'active'
+    @fetching = Subject.fetch()
+
 
   markAsFavorite: =>
     return unless User.current?
@@ -91,6 +95,7 @@ class SonogramClassifier extends SonogramPlayer
 
     User.current?.trigger 'change'
 
-    Subject.fetch()
+    @fetching.then (subject) =>
+      Subject.setCurrent subject
 
 exports = SonogramClassifier

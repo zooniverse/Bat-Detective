@@ -9,6 +9,8 @@ class Subject extends Spine.Model
   @projectId: '4fa0321854558f2fbf000002'
   @workflowId: '4fa0321854558f2fbf000003'
 
+  @current: null
+
   @deserialize: (raw) ->
     id: raw.id
     image: raw.location.image
@@ -21,8 +23,18 @@ class Subject extends Spine.Model
 
   @fetch: ->
     url = "http://localhost:3000/projects/#{@projectId}/workflows/#{@workflowId}/subjects"
+    def = new $.Deferred
 
+    @trigger 'fetching'
     $.getJSON url, (response) =>
-      @trigger 'fetch', @create @deserialize response
+      def.resolve @create @deserialize response[0]
+
+    def.then (subject) =>
+      @trigger 'fetch', subject
+
+    def
+
+  @setCurrent: (subject) ->
+    @trigger 'change-current', subject
 
 exports = Subject
