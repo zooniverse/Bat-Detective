@@ -136,6 +136,7 @@ class FrequencySelector extends Spine.Controller
 
 	onDeleteClick: (e) =>
 		e.stopPropagation()
+		@deselect()
 		@range.destroy()
 
 exports = FrequencySelector
