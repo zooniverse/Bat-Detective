@@ -29,8 +29,7 @@ class User extends Spine.Model
     @trigger 'sign-in', @current
 
   refreshRecents: =>
-    $.get "#{Subject.server}/projects/#{Subject.projectId}/users/#{User.current.id}/recents", (response) =>
-      console.log 'RECENTS:', response
+    # TODO
 
   @signOut: ->
     @current?.unbind()

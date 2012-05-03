@@ -1,9 +1,8 @@
 Spine = require 'Spine'
 
 Subject = require 'models/Subject'
-Classification = require 'models/Classification'
 
 class Recent extends Spine.Model
-  @configure 'Recent', 'subject', 'classification'
+  @configure 'Recent', 'subject', 'date'
 
 exports = Recent
