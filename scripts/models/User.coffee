@@ -28,8 +28,26 @@ class User extends Spine.Model
     @current = newCurrent
     @trigger 'sign-in', @current
 
+    @current.refreshRecents()
+
   refreshRecents: =>
-    # TODO
+    @trigger 'refreshing-recents'
+
+    $.getJSON "#{Subject.server}/projects/#{Subject.projectId}/users/#{User.current.id}/recents", (response) =>
+      for recent in response
+        try
+          console.log recent
+          @recents().find recent.id
+        catch error
+          @recents().create
+            id: recent.id
+            subject: recent.subjects[0].id
+            latitude: recent.subjects[0].coords[0]
+            longitude: recent.subjects[0].coords[1]
+            createdAt: +(new Date recent.created_at)
+
+      @trigger 'refresh-recents'
+      @trigger 'change'
 
   @signOut: ->
     @current?.unbind()

@@ -21,8 +21,8 @@ class Profile extends Spine.Controller
     'header .username': 'username'
     '.map': 'mapContainer'
     '.favorites ul': 'favoritesList'
-    '.recent .location': 'recentLocation'
-    '.recent .date': 'recentDate'
+    '.recent .location .value': 'recentLocation'
+    '.recent .date .value': 'recentDate'
     '.findings .scenes .count': 'scenesCount'
     '.findings .bats .count': 'batsCount'
     '.findings .insects .count': 'insectsCount'
@@ -57,15 +57,15 @@ class Profile extends Spine.Controller
     for favorite in favorites
       @favoritesList.append "<li>#{favorite.subject.location}</li>" # TODO
 
-    recentClassification = User.current.recents().all()[0]
+    recentClassification = User.current.recents().first()
 
     @el.toggleClass 'has-recents', recentClassification?
     @map.resized()
 
     if recentClassification?
-      @map.setCenter recentClassification.subject.latitude, recentClassification.subject.longitude
-      @recentLocation.html recentClassification.subject.location
-      @recentDate.html new Date # TODO
+      @map.setCenter recentClassification.latitude, recentClassification.longitude
+      @recentLocation.html recentClassification.subject # TODO
+      @recentDate.html (new Date recentClassification.createdAt).toString().split(' ')[1..3].join ' '
 
     if false # TODO: Groups
       groups = User.current.groups().all()
