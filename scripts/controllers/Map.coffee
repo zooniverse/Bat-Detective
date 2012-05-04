@@ -11,8 +11,6 @@ class Map extends Spine.Controller
   doubleClickZoom: false
 
   # Set these before use.
-  # Map = require 'controllers/map'
-  # Map::apiKey = '1234567890'
   apiKey: ''
   tilesId: 997
 

@@ -42,6 +42,7 @@ class User extends Spine.Model
           @recents().create
             id: recent.id
             subject: recent.subjects[0].id
+            place: recent.subjects[0].metadata.location
             latitude: recent.subjects[0].coords[0]
             longitude: recent.subjects[0].coords[1]
             createdAt: +(new Date recent.created_at)

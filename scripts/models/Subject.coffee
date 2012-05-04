@@ -2,7 +2,7 @@ Spine = require 'Spine'
 $ = require 'jQuery'
 
 class Subject extends Spine.Model
-  @configure 'Subject', 'zooniverseId', 'image', 'audio', 'latitude', 'longitude', 'location', 'habitat', 'captured'
+  @configure 'Subject', 'zooniverseId', 'image', 'audio', 'latitude', 'longitude', 'place', 'habitat', 'captured'
 
   @server: 'http://localhost:3000'
   @projectId: '4fa0321854558f2fbf000002'
@@ -18,7 +18,7 @@ class Subject extends Spine.Model
       audio: raw.location.audio
       latitude: raw.coords[0]
       longitude: raw.coords[1]
-      location: raw.metadata.location
+      place: raw.metadata.place || raw.metadata.location
       habitat: raw.metadata.habitat
       captured: +(new Date raw.metadata.captured_at)
 

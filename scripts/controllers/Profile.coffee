@@ -64,7 +64,7 @@ class Profile extends Spine.Controller
 
     if recentClassification?
       @map.setCenter recentClassification.latitude, recentClassification.longitude
-      @recentLocation.html recentClassification.subject # TODO
+      @recentLocation.html recentClassification.place
       @recentDate.html (new Date recentClassification.createdAt).toString().split(' ')[1..3].join ' '
 
     if false # TODO: Groups
