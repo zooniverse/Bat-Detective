@@ -88,13 +88,8 @@ class SonogramClassifier extends SonogramPlayer
   nextSubject: (e) =>
     @classification.persist()
 
-    User.current?.recents().create
-      subject: @subject
-      classification: @classification
-
-    User.current?.trigger 'change'
-
     @fetching.then (subject) =>
       Subject.setCurrent subject
+      User.current?.refreshRecents()
 
 exports = SonogramClassifier

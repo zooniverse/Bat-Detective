@@ -7,7 +7,6 @@ Map = require 'controllers/Map'
 SignInForm = require 'controllers/SignInForm'
 
 template = require 'lib/text!views/Profile.html'
-favoriteTemplate = require 'lib/text!views/ProfileFavorite.html'
 
 class Profile extends Spine.Controller
   template: template

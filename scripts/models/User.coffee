@@ -37,7 +37,6 @@ class User extends Spine.Model
       for recent in response
         # NOTE: This is horrible. It's not even in the right place.
         try
-          console.log recent
           @recents().find recent.id
         catch error
           @recents().create
