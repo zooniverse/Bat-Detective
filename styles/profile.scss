@@ -22,12 +22,39 @@
     > .info {
       @include box-sizing(border-box);
       float: left;
-      padding: $gutter-width;
+      padding: $gutter-width ($gutter-width * 2);
       width: $two-third-width;
 
       > .favorites {
         > ul {
           display: none;
+          margin: 0;
+          padding: 0;
+
+          > li {
+            @include contain-floats;
+            border-top: 1px solid transparentize($gray, 0.5);
+            margin-bottom: $gutter-width;
+            padding-top: $gutter-width;
+            display: block;
+
+            > h4 {
+              font-size: 20px;
+              letter-spacing: 0;
+              margin: 0;
+              text-transform: none;
+            }
+
+            > img {
+              float: left;
+              margin-right: $gutter-width;
+              width: 200px;
+            }
+
+            > .social {
+              float: right;
+            }
+          }
         }
       }
     }
@@ -44,9 +71,23 @@
 
         &.recent {
           display: none;
+
+          > .location {
+            font-size: 30px;
+          }
         }
 
-        &.findings {}
+        &.findings {
+          font-weight: bold;
+
+          > div {
+            margin-bottom: $gutter-width / 2;
+
+            > .value {
+              font-size: 30px;
+            }
+          }
+        }
 
         &.groups {
           > ul {
@@ -54,18 +95,19 @@
           }
         }
       }
+    }
 
-      .value {
-        font-size: 30px;
-      }
+    h3 {
+      color: $red;
+      font: {
+        size: 14px;
+        weight: bold;
+      };
+    }
 
-      h3 {
-        color: $red;
-        font: {
-          size: 14px;
-          weight: bold;
-        };
-      }
+    a {
+      color: inherit;
+      border-bottom: 1px dotted transparentize($gray, 0.5);
     }
   }
 

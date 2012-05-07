@@ -35,6 +35,7 @@ class User extends Spine.Model
 
     $.getJSON "#{Subject.server}/projects/#{Subject.projectId}/users/#{User.current.id}/recents", (response) =>
       for recent in response
+        # NOTE: This is horrible. It's not even in the right place.
         try
           console.log recent
           @recents().find recent.id
@@ -42,6 +43,8 @@ class User extends Spine.Model
           @recents().create
             id: recent.id
             subject: recent.subjects[0].id
+            image: recent.subjects[0].location.image
+            audio: recent.subjects[0].location.audio
             place: recent.subjects[0].metadata.location
             latitude: recent.subjects[0].coords[0]
             longitude: recent.subjects[0].coords[1]

@@ -7,6 +7,7 @@ Map = require 'controllers/Map'
 SignInForm = require 'controllers/SignInForm'
 
 template = require 'lib/text!views/Profile.html'
+favoriteTemplate = require 'lib/text!views/ProfileFavorite.html'
 
 class Profile extends Spine.Controller
   template: template
@@ -50,12 +51,29 @@ class Profile extends Spine.Controller
 
     @username.html User.current.username
 
-    favorites = User.current.favorites().all()
+    # NOTE: Temporarily using recents as favorites!
+    favorites = User.current.recents().all()
 
     @el.toggleClass 'has-favorites', favorites.length > 0
     @favoritesList.empty()
     for favorite in favorites
-      @favoritesList.append "<li>#{favorite.subject.location}</li>" # TODO
+      favoriteItem = $("<li></li>")
+
+      # TODO: Figure out the right URLs with which to socialize.
+      favoriteItem.append """
+        <div class="social">
+          <iframe src="//platform.twitter.com/widgets/tweet_button.html?url=#{favorite.image}" allowtransparency="true" frameborder="0" scrolling="no" style="width: 80px; height: 20px;"></iframe>
+          <br />
+          <iframe src="//www.facebook.com/plugins/like.php?href=#{favorite.image}&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe>
+        </div>
+      """
+
+      favoriteItem.append "<img src='#{favorite.image}' class='framed' />"
+
+      favoriteItem.append "<h4>#{favorite.place}</h4>"
+      favoriteItem.append (new Date favorite.createdAt).toString().split(' ')[1..3].join ' '
+
+      @favoritesList.append favoriteItem
 
     recentClassification = User.current.recents().first()
 
