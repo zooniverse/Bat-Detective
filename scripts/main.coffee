@@ -21,6 +21,18 @@ SonogramClassifier = require 'controllers/SonogramClassifier'
 classifier = new SonogramClassifier
 	el: $('#sound-classifier')
 
+Tutorial = require 'lib/Tutorial'
+tutorialSteps = require 'tutorialSteps'
+tutorial = new Tutorial
+  el: '[data-page="classify"]'
+  steps: tutorialSteps
+
+Subject = require 'models/Subject'
+if true
+  Subject.setCurrent Subject.forTutorial
+  tutorial.start()
+
+
 FieldGuide = require 'controllers/FieldGuide'
 fieldGuide = new FieldGuide
 	el: $('#field-guide')
@@ -32,9 +44,8 @@ profile = new Profile
 AudioButton = require 'controllers/AudioButton'
 new AudioButton el: button for button in $('[data-audio-src]')
 
-Subject = require 'models/Subject'
 Subject.fetch().then (subject) =>
-	Subject.setCurrent subject
+	Subject.setCurrent subject unless Subject.current is Subject.forTutorial
 
 Route = require 'lib/Route'
 Route.checkRoutes()
@@ -48,4 +59,5 @@ window.Favorite = require 'models/Favorite'
 
 window.homeMap = homeMap
 window.classifier = classifier
+window.tutorial = tutorial
 window.profile = profile

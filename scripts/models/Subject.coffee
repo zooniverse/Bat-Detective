@@ -43,4 +43,13 @@ class Subject extends Spine.Model
     @current = newCurrent
     @trigger 'change-current', newCurrent
 
+Subject.forTutorial = Subject.create
+  image: 'example-data/images/9.jpg'
+  audio: 'example-data/audio/9.jpg'
+  latitude: 0
+  longitude: 0
+  place: 'Example'
+  habitat: 'Example'
+  captured: +(new Date)
+
 exports = Subject
