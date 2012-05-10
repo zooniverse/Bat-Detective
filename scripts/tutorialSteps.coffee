@@ -116,7 +116,7 @@ exports = [
     ]
 
   new Step
-    style: left: '33%', top: '25%' width: '38%'
+    style: left: '33%', top: '25%', width: '38%'
     content: [
       'Great job! Click "next sound" to get searching on your own!'
       'If you still need help, check out our <a href="#">video introduction</a>.'
