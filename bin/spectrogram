@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-# NOTE: This'll choke on weird filenames. Try `rename --sanitize *.wav` first.
-
 # Create a gradient color map.
 # See http://www.imagemagick.org/discourse-server/viewtopic.php?f=1&t=13181
 convert \( -size 1x1 xc:black xc:red xc:yellow xc:white +append \) -filter cubic -resize 256x1! -scale 256x20! .colors.png
