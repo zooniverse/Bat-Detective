@@ -3,17 +3,19 @@
 # NOTE: This'll choke on weird filenames. Try `rename --sanitize *.wav` first.
 
 # Create a gradient color map.
+# See http://www.imagemagick.org/discourse-server/viewtopic.php?f=1&t=13181
 convert \( -size 1x1 xc:black xc:red xc:yellow xc:white +append \) -filter cubic -resize 256x1! -scale 256x20! .colors.png
 
 for file in "$@"
 do
 	echo "=> Generating spectrogram for $file"
 
-	# Generate a double-height spectrogram (220KHz).
+	# Generate a double-height spectrogram (Y-axis range is 0-220KHz).
+	# Options described at http://sox.sourceforge.net/sox.html
 	sox "$file" .temp.wav spectrogram -r -x 720 -y 1025 -z 80 -o .temp.png
 	rm .temp.wav
 
-	# Crop to normal height (110KHz).
+	# Crop to a useful size (Y-axis range is 0-110KHz).
 	convert .temp.png -crop 100%x50%+0+512 .temp.half.png
 	rm .temp.png
 

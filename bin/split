@@ -1,16 +1,15 @@
 #!/usr/bin/env sh
 
-# Splitting info:
+# Splitting details (see "bonus example 8"):
 # http://digitalcardboard.com/blog/2009/08/25/the-sox-of-silence/
 
 # Make sure you're splitting a mono file.
+# See http://www.nesono.com/node/275
 # $ sox stereo.wav left.wav remix 1
 # $ sox stereo.wav right.wav remix 2
-#
-# http://www.nesono.com/node/275
 
 for file in "$@"
 do
 	echo "=> Splitting $file on silences"
-	sox $file $file silence 1 0.25 1% 1 0.25 1% : newfile : restart
+	sox "$file" "$file" silence 1 0.25 1% 1 0.25 1% : newfile : restart
 done
