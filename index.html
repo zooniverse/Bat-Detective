@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Bat Detective</title>
+
+    <link href="./styles/zooniverse/main.css" rel="stylesheet" />
+    <link href="./styles/main.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+      <script src="./scripts/lib/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="bat-detective app">
+      <header>
+        <h1>Bat Detective</h1>
+        <nav>
+          <ul>
+            <li><a href="#!/home">Home</a></li>
+            <li><a href="#!/about">About</a></li>
+            <li><a href="#!/classify">Classify</a></li>
+            <li><a href="#!/profile">Profile</a></li>
+            <li><a href="http://talk.batdetective.org/" target="_blank">Talk</a></li>
+            <li><a href="http://blog.batdetective.org/" target="_blank">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="main">
+        <section data-page="home" class="active">
+          <p>Home</p>
+        </section>
+
+        <section data-page="about">
+          <p>About</p>
+        </section>
+
+        <section data-page="classify">
+          <p>Classify</p>
+        </section>
+
+        <section data-page="profile">
+          <p>Profile</p>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      var development = '<script src="scripts/lib/require.js" data-main="scripts/main"><'+'/script>';
+      var production = '<script src="scripts/build/seafloorExplorer.js"><'+'/script>';
+
+      // Being on port 80 loads the production JS.
+      var port80 = +location.port === 80;
+      // But any URL with ?debug=1 loads development JS.
+      var debug = ~location.search.indexOf('debug=1');
+      // And any URL with ?build=1 loads production JS.
+      var build = ~location.search.indexOf('build=1');
+
+      document.write((port80 && debug) || (!port80 && !build) ? development : production);
+    </script>
+  </body>
+</html>

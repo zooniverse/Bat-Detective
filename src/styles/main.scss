@@ -1,0 +1,66 @@
+@import 'grid';
+@import 'colors';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.zooniverse-top-bar > div {
+  width: $full-width + 34;
+}
+
+.bat-detective.app {
+  > header {
+    h1 {
+      > a {
+        &.active {}
+      }
+    }
+
+    nav {
+      > ul {
+        > li {
+          > a {}
+        }
+      }
+    }
+  }
+
+  > .main {
+    > [data-page] {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    a {
+      &:link {}
+
+      &:visited {}
+
+      &:hover {}
+
+      &:active {}
+    }
+
+    p {}
+
+    ul {
+      > li {}
+    }
+
+    h1 {}
+
+    h2 {}
+
+    h3 {}
+
+    h4 {}
+  }
+}
