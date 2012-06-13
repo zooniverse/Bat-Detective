@@ -1,12 +1,39 @@
 @import 'grid';
 @import 'colors';
+@import "lib/bourbon/bourbon";
 
 html {
+  background: #222 url("background-noise.jpg");
+  color: $white;
+  font: 12px "Open Sans", "Helvetica Neue", Arial, sans-serif;
   height: 100%;
+  overflow-y: scroll; // Force scroll bar to prevent jumping.
 }
 
 body {
   height: 100%;
+  margin: 0;
+  padding-top: 15px;
+
+  &:before {
+    $barely-white: transparentize($white, 0.90);
+    $not-white: transparentize($white, 1);
+
+    $gradient-width: $full-width * 1.5;
+    $gradient-half-width: $gradient-width / 2;
+
+   @include radial-gradient($barely-white, $not-white, $not-white);
+    content: " ";
+    height: $gradient-width;
+    left: 50%;
+    margin: {
+      left: -$gradient-half-width;
+      top: -$gradient-half-width;
+    };
+    position: fixed;
+    top: 50%;
+    width: $gradient-width;
+  }
 }
 
 .zooniverse-top-bar > div {
