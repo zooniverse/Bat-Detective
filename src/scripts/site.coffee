@@ -8,6 +8,10 @@ define (require, exports, module) ->
 
   Classifier = require 'controllers/Classifier'
   tutorialSteps = require 'tutorialSteps'
+
+  Map = require 'zooniverse/controllers/Map'
+  Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's.
+  Map::tilesId = 61165
   Profile = require 'controllers/Profile'
 
   config.set
@@ -46,6 +50,9 @@ define (require, exports, module) ->
               ]
           ]
       ]
+
+    homeMap: new Map
+      el: '.home-map'
 
     profile: new Profile
       el: '[data-page="profile"]'
