@@ -1,0 +1,139 @@
+$info-column-color: #f3f1ed;
+$stats-column-color: #e7e5e0;
+$profile-border-color: #d0cec9;
+
+.bat-detective.app [data-page="profile"] {
+  color: $black;
+
+  > .profile {
+    @include clearfix;
+    @include linear-gradient(left, $info-column-color $two-thirds, $stats-column-color $two-thirds);
+    display: none;
+
+    h3 {
+      color: $red;
+      font: {
+        size: 14px;
+        weight: bold;
+      };
+    }
+
+    a {
+      color: inherit;
+      border-bottom: 1px dotted transparentize($gray, 0.5);
+    }
+
+    .map {
+      display: none;
+      height: 250px;
+    }
+
+    > .info {
+      @include box-sizing(border-box);
+      float: left;
+      padding: $gutter-size ($gutter-size * 2);
+      width: $two-thirds;
+
+      > .favorites {
+        margin: ($gutter-size * 2) 0;
+
+        > ul {
+          margin: 0;
+          padding: 0;
+
+          > li {
+            @include clearfix;
+            border-top: 1px solid transparentize($gray, 0.5);
+            margin-bottom: $gutter-size;
+            padding-top: $gutter-size;
+            display: block;
+
+            > h4 {
+              font-size: 20px;
+              letter-spacing: 0;
+              margin: 0;
+              text-transform: none;
+            }
+
+            > img {
+              float: left;
+              margin-right: $gutter-size;
+              width: 200px;
+            }
+
+            > .social {
+              float: right;
+            }
+          }
+        }
+      }
+    }
+
+    > .stats {
+      float: right;
+      position: relative;
+      width: $one-third + $gutter-size;
+      z-index: 2;
+
+      > section {
+        padding: $gutter-size;
+        border-bottom: 3px solid $profile-border-color;
+
+        &.recent {
+          display: none;
+
+          > .location {
+            font-size: 30px;
+          }
+        }
+
+        &.findings {
+          font-weight: bold;
+
+          > div {
+            margin-bottom: $gutter-size / 2;
+
+            > .value {
+              font-size: 30px;
+            }
+          }
+        }
+
+        &.groups {
+          > ul {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &.has-recents {
+    > .profile {
+      .map {
+        display: block;
+      }
+
+      .stats {
+        &:before {
+          bottom: 100%;
+          border: {
+            color: transparent transparent $stats-column-color;
+            style: solid;
+            width: 0 20px 20px;
+          };
+          content: " ";
+          height: 0;
+          left: $gutter-size;
+          position: absolute;
+          width: 0;
+        }
+      }
+    }
+  }
+
+  &.signed-in {
+    > .login-form { display: none; }
+    > .profile { display: block; }
+  }
+}
