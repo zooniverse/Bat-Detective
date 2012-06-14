@@ -1,0 +1,30 @@
+.bat-detective.app [data-page="home"] {
+  h2 {
+    font: {
+      size: 44px;
+      weight: bold;
+    };
+    text-shadow: 0 1px 1px $black;
+
+    a {
+      @include transition(color 0.25s ease-in-out);
+      color: inherit;
+      position: relative;
+      white-space: nowrap;
+
+      &:hover {
+        color: $gold;
+      }
+
+      &:after {
+        border-bottom: 1px dashed transparentize($white, 0.75);
+        bottom: 5px;
+        content: " ";
+        height: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+}
