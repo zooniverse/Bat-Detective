@@ -119,7 +119,7 @@ define (require, exports, module) ->
       @playerTimeUpdated()
 
     seekEnd: (e) =>
-      retrun if not @seeking
+      return if not @seeking
 
       @seeking = false
       @el.removeClass 'seeking'
