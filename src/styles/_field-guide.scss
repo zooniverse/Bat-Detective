@@ -1,0 +1,29 @@
+.bat-detective.app .field-guide {
+  .spectrogram-player {
+    .spectrogram {
+      img {
+        @include box-sizing(border-box);
+        border: 10px solid $white;
+        box-shadow: 0 3px 3px -3px $black;
+      }
+
+      .seek-line {
+        bottom: 13px;
+        top: 13px;
+      }
+    }
+
+    .seek {
+      display: none;
+    }
+
+    .controls {
+      button {
+      }
+    }
+
+    &.loading {
+      opacity: 0.75;
+    }
+  }
+}

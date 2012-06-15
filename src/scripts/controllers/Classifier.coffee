@@ -1,9 +1,12 @@
 define (require, exports, module) ->
-  BaseClassifier = require 'zooniverse/controllers/Classifier'
   $ = require 'jQuery'
+
+  BaseClassifier = require 'zooniverse/controllers/Classifier'
 
   template = require 'views/Classifier'
   tutorialSteps = require 'tutorialSteps'
+
+  FieldGuide = require 'controllers/FieldGuide'
 
   class Classifier extends BaseClassifier
     template: template
@@ -19,5 +22,8 @@ define (require, exports, module) ->
 
     constructor: ->
       super
+
+      @fieldGuide = new FieldGuide
+      @append @fieldGuide
 
   module.exports = Classifier

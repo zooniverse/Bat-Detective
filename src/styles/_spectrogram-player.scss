@@ -1,16 +1,15 @@
-.spectrogram-player {
+.bat-detective.app .spectrogram-player {
   @include user-select(none);
-  outline: 1px dashed yellow;
-
-
   .spectrogram {
     position: relative;
 
-    img {}
+    img {
+      display: block;
+    }
 
     .seek-line {
-      background: white;
-      height: 100%;
+      background: $white;
+      bottom: 0;
       left: 0;
       position: absolute;
       top: 0;
@@ -19,21 +18,19 @@
   }
 
   .seek {
-    $seek-size: 20px;
-
-    height: $seek-size;
+    height: 30;
     position: relative;
 
     .track {
-      height: 100%;
+      bottom: 0;
       left: 0;
       position: absolute;
+      right: 0;
       top: 0;
-      width: 100%;
 
       .fill {
-        background: gray;
-        height: 100%;
+        background: transparentize($white, 0.5);
+        bottom: 0;
         left: 0;
         position: absolute;
         top: 0;
@@ -42,13 +39,13 @@
 
       .thumb {
         background: transparent;
-        cursor: grab;
-        height: 100%;
+        bottom: 0;
+        cursor: move;
         left: 0;
-        margin-left: -($seek-size / 2);
+        margin-left: -15;
         position: absolute;
         top: 0;
-        width: $seek-size;
+        width: 30;
       }
     }
   }
@@ -64,25 +61,24 @@
   }
 
   &:focus {
-    background: white;
+    outline: 1px dotted;
   }
 
-  &.loading {
-    outline: 1px solid yellow;
-  }
+  &.loading {}
 
-  &.loaded {
-    outline: 1px solid red;
-  }
+  &.loaded {}
 
   &.playing {
-    outline: 1px solid green;
+    .controls {
+      .play {
+        display: none;
+      }
 
-    .controls .play { display: none;}
-    .controls .pause { display: inline-block;}
+      .pause {
+        display: inline-block;
+      }
+    }
   }
 
-  &.seeking {
-    outline: 1px solid blue;
-  }
+  &.seeking {}
 }

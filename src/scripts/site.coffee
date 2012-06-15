@@ -14,8 +14,6 @@ define (require, exports, module) ->
   Map::tilesId = 61165
   Profile = require 'controllers/Profile'
 
-  SpectrogramPlayer = require 'controllers/SpectrogramPlayer'
-
   config.set
     name: 'Bat Detective'
     slug: 'bat-detective'
@@ -40,9 +38,9 @@ define (require, exports, module) ->
             new Workflow
               id: 'WORKFLOW ID'
 
-              # controller: new Classifier
-              #   el: '[data-page="classify"]'
-              #   tutorialSteps: tutorialSteps
+              controller: new Classifier
+                el: '[data-page="classify"]'
+                # tutorialSteps: tutorialSteps
 
               tutorialSubjects: [
                 new Subject
@@ -53,19 +51,8 @@ define (require, exports, module) ->
           ]
       ]
 
-    demoPlayer: new SpectrogramPlayer
-      image: 'examples/images/bat-feeding-buzz.jpg'
-      audio: 'examples/audio/bat-feeding-buzz.mp3'
-
     # homeMap: new Map
     #   el: '.home-map'
 
     # profile: new Profile
     #   el: '[data-page="profile"]'
-
-  config.demoPlayer.el.appendTo 'body'
-  config.demoPlayer.el.css
-    left: 0
-    position: 'absolute'
-    top: 0
-    zIndex: '20'

@@ -19,7 +19,7 @@ $panel-column: $one-half - $panel-padding;
     weight: bold;
   };
   letter-spacing: 1px;
-  padding: 8px 20px 5px;
+  padding: 5px 20px 5px;
   text: {
     decoration: none;
     shadow: 0 1px 0 $white;
@@ -102,14 +102,6 @@ $panel-column: $one-half - $panel-padding;
     }
   }
 
-  .sample {
-    text-align: center;
-
-    .sample-player {
-      @include details-button;
-    }
-  }
-
   > section {
     @include clearfix;
     background: $paper-color;
@@ -124,6 +116,10 @@ $panel-column: $one-half - $panel-padding;
       &:first-child {
         margin-top: 0;
       }
+    }
+
+    button {
+      @include details-button;
     }
 
     > .column,
@@ -155,7 +151,6 @@ $panel-column: $one-half - $panel-padding;
       }
 
       > section {
-
         // Tertiary list-style navigation
         > nav {
           > ul {
