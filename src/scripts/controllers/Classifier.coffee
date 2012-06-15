@@ -11,14 +11,13 @@ define (require, exports, module) ->
 
     events: $.extend
       'click .example': -> alert 'Example clicked'
-      @constructor::events
+      BaseClassifier::events
 
     elements: $.extend
       '.example': 'exampleNode'
-      @constructor::elements
+      BaseClassifier::elements
 
     constructor: ->
       super
-      @html @template
 
   module.exports = Classifier

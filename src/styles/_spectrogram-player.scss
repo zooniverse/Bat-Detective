@@ -1,0 +1,88 @@
+.spectrogram-player {
+  @include user-select(none);
+  outline: 1px dashed yellow;
+
+
+  .spectrogram {
+    position: relative;
+
+    img {}
+
+    .seek-line {
+      background: white;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 1px;
+    }
+  }
+
+  .seek {
+    $seek-size: 20px;
+
+    height: $seek-size;
+    position: relative;
+
+    .track {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      .fill {
+        background: gray;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 0;
+      }
+
+      .thumb {
+        background: transparent;
+        cursor: grab;
+        height: 100%;
+        left: 0;
+        margin-left: -($seek-size / 2);
+        position: absolute;
+        top: 0;
+        width: $seek-size;
+      }
+    }
+  }
+
+  .controls {
+    button {
+      &.play {}
+
+      &.pause {
+        display: none;
+      }
+    }
+  }
+
+  &:focus {
+    background: white;
+  }
+
+  &.loading {
+    outline: 1px solid yellow;
+  }
+
+  &.loaded {
+    outline: 1px solid red;
+  }
+
+  &.playing {
+    outline: 1px solid green;
+
+    .controls .play { display: none;}
+    .controls .pause { display: inline-block;}
+  }
+
+  &.seeking {
+    outline: 1px solid blue;
+  }
+}
