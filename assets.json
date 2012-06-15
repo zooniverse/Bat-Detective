@@ -15,5 +15,10 @@
     {"dist/images": "styles/lib/leaflet/images"}
   ]},
 
+  {"http://www.schillmania.com/projects/soundmanager2/download/soundmanagerv297a-20111220.zip": [
+    {"script/soundmanager2.js": "scripts/lib/soundmanager/soundmanager2.js"},
+    {"swf": "scripts/lib/soundmanager/swf"}
+  ]},
+
   {"https://raw.github.com/aFarkas/html5shiv/6d46e08c69/src/html5shiv.js": "scripts/lib/html5shiv.js"}
 ]
