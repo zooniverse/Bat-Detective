@@ -8,12 +8,16 @@ define (require, exports, module) ->
 
   SpectrogramPlayer = require 'controllers/SpectrogramPlayer'
   FieldGuide = require 'controllers/FieldGuide'
+  FrequencySelector = require 'controllers/FrequencySelector'
+  Annotation = require 'zooniverse/models/Annotation'
 
   class Classifier extends BaseClassifier
     template: template
     tutorialStep: tutorialSteps
 
     player: null
+
+    selectors: null
 
     events: $.extend
       'mousedown .spectrogram img': 'addFrequencyRange'
@@ -35,7 +39,10 @@ define (require, exports, module) ->
       @player = new SpectrogramPlayer el: @playerContainer
       @fieldGuide = new FieldGuide el: @fieldGuideContainer
 
+      @selectors = []
+
     reset: =>
+      super
       subject = @workflow.selection[0]
       @player.setImage subject.location.standard
       @player.setAudio subject.location.audio
@@ -44,16 +51,17 @@ define (require, exports, module) ->
       e.preventDefault()
 
       y = 1 - ((e.pageY - @playerContainer.offset().top) / @playerContainer.height())
-      console.log y
 
-      # selection = new FrequencySelector
-      #   range: @classification.frequencyRanges().create
-      #     low: y - 0.005
-      #     high: y + 0.005
-      #   workflowContainer: @workflowContainer
-      #   mouseDown: e
+      selector = new FrequencySelector
+        classifier: @
+        range: new Annotation
+          classification: @classification
+          value:
+              low: y - 0.005
+              high: y + 0.005
+        mouseDown: e
 
-      # selection.el.appendTo @imageContainer
-      # @selections.push selection
+      @selectors.push selector
+      selector.appendTo @player.spectrogram.parent()
 
   module.exports = Classifier

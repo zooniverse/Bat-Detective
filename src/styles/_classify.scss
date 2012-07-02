@@ -11,12 +11,59 @@
     margin: 0 $gutter-size $gutter-size 0;
     width: $three-quarters;
 
-    img {
-      width: 100%;
-    }
+    .spectrogram {
+      img {
+        width: 100%;
+      }
 
-    .seek-line {
-      background: $gold;
+      .seek-line {
+        background: $gold;
+      }
+
+      .frequency-selector {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        .cover {
+          background: transparentize($white, 0.75);
+          left: 0;
+          position: absolute;
+          width: 100%;
+
+          .handle {
+            background: $white;
+            height: 4px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+          }
+
+          &.high {
+            top: 0;
+
+            .handle {
+              bottom: 0;
+            }
+          }
+
+          &.low {
+            bottom: 0;
+
+            .handle {
+              top: 0;
+            }
+          }
+        }
+
+        .times {
+          left: 0;
+          position: absolute;
+          width: 100%;
+        }
+      }
     }
 
     .seek {
