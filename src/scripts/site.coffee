@@ -1,7 +1,7 @@
 define (require, exports, module) ->
   config = require 'zooniverse/config'
 
-  App = require 'zooniverse/models/App'
+  App = require 'zooniverse/controllers/App'
   Project = require 'zooniverse/models/Project'
   Workflow = require 'zooniverse/models/Workflow'
   Subject = require 'zooniverse/models/Subject'
@@ -42,11 +42,23 @@ define (require, exports, module) ->
                 el: '[data-page="classify"]'
                 # tutorialSteps: tutorialSteps
 
+              subjects: [
+                # For development
+                new Subject
+                  location:
+                    standard: 'examples/images/bat-social.jpg'
+                    audio: 'examples/audio/bat-social.mp3'
+                  coords: [0, 0]
+                  metadata: {}
+              ]
+
               tutorialSubjects: [
                 new Subject
-                  location: 'TUTORIAL SUBJECT LOCATION'
+                  location:
+                    standard: 'examples/images/bat-social.jpg'
+                    audio: 'examples/audio/bat-social.mp3'
                   coords: [0, 0]
-                  workflow: {}
+                  metadata: {}
               ]
           ]
       ]
@@ -56,3 +68,11 @@ define (require, exports, module) ->
 
     # profile: new Profile
     #   el: '[data-page="profile"]'
+
+  $ = require 'jQuery'
+
+  window.refreshCSS = ->
+    for link in $('link')
+      href = $(link).attr 'href'
+      href += '?refresh=' unless ~href.indexOf '?'
+      $(link).attr 'href', href + 'X'

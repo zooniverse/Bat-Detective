@@ -6,24 +6,54 @@ define (require, exports, module) ->
   template = require 'views/Classifier'
   tutorialSteps = require 'tutorialSteps'
 
+  SpectrogramPlayer = require 'controllers/SpectrogramPlayer'
   FieldGuide = require 'controllers/FieldGuide'
 
   class Classifier extends BaseClassifier
     template: template
     tutorialStep: tutorialSteps
 
+    player: null
+
     events: $.extend
-      'click .example': -> alert 'Example clicked'
+      'mousedown .spectrogram img': 'addFrequencyRange'
+      # 'click .done': 'done'
+      # 'click .followup .favorite': 'markAsFavorite'
+      # 'click .followup .yes': 'goToTalk'
+      # 'click .followup .no': 'nextSubject'
       BaseClassifier::events
 
     elements: $.extend
-      '.example': 'exampleNode'
+      '.player': 'playerContainer'
+      '.questions': 'questionsContainer'
+      '.field-guide': 'fieldGuideContainer'
       BaseClassifier::elements
 
     constructor: ->
       super
 
-      @fieldGuide = new FieldGuide
-      @append @fieldGuide
+      @player = new SpectrogramPlayer el: @playerContainer
+      @fieldGuide = new FieldGuide el: @fieldGuideContainer
+
+    reset: =>
+      subject = @workflow.selection[0]
+      @player.setImage subject.location.standard
+      @player.setAudio subject.location.audio
+
+    addFrequencyRange: (e) =>
+      e.preventDefault()
+
+      y = 1 - ((e.pageY - @playerContainer.offset().top) / @playerContainer.height())
+      console.log y
+
+      # selection = new FrequencySelector
+      #   range: @classification.frequencyRanges().create
+      #     low: y - 0.005
+      #     high: y + 0.005
+      #   workflowContainer: @workflowContainer
+      #   mouseDown: e
+
+      # selection.el.appendTo @imageContainer
+      # @selections.push selection
 
   module.exports = Classifier

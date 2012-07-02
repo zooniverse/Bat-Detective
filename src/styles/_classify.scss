@@ -1,3 +1,52 @@
-.bat-detective.app [data-page="classify"] {
+@mixin classifier-unit {
+  @include box-sizing(border-box);
+  background: $black;
+  border: 2px solid $gray {radius: 2px};
+}
 
+.bat-detective.app [data-page="classify"] {
+  > .player {
+    @include classifier-unit;
+    float: left;
+    margin: 0 $gutter-size $gutter-size 0;
+    width: $three-quarters;
+
+    img {
+      width: 100%;
+    }
+
+    .seek-line {
+      background: $gold;
+    }
+
+    .seek {
+      background: $gray;
+      height: 6px;
+
+      .fill {
+        background: $gold;
+        border-right: 1px solid $white;
+      }
+    }
+
+    .controls {
+      button {
+        padding: 2px 5px;
+      }
+    }
+  }
+
+  > .controls {
+    @include classifier-unit;
+    float: left;
+    width: $one-quarter;
+
+    .summary {
+      display: none;
+    }
+  }
+
+  > .field-guide {
+    clear: both;
+  }
 }
