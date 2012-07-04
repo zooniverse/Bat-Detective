@@ -2,8 +2,8 @@ define (require, exports, module) ->
   Spine = require 'Spine'
   $ = require 'jQuery'
 
-  # Workflow = require 'controllers/Workflow'
-  # workflowQuestion = require 'workflowQuestion'
+  Decision = require 'controllers/Decision'
+  decisionTree = require 'decisionTree'
 
   TimeSelector = require 'controllers/TimeSelector'
 
@@ -40,13 +40,14 @@ define (require, exports, module) ->
       @range.bind 'destroy', @release
       @range.trigger 'change'
 
-      # @workflow = new Workflow
-      #   model: @range
-      #   question: workflowQuestion
+      @decision = new Decision
+        question: decisionTree
+        annotation: @range
 
-      # @workflow.el.appendTo @classifier.questionsContainer
+      @decision.appendTo @classifier.decisionTreeContainer
 
-      # @release @workflow.release
+      @bind 'release', ->
+        @workflow.release()
 
       @select()
 

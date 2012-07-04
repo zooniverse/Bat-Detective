@@ -5,8 +5,8 @@ define (require, exports, module) ->
     </div>
 
     <div class="controls">
-      <div class="questions">
-        <!--Insert questions here-->
+      <div class="decision-tree">
+        <!--Insert decision tree here-->
       </div>
 
       <div class="summary">

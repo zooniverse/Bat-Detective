@@ -29,6 +29,15 @@
         top: 0;
         width: 100%;
 
+        .delete {
+          bottom: $handle-thickness;
+          height: 20px;
+          position: absolute;
+          right: 0;
+          text-align: center;
+          width: 20px;
+        }
+
         .cover {
           background: transparentize($gray, 0.5);
           left: 0;
@@ -92,10 +101,11 @@
             position: absolute;
             top: 0;
 
-            > .delete {
+            .delete {
+              bottom: auto;
               height: 20px;
               position: absolute;
-              right: 0;
+              right: $handle-thickness;
               top: 0;
               width: 20px;
             }

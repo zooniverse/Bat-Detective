@@ -29,7 +29,7 @@ define (require, exports, module) ->
 
     elements: $.extend
       '.player': 'playerContainer'
-      '.questions': 'questionsContainer'
+      '.decision-tree': 'decisionTreeContainer'
       '.field-guide': 'fieldGuideContainer'
       BaseClassifier::elements
 
