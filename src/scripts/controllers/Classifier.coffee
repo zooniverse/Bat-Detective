@@ -21,8 +21,8 @@ define (require, exports, module) ->
 
     events: $.extend
       'mousedown .spectrogram img': 'addFrequencyRange'
-      # 'click .done': 'done'
-      # 'click .followup .favorite': 'markAsFavorite'
+      'click .next-subject': 'nextSubjects'
+      # 'click .followup .favorite button': 'markAsFavorite'
       # 'click .followup .yes': 'goToTalk'
       # 'click .followup .no': 'nextSubject'
       BaseClassifier::events
@@ -48,18 +48,19 @@ define (require, exports, module) ->
       @player.setAudio subject.location.audio
 
     addFrequencyRange: (e) =>
+      console.log 'Adding frequency range'
       e.preventDefault()
 
-      y = 1 - ((e.pageY - @playerContainer.offset().top) / @playerContainer.height())
+      y = 1 - ((e.pageY - @player.spectrogram.offset().top) / @player.spectrogram.height())
 
       selector = new FrequencySelector
         classifier: @
         range: new Annotation
           classification: @classification
           value:
-              low: y - 0.005
-              high: y + 0.005
-              times: []
+            low: y - 0.005
+            high: y + 0.005
+            times: []
         mouseDown: e
 
       @selectors.push selector

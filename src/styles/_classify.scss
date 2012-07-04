@@ -5,161 +5,214 @@
 }
 
 .bat-detective.app [data-page="classify"] {
-  > .player {
-    @include classifier-unit;
-    float: left;
-    margin: 0 $gutter-size $gutter-size 0;
-    width: $three-quarters;
+  > .interface {
+    @include clearfix;
+    position: relative;
 
-    .spectrogram {
-      img {
-        width: 100%;
-      }
+    > .player {
+      @include classifier-unit;
+      float: left;
+      width: $three-quarters;
 
-      .seek-line {
-        background: $gold;
-      }
-
-      .frequency-selector {
-        $handle-thickness: 6px;
-
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-
-        .delete {
-          bottom: $handle-thickness;
-          height: 20px;
-          position: absolute;
-          right: 0;
-          text-align: center;
-          width: 20px;
+      .spectrogram {
+        img {
+          cursor: ns-resize;
+          width: 100%;
         }
 
-        .cover {
-          background: transparentize($gray, 0.5);
+        .seek-line {
+          background: $gold;
+        }
+
+        .frequency-selector {
+          $handle-thickness: 6px;
+
+          height: 100%;
           left: 0;
-          position: absolute;
+          top: 0;
           width: 100%;
 
-          > .handle {
-            background: $gray;
-            cursor: ns-resize;
-            height: $handle-thickness;
+          .delete {
+            bottom: $handle-thickness;
+            height: 20px;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            width: 20px;
+          }
+
+          .cover {
+            background: transparentize($black, 0.25);
+            display: none;
             left: 0;
             position: absolute;
             width: 100%;
-          }
-
-          &.high {
-            top: 0;
-
-            .handle {
-              bottom: 0;
-            }
-          }
-
-          &.low {
-            bottom: 0;
-
-            .handle {
-              top: 0;
-            }
-          }
-        }
-
-        .times {
-          left: 0;
-          position: absolute;
-          width: 100%;
-
-          > .handle {
-            background: $gray;
-            bottom: -$handle-thickness;
-            cursor: move;
-            position: absolute;
-            top: -$handle-thickness;
-            width: $handle-thickness;
-
-            &.start {
-              right: 100%;
-            }
-
-            &.end {
-              left: 100%;
-            }
-          }
-
-          .time-selector {
-            @include box-sizing(border-box);
-            background: transparentize($white, 0.9);
-            border: 1px solid $white;
-            display: absolute;
-            height: 100%;
-            position: absolute;
-            top: 0;
-
-            .delete {
-              bottom: auto;
-              height: 20px;
-              position: absolute;
-              right: $handle-thickness;
-              top: 0;
-              width: 20px;
-            }
 
             > .handle {
-              @include transition(width 0.125s ease-in-out);
-              background: transparentize($white, 0.5);
-              cursor: ew-resize;
-              height: 100%;
+              background: $gray;
+              cursor: ns-resize;
+              height: $handle-thickness;
+              left: 0;
               position: absolute;
+              width: 100%;
+            }
+
+            &.high {
               top: 0;
-              width: 0;
+
+              .handle {
+                bottom: 0;
+              }
+            }
+
+            &.low {
+              bottom: 0;
+
+              .handle {
+                top: 0;
+              }
+            }
+          }
+
+          .times {
+            cursor: ew-resize;
+            left: 0;
+            position: absolute;
+            width: 100%;
+
+            > .handle {
+              background: $gray;
+              bottom: -$handle-thickness;
+              cursor: move;
+              display: none;
+              position: absolute;
+              top: -$handle-thickness;
+              width: $handle-thickness;
 
               &.start {
-                left: 0;
+                right: 100%;
               }
 
               &.end {
-                right: 0;
+                left: 100%;
               }
             }
 
-            &:hover > .handle {
-              width: $handle-thickness;
+            .time-selector {
+              @include box-sizing(border-box);
+              background: transparentize($white, 0.9);
+              border: 1px solid $white;
+              cursor: move;
+              display: absolute;
+              height: 100%;
+              position: absolute;
+              top: 0;
+
+              .delete {
+                bottom: auto;
+                height: 20px;
+                position: absolute;
+                right: $handle-thickness;
+                top: 0;
+                width: 20px;
+              }
+
+              > .handle {
+                @include transition(width 0.125s ease-in-out);
+                background: transparentize($white, 0.5);
+                cursor: ew-resize;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 0;
+
+                &.start {
+                  left: 0;
+                }
+
+                &.end {
+                  right: 0;
+                }
+              }
+
+              &:hover > .handle {
+                width: $handle-thickness;
+              }
             }
           }
+
+          &.selected {
+            position: absolute;
+
+            .cover,
+            .times .handle {
+              display: block;
+            }
+          }
+
+          &[data-source="bat"] .time-selector {border-color: blue;}
+          &[data-source="insect"] .time-selector {border-color: green;}
+          &[data-source="machine"] .time-selector {border-color: purple;}
+        }
+      }
+
+      .seek {
+        background: $gray;
+        height: 6px;
+
+        .fill {
+          background: $gold;
+          border-right: 1px solid $white;
+        }
+      }
+
+      .controls {
+        button {
+          padding: 2px 5px;
         }
       }
     }
 
-    .seek {
-      background: $gray;
-      height: 6px;
+    > .controls {
+      @include classifier-unit;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $one-quarter;
 
-      .fill {
-        background: $gold;
-        border-right: 1px solid $white;
+      button {}
+
+      .decision-tree {
+        .decision {
+          display: none;
+
+          &.selected {
+            display: block;
+          }
+
+          .back {}
+
+          .question {}
+
+          .answers {
+            button {}
+          }
+        }
       }
-    }
 
-    .controls {
-      button {
-        padding: 2px 5px;
+      .finished {
+        .nextSubject {}
       }
-    }
-  }
 
-  > .controls {
-    @include classifier-unit;
-    float: left;
-    width: $one-quarter;
+      .decision-tree.has-selection + .finished {
+        opacity: 0.33;
+        pointer-events: none;
+      }
 
-    .summary {
-      display: none;
+      .summary {
+        display: none;
+      }
     }
   }
 

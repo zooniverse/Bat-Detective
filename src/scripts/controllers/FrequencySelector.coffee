@@ -13,9 +13,7 @@ define (require, exports, module) ->
     range: null # An annotation
     classifier: null
 
-    workflowContainer: null
-
-    workflow: null
+    decision: null
 
     className: 'frequency-selector'
     template: template
@@ -47,7 +45,7 @@ define (require, exports, module) ->
       @decision.appendTo @classifier.decisionTreeContainer
 
       @bind 'release', ->
-        @workflow.release()
+        @decision.release()
 
       @select()
 
@@ -128,17 +126,17 @@ define (require, exports, module) ->
       @range.trigger 'change'
 
     select: =>
-      @el.addClass 'active'
-      # @workflow.select()
-      # @workflowContainer.addClass 'has-selection'
+      @el.addClass 'selected'
+      @decision.select()
+      @classifier.decisionTreeContainer.addClass 'has-selection'
 
     deselect: =>
       # If there are no time range selections, assume the whole thing should be selected.
       @addTimeRange 0, 1 if @range.value.times.length is 0
 
-      @el.removeClass 'active'
-      # @workflow.deselect()
-      # @workflowContainer.removeClass 'has-selection'
+      @el.removeClass 'selected'
+      @decision.deselect()
+      @classifier.decisionTreeContainer.removeClass 'has-selection'
 
     onDeleteClick: (e) =>
       e.stopPropagation()

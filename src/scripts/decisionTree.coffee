@@ -2,7 +2,7 @@ define (require, exports, module) ->
   {Question, Answer} = require 'controllers/Decision'
 
   finish = new Question '',
-    new Answer 'Next range',
+    new Answer 'Save selection',
       {}
       -> @annotation.trigger 'finish'
 
