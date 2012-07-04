@@ -21,6 +21,8 @@
       }
 
       .frequency-selector {
+        $handle-thickness: 6px;
+
         height: 100%;
         left: 0;
         position: absolute;
@@ -28,14 +30,15 @@
         width: 100%;
 
         .cover {
-          background: transparentize($white, 0.75);
+          background: transparentize($gray, 0.5);
           left: 0;
           position: absolute;
           width: 100%;
 
-          .handle {
-            background: $white;
-            height: 4px;
+          > .handle {
+            background: $gray;
+            cursor: ns-resize;
+            height: $handle-thickness;
             left: 0;
             position: absolute;
             width: 100%;
@@ -62,6 +65,63 @@
           left: 0;
           position: absolute;
           width: 100%;
+
+          > .handle {
+            background: $gray;
+            bottom: -$handle-thickness;
+            cursor: move;
+            position: absolute;
+            top: -$handle-thickness;
+            width: $handle-thickness;
+
+            &.start {
+              right: 100%;
+            }
+
+            &.end {
+              left: 100%;
+            }
+          }
+
+          .time-selector {
+            @include box-sizing(border-box);
+            background: transparentize($white, 0.9);
+            border: 1px solid $white;
+            display: absolute;
+            height: 100%;
+            position: absolute;
+            top: 0;
+
+            > .delete {
+              height: 20px;
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: 20px;
+            }
+
+            > .handle {
+              @include transition(width 0.125s ease-in-out);
+              background: transparentize($white, 0.5);
+              cursor: ew-resize;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              width: 0;
+
+              &.start {
+                left: 0;
+              }
+
+              &.end {
+                right: 0;
+              }
+            }
+
+            &:hover > .handle {
+              width: $handle-thickness;
+            }
+          }
         }
       }
     }

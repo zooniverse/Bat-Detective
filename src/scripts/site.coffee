@@ -38,10 +38,6 @@ define (require, exports, module) ->
             new Workflow
               id: 'WORKFLOW ID'
 
-              controller: new Classifier
-                el: '[data-page="classify"]'
-                # tutorialSteps: tutorialSteps
-
               subjects: [
                 # For development
                 new Subject
@@ -62,6 +58,12 @@ define (require, exports, module) ->
               ]
           ]
       ]
+
+  config.set
+    classifier: new Classifier
+      workflow: config.app.projects[0].workflows[0]
+      el: '[data-page="classify"]'
+      # tutorialSteps: tutorialSteps
 
     # homeMap: new Map
     #   el: '.home-map'

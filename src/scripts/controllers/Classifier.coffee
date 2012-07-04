@@ -59,6 +59,7 @@ define (require, exports, module) ->
           value:
               low: y - 0.005
               high: y + 0.005
+              times: []
         mouseDown: e
 
       @selectors.push selector

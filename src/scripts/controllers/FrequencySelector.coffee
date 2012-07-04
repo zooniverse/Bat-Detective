@@ -54,7 +54,6 @@ define (require, exports, module) ->
 
     delegateEvents: =>
       super
-
       doc = $(document)
       doc.on 'mousemove', @onDocMouseMove
       doc.on 'mouseup', @onDocMouseUp
@@ -78,20 +77,21 @@ define (require, exports, module) ->
       y = 1 - ((e.pageY - @el.offset().top) / @el.height())
 
       if target.is @highHandle
-        attribute = 'high'
+        @range.value.high = y
       else if target.is @lowHandle
-        attribute = 'low'
+        @range.value.low = y
       else if target.is @timesHandle
-        half = (@range.high - @range.low) / 2
-        @range.value =
-          low: y - half
-          high: y + half
+        half = (@range.value.high - @range.value.low) / 2
+        @range.value.low = y - half
+        @range.value.high = y + half
       else if @el.has(target).length is 0
         # A target outside the FrequencySelector means it's brand new.
         # If it moves up, change the high. If it moves down, change the low.
-        attribute = if e.pageY < @mouseDown.pageY then 'high' else 'low'
+        if e.pageY < @mouseDown.pageY
+          @range.value.high = y
+        else
+          @range.value.low = y
 
-      if attribute then @range.value[attribute] = y
       @range.trigger 'change'
 
     onRangeChange: =>
@@ -115,14 +115,16 @@ define (require, exports, module) ->
       @onDocMouseUp()
 
     addTimeRange: (start, end, mouseDown) =>
-      timeRange = new TimeSelector
-        range: @range.timeRanges().create
-          start: start
-          end: end
+      timeSelector = new TimeSelector
+        range: {start, end}
+        frequencyRange: @range
         mouseDown: mouseDown
 
-      timeRange.bind 'select', @select
-      timeRange.el.appendTo @timesContainer
+      @range.value.times.push timeSelector.range
+      timeSelector.bind 'select', @select
+      timeSelector.el.appendTo @timesContainer
+
+      @range.trigger 'change'
 
     select: =>
       @el.addClass 'active'
@@ -131,11 +133,11 @@ define (require, exports, module) ->
 
     deselect: =>
       # If there are no time range selections, assume the whole thing should be selected.
-      @addTimeRange 0, 1 if @range.timeRanges().all().length is 0
+      @addTimeRange 0, 1 if @range.value.times.length is 0
 
       @el.removeClass 'active'
       # @workflow.deselect()
-      @workflowContainer.removeClass 'has-selection'
+      # @workflowContainer.removeClass 'has-selection'
 
     onDeleteClick: (e) =>
       e.stopPropagation()
