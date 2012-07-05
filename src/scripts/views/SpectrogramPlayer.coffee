@@ -14,6 +14,6 @@ define (require, exports, module) ->
 
     <div class="controls">
       <button class="play">&#9654;</button>
-      <button class="pause">&#10073; &#10073;</button>
+      <button class="pause">&#10073;&#10073;</button>
     </div>
   '''

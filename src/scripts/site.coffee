@@ -26,6 +26,7 @@ define (require, exports, module) ->
     cartoTable: 'CARTODB TABLE'
     facebookId: 'FACEBOOK APP ID'
 
+  config.set
     app: new App
       el: '.bat-detective.app'
       languages: ['en']
@@ -67,14 +68,13 @@ define (require, exports, module) ->
       el: '[data-page="classify"]'
       # tutorialSteps: tutorialSteps
 
-    # homeMap: new Map
-    #   el: '.home-map'
+    homeMap: new Map
+      el: '.home-map'
 
-    # profile: new Profile
-    #   el: '[data-page="profile"]'
+    profile: new Profile
+      el: '[data-page="profile"]'
 
   $ = require 'jQuery'
-
   window.refreshCSS = ->
     for link in $('link')
       href = $(link).attr 'href'
