@@ -128,8 +128,6 @@ define (require, exports, module) ->
         </div>
       </section>
 
-      <!--
-
       <section data-page="insect-noise">
         <div class="column">
           <div data-page="distinct-pulse" class="active sample">
@@ -202,7 +200,5 @@ define (require, exports, module) ->
           </section>
         </div>
       </section>
-
-      -->
     </div>
   '''

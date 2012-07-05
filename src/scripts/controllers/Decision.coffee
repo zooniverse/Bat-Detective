@@ -30,7 +30,7 @@ define (require, exports, module) ->
       @path.push @question
 
       @el.empty()
-      if @path.length > 1 then @el.append '<button class="back">Back</button>'
+      if @path.length > 1 then @el.append '<button class="back"><span class="icon">&#9664;</span> Previous question</button>'
 
       @el.append "<div class=\"question\">#{@question.question}</div>"
 

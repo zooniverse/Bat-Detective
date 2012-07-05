@@ -32,10 +32,12 @@ define (require, exports, module) ->
 
       projects: [
         new Project
+          devID: 'PROJECT_DEV_ID'
           id: 'PROJECT ID'
 
           workflows: [
             new Workflow
+              devID: 'PROJECT_DEV_ID'
               id: 'WORKFLOW ID'
 
               subjects: [

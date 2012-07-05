@@ -15,6 +15,57 @@
       width: $three-quarters;
 
       .spectrogram {
+        .scale {
+          .axis {
+            @include box-sizing(border-box);
+            color: transparentize($white, 0.25);
+            font-size: 9px;
+            height: 100%;
+            margin-right: $gutter-size / 2;
+            opacity: 0.33;
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: $gutter-size;
+
+            .space {
+              @include box-sizing(border-box);
+              border-top: 1px solid;
+              height: (100% / 16); // Number of spaces minus one!
+              margin-left: 25%;
+              position: relative;
+              width: 50%;
+
+              &:first-child,
+              &:last-child {
+                margin-left: 0;
+                width: 100%;
+              }
+
+              .label {
+                line-height: 1;
+                margin-right: 5px;
+                position: absolute;
+                right: 100%;
+                top: -0.5em;
+                white-space: nowrap;
+              }
+            }
+
+            // Vertical line through the center
+            &:after {
+              border-right: 1px solid;
+              content: " ";
+              display: block;
+              height: 100%;
+              left: 0;
+              position: absolute;
+              top: 0;
+              width: 50%;
+            }
+          }
+        }
+
         img {
           cursor: ns-resize;
           width: 100%;
@@ -77,6 +128,7 @@
           .times {
             cursor: ew-resize;
             left: 0;
+            pointer-events: none;
             position: absolute;
             width: 100%;
 
@@ -103,8 +155,8 @@
               background: transparentize($white, 0.9);
               border: 1px solid $white;
               cursor: move;
-              display: absolute;
               height: 100%;
+              pointer-events: all;
               position: absolute;
               top: 0;
 
@@ -134,19 +186,26 @@
                   right: 0;
                 }
               }
-
-              &:hover > .handle {
-                width: $handle-thickness;
-              }
             }
           }
 
           &.selected {
             position: absolute;
 
-            .cover,
-            .times .handle {
+            .cover {
               display: block;
+            }
+
+            .times {
+              pointer-events: auto;
+
+              > .handle {
+                display: block;
+              }
+
+              .time-selector:hover .handle {
+                width: $handle-thickness;
+              }
             }
           }
 
@@ -176,14 +235,39 @@
     > .controls {
       @include classifier-unit;
       height: 100%;
+      font: {
+        size: 12px;
+        weight: bold;
+      };
       position: absolute;
       right: 0;
+      text: {
+        align: center;
+        transform: uppercase;
+      };
       top: 0;
       width: $one-quarter;
 
-      button {}
+      > div {
+        padding: $gutter-size;
+      }
+
+      button {
+        @include linear-gradient(lighten($gold, 5%), darken($gold, 10%));
+        color: $black;
+        display: block;
+        margin-bottom: $gutter-size / 2;
+        padding: $gutter-size / 3;
+        width: 100%;
+
+        &:hover {
+          @include linear-gradient(lighten($gold, 10%), $gold);
+        }
+      }
 
       .decision-tree {
+        display: none;
+
         .decision {
           display: none;
 
@@ -191,13 +275,27 @@
             display: block;
           }
 
-          .back {}
+          .back {
+            background: transparent;
+            color: $gold;
+            opacity: 0.8;
 
-          .question {}
+            .icon {
+              left: -3px;
+              position: relative;
+              top: -1px;
+            }
 
-          .answers {
-            button {}
+            &:hover {
+              opacity: 1;
+            }
           }
+
+          .question {
+            margin-bottom: $gutter-size / 2;
+          }
+
+          .answers {}
         }
       }
 
@@ -205,18 +303,55 @@
         .nextSubject {}
       }
 
-      .decision-tree.has-selection + .finished {
-        opacity: 0.33;
-        pointer-events: none;
+      .decision-tree.has-selection {
+        display: block;
+
+        & + .finished {
+          opacity: 0.33;
+          pointer-events: none;
+        }
       }
 
       .summary {
         display: none;
+
+        .favorite {
+          .create {}
+
+          .destroy {
+            display: none;
+          }
+        }
       }
     }
   }
 
   > .field-guide {
     clear: both;
+  }
+
+  &.showing-summary {
+    .controls {
+      .decision-tree,
+      .finished {
+        display: none;
+      }
+
+      .summary {
+        display: block;
+      }
+    }
+  }
+
+  &.is-favored {
+    .favorite {
+      .create {
+        display: none;
+      }
+
+      .destroy {
+        display: block;
+      }
+    }
   }
 }

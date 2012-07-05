@@ -4,6 +4,7 @@ define (require, exports, module) ->
 
   template = require 'views/FieldGuide'
 
+  Pager = require 'zooniverse/controllers/Pager'
   SpectrogramPlayer = require 'controllers/SpectrogramPlayer'
 
   class FieldGuide extends Spine.Controller
@@ -13,6 +14,9 @@ define (require, exports, module) ->
     constructor: ->
       super
       @html @template
+
+      for pageContainer in @el.find('[data-page]').parent()
+        new Pager el: pageContainer
 
       for container in @el.find '.sample'
         container = $(container)

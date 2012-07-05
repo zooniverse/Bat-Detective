@@ -21,13 +21,15 @@ define (require, exports, module) ->
 
     events: $.extend
       'mousedown .spectrogram img': 'addFrequencyRange'
-      'click .next-subject': 'nextSubjects'
-      # 'click .followup .favorite button': 'markAsFavorite'
-      # 'click .followup .yes': 'goToTalk'
-      # 'click .followup .no': 'nextSubject'
+      'click .next-subject': 'showSummary'
+      'click .summary .favorite .create button': 'createFavorite'
+      'click .summary .favorite .destroy button': 'createFavorite'
+      'click .summary .talk .yes': 'goToTalk'
+      'click .summary .talk .no': 'nextSubjects'
       BaseClassifier::events
 
     elements: $.extend
+      '.scale': 'scale'
       '.player': 'playerContainer'
       '.decision-tree': 'decisionTreeContainer'
       '.field-guide': 'fieldGuideContainer'
@@ -37,12 +39,15 @@ define (require, exports, module) ->
       super
 
       @player = new SpectrogramPlayer el: @playerContainer
+      @scale.insertBefore @player.spectrogram
+
       @fieldGuide = new FieldGuide el: @fieldGuideContainer
 
       @selectors = []
 
     reset: =>
       super
+      @el.removeClass 'showing-summary'
       subject = @workflow.selection[0]
       @player.setImage subject.location.standard
       @player.setAudio subject.location.audio
@@ -65,5 +70,10 @@ define (require, exports, module) ->
 
       @selectors.push selector
       selector.appendTo @player.spectrogram.parent()
+
+    showSummary: =>
+      selector.deselect for selector in @selectors
+      @saveClassification()
+      @el.addClass 'showing-summary'
 
   module.exports = Classifier
