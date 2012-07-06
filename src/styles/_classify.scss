@@ -344,7 +344,7 @@
   }
 
   &.is-favored {
-    .favorite {
+    .controls .summary .favorite {
       .create {
         display: none;
       }
