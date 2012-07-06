@@ -2,7 +2,7 @@ define (require, exports, module) ->
   Spine = require 'Spine'
   $ = require 'jQuery'
 
-  {remove} = require 'zooniverse/util'
+  {clamp, remove} = require 'zooniverse/util'
 
   template = require 'views/TimeSelector'
 
@@ -53,13 +53,14 @@ define (require, exports, module) ->
       x = (e.pageX - @el.parent().offset().left) / @el.parent().width()
 
       if target.is @startHandle
-        @range.start = x
+        @range.start = clamp x, min: 0, max: @range.end
       else if target.is @endHandle
-        @range.end = x
+        @range.end = clamp x, min: @range.start, max: 1
       else if target.is @el
         size = @range.end - @range.start
-        @range.start = x - (size / 2)
-        @range.end = x + (size / 2)
+        unless x - (size / 2) < 0 or x + (size / 2) > 1
+          @range.start = x - (size / 2)
+          @range.end = x + (size / 2)
       else if @el.has(target).length is 0
         if e.pageX < @mouseDown.pageX
           @range.start = x

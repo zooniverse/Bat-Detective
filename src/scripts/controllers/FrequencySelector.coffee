@@ -2,9 +2,10 @@ define (require, exports, module) ->
   Spine = require 'Spine'
   $ = require 'jQuery'
 
+  {clamp} = require 'zooniverse/util'
+
   Decision = require 'controllers/Decision'
   decisionTree = require 'decisionTree'
-
   TimeSelector = require 'controllers/TimeSelector'
 
   template = require 'views/FrequencySelector'
@@ -90,6 +91,9 @@ define (require, exports, module) ->
           @range.value.high = y
         else
           @range.value.low = y
+
+      @range.value.low = clamp @range.value.low
+      @range.value.high = clamp @range.value.high
 
       @range.trigger 'change'
 
