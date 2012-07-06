@@ -17,14 +17,15 @@ define (require, exports, module) ->
   config.set
     name: 'Bat Detective'
     slug: 'bat-detective'
-    description: 'PROJECT DESCRIPTION'
-
+    description: 'Help track bats across Europe'
     talkHost: 'http://talk.batdetective.org'
+
+    domain: 'batdetective.org'
+    # googleAnalytics: 'X'
 
     cartoUser: 'CARTODB USER'
     cartoApiKey: 'CARTODB API KEY'
     cartoTable: 'CARTODB TABLE'
-    facebookId: 'FACEBOOK APP ID'
 
   config.set
     app: new App
@@ -42,11 +43,39 @@ define (require, exports, module) ->
               id: 'WORKFLOW ID'
 
               subjects: [
-                # For development
+                # For development only!
                 new Subject
                   location:
-                    standard: 'examples/images/bat-social.jpg'
-                    audio: 'examples/audio/bat-social.mp3'
+                    standard: 'examples/images/bat-feeding-buzz.jpg'
+                    audio: 'examples/audio/bat-feeding-buzz.mp3'
+                  coords: [0, 0]
+                  metadata: {}
+
+                new Subject
+                  location:
+                    standard: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
+                    audio: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
+                  coords: [0, 0]
+                  metadata: {}
+
+                new Subject
+                  location:
+                    standard: 'examples/images/bat-searching-plateau.jpg'
+                    audio: 'examples/audio/bat-searching-plateau.mp3'
+                  coords: [0, 0]
+                  metadata: {}
+
+                new Subject
+                  location:
+                    standard: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
+                    audio: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
+                  coords: [0, 0]
+                  metadata: {}
+
+                new Subject
+                  location:
+                    standard: 'examples/images/bat-searching-vertical-line.jpg'
+                    audio: 'examples/audio/bat-searching-vertical-line.mp3'
                   coords: [0, 0]
                   metadata: {}
               ]
