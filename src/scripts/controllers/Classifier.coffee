@@ -53,7 +53,6 @@ define (require, exports, module) ->
       @player.setAudio subject.location.audio
 
     addFrequencyRange: (e) =>
-      console.log 'Adding frequency range'
       e.preventDefault()
 
       y = 1 - ((e.pageY - @player.spectrogram.offset().top) / @player.spectrogram.height())

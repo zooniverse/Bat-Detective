@@ -5,6 +5,36 @@ $profile-border-color: #d0cec9;
 .bat-detective.app [data-page="profile"] {
   color: $black;
 
+  > .login-form {
+    @include box-sizing(border-box);
+    background: $white;
+    border: 3px solid $gold;
+    box-shadow: 0 3px 3px -3px $black;
+    margin-left: $one-quarter;
+    padding: $gutter-size * 1.5;
+    width: $one-half;
+    text-align: center;
+
+    label {
+      display: block;
+      margin-bottom: $gutter-size;
+
+      span {
+        display: inline-block;
+        font-weight: bold;
+        width: 80px;
+      }
+    }
+
+    button {
+      @include linear-gradient(lighten($gold, 5%), darken($gold, 10%));
+      border-radius: 3px;
+      font-weight: bold;
+      margin-left: 80px;
+      padding: 5px 20px;
+    }
+  }
+
   > .profile {
     @include clearfix;
     @include linear-gradient(left, $info-column-color $two-thirds, $stats-column-color $two-thirds);
