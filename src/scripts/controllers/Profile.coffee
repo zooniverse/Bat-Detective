@@ -20,9 +20,15 @@ define (require, exports, module) ->
 
     constructor: ->
       super
+      @spectrogramPlayers ?= []
+      # Init map
+
+    userChanged: =>
+      super
+      # Change map
 
     updateFavorites: =>
-      player.release() for player in @spectrogramPlayers || []
+      player.release() for player in @spectrogramPlayers
       @spectrogramPlayers = []
       super
 
@@ -33,8 +39,13 @@ define (require, exports, module) ->
         audio: favorite.subjects[0].location.audio
       @spectrogramPlayers.push player
       player.appendTo item
-      $("Classified #{formatDate favorite.createdAt}").appendTo item
-      $("<a href='favorite.'#{}'>Talk about it</a>").appendTo item
+      $("<h4>#{formatDate favorite.createdAt}</h4>").appendTo item
+      $("<a href='#{favorite.subjects[0].talkHref()}' class='talk'>Talk about it</a>").appendTo item
+      item
+
+    recentTemplate: (recent) =>
+      item = $('<li></li>')
+      $("<a href='#{recent.subjects[0].talkHref()}' class='talk'>#{formatDate recent.createdAt}</a>").appendTo item
       item
 
   module.exports = Profile
