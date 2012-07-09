@@ -49,7 +49,7 @@ define (require, exports, module) ->
       super
       @el.removeClass 'showing-summary'
       subject = @workflow.selection[0]
-      @player.setImage subject.location.standard
+      @player.setImage subject.location.image
       @player.setAudio subject.location.audio
 
     addFrequencyRange: (e) =>

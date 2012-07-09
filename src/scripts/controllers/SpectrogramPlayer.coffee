@@ -148,4 +148,8 @@ define (require, exports, module) ->
           @sound.setPosition clamp @sound.position + @keySeek, min: 0, max: @sound.duration
           @soundPlaying()
 
+    release: =>
+      @sound?.destruct()
+      super
+
   module.exports = SpectrogramPlayer

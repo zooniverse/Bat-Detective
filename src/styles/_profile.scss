@@ -1,8 +1,8 @@
-$info-column-color: #f3f1ed;
-$stats-column-color: #e7e5e0;
-$profile-border-color: #d0cec9;
-
 .bat-detective.app [data-page="profile"] {
+  $info-column-color: #f3f1ed;
+  $stats-column-color: #e7e5e0;
+  $profile-border-color: #d0cec9;
+
   color: $black;
 
   > .login-form {
@@ -38,7 +38,6 @@ $profile-border-color: #d0cec9;
   > .profile {
     @include clearfix;
     @include linear-gradient(left, $info-column-color $two-thirds, $stats-column-color $two-thirds);
-    display: none;
 
     h3 {
       color: $red;
@@ -78,21 +77,41 @@ $profile-border-color: #d0cec9;
             padding-top: $gutter-size;
             display: block;
 
-            > h4 {
+            .spectrogram-player {
+              position: relative;
+              width: $one-third - ($gutter-size * 1.5);
+
+              img {
+                max-width: 100%;
+              }
+
+              .controls {
+                $button-size: 60px;
+
+                opacity: 0.5;
+                left: 0;
+                margin-top: -$button-size / 2;
+                position: absolute;
+                text-align: center;
+                top: 50%;
+                width: 100%;
+
+                button {
+                  background: $black;
+                  border-radius: $button-size / 2;
+                  color: $white;
+                  font-size: $button-size / 2;
+                  height: $button-size;
+                  width: $button-size;
+                }
+              }
+            }
+
+            h4 {
               font-size: 20px;
               letter-spacing: 0;
               margin: 0;
               text-transform: none;
-            }
-
-            > img {
-              float: left;
-              margin-right: $gutter-size;
-              width: 200px;
-            }
-
-            > .social {
-              float: right;
             }
           }
         }
@@ -160,10 +179,5 @@ $profile-border-color: #d0cec9;
         }
       }
     }
-  }
-
-  &.signed-in {
-    > .login-form { display: none; }
-    > .profile { display: block; }
   }
 }

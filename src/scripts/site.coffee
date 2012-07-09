@@ -1,5 +1,6 @@
 define (require, exports, module) ->
   config = require 'zooniverse/config'
+  ids = require 'ids'
 
   App = require 'zooniverse/controllers/App'
   Project = require 'zooniverse/models/Project'
@@ -10,8 +11,6 @@ define (require, exports, module) ->
   tutorialSteps = require 'tutorialSteps'
 
   Map = require 'zooniverse/controllers/Map'
-  Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's.
-  Map::tilesId = 61165
   Profile = require 'controllers/Profile'
 
   config.set
@@ -32,64 +31,24 @@ define (require, exports, module) ->
       el: '.bat-detective.app'
       languages: ['en']
 
-      projects: [
-        new Project
-          devID: 'PROJECT_DEV_ID'
-          id: 'PROJECT ID'
+      projects: new Project
+        id: ids.project
 
-          workflows: [
-            new Workflow
-              devID: 'PROJECT_DEV_ID'
-              id: 'WORKFLOW ID'
+        workflows: new Workflow
+          id: ids.workflow
 
-              subjects: [
-                # For development only!
-                new Subject
-                  location:
-                    standard: 'examples/images/bat-feeding-buzz.jpg'
-                    audio: 'examples/audio/bat-feeding-buzz.mp3'
-                  coords: [0, 0]
-                  metadata: {}
-
-                new Subject
-                  location:
-                    standard: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
-                    audio: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
-                  coords: [0, 0]
-                  metadata: {}
-
-                new Subject
-                  location:
-                    standard: 'examples/images/bat-searching-plateau.jpg'
-                    audio: 'examples/audio/bat-searching-plateau.mp3'
-                  coords: [0, 0]
-                  metadata: {}
-
-                new Subject
-                  location:
-                    standard: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
-                    audio: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
-                  coords: [0, 0]
-                  metadata: {}
-
-                new Subject
-                  location:
-                    standard: 'examples/images/bat-searching-vertical-line.jpg'
-                    audio: 'examples/audio/bat-searching-vertical-line.mp3'
-                  coords: [0, 0]
-                  metadata: {}
-              ]
-
-              tutorialSubjects: [
-                new Subject
-                  location:
-                    standard: 'examples/images/bat-social.jpg'
-                    audio: 'examples/audio/bat-social.mp3'
-                  coords: [0, 0]
-                  metadata: {}
-              ]
+          tutorialSubjects: [
+            new Subject
+              id: ids.tutorialSubject
+              location:
+                standard: 'examples/images/bat-social.jpg'
+                audio: 'examples/audio/bat-social.mp3'
+              coords: [0, 0]
+              metadata: {}
           ]
-      ]
+
+  Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's.
+  Map::tilesId = 61165
 
   config.set
     classifier: new Classifier
