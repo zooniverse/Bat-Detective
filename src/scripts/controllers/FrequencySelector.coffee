@@ -77,9 +77,9 @@ define (require, exports, module) ->
       y = 1 - ((e.pageY - @el.offset().top) / @el.height())
 
       if target.is @highHandle
-        @range.value.high = y
+        @range.value.high = clamp y, min: @range.value.low, max: 1
       else if target.is @lowHandle
-        @range.value.low = y
+        @range.value.low = clamp y, min: 0, max: @range.value.high
       else if target.is @timesHandle
         half = (@range.value.high - @range.value.low) / 2
         @range.value.low = y - half

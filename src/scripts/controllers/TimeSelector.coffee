@@ -63,9 +63,9 @@ define (require, exports, module) ->
           @range.end = x + (size / 2)
       else if @el.has(target).length is 0
         if e.pageX < @mouseDown.pageX
-          @range.start = x
+          @range.start = clamp x
         else
-          @range.end = x
+          @range.end = clamp x
 
       @frequencyRange.trigger 'change'
 
