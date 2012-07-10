@@ -23,7 +23,7 @@ define (require, exports, module) ->
       'mousedown .spectrogram img': 'addFrequencyRange'
       'click .next-subject': 'showSummary'
       'click .summary .favorite .create button': 'createFavorite'
-      'click .summary .favorite .destroy button': 'createFavorite'
+      'click .summary .favorite .destroy button': 'destroyFavorite'
       'click .summary .talk .yes': 'goToTalk'
       'click .summary .talk .no': 'nextSubjects'
       BaseClassifier::events

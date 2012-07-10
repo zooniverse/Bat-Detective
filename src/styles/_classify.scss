@@ -316,6 +316,8 @@
         display: none;
 
         .favorite {
+          display: none;
+
           .create {}
 
           .destroy {
@@ -343,8 +345,12 @@
     }
   }
 
+  &.can-favorite .interface .controls .summary .favorite {
+    display: block;
+  }
+
   &.is-favored {
-    .controls .summary .favorite {
+    .interface .controls .summary .favorite {
       .create {
         display: none;
       }

@@ -35,7 +35,7 @@ define (require, exports, module) ->
       super
 
     favoriteTemplate: (favorite) =>
-      item = $("<li data-favorite='#{favorite.id}'></li>")
+      item = $("<li></li>")
       player = new SpectrogramPlayer
         image: favorite.subjects[0].location.image
         audio: favorite.subjects[0].location.audio
@@ -43,7 +43,7 @@ define (require, exports, module) ->
       player.appendTo item
       $("<h4>#{formatDate favorite.createdAt}</h4>").appendTo item
       $("<a href='#{favorite.subjects[0].talkHref()}' class='talk'>Talk about it</a>").appendTo item
-      $('<button class="delete">Remove favorite</button>').appendTo item
+      $("<button data-favorite='#{favorite.id}' class='delete'>Remove favorite</button>").appendTo item
       item
 
     recentTemplate: (recent) =>
