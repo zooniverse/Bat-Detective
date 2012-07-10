@@ -54,7 +54,11 @@ define (require, exports, module) ->
     setAudio: (@audio) =>
       @el.removeClass 'loaded'
 
-      @sound?.destruct()
+      if @sound?
+        @sound.pause()
+        @sound.setPosition 0
+        @soundPlaying()
+        @sound.destruct()
 
       soundManager.onready =>
         @sound = soundManager.createSound
