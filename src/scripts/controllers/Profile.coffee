@@ -3,6 +3,7 @@ define (require, exports, module) ->
 
   {formatDate} = require 'zooniverse/util'
 
+  User = require 'zooniverse/models/User'
   BaseProfile = require 'zooniverse/controllers/Profile'
   Map = require 'zooniverse/controllers/Map'
   SpectrogramPlayer = require 'controllers/SpectrogramPlayer'
@@ -46,9 +47,11 @@ define (require, exports, module) ->
       $("<button data-favorite='#{favorite.id}' class='delete'>Remove favorite</button>").appendTo item
       item
 
-    recentTemplate: (recent) =>
-      item = $('<li></li>')
-      $("<a href='#{recent.subjects[0].talkHref()}' class='talk'>#{formatDate recent.createdAt}</a>").appendTo item
-      item
+    updateRecents: =>
+      @el.toggleClass 'has-recents', User.current.recents.length > 0
+      recent = User.current.recents.slice(-1)[0]
+      @recentsList.empty()
+      return unless recent?
+      @recentsList.append "<a href='#{recent.subjects[0].talkHref()}'>#{formatDate recent.createdAt}</a>"
 
   module.exports = Profile
