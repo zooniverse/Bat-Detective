@@ -20,7 +20,7 @@ define (require, exports, module) ->
     selectors: null
 
     events: $.extend
-      'mousedown .spectrogram img': 'addFrequencyRange'
+      'mousedown .interface .spectrogram img': 'addFrequencyRange'
       'click .next-subject': 'showSummary'
       'click .summary .favorite .create button': 'createFavorite'
       'click .summary .favorite .destroy button': 'destroyFavorite'
