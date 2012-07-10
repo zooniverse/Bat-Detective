@@ -41,8 +41,46 @@ define (require, exports, module) ->
             new Subject
               id: ids.tutorialSubject
               location:
-                standard: 'examples/images/bat-social.jpg'
+                image: 'examples/images/bat-social.jpg'
                 audio: 'examples/audio/bat-social.mp3'
+              coords: [0, 0]
+              metadata: {}
+          ]
+
+          subjects: [
+            # For development only!
+            new Subject
+              location:
+                image: 'examples/images/bat-feeding-buzz.jpg'
+                audio: 'examples/audio/bat-feeding-buzz.mp3'
+              coords: [0, 0]
+              metadata: {}
+
+            new Subject
+              location:
+                image: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
+                audio: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
+              coords: [0, 0]
+              metadata: {}
+
+            new Subject
+              location:
+                image: 'examples/images/bat-searching-plateau.jpg'
+                audio: 'examples/audio/bat-searching-plateau.mp3'
+              coords: [0, 0]
+              metadata: {}
+
+            new Subject
+              location:
+                image: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
+                audio: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
+              coords: [0, 0]
+              metadata: {}
+
+            new Subject
+              location:
+                image: 'examples/images/bat-searching-vertical-line.jpg'
+                audio: 'examples/audio/bat-searching-vertical-line.mp3'
               coords: [0, 0]
               metadata: {}
           ]
