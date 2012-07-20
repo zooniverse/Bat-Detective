@@ -69,6 +69,7 @@
         img {
           cursor: ns-resize;
           width: 100%;
+          height: 519px;
         }
 
         .seek-line {
@@ -360,4 +361,17 @@
       }
     }
   }
+}
+
+.tutorial-step {
+  @include transition(left 0.25s ease-in-out, top 0.33s ease-in-out);
+  background: $black;
+  border: 1px solid $white;
+  position: absolute;
+
+  .controls {}
+
+  .message {}
+
+  .arrow {}
 }

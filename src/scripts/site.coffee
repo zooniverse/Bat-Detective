@@ -47,43 +47,43 @@ define (require, exports, module) ->
               metadata: {}
           ]
 
-          subjects: [
-            # For development only!
-            new Subject
-              location:
-                image: 'examples/images/bat-feeding-buzz.jpg'
-                audio: 'examples/audio/bat-feeding-buzz.mp3'
-              coords: [0, 0]
-              metadata: {}
+          # subjects: [
+          #   # For development only!
+          #   new Subject
+          #     location:
+          #       image: 'examples/images/bat-feeding-buzz.jpg'
+          #       audio: 'examples/audio/bat-feeding-buzz.mp3'
+          #     coords: [0, 0]
+          #     metadata: {}
 
-            new Subject
-              location:
-                image: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
-                audio: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
-              coords: [0, 0]
-              metadata: {}
+          #   new Subject
+          #     location:
+          #       image: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
+          #       audio: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
+          #     coords: [0, 0]
+          #     metadata: {}
 
-            new Subject
-              location:
-                image: 'examples/images/bat-searching-plateau.jpg'
-                audio: 'examples/audio/bat-searching-plateau.mp3'
-              coords: [0, 0]
-              metadata: {}
+          #   new Subject
+          #     location:
+          #       image: 'examples/images/bat-searching-plateau.jpg'
+          #       audio: 'examples/audio/bat-searching-plateau.mp3'
+          #     coords: [0, 0]
+          #     metadata: {}
 
-            new Subject
-              location:
-                image: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
-                audio: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
-              coords: [0, 0]
-              metadata: {}
+          #   new Subject
+          #     location:
+          #       image: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
+          #       audio: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
+          #     coords: [0, 0]
+          #     metadata: {}
 
-            new Subject
-              location:
-                image: 'examples/images/bat-searching-vertical-line.jpg'
-                audio: 'examples/audio/bat-searching-vertical-line.mp3'
-              coords: [0, 0]
-              metadata: {}
-          ]
+          #   new Subject
+          #     location:
+          #       image: 'examples/images/bat-searching-vertical-line.jpg'
+          #       audio: 'examples/audio/bat-searching-vertical-line.mp3'
+          #     coords: [0, 0]
+          #     metadata: {}
+          # ]
 
   Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's.
   Map::tilesId = 61165
@@ -92,13 +92,13 @@ define (require, exports, module) ->
     classifier: new Classifier
       workflow: config.app.projects[0].workflows[0]
       el: '[data-page="classify"]'
-      # tutorialSteps: tutorialSteps
+      tutorialSteps: tutorialSteps
 
-    homeMap: new Map
-      el: '.home-map'
+    # homeMap: new Map
+    #   el: '.home-map'
 
-    profile: new Profile
-      el: '[data-page="profile"]'
+    # profile: new Profile
+    #   el: '[data-page="profile"]'
 
   $ = require 'jQuery'
   window.refreshCSS = ->
