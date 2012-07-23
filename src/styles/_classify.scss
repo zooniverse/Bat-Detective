@@ -367,11 +367,28 @@
   @include transition(left 0.25s ease-in-out, top 0.33s ease-in-out);
   background: $black;
   border: 1px solid $white;
+  padding: $gutter-size;
   position: absolute;
 
-  .controls {}
+  .controls {
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 
-  .message {}
+  .message {
+    .continue {
+      text-align: center;
+
+      button {
+        background: $gold;
+        color: $black;
+        font-weight: bold;
+        padding: 0 10px;
+      }
+    }
+  }
 
   .arrow {}
 }

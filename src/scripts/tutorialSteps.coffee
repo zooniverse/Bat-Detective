@@ -64,7 +64,7 @@ define (require, exports, module) ->
       content: [
         'Now we can identify this as a bat...'
       ]
-      attach: to: '.interface .answer:contains("Bat Call")'
+      attach: x: 'right', to: '.interface .answer:contains("Bat Call")', at: x: 'left'
 
     new Step
       content: [
@@ -95,23 +95,24 @@ define (require, exports, module) ->
       content: [
         'Look through the field guide. It looks and sounds like this is an insect!'
       ]
-      attach: to: '.spectrogram img'
+      attach: to: '.field-guide a[href="#!/classify/insect-noise"]'
 
     new Step
       content: [
         'Select insect...'
       ]
-      attach: to: '.spectrogram img'
+      attach: x: 'right', to: '.interface .answer:contains("Insect")', at: x: 'left'
 
     new Step
       content: [
         '...then "done".'
       ]
-      attach: to: '.spectrogram img'
+      attach: x: 'right', to: '.interface .answer:contains("Save Selection")', at: x: 'left'
 
     new Step
       content: [
         'Now you\'re ready to investigate on your own.'
+        'Click "Next" to begin'
       ]
       attach: to: '.spectrogram img'
   ]
