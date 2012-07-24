@@ -60,7 +60,9 @@
     }
   }
 
-  &:focus {}
+  &:focus {
+    outline: none;
+  }
 
   &.loading {}
 
