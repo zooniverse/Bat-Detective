@@ -237,20 +237,15 @@
     > .controls {
       @include classifier-unit;
       height: 100%;
-      font: {
-        size: 12px;
-        weight: bold;
-      };
       position: absolute;
       right: 0;
-      text: {
-        align: center;
-        transform: uppercase;
-      };
+      text-align: center;
       top: 0;
       width: $one-quarter;
 
-      > div {
+      > div,
+      > ol {
+        @include box-sizing(border-box);
         padding: $gutter-size;
       }
 
@@ -258,8 +253,10 @@
         @include linear-gradient(lighten($gold, 5%), darken($gold, 10%));
         color: $black;
         display: block;
+        font-weight: bold;
         margin-bottom: $gutter-size / 2;
         padding: $gutter-size / 3;
+        text-transform: uppercase;
         width: 100%;
 
         &:hover {
@@ -267,8 +264,34 @@
         }
       }
 
+      .instructions {
+        font-size: 14px;
+        margin: 0;
+
+        li {
+          display: block;
+          margin-bottom: 1em;
+
+          p {
+            margin: 0;
+
+            &.heading {
+              font: {
+                size: 12px;
+                weight: bold;
+              };
+              color: $gray;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
       .decision-tree {
+        width: 100%;
         display: none;
+        position: absolute;
+        bottom: 0;
 
         .decision {
           display: none;
@@ -280,6 +303,7 @@
           .back {
             background: transparent;
             color: $gold;
+            display: none;
             opacity: 0.8;
 
             .icon {
@@ -302,6 +326,10 @@
       }
 
       .finished {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+
         .nextSubject {}
       }
 
@@ -309,13 +337,15 @@
         display: block;
 
         & + .finished {
-          opacity: 0.33;
-          pointer-events: none;
+          display: none;
         }
       }
 
       .summary {
+        width: 100%;
         display: none;
+        position: absolute;
+        bottom: 0;
 
         .favorite {
           display: none;

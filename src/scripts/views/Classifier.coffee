@@ -30,6 +30,24 @@ define (require, exports, module) ->
       </div>
 
       <div class="controls">
+        <ol class="instructions">
+          <li>
+            <p class="heading">Step 1</p>
+            <p>Mark the frequency of a sound (vertically).</p>
+          </li>
+
+          <li>
+            <p class="heading">Step 2</p>
+            <p>Highlight any individual bits of sound (horizontally).</p>
+          </li>
+
+          <li>
+            <p class="heading">Step 3</p>
+            <p>Consult the field guide to identify the sound.</p>
+          </li>
+
+        </ol>
+
         <div class="decision-tree">
           <!--Insert decision tree here-->
         </div>
