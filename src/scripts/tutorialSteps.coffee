@@ -20,6 +20,7 @@ define (require, exports, module) ->
       nextOn: click: '.play'
 
     new Step
+      delay: 1500
       content: [
         'First we\'ll select a range of frequencies.'
         'The first two sounds can be seen about halfway from the top. Because they\'re repeating in the same frequency range, it\'s very likely that they\'re from the same creature.'
@@ -70,6 +71,7 @@ define (require, exports, module) ->
       nextOn: click: '.field-guide [data-page="horizontal-hockey-stick"] .play'
 
     new Step
+      delay: 1500
       content: [
         'Now we can identify this as a bat...'
       ]
