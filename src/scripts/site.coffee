@@ -41,8 +41,8 @@ define (require, exports, module) ->
             new Subject
               id: ids.tutorialSubject
               location:
-                image: 'examples/images/bat-social.jpg'
-                audio: 'examples/audio/bat-social.mp3'
+                image: 'subjects/image/tutorial.jpg'
+                audio: 'subjects/audio/tutorial.mp3'
               coords: [0, 0]
               metadata: {}
           ]
