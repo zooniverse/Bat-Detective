@@ -72,6 +72,7 @@ body {
             }
 
             > .logo {
+              border: 0;
               vertical-align: -25px;
               width: 120px;
             }
@@ -224,6 +225,10 @@ body {
       &:hover {}
 
       &:active {}
+
+      img {
+        border: 0;
+      }
     }
 
     button {

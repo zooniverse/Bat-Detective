@@ -127,6 +127,7 @@
           }
 
           .times {
+            background: transparentize($black, 0.99); // IE needs some background to pick up mouse events.
             cursor: ew-resize;
             left: 0;
             pointer-events: none;
