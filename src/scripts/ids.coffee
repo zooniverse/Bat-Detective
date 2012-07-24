@@ -7,5 +7,5 @@ define (require, exports, module) ->
     tutorialSubject: '4ff8306854558fc372000001'
   else
     project: 'bat_detective'
-    workflow: 'WORKFLOW_ID'
+    workflow: '4fff25b6516bcb41e7000002'
     tutorialSubject: 'TUTORIAL_SUBJECT_ID'
