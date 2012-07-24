@@ -7,7 +7,7 @@ define (require, exports, module) ->
       -> @annotation.trigger 'finish'
 
   module.exports = new Question 'What do you hear?',
-    new Answer 'Bat Call',
+    new Answer 'Bat call',
       source: 'bat'
       new Question 'What type of bat call is this?',
         new Answer 'Social',
