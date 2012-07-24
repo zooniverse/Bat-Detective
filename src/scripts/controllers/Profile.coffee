@@ -1,7 +1,7 @@
 define (require, exports, module) ->
   $ = require 'jQuery'
 
-  {formatDate} = require 'zooniverse/util'
+  {delay, formatDate} = require 'zooniverse/util'
 
   User = require 'zooniverse/models/User'
   BaseProfile = require 'zooniverse/controllers/Profile'
@@ -28,7 +28,7 @@ define (require, exports, module) ->
 
     userChanged: =>
       super
-      @map.resized()
+      delay => @map.resized()
 
     updateFavorites: =>
       player.release() for player in @spectrogramPlayers
@@ -44,7 +44,7 @@ define (require, exports, module) ->
       player.appendTo item
       $("<h4>#{formatDate favorite.createdAt}</h4>").appendTo item
       $("<a href='#{favorite.subjects[0].talkHref()}' class='talk'>Talk about it</a>").appendTo item
-      $("<button data-favorite='#{favorite.id}' class='delete'>Remove favorite</button>").appendTo item
+      $("<a href='#delete' data-favorite='#{favorite.id}' class='delete'>Remove favorite</a>").appendTo item
       item
 
     updateRecents: =>

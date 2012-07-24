@@ -169,7 +169,7 @@ body {
         text-align: center;
 
         > img {
-          margin: $gutter-size / 2;
+          display: block;
         }
       }
     }
