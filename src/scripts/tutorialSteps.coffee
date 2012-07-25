@@ -47,12 +47,9 @@ define (require, exports, module) ->
       style: width: 600
       attach: x: 'left', y: 'bottom', to: '.field-guide a[href="#!/classify/bat-calls"]', at: x: 'left', y: 'top'
       onEnter: (tutorial) ->
-        html = $('html')
-        start = html.scrollTop()
+        start = $('html').scrollTop() || 0
         end = $('.field-guide').offset().top - ($(window).innerHeight() / 2)
-
-        $('<div></div>').css(opacity: 0).animate {opacity: 1}, step: (i) ->
-          html.get(0).scrollTop = start + ((end - start) * i)
+        $('html, body').animate scrollTop: end
 
     new Step
       delay: 100
