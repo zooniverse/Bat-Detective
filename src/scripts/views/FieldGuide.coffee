@@ -3,42 +3,14 @@ define (require, exports, module) ->
     <div class="details">
       <nav>
         <ul>
-          <li><a href="#!/classify/context">Context</a></li>
           <li><a href="#!/classify/bat-calls">Bat calls</a></li>
           <li><a href="#!/classify/insect-noise">Insect noises</a></li>
           <li><a href="#!/classify/machine-noise">Mechanical noises</a></li>
+          <li><a href="#!/classify/context">Context</a></li>
         </ul>
       </nav>
 
-      <section data-page="context" class="active">
-        <div class="column">
-          <div class="framed map image"></div>
-        </div>
-
-        <div class="column">
-          <section class="location">
-            <h3>Location</h3>
-            <div class="field">Paris, France</div>
-          </section>
-
-          <section class="habitat">
-            <h3>Habitat</h3>
-            <div class="field">Urban</div>
-          </section>
-
-          <section class="date">
-            <h3>Date</h3>
-            <div class="field">February 25, 1984</div>
-          </section>
-
-          <section class="time">
-            <h3>Time</h3>
-            <div class="field">12:34pm</div>
-          </section>
-        </div>
-      </section>
-
-      <section data-page="bat-calls">
+      <section data-page="bat-calls" class="active">
         <div class="column">
           <div data-page="searching" class="active">
             <div data-page="vertical-hockey-stick" class="active sample">
@@ -197,6 +169,34 @@ define (require, exports, module) ->
 
             <h4>What it sounds like</h4>
             <p>These can sound like a click, a crackle or static noise, or something metallic like the sound of a workshop. Some may sound like listening out the window of a moving car.</p>
+          </section>
+        </div>
+      </section>
+
+      <section data-page="context">
+        <div class="column">
+          <div class="framed map image"></div>
+        </div>
+
+        <div class="column">
+          <section class="location">
+            <h3>Location</h3>
+            <div class="field">Paris, France</div>
+          </section>
+
+          <section class="habitat">
+            <h3>Habitat</h3>
+            <div class="field">Urban</div>
+          </section>
+
+          <section class="date">
+            <h3>Date</h3>
+            <div class="field">February 25, 1984</div>
+          </section>
+
+          <section class="time">
+            <h3>Time</h3>
+            <div class="field">12:34pm</div>
           </section>
         </div>
       </section>
