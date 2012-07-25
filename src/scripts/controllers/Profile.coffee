@@ -38,8 +38,8 @@ define (require, exports, module) ->
     favoriteTemplate: (favorite) =>
       item = $("<li></li>")
       player = new SpectrogramPlayer
-        image: favorite.subjects[0].location.image
-        audio: favorite.subjects[0].location.audio
+        image: favorite.subjects[0].location.standard
+        audio: favorite.subjects[0].location.mp3
       @spectrogramPlayers.push player
       player.appendTo item
       $("<h4>#{formatDate favorite.createdAt}</h4>").appendTo item

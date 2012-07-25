@@ -41,8 +41,8 @@ define (require, exports, module) ->
             new Subject
               id: ids.tutorialSubject
               location:
-                image: 'subjects/image/tutorial.jpg'
-                audio: 'subjects/audio/tutorial.mp3'
+                standard: 'subjects/image/tutorial.jpg'
+                mp3: 'subjects/audio/tutorial.mp3'
               coords: [0, 0]
               metadata: {}
           ]
@@ -51,36 +51,36 @@ define (require, exports, module) ->
             # For development only!
             new Subject
               location:
-                image: 'examples/images/bat-feeding-buzz.jpg'
-                audio: 'examples/audio/bat-feeding-buzz.mp3'
+                standard: 'examples/images/bat-feeding-buzz.jpg'
+                mp3: 'examples/audio/bat-feeding-buzz.mp3'
               coords: [0, 0]
               metadata: {}
 
             new Subject
               location:
-                image: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
-                audio: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
+                standard: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
+                mp3: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
               coords: [0, 0]
               metadata: {}
 
             new Subject
               location:
-                image: 'examples/images/bat-searching-plateau.jpg'
-                audio: 'examples/audio/bat-searching-plateau.mp3'
+                standard: 'examples/images/bat-searching-plateau.jpg'
+                mp3: 'examples/audio/bat-searching-plateau.mp3'
               coords: [0, 0]
               metadata: {}
 
             new Subject
               location:
-                image: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
-                audio: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
+                standard: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
+                mp3: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
               coords: [0, 0]
               metadata: {}
 
             new Subject
               location:
-                image: 'examples/images/bat-searching-vertical-line.jpg'
-                audio: 'examples/audio/bat-searching-vertical-line.mp3'
+                standard: 'examples/images/bat-searching-vertical-line.jpg'
+                mp3: 'examples/audio/bat-searching-vertical-line.mp3'
               coords: [0, 0]
               metadata: {}
           ]
