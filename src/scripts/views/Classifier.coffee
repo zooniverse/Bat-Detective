@@ -58,8 +58,8 @@ define (require, exports, module) ->
 
         <div class="summary">
           <div class="favorite">
-            <div class="create"><button>Mark as a favorite</button></div>
-            <div class="destroy"><p>Favorite added!</p><button>Undo</button></div>
+            <div class="create"><button>Mark as a favourite</button></div>
+            <div class="destroy"><p>Favourite added!</p><button>Undo</button></div>
           </div>
 
           <div class="talk">
