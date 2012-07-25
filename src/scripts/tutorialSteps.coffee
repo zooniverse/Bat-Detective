@@ -1,4 +1,5 @@
 define (require, exports, module) ->
+  $ = require 'jQuery'
   {Step} = require 'zooniverse/controllers/Tutorial'
 
   module.exports = [
@@ -44,7 +45,14 @@ define (require, exports, module) ->
         'From the frequency range, we can guess that this is a bat, so check out the examples in the "Bat calls" tab.'
       ]
       style: width: 600
-      attach: y: 'bottom', to: '.field-guide a[href="#!/classify/bat-calls"]', at: y: 'top'
+      attach: x: 'left', y: 'bottom', to: '.field-guide a[href="#!/classify/bat-calls"]', at: x: 'left', y: 'top'
+      onEnter: (tutorial) ->
+        html = $('html')
+        start = html.scrollTop()
+        end = $('.field-guide').offset().top - ($(window).innerHeight() / 2)
+
+        $('<div></div>').css(opacity: 0).animate {opacity: 1}, step: (i) ->
+          html.get(0).scrollTop = start + ((end - start) * i)
 
     new Step
       delay: 100
