@@ -49,40 +49,40 @@ define (require, exports, module) ->
 
           subjects: [
             # For development only!
-            new Subject
-              location:
-                standard: 'examples/images/bat-feeding-buzz.jpg'
-                mp3: 'examples/audio/bat-feeding-buzz.mp3'
-              coords: [0, 0]
-              metadata: {}
+            # new Subject
+            #   location:
+            #     standard: 'examples/images/bat-feeding-buzz.jpg'
+            #     mp3: 'examples/audio/bat-feeding-buzz.mp3'
+            #   coords: [0, 0]
+            #   metadata: {}
 
-            new Subject
-              location:
-                standard: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
-                mp3: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
-              coords: [0, 0]
-              metadata: {}
+            # new Subject
+            #   location:
+            #     standard: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
+            #     mp3: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
+            #   coords: [0, 0]
+            #   metadata: {}
 
-            new Subject
-              location:
-                standard: 'examples/images/bat-searching-plateau.jpg'
-                mp3: 'examples/audio/bat-searching-plateau.mp3'
-              coords: [0, 0]
-              metadata: {}
+            # new Subject
+            #   location:
+            #     standard: 'examples/images/bat-searching-plateau.jpg'
+            #     mp3: 'examples/audio/bat-searching-plateau.mp3'
+            #   coords: [0, 0]
+            #   metadata: {}
 
-            new Subject
-              location:
-                standard: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
-                mp3: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
-              coords: [0, 0]
-              metadata: {}
+            # new Subject
+            #   location:
+            #     standard: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
+            #     mp3: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
+            #   coords: [0, 0]
+            #   metadata: {}
 
-            new Subject
-              location:
-                standard: 'examples/images/bat-searching-vertical-line.jpg'
-                mp3: 'examples/audio/bat-searching-vertical-line.mp3'
-              coords: [0, 0]
-              metadata: {}
+            # new Subject
+            #   location:
+            #     standard: 'examples/images/bat-searching-vertical-line.jpg'
+            #     mp3: 'examples/audio/bat-searching-vertical-line.mp3'
+            #   coords: [0, 0]
+            #   metadata: {}
           ]
 
   Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's.
