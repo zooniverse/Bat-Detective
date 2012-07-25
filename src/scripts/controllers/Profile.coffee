@@ -24,6 +24,8 @@ define (require, exports, module) ->
       super
       @spectrogramPlayers ?= []
       @map = new Map
+        latitude: 52.5
+        longitude: 23.25
         el: @mapContainer
 
     userChanged: =>

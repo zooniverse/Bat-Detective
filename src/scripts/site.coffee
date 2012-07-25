@@ -95,6 +95,8 @@ define (require, exports, module) ->
       tutorialSteps: tutorialSteps
 
     homeMap: new Map
+      latitude: 52.5
+      longitude: 23.25
       el: '.home-map'
 
     profile: new Profile
