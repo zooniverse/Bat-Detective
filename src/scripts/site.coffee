@@ -20,7 +20,7 @@ define (require, exports, module) ->
     talkHost: 'http://talk.batdetective.org'
 
     domain: 'batdetective.org'
-    # googleAnalytics: 'X'
+    googleAnalytics: 'UA-1224199-32'
 
     cartoUser: 'CARTODB USER'
     cartoApiKey: 'CARTODB API KEY'
