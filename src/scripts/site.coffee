@@ -29,7 +29,7 @@ define (require, exports, module) ->
   config.set
     app: new App
       el: '.bat-detective.app'
-      languages: ['en', 'de']
+      languages: ['en']
 
       projects: new Project
         id: ids.project
