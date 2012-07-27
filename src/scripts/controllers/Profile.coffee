@@ -30,7 +30,7 @@ define (require, exports, module) ->
 
     userChanged: =>
       super
-      delay => @map.resized()
+      delay 1000, => @map.resized()
 
     updateFavorites: =>
       player.release() for player in @spectrogramPlayers
