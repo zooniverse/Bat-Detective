@@ -8,4 +8,4 @@ define (require, exports, module) ->
   else
     project: 'bat_detective'
     workflow: '4fff25b6516bcb41e7000002'
-    tutorialSubject: 'TUTORIAL_SUBJECT_ID'
+    tutorialSubject: '5012b02e516bcbdb4e000001'
