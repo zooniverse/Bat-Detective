@@ -76,6 +76,12 @@
           background: $gold;
         }
 
+        // Used in tutorial.
+        .highlighter {
+          background: transparentize($gold, 0.33);
+          position: absolute;
+        }
+
         .frequency-selector {
           $handle-thickness: 6px;
 

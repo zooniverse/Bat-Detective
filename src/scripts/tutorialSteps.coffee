@@ -1,6 +1,7 @@
 define (require, exports, module) ->
   $ = require 'jQuery'
   {Step} = require 'zooniverse/controllers/Tutorial'
+  {delay} = require 'zooniverse/util'
 
   module.exports = [
     new Step
@@ -29,6 +30,18 @@ define (require, exports, module) ->
       attach: y: 'top', to: '.spectrogram img', at: y: 'top'
       style: width: 550
       nextOn: mouseup: '.spectrogram'
+      onEnter: ->
+        highlighter = $('<div class="highlighter"></div>')
+        highlighter.appendTo '[data-page="classify"] .interface .spectrogram'
+
+        highlighter.css left: 0, height: '0.01%', opacity: 0, top: '45%', width: '100%'
+        delay 500, =>
+          highlighter.animate height: '10%', opacity: 1, 'slow', ->
+            highlighter.animate opacity: 0, 'slow', ->
+              highlighter.css height: '0.01%', opacity: 0
+              highlighter.animate height: '10%', opacity: 1, 'slow', ->
+                highlighter.animate opacity: 0, 'slow', ->
+                  highlighter.remove()
 
     new Step
       heading: 'Mark the time ranges'
