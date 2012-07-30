@@ -59,6 +59,8 @@ define (require, exports, module) ->
       doc.on 'mouseup', @onDocMouseUp
 
     onMouseDown: (e) =>
+      return if @classifier.isDisabled()
+
       e.preventDefault()
       e.stopPropagation()
       @mouseDown = e
@@ -119,6 +121,7 @@ define (require, exports, module) ->
 
     addTimeRange: (start, end, mouseDown) =>
       timeSelector = new TimeSelector
+        frequencySelector: @
         range: {start, end}
         frequencyRange: @range
         mouseDown: mouseDown
@@ -143,6 +146,7 @@ define (require, exports, module) ->
       @classifier.decisionTreeContainer.removeClass 'has-selection'
 
     onDeleteClick: (e) =>
+      return if @classifier.isDisabled()
       e.stopPropagation()
       @deselect()
       @range.destroy()

@@ -7,6 +7,8 @@ define (require, exports, module) ->
   template = require 'views/TimeSelector'
 
   class TimeSelector extends Spine.Controller
+    frequencySelector: null
+
     range: null
     frequencyRange: null
 
@@ -34,6 +36,8 @@ define (require, exports, module) ->
       doc.on 'mouseup', @onDocMouseUp
 
     onMouseDown: (e) =>
+      return if @frequencySelector.classifier.isDisabled()
+
       e.preventDefault()
       e.stopPropagation()
       @mouseDown = e
@@ -70,6 +74,7 @@ define (require, exports, module) ->
       @frequencyRange.trigger 'change'
 
     onDeleteClick: (e) =>
+      return if @frequencySelector.classifier.isDisabled()
       e.stopPropagation()
       remove @range, from: @frequencyRange.value.times
       @release()

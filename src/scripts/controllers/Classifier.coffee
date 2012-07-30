@@ -53,6 +53,7 @@ define (require, exports, module) ->
       @player.setAudio subject.location.mp3
 
     addFrequencyRange: (e) =>
+      return if @isDisabled()
       e.preventDefault()
 
       y = 1 - ((e.pageY - @player.spectrogram.offset().top) / @player.spectrogram.height())
@@ -74,5 +75,8 @@ define (require, exports, module) ->
       selector.deselect for selector in @selectors
       @saveClassification()
       @el.addClass 'showing-summary'
+
+    isDisabled: =>
+      @el.hasClass 'showing-summary'
 
   module.exports = Classifier
