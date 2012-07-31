@@ -32,14 +32,14 @@ define (require, exports, module) ->
       nextOn: mouseup: '.spectrogram'
       onEnter: ->
         highlighter = $('<div class="highlighter"></div>')
+        highlighter.css left: 0, height: '0.01%', opacity: 0, top: '45%', width: '100%'
         highlighter.appendTo '[data-page="classify"] .interface .spectrogram'
 
-        highlighter.css left: 0, height: '0.01%', opacity: 0, top: '45%', width: '100%'
-        delay 500, =>
+        delay 3500, =>
           highlighter.animate height: '10%', opacity: 1, 'slow', ->
             highlighter.animate opacity: 0, 'slow', ->
               highlighter.css height: '0.01%', opacity: 0
-              highlighter.animate height: '10%', opacity: 1, 'slow', ->
+              highlighter.animate height: '9%', opacity: 1, 'slow', ->
                 highlighter.animate opacity: 0, 'slow', ->
                   highlighter.remove()
 
@@ -50,6 +50,25 @@ define (require, exports, module) ->
         'Click "Continue" when you\'re ready. Don\'t forget the fourth one at the end!'
       ]
       attach: y: 'top', to: '.spectrogram img', at: y: 'top'
+      onEnter: ->
+        highlights = window.h = $([
+          '<div class="highlighter" style="left: 14%;"></div>'
+          '<div class="highlighter" style="left: 41%;"></div>'
+          '<div class="highlighter" style="left: 69%;"></div>'
+          '<div class="highlighter" style="left: 97%;"></div>'
+        ].join '')
+        highlights.css height: '10%', opacity: 0, top: '45%', width: '0.01%'
+        highlights.appendTo '[data-page="classify"] .interface .spectrogram'
+
+        highlights.eq(0).animate opacity: 1, width: '7%', 'slow', ->
+          highlights.eq(1).animate opacity: 1, width: '8%', 'slow', ->
+            highlights.eq(2).animate opacity: 1, width: '9%', 'slow', ->
+              highlights.eq(3).animate opacity: 1, width: '3%', 'slow', ->
+                highlights.animate opacity: 0.5, ->
+                  highlights.animate opacity: 1, ->
+                    highlights.animate opacity: 0, 'slow', ->
+                      highlights.remove()
+
 
     new Step
       heading: 'What is this sound?'
@@ -98,4 +117,21 @@ define (require, exports, module) ->
       attach: y: 'top', to: '.spectrogram img', at: y: 'top'
       style: width: 480
       continueText: 'Exit tutorial'
+      onEnter: ->
+        highlights = $([
+          '<div class="highlighter" style="height: 17%; left: 4%; top: 50%; width: 5%;"></div>'
+          '<div class="highlighter" style="height: 17%; left: 39%; top: 50%; width: 5%;"></div>'
+          '<div class="highlighter" style="height: 17%; left: 74%; top: 50%; width: 5%;"></div>'
+          '<div class="highlighter" style="height: 12%; left: 26%; top: 76%; width: 25%;"></div>'
+          '<div class="highlighter" style="height: 11%; left: 1%; top: 83%; width: 98%;"></div>'
+        ].join '')
+
+        highlights.css opacity: 0
+        highlights.appendTo '[data-page="classify"] .interface .spectrogram'
+
+        highlights.animate opacity: 1, 'slow', ->
+          highlights.animate opacity: 0.5, ->
+            highlights.animate opacity: 1, ->
+              highlights.animate opacity: 0, 'slow', ->
+                highlights.remove()
   ]
