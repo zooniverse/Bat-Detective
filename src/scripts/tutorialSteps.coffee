@@ -35,13 +35,13 @@ define (require, exports, module) ->
         highlighter.css left: 0, height: '0.01%', opacity: 0, top: '45%', width: '100%'
         highlighter.appendTo '[data-page="classify"] .interface .spectrogram'
 
-        delay 3500, =>
-          highlighter.animate height: '10%', opacity: 1, 'slow', ->
+        delay 4000, =>
+          highlighter.animate height: '9%', opacity: 1, 'slow'
+          highlighter.animate opacity: 0, 'slow', ->
+            highlighter.css height: '0.01%', opacity: 0
+            highlighter.animate height: '9%', opacity: 1, 'slow'
             highlighter.animate opacity: 0, 'slow', ->
-              highlighter.css height: '0.01%', opacity: 0
-              highlighter.animate height: '9%', opacity: 1, 'slow', ->
-                highlighter.animate opacity: 0, 'slow', ->
-                  highlighter.remove()
+              highlighter.remove()
 
     new Step
       heading: 'Mark the time ranges'
@@ -64,10 +64,12 @@ define (require, exports, module) ->
           highlights.eq(1).animate opacity: 1, width: '8%', 'slow', ->
             highlights.eq(2).animate opacity: 1, width: '9%', 'slow', ->
               highlights.eq(3).animate opacity: 1, width: '3%', 'slow', ->
-                highlights.animate opacity: 0.5, ->
-                  highlights.animate opacity: 1, ->
-                    highlights.animate opacity: 0, 'slow', ->
-                      highlights.remove()
+                delay 1000, ->
+                  highlights.eq(0).animate left: '+=7%', opacity: 0, width: '0.01%', 'slow', ->
+                    highlights.eq(1).animate left: '+=8%', opacity: 0, width: '0.01%', 'slow', ->
+                      highlights.eq(2).animate left: '+=9%', opacity: 0, width: '0.01%', 'slow', ->
+                        highlights.eq(3).animate left: '+=3%', opacity: 0, width: '0.01%', 'slow', ->
+                          highlights.remove()
 
 
     new Step
@@ -79,7 +81,6 @@ define (require, exports, module) ->
       style: width: 600
       attach: x: 'left', y: 'bottom', to: '.field-guide a[href="#!/classify/bat-calls"]', at: x: 'left', y: 'top'
       onEnter: (tutorial) ->
-        start = $('html').scrollTop() || 0
         end = $('.field-guide').offset().top - ($(window).innerHeight() / 2)
         $('html, body').animate scrollTop: end
 
@@ -92,6 +93,8 @@ define (require, exports, module) ->
       attach: x: 'right', to: '.answer:contains("Bat call")', at: x: 'left'
       style: width: 380
       nextOn: click: '.answer:contains("Bat call")'
+      onEnter: (tutorial) ->
+        $('html, body').animate scrollTop: 0
 
     new Step
       delay: 100
@@ -118,20 +121,21 @@ define (require, exports, module) ->
       style: width: 480
       continueText: 'Exit tutorial'
       onEnter: ->
-        highlights = $([
+        highlighters = $([
           '<div class="highlighter" style="height: 17%; left: 4%; top: 50%; width: 5%;"></div>'
           '<div class="highlighter" style="height: 17%; left: 39%; top: 50%; width: 5%;"></div>'
           '<div class="highlighter" style="height: 17%; left: 74%; top: 50%; width: 5%;"></div>'
           '<div class="highlighter" style="height: 12%; left: 26%; top: 76%; width: 25%;"></div>'
           '<div class="highlighter" style="height: 11%; left: 1%; top: 83%; width: 98%;"></div>'
         ].join '')
+        highlighters.css opacity: 0
+        highlighters.appendTo '[data-page="classify"] .interface .spectrogram'
 
-        highlights.css opacity: 0
-        highlights.appendTo '[data-page="classify"] .interface .spectrogram'
-
-        highlights.animate opacity: 1, 'slow', ->
-          highlights.animate opacity: 0.5, ->
-            highlights.animate opacity: 1, ->
-              highlights.animate opacity: 0, 'slow', ->
-                highlights.remove()
+        for highlighter, i in highlighters then do (highlighter, i) ->
+          highlighter = $(highlighter)
+          delay i * 500, ->
+            highlighter.animate opacity: 1, 'slow'
+            delay highlighters.length * 1000, ->
+              highlighter.animate opacity: 0, 'slow', ->
+                highlighter.remove()
   ]
