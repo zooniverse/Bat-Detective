@@ -22,7 +22,20 @@
       span {
         display: inline-block;
         font-weight: bold;
+        vertical-align: middle;
         width: 80px;
+      }
+    }
+
+    .picker {
+      margin-top: $gutter-size;
+
+      button {
+        @include linear-gradient(transparent, transparent);
+        font-weight: normal;
+        margin: 5px 0;
+        padding: 2px 5px;
+        text-decoration: underline;
       }
     }
 

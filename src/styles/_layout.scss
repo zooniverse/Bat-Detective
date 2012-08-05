@@ -247,6 +247,10 @@ body {
       overflow: hidden;
       padding: 0;
       text-align: inherit;
+
+      &:disabled {
+        opacity: 0.5;
+      }
     }
 
     .action {
