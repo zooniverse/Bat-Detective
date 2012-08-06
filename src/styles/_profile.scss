@@ -10,7 +10,7 @@
     background: $white;
     border: 3px solid $gold;
     box-shadow: 0 3px 3px -3px $black;
-    margin-left: $one-quarter;
+    margin: 0 auto;
     padding: $gutter-size * 1.5;
     width: $one-half;
     text-align: center;
@@ -20,8 +20,9 @@
       margin-bottom: $gutter-size;
 
       span {
-        display: block;
+        display: inline-block;
         font-weight: bold;
+        width: 120px;
       }
     }
 
