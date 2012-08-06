@@ -20,10 +20,8 @@
       margin-bottom: $gutter-size;
 
       span {
-        display: inline-block;
+        display: block;
         font-weight: bold;
-        vertical-align: middle;
-        width: 80px;
       }
     }
 
@@ -33,7 +31,6 @@
       button {
         @include linear-gradient(transparent, transparent);
         font-weight: normal;
-        margin: 5px 0;
         padding: 2px 5px;
         text-decoration: underline;
       }
@@ -43,7 +40,6 @@
       @include linear-gradient(lighten($gold, 5%), darken($gold, 10%));
       border-radius: 3px;
       font-weight: bold;
-      margin-left: 80px;
       padding: 5px 20px;
     }
   }
