@@ -1,381 +1,239 @@
 <!DOCTYPE html>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
+<html>
+  <head>
+    <meta charset="utf-8" />
 
-		<title>Bat Detective</title>
-		<link href="styles/main.css" rel="stylesheet" />
+    <title>Bat Detective</title>
 
-		<!--[if lt IE 9]><script src="scripts/lib/html5shiv.js" type="text/javascript"></script><![endif]-->
-	</head>
+    <link href="./styles/zooniverse.css" rel="stylesheet" />
+    <link href="./styles/main.css" rel="stylesheet" />
 
-	<body>
-		<div id="zooniverse-bar"></div>
+    <!--[if lt IE 9]>
+      <script src="./scripts/lib/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-		<header>
-			<nav>
-				<ul>
-					<li><a href="#/home">Home</a></li>
-					<li><a href="#/about">About</a></li>
-					<li><a href="#/classify">Classify</a></li>
-					<li><a href="#/home"><img src="images/bat-detective-heading.png" alt="Bat Detective" class="logo" /></a></li>
-					<li><a href="#/profile">My Profile</a></li>
-					<li><a href="#/talk">Talk</a></li>
-					<li><a href="#/blog">Blog</a></li>
-				</ul>
-			</nav>
-		</header>
+  <body>
+    <header>
+      <nav data-i18n="navigation">
+        <ul>
+          <li><a href="#!/home" data-i18n="home">Home</a></li>
+          <li><a href="#!/about" data-i18n="about">About</a></li>
+          <li><a href="#!/classify" data-i18n="classify">Classify</a></li>
+          <li><a href="#!/home"><img src="images/bat-detective-heading.png" alt="Bat Detective" class="logo" /></a></li>
+          <li><a href="#!/profile" data-i18n="profile">Profile</a></li>
+          <li><a href="http://talk.batdetective.org/" target="_blank" data-i18n="talk">Talk</a></li>
+          <!-- <li><a href="http://blog.batdetective.org/" target="_blank" data-i18n="blog">Blog</a></li> -->
+          <li><a href="#!/feedback">Feedback</a></li>
+        </ul>
+      </nav>
+    </header>
 
-		<div id="home-map" data-page="home" class="active"></div>
+    <div class="home-map" data-hash-association="#!/home" class="active"></div>
 
-		<div id="app">
-			<div id="main">
-				<!--
+    <div class="bat-detective app">
+      <div class="main">
+        <section data-page="home" data-i18n="home" class="active">
+          <h2><span data-i18n="hot_on_the_trail">You're hot on the trail of bats!</span> <a href="#!/classify" data-i18n="get_searching">Get searching.</a></h2>
 
-					HOME
+          <hr />
 
-				-->
+          <section class="three columns">
+            <div>
+              <h3 data-i18n="learn_the_facts">Learn the facts</h3>
+              <p data-i18n="the_facts">Did you know that one in every fifth mammal is a bat? How about that bats are found all over the world, including your local park? Who knew that bats use sounds you can’t hear to socialise, hunt for food, and to find their way around? Check out the case files to learn more about bats!</p>
+            </div>
 
-				<section data-page="home" class="active">
-					<h2>You're hot on the trail of bats! <a href="#/classify">Get searching.</a></h2>
+            <div>
+              <h3 data-i18n="start_your_search">Start your search</h3>
+              <p data-i18n="the_search">Researchers need your help to extract bat calls from noisy recordings of sounds made at night. Thousands of volunteer data collectors have travelled the world recording bat calls with special detectors, and now it’s your job to dig through those files to uncover the elusive bat sounds.</p>
+            </div>
 
-					<hr />
+            <div>
+              <h3 data-i18n="discuss_the_findings">Discuss the findings</h3>
+              <p data-i18n="the_findings">Have you found a particularly interesting bat call? Having trouble distinguishing bat calls from insect noise? Have a question about bats, or a crazy theory about how bats use sound? Head over to the Bat Detective Forum to discuss your findings with others including the Bat Detective team.</p>
+            </div>
+          </section>
 
-					<section class="three columns">
-						<div>
-							<h3>Learn the facts</h3>
-							<p>Did you know that a bat in Scotland sounds different from a bat in the United States? How about that bats do this really cool thing, or that really cool thing? Check out the case files to understand more about bats and learn a bunch of really mind-blowing information.</p>
-						</div>
+          <br />
 
-						<div>
-							<h3>Start your search</h3>
-							<p>Researchers need your help to identify bat calls, machinery noise, and insect noise! Volunteer data collectors have travelled the world recording bat calls on their smart phones, and now it’s your job to dig through those files to uncover the ellsive bat sounds.</p>
-						</div>
+          <section class="three columns">
+            <div>
+              <p><a href="#!/about" data-i18n="learn_button" class="action">Learn about bats</a></p>
+            </div>
 
-						<div>
-							<h3>Discuss the findings</h3>
-							<p>Have you found a particularly interesting bat call? One that stummped you? One with a noise that you just cannot identify? Have a theory on bat migratory patterns? Other craziness? Head over to the Bat Detective Forum to discuss your findings with others.</p>
-						</div>
-					</section>
+            <div>
+              <p><a href="#!/classify" data-i18n="search_button" class="action">Begin searching</a></p>
+            </div>
 
-					<br />
+            <div>
+              <p><a href="#!/talk" data-i18n="findings_button" class="action">Visit the forum</a></p>
+            </div>
+          </section>
 
-					<section class="three columns">
-						<div>
-							<p><a href="#/about" class="action">Learn about bats</a></p>
-						</div>
+          <hr />
 
-						<div>
-							<p><a href="#/classify" class="action">Begin searching</a></p>
-						</div>
+          <section class="four columns">
+            <div class="bat-thumbnail">
+              <!-- <p>Pipistrellus pipistrellus</p> -->
+              <img src="images/bats/bat1.png" />
+            </div>
 
-						<div>
-							<p><a href="#/talk" class="action">Visit the forum</a></p>
-						</div>
-					</section>
+            <div class="bat-thumbnail">
+              <!-- <p>Pipistrellus pipistrellus</p> -->
+              <img src="images/bats/bat2.png" />
+            </div>
 
-					<hr />
+            <div class="bat-thumbnail">
+              <!-- <p>Pipistrellus pipistrellus</p> -->
+              <img src="images/bats/bat3.png" />
+            </div>
 
-					<section class="four columns">
-						<div class="bat-thumbnail">
-							<p>Pipistrellus pipistrellus</p>
-							<img src="images/bats/bat1.png" />
-						</div>
+            <div class="bat-thumbnail">
+              <!-- <p>Pipistrellus pipistrellus</p> -->
+              <img src="images/bats/bat4.png" />
+            </div>
+          </section>
+        </section>
 
-						<div class="bat-thumbnail">
-							<p>Pipistrellus pipistrellus</p>
-							<img src="images/bats/bat2.png" />
-						</div>
+        <section data-page="about">
+          <h2>What you're hearing</h2>
+          <p>With your help, we are learning about where different bats are found around the world and tracking changes in bat populations as humans continue to destroy bat habitats and alter the climate.</p>
 
-						<div class="bat-thumbnail">
-							<p>Pipistrellus pipistrellus</p>
-							<img src="images/bats/bat3.png" />
-						</div>
+          <div class="details">
+            <nav>
+              <ul>
+                <li><a href="#!/about/science">Science</a></li>
+                <li><a href="#!/about/bats">Bats</a></li>
+                <li><a href="#!/about/sounds">Sounds</a></li>
+                <li><a href="#!/about/team">Team</a></li>
+              </ul>
+            </nav>
 
-						<div class="bat-thumbnail">
-							<p>Pipistrellus pipistrellus</p>
-							<img src="images/bats/bat4.png" />
-						</div>
-					</section>
-				</section>
+            <section data-page="science" class="active">
+              <p>Bats are mammals (like us) that have modified their hands and fingers to create wings for powered flight. Despite their description in many languages meaning blind or flying mice (murciélago, Fledermaus), they are neither blind nor mice.  Bats are more closely related cats and dogs than to rodents. Although most bats are around 20g (a squash ball), bats range in size from the tiny bumblebee bat at under 2g to the flying fox at a whopping 1.5Kg. Out of the 1,200 or so species, one in every five species is threatened with extinction in the next 50 years. Some bat species in North America have undergone dramatic declines in the last few years owing to new disease (White-nose syndrome) that is threatening populations to extinction.</p>
+              <figure>
+                <img src="images/bats/brown-long-eared.jpg" alt="Brown long-eared bat Plecotus auritus" />
+                <figcaption>Brown long-eared bat Plecotus auritus <span class="source">Bat Conservation Trust</span></figcaption>
+              </figure>
+              <p>Many people believe that monitoring the status of bat populations can indicate the health of wild nature more generally (like canaries in coal mines). This is because bat species are distributed all over the world, and provide lots of services to humans through controlling pests by eating vast quantities of insects and pollinating and dispersing commercially important crops (for example bananas, tequila). Bat biology also makes them sensitive to human impacts, for example they typically only have one offspring a year and so bat populations take a long time to recover after disturbance. Many species are also very sensitive to climate and migrate or hibernate in different seasons, making them particularly vulnerable to climate change.</p>
+              <p><!--movie of a Doppler-radar images of Mexican free-tailed bats (Tadarida brasilensis) emerging from roosts in one evening over Texas to feed on the insect pests of cotton crops, saving the farmers millions of dollars in pesticide –Tom Kunz-->Although it is really important to monitor bat populations, it is difficult to do with traditional visual surveys as bats are mostly small, nocturnal and very hard to catch. More recently, a growing number of bat surveys are been done acoustically because bats ‘leak’ information about themselves into the environment. This is because they use sound to find their way around, hunt for food and to socialise. Over 1000 species of bats use sound in this way, with the rest of the species (Old World fruit bats or flying foxes) relying more on their eyes and noses to find food.</p>
+              <p><!--animated gif {{ Bat bouncing a sound off an insect and listening to the returning echoes (echolocation)--> When bats are using sound find their way around or to hunt, they emit a call and listen and interpret echoes as the call bounces off objects in the environment (echolocation). As a bat gets closer to its prey, the bat needs more information and calls get closer together ending in a ‘feeding buzz’.  Bats tend to use ultrasonic frequencies for their calls (above 20 kHz) because shorter wavelengths are more likely to hit and bounce off smaller objects, and so give the bat more detail about its environment. However, higher frequency sounds tend to not travel as far as sounds of lower frequency, so there is a trade-off between hearing in fine detail and hearing long distances. Calls that bats use for socialising are not used for echolocation but communication, and these calls tend to be lower in frequency and have a more complex structure. Only under a third of all the echolocation calls of bats worldwide are known and even less is understood about social calls, perhaps only 5% of all species social calls have been recorded.</p>
+              <p>When a bat echolocates at higher frequencies (shorter wavelengths) it means that it can detect smaller objects</p>
+              <p>There are lots of different methods to detect bat calls but they all involve using a special ultrasonic microphone to pick up bat calls ‘a bat detector’ and to transform these into something we can hear or see.  More sophisticated methods transform the ultrasonic call into a ‘sonogram’ so that you can see the call or sequence of calls clearly. Sonograms show calls visually and display the frequency of the call going up along the side of the image and time going along the bottom, and the loudness of the call is shown by how intense the colour of the call is. We can extract details about different calls from spectrograms and develop methods to tell us exactly what species they belong to – enabling us to track populations of these species by making recordings along set surveys every year.</p>
+              <figure class="alt">
+                <img src="images/bats/spectrogram.jpg" alt="Spectrogram" />
+              </figure>
+              <p>Typically many hours of recordings are made at night by researchers using bat detectors and the most difficult part of the process is finding bat calls in these recordings! For example, for a 1 hour recording it will take 6 hours to go through the files to find all the calls and detail them. There are existing automatic computer programmes that find calls in recordings, but these aren’t very good at finding calls in poor recordings where a bat call is mixed up with other sounds like insects or a lot of background noise. Existing programmes also can’t tell the difference between the different types of bat calls (search and feeding echolocation calls and social calls). Additionally, bat echolocation calls are emitted in a continuous stream as the bat tries to figure out where it is and where its food is and existing programmes can’t pick out which calls come from the which sequence. </p>
+              <p><!--Video {{Example of a sequence of bat calls ending in a feed buzz}}--> This is where you come in! Humans are absolutely fantastic at hearing and seeing the difference between a bat and a non-bat call, the different types of calls and what sequence a call belongs in. We need your help going through our recordings to pick out the different calls. We will use your classifications to make a NEW automatic programme that researchers all over the world can use to extract information out of their recordings, making it really easy to track populations of bats. This will make understanding how bat populations are being effected by global change much easier.</p>
+              <p><!--Video {{Example of bat echolocation calls and social calls}}--> Each region of the world has different bats, the areas with the most bats or ‘bat hotspots’ are places like northern South America with over 200 species in an area!  Bat Detective aims to develop these new automatic programmes for bats all over the world but we are starting our journey in Europe, where we know a lot about the bats already. Over the course of the project we will release data from more areas from around the world. In Europe, there are over 40 species of bats, they all use echolocation to eat insects. Most species hibernate to escape the food shortage in insects during the winter. Some other bat species migrate to other parts of Europe during winter, but we know very little about which species do this.  In the summer, most species split into separate female and male roosts (in buildings, tree cavities, under bridges, caves), where the males just chill out whilst the females busily gather insects to raise their baby. During the autumn the males and females come back together again to mate and then don’t emerge again until the next spring. Check out the Bats page to see some examples of European bats whose calls you might see and hear in our recordings!</p>
+            </section>
 
-				<!--
+            <section data-page="bats">
+              <p>Some examples of the European bats whose calls you might see and hear in our recordings.</p>
+              <section>
+                <div class="column">
+                  <div class="framed image"><img src="images/bats/common-pipistrelle.jpg" /></div>
+                </div>
+                <div class="column">
+                  <h3>Common pipistrelle (<a href="http://maps.iucnredlist.org/map.html?id=17317"><i>Pipistrellus pipistrellus</i></a>)</h3>
+                  <p>The common pipistrelle is thought to be one of the most common European bats, weighing around 5 grams. It has a rapid, agile flight and forages along edges of treelines, hedgerows and water edges. A single pipistrelle can eat 3,000 tiny insects in just one night!</p>
+                </div>
+              </section>
 
-					ABOUT
+              <section>
+                <div class="column">
+                  <div class="framed image"><img src="images/bats/soprano-pipistrelle.jpg" /></div>
+                </div>
+                <div class="column">
+                  <h3>Soprano pipistrelle (<a href="http://maps.iucnredlist.org/map.html?id=136649"><i>Pipistrellus pygmaeus</i></a>)</h3>
+                  <p>The soprano pipistrelle looks so similar to a common pipistrelle that it was only discovered as a separately species a few years ago. It turns out that the common and soprano pipistrelle are as different as lions and tigers are to each other. The soprano pipistrelle uses a higher echolocation frequency than the common pipstrelle (hence its name).</p>
+                </div>
+              </section>
 
-				-->
+              <section>
+                <div class="column">
+                  <div class="framed image"><img src="images/bats/nathusius-pipistrelle.jpg" /></div>
+                </div>
+                <div class="column">
+                  <h3>Nathusius’ pipistrelle (<a href="http://maps.iucnredlist.org/map.html?id=136649"><i>Pipistrellus nathusii</i></a>)</h3>
+                  <p>The Nathusius’ pipistrelle is thought to be migratory in Europe but this is not well understood. For example, in the UK we only discovered that it was a resident species in 1997, previous to that we thought it was a migrant from continental Europe. It has a slower, less manoeuvrable flight than other pipistrelles and has a lower frequency call.</p>
+                </div>
+              </section>
 
-				<section data-page="about">
-					<h2>What you're hearing</h2>
-					<p>With your help, we're tracking bat populations and migrations across the world and lorem ipsum dolor sit amet...</p>
+              <section>
+                <div class="column">
+                  <div class="framed image"><img src="images/bats/daubenton.jpg" /></div>
+                </div>
+                <div class="column">
+                  <h3>Daubenton’s bat (<a href="http://maps.iucnredlist.org/map.html?id=14128"><i>Myotis daubentonii</i></a>)</h3>
+                  <p>The Daubenton’s bat (or water bat) is found throughout Europe and feeds by skims insects from the water's surface with their large hairy feet or tail. This species has a broadband call (goes through a large range of frequencies) to gather a lot of information while it forages close up to the water.</p>
+                </div>
+              </section>
 
-					<div class="details">
-						<nav>
-							<ul>
-								<li><a href="#/about/science">Science</a></li>
-								<li><a href="#/about/bats">Bats</a></li>
-								<li><a href="#/about/sounds">Sounds</a></li>
-								<li><a href="#/about/team">Team</a></li>
-							</ul>
-						</nav>
+              <section>
+                <div class="column">
+                  <div class="framed image"><img src="images/bats/noctule.jpg" /></div>
+                </div>
+                <div class="column">
+                  <h3>Noctule (<a href="http://maps.iucnredlist.org/map.html?id=14920"><i>Nyctalus noctula</i></a>)</h3>
+                  <p>The noctule has long narrow wings and flies in a straight line, very high and fast. It has an extremely loud, very low frequency echolocation call (one of the loudest sounds in nature) that travels a long distance.</p>
+                </div>
+              </section>
 
-						<section data-page="science" class="active">
-							<p>Here's all about why we're doing this.</p>
-							<p>Here's how things are set up.</p>
-						</section>
+              <section>
+                <div class="column">
+                  <div class="framed image"><img src="images/bats/horseshoe.jpg" /></div>
+                </div>
+                <div class="column">
+                  <h3>Greater horseshoe bat (<a href="http://maps.iucnredlist.org/map.html?id=19517"><i>Rhinolophus ferrumequinum</i></a>)</h3>
+                  <p>Horseshoe bats possess a distinctive horseshoe-shaped nose-leaf. These bats forage in dense canopy in woodland have very high constant frequency calls that let them distinguish very fine details of their environment.</p>
+                </div>
+              </section>
+            </section>
 
-						<section data-page="bats">
-							<section>
-								<div class="column">
-									<div class="framed image"><img src="images/bats/bat1.png" /></div>
-								</div>
-								<div class="column">
-									<h3>Batus Batticus</h3>
-									<p>This is a totally awesome bat.</p>
-								</div>
-							</section>
+            <section data-page="sounds">
+              <p>Sounds are recorded by volunteers. iBats etc.</p>
+              <p>You can get involved in the data collection.</p>
+            </section>
 
-							<section>
-								<div class="column">
-									<div class="framed image"><img src="images/bats/bat2.png" /></div>
-								</div>
-								<div class="column">
-									<h3>Batus Batticus</h3>
-									<p>This is a totally awesome bat.</p>
-								</div>
-							</section>
+            <section data-page="team">
+              <p>Here's who built this site.</p>
+            </section>
+          </div>
+        </section>
 
-							<section>
-								<div class="column">
-									<div class="framed image"><img src="images/bats/bat3.png" /></div>
-								</div>
-								<div class="column">
-									<h3>Batus Batticus</h3>
-									<p>This is a totally awesome bat.</p>
-								</div>
-							</section>
+        <section data-page="classify">
+          <p>Classify</p>
+        </section>
 
-							<section>
-								<div class="column">
-									<div class="framed image"><img src="images/bats/bat4.png" /></div>
-								</div>
-								<div class="column">
-									<h3>Batus Batticus</h3>
-									<p>This is a totally awesome bat.</p>
-								</div>
-							</section>
-						</section>
+        <section data-page="profile">
+          <p>Profile</p>
+        </section>
 
-						<section data-page="sounds">
-							<p>Sounds are recorded by volunteers. iBats etc.</p>
-							<p>You can get involved in the data collection.</p>
-						</section>
+        <section data-page="feedback">
+          <iframe src="https://docs.google.com/a/zooniverse.org/spreadsheet/embeddedform?formkey=dEszbnFmd1VkblU5MjJIUTlQSFhrX2c6MQ" width="1000" height="1400" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+         </section>
+      </div>
+    </div>
 
-						<section data-page="team">
-							<p>Here's who built this site.</p>
-						</section>
-					</div>
-				</section>
+    <script>window.SM2_DEFER = true;</script>
 
-				<!--
+    <script>
+      (function() {
+        var development = '<script src="scripts/lib/require.js" data-main="scripts/main"><'+'/script>';
+        var production = '<script src="scripts/build/main.js?v=__ZOO_BUILD_TIMESTAMP__"><'+'/script>';
 
-					CLASSIFY
+        // Being on port 80 loads the production JS.
+        var rootPort = +location.port < 1024;
+        // But any URL with ?debug=1 loads development JS.
+        var debug = ~location.search.indexOf('debug=1');
+        // And any URL with ?build=1 loads production JS.
+        var build = ~location.search.indexOf('build=1');
 
-				-->
-
-				<section data-page="classify">
-					<div id="sound-classifier"></div>
-
-					<div class="details">
-						<nav>
-							<ul>
-								<li><a href="#/classify/context">Context</a></li>
-								<li><a href="#/classify/bat-calls">Bat calls</a></li>
-								<li><a href="#/classify/insect-noise">Insect noises</a></li>
-								<li><a href="#/classify/machine-noise">Mechanical noises</a></li>
-							</ul>
-						</nav>
-
-						<section id="field-guide" data-page="context" class="active"></section>
-
-						<section data-page="bat-calls">
-							<div class="column">
-								<div data-page="searching" class="active">
-									<div data-page="vertical-hockey-stick" class="active">
-										<img src="examples/images/bat-searching-vertical-hockey-stick.jpg" class="framed" />
-										<p class="sample"><button data-audio-src="examples/audio/bat-searching-vertical-hockey-stick.mp3" class="sample-player">Play searching call &#9658;</button></p>
-									</div>
-									<div data-page="horizontal-hockey-stick">
-										<img src="examples/images/bat-searching-horizontal-hockey-stick.jpg" class="framed" />
-										<p class="sample"><button data-audio-src="examples/audio/bat-searching-horizontal-hockey-stick.mp3" class="sample-player">Play searching call &#9658;</button></p>
-									</div>
-									<div data-page="vertical-line">
-										<img src="examples/images/bat-searching-vertical-line.jpg" class="framed" />
-										<p class="sample"><button data-audio-src="examples/audio/bat-searching-vertical-line.mp3" class="sample-player">Play searching call &#9658;</button></p>
-									</div>
-									<div data-page="plateau">
-										<img src="examples/images/bat-searching-plateau.jpg" class="framed" />
-										<p class="sample"><button data-audio-src="examples/audio/bat-searching-plateau.mp3" class="sample-player">Play searching call &#9658;</button></p>
-									</div>
-								</div>
-
-								<div data-page="feeding">
-									<div data-page="buzz" class="active">
-										<img src="examples/images/bat-feeding-buzz.jpg" class="framed" />
-										<p class="sample"><button data-audio-src="examples/audio/bat-feeding-buzz.mp3" class="sample-player">Play feeding call &#9658;</button></p>
-									</div>
-								</div>
-
-								<div data-page="social">
-									<div data-page="social" class="active">
-										<img src="examples/images/bat-social.jpg" class="framed" />
-										<p class="sample"><button data-audio-src="examples/audio/bat-social.mp3" class="sample-player">Play social call &#9658;</button></p>
-									</div>
-								</div>
-							</div>
-
-							<div class="column">
-								<nav>
-									<ul>
-										<li><a href="#/classify/bat-calls/searching">Searching</a></li>
-										<li><a href="#/classify/bat-calls/feeding">Feeding</a></li>
-										<li><a href="#/classify/bat-calls/social">Social</a></li>
-									</ul>
-								</nav>
-
-								<section data-page="searching" class="active">
-									<h4>What it looks like</h4>
-									<p>Spectrograms show a well defined pulse of sound, usually between 13KHz and 120KHz. There are usually a number of regularly spaced pulses making up a sequence. The shape of the pulse can range from:</p>
-									<nav>
-										<ul>
-											<li><a href="#/classify/bat-calls/searching/vertical-hockey-stick">Vertical hockey-stick shaped</a></li>
-											<li><a href="#/classify/bat-calls/searching/horizontal-hockey-stick">Flatter, more horizontal hockey-stick shape</a></li>
-											<li><a href="#/classify/bat-calls/searching/vertical-line">Thin vertical line</a></li>
-											<li><a href="#/classify/bat-calls/searching/plateau">Flat table or plateau shape</a></li>
-										</ul>
-									</nav>
-
-									<h4>What it sounds like</h4>
-									<p>Searching calls can sound like a chirp, a squeak or an airy whistle.</p>
-								</section>
-
-								<section data-page="feeding">
-									<h4>What it looks like</h4>
-									<p>On the spectrogram you can see pulses getting closer and closer together, with the lines getting shorter and shorter.</p>
-									<nav>
-										<ul>
-											<li><a href="#/classify/bat-calls/feeding/buzz">Buzz-shaped</a></li>
-										</ul>
-									</nav>
-
-									<h4>What it sounds like</h4>
-									<p>These sound like normal bat calls but the calls get closer and closer together until they terminate abruptly.</p>
-								</section>
-
-								<section data-page="social">
-									<h4>What it looks like</h4>
-									<p>The spectrogram may show "V" shaped and tick shaped calls.</p>
-									<nav>
-										<ul>
-											<li><a href="#/classify/bat-calls/social/social">Social call example</a></li>
-										</ul>
-									</nav>
-
-									<h4>What it sounds like</h4>
-									<p>These sound like bat calls but with trills, and they're much closer together than normal bat calls. They may also have a different pitch than normal calls.</p>
-								</section>
-							</div>
-						</section>
-
-						<section data-page="insect-noise">
-							<div class="column">
-								<div data-page="distinct-pulse" class="active">
-									<img src="examples/images/insect-distinct-pulse.jpg" class="framed" />
-									<p class="sample"><button data-audio-src="examples/audio/insect-distinct-pulse.mp3" class="sample-player">Play insect noise &#9658;</button></p>
-								</div>
-								<div data-page="car-alarm">
-									<img src="examples/images/insect-car-alarm.jpg" class="framed" />
-									<p class="sample"><button data-audio-src="examples/audio/insect-car-alarm.mp3" class="sample-player">Play insect noise &#9658;</button></p>
-								</div>
-								<div data-page="messy">
-									<img src="examples/images/insect-messy.jpg" class="framed" />
-									<p class="sample"><button data-audio-src="examples/audio/insect-messy.mp3" class="sample-player">Play insect noise &#9658;</button></p>
-								</div>
-							</div>
-
-							<div class="column">
-								<section>
-									<h4>What it looks like</h4>
-									<p>The spectrogram can have fast evenly spaced pulses near the bottom, much closer together than bat calls, or it might look like messy background noise in which you can hear distinct sounds. </p>
-									<nav>
-										<ul>
-											<li><a href="#/classify/insect-noise/distinct-pulse">Distinct pulse</a></li>
-											<li><a href="#/classify/insect-noise/car-alarm">Like a car alarm</a></li>
-											<li><a href="#/classify/insect-noise/messy">Messy spectrogram</a></li>
-										</ul>
-									</nav>
-
-									<h4>What it sounds like</h4>
-									<p>These sound like a rattling, a buzzing, or like a car alarm.</p>
-								</section>
-							</div>
-						</section>
-
-						<section data-page="machine-noise">
-							<div class="column">
-								<div data-page="car" class="active">
-									<img src="examples/images/machine-car.jpg" class="framed" />
-									<p class="sample"><button data-audio-src="examples/audio/machine-car.mp3" class="sample-player">Play machine noise &#9658;</button></p>
-								</div>
-								<div data-page="click">
-									<img src="examples/images/machine-click.jpg" class="framed" />
-									<p class="sample"><button data-audio-src="examples/audio/machine-click.mp3" class="sample-player">Play machine noise &#9658;</button></p>
-								</div>
-								<div data-page="horizontal">
-									<img src="examples/images/machine-horizontal.jpg" class="framed" />
-									<p class="sample"><button data-audio-src="examples/audio/machine-horizontal.mp3" class="sample-player">Play machine noise &#9658;</button></p>
-								</div>
-								<div data-page="vertical">
-									<img src="examples/images/machine-vertical.jpg" class="framed" />
-									<p class="sample"><button data-audio-src="examples/audio/machine-vertical.mp3" class="sample-player">Play machine noise &#9658;</button></p>
-								</div>
-							</div>
-
-							<div class="column">
-								<section>
-									<h4>What it looks like</h4>
-									<p>The spectrogram appears random with no regular patterns to the noise, and may have either vertical or horizontal lines.</p>
-									<nav>
-										<ul>
-											<li><a href="#/classify/machine-noise/car">Car background noise</a></li>
-											<li><a href="#/classify/machine-noise/click">Click</a></li>
-											<li><a href="#/classify/machine-noise/horizontal">Horizontal spectrogram</a></li>
-											<li><a href="#/classify/machine-noise/vertical">Vertical spectrogram</a></li>
-										</ul>
-									</nav>
-
-									<h4>What it sounds like</h4>
-									<p>These can sound like a click, a crackle or static noise, or something metallic like the sound of a workshop. Some may sound like listening out the window of a moving car.</p>
-								</section>
-							</div>
-						</section>
-					</div>
-				</section>
-
-				<section id="profile" data-page="profile"></section>
-
-				<section data-page="talk">
-					<p>That link goes to talk!</p>
-				</section>
-
-				<section data-page="blog">
-					<p>That link goes to the blog!</p>
-				</section>
-			</div>
-		</div>
-
-		<script type="text/javascript">window.SM2_DEFER = true;</script>
-		<script src="scripts/lib/require.js" data-main="scripts/main" type="text/javascript"></script>
-	</body>
+        document.write((rootPort && debug) || (!rootPort && !build) ? development : production);
+      }());
+    </script>
+  </body>
 </html>

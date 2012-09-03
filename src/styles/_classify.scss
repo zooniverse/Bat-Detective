@@ -1,0 +1,449 @@
+@mixin classifier-unit {
+  @include box-sizing(border-box);
+  background: $black;
+  border: 2px solid $gray {radius: 2px};
+}
+
+.bat-detective.app [data-page="classify"] {
+  > .interface {
+    @include clearfix;
+    position: relative;
+
+    > .player {
+      @include classifier-unit;
+      float: left;
+      width: $three-quarters;
+
+      .spectrogram {
+        .scale {
+          .axis {
+            @include box-sizing(border-box);
+            color: transparentize($white, 0.25);
+            font-size: 9px;
+            height: 100%;
+            margin-right: $gutter-size / 2;
+            opacity: 0.33;
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: $gutter-size;
+
+            .space {
+              @include box-sizing(border-box);
+              border-top: 1px solid;
+              height: (100% / 16); // Number of spaces minus one!
+              margin-left: 25%;
+              position: relative;
+              width: 50%;
+
+              &:first-child,
+              &:last-child {
+                margin-left: 0;
+                width: 100%;
+              }
+
+              .label {
+                line-height: 1;
+                margin-right: 5px;
+                position: absolute;
+                right: 100%;
+                top: -0.5em;
+                white-space: nowrap;
+              }
+            }
+
+            // Vertical line through the center
+            &:after {
+              border-right: 1px solid;
+              content: " ";
+              display: block;
+              height: 100%;
+              left: 0;
+              position: absolute;
+              top: 0;
+              width: 50%;
+            }
+          }
+        }
+
+        img {
+          cursor: ns-resize;
+          width: 100%;
+          height: 519px;
+        }
+
+        .seek-line {
+          background: $gold;
+        }
+
+        // Used in tutorial.
+        .highlighter {
+          background: transparentize($gold, 0.67);
+          border-radius: 3px;
+          box-shadow: 0 0 3px $gold inset;
+          position: absolute;
+        }
+
+        .frequency-selector {
+          $handle-thickness: 6px;
+
+          height: 100%;
+          left: 0;
+          top: 0;
+          width: 100%;
+
+          .delete {
+            bottom: $handle-thickness;
+            height: 20px;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            width: 20px;
+          }
+
+          .cover {
+            background: transparentize($black, 0.25);
+            display: none;
+            left: 0;
+            position: absolute;
+            width: 100%;
+
+            > .handle {
+              background: $gray;
+              cursor: ns-resize;
+              height: $handle-thickness;
+              left: 0;
+              position: absolute;
+              width: 100%;
+            }
+
+            &.high {
+              top: 0;
+
+              .handle {
+                bottom: 0;
+              }
+            }
+
+            &.low {
+              bottom: 0;
+
+              .handle {
+                top: 0;
+              }
+            }
+          }
+
+          .times {
+            background: transparentize($black, 0.99); // IE needs some background to pick up mouse events.
+            cursor: ew-resize;
+            left: 0;
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+
+            > .handle {
+              background: $gray;
+              bottom: -$handle-thickness;
+              cursor: move;
+              display: none;
+              position: absolute;
+              top: -$handle-thickness;
+              width: $handle-thickness;
+
+              &.start {
+                right: 100%;
+              }
+
+              &.end {
+                left: 100%;
+              }
+            }
+
+            .time-selector {
+              @include box-sizing(border-box);
+              background: transparentize($white, 0.9);
+              border: 1px solid $white;
+              cursor: move;
+              height: 100%;
+              pointer-events: all;
+              position: absolute;
+              top: 0;
+
+              .delete {
+                @include transition(opacity 0.25s ease-in-out);
+                bottom: auto;
+                height: 20px;
+                opacity: 0;
+                position: absolute;
+                right: $handle-thickness;
+                top: 0;
+                width: 20px;
+              }
+
+              > .handle {
+                @include transition(width 0.125s ease-in-out);
+                background: transparentize($white, 0.5);
+                cursor: ew-resize;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 0;
+
+                &.start {
+                  left: 0;
+                }
+
+                &.end {
+                  right: 0;
+                }
+              }
+
+              &:hover {
+                .delete {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+
+          &.selected {
+            position: absolute;
+
+            .cover {
+              display: block;
+            }
+
+            .times {
+              pointer-events: auto;
+
+              > .handle {
+                display: block;
+              }
+
+              .time-selector:hover .handle {
+                width: $handle-thickness;
+              }
+            }
+          }
+
+          &[data-source="bat"] .time-selector {border-color: blue;}
+          &[data-source="insect"] .time-selector {border-color: green;}
+          &[data-source="machine"] .time-selector {border-color: purple;}
+        }
+      }
+
+      .seek {
+        background: $gray;
+        height: 6px;
+
+        .fill {
+          background: $gold;
+          border-right: 1px solid $white;
+        }
+      }
+
+      .controls {
+        button {
+          padding: 2px 5px;
+        }
+      }
+    }
+
+    > .controls {
+      @include classifier-unit;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      width: $one-quarter;
+
+      > div,
+      > ol {
+        @include box-sizing(border-box);
+        padding: $gutter-size;
+      }
+
+      button {
+        @include linear-gradient(lighten($gold, 5%), darken($gold, 10%));
+        color: $black;
+        display: block;
+        font-weight: bold;
+        margin-bottom: $gutter-size / 2;
+        padding: $gutter-size / 3;
+        text-transform: uppercase;
+        width: 100%;
+
+        &:hover {
+          @include linear-gradient(lighten($gold, 10%), $gold);
+        }
+      }
+
+      .instructions {
+        font-size: 14px;
+        margin: 0;
+
+        li {
+          display: block;
+          margin-bottom: 1em;
+
+          p {
+            margin: 0;
+
+            &.heading {
+              font: {
+                size: 12px;
+                weight: bold;
+              };
+              color: $gray;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
+      .decision-tree {
+        width: 100%;
+        display: none;
+        position: absolute;
+        bottom: 0;
+
+        .decision {
+          display: none;
+
+          &.selected {
+            display: block;
+          }
+
+          .back {
+            background: transparent;
+            color: $gold;
+            display: none;
+            opacity: 0.8;
+
+            .icon {
+              left: -3px;
+              position: relative;
+              top: -1px;
+            }
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          .question {
+            margin-bottom: $gutter-size / 2;
+          }
+
+          .answers {}
+        }
+      }
+
+      .finished {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+
+        .nextSubject {}
+      }
+
+      .decision-tree.has-selection {
+        display: block;
+
+        & + .finished {
+          display: none;
+        }
+      }
+
+      .summary {
+        width: 100%;
+        display: none;
+        position: absolute;
+        bottom: 0;
+
+        .favorite {
+          display: none;
+
+          .create {}
+
+          .destroy {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  > .field-guide {
+    clear: both;
+  }
+
+  &.showing-summary {
+    .controls {
+      .decision-tree,
+      .finished {
+        display: none;
+      }
+
+      .summary {
+        display: block;
+      }
+    }
+  }
+
+  &.can-favorite .interface .controls .summary .favorite {
+    display: block;
+  }
+
+  &.is-favored {
+    .interface .controls .summary .favorite {
+      .create {
+        display: none;
+      }
+
+      .destroy {
+        display: block;
+      }
+    }
+  }
+}
+
+.tutorial-step {
+  @include transition(left 0.25s ease-in-out, top 0.33s ease-in-out);
+  background: $black;
+  border: 1px solid $white;
+  padding: $gutter-size;
+  position: absolute;
+
+  .controls {
+    opacity: 0.5;
+    position: absolute;
+    right: 3px;
+    top: 0;
+  }
+
+  .message {
+    p {}
+
+    .heading {
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .continue {
+      text-align: center;
+
+      button {
+        background: $gold;
+        color: $black;
+        font-weight: bold;
+        padding: 3px $gutter-size;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .arrow {}
+}

@@ -1,0 +1,62 @@
+.home-map {
+  @include transition(opacity 0.5s ease-in-out);
+  background: $black;
+  border-bottom: 1px solid transparentize($white, 0.67);
+  height: 470px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 20px;
+  width: 100%;
+
+  &:after {
+    @include linear-gradient(transparentize($black, 0.5), transparentize($black, 1), $fallback: transparent);
+    content: " ";
+    height: 125px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  &.active {
+    opacity: 1;
+
+    + .app {
+      margin-top: 350px;
+    }
+  }
+}
+
+.bat-detective.app [data-page="home"] {
+  h2 {
+    font: {
+      size: 44px;
+      weight: bold;
+    };
+    text-shadow: 0 1px 1px $black;
+
+    a {
+      @include transition(color 0.25s ease-in-out);
+      color: inherit;
+      position: relative;
+      white-space: nowrap;
+
+      &:hover {
+        color: $gold;
+      }
+
+      &:after {
+        border-bottom: 1px dashed transparentize($white, 0.75);
+        bottom: 5px;
+        content: " ";
+        height: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+.bat-detective.app .spectrogram-player {
+  @include user-select(none);
+  .spectrogram {
+    position: relative;
+
+    img {
+      display: block;
+    }
+
+    .seek-line {
+      background: $white;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 1px;
+    }
+  }
+
+  .seek {
+    height: 30;
+    position: relative;
+
+    .track {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      .fill {
+        background: transparentize($white, 0.5);
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 0;
+      }
+
+      .thumb {
+        background: transparent;
+        bottom: 0;
+        cursor: move;
+        left: 0;
+        margin-left: -15;
+        position: absolute;
+        top: 0;
+        width: 30;
+      }
+    }
+  }
+
+  .controls {
+    button {
+      &.play {}
+
+      &.pause {
+        display: none;
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.loading {}
+
+  &.loaded {}
+
+  &.playing {
+    .controls {
+      .play {
+        display: none;
+      }
+
+      .pause {
+        display: inline-block;
+      }
+    }
+  }
+
+  &.seeking {}
+}

@@ -1,0 +1,276 @@
+html {
+  background: #222 url("background-noise.jpg");
+  color: $white;
+  font: 12px "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  height: 100%;
+  overflow-y: scroll; // Force scroll bar to prevent jumping.
+}
+
+body {
+  height: 100%;
+  margin: 0;
+
+  &:before {
+    $barely-white: transparentize($white, 0.90);
+    $not-white: transparentize($white, 1);
+
+    $gradient-width: $full-width * 1.5;
+    $half-gradient-width: $gradient-width / 2;
+
+    @include radial-gradient($barely-white, $not-white, $not-white, $fallback: transparent);
+    content: " ";
+    height: $gradient-width;
+    left: 50%;
+    margin: {
+      left: -$half-gradient-width;
+      top: -$half-gradient-width;
+    };
+    position: fixed;
+    top: 50%;
+    width: $gradient-width;
+  }
+
+  > header {
+    margin: 25px auto;
+    position: relative;
+    width: $full-width;
+    z-index: 3;
+
+    > nav {
+      position: relative;
+      -webkit-text-stroke: 0.5px; // WebKit draws Titillium really really thin.
+
+      > ul {
+        @include clearfix;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+
+        > li {
+          display: inline-block;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          > a {
+            @include transition(color 0.1s ease-in-out);
+            color: inherit;
+            display: block;
+            font-size: 15px;
+            letter-spacing: 1px;
+            padding: 20px 35px;
+            text: {
+              decoration: none;
+              shadow: 0 2px 3px $black;
+              transform: uppercase;
+            };
+
+            &:hover,
+            &.active {
+              color: $gold;
+            }
+
+            > .logo {
+              border: 0;
+              vertical-align: -25px;
+              width: 120px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.zooniverse-top-bar > div {
+  width: $full-width + 34;
+}
+
+.bat-detective.app {
+  @include clearfix;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  position: relative;
+  width: $full-width;
+
+  > .main {
+    position: relative;
+
+    > [data-page] {
+      @include transition(
+        left 0.25s ease-in-out,
+        max-height 1s ease-in-out,
+        opacity 0.25s ease-in-out
+      );
+      left: 0;
+      max-height: 100%;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      &.active {
+        float: left;
+        opacity: 1;
+        overflow: visible;
+        position: relative;
+        z-index: 1;
+      }
+
+      &.before {
+        left: -10%;
+      }
+
+      &.after {
+        left: 10%;
+      }
+    }
+
+    .columns {
+      @include clearfix;
+      clear: both;
+
+      > * {
+        float: left;
+        margin-left: $gutter-size;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      &.two   > * { width: $one-half; }
+      &.three > * { width: $one-third; }
+      &.four  > * { width: $one-quarter; }
+    }
+
+    .bat-thumbnail {
+      @include box-sizing(border-box);
+      background: $black;
+      border: 1px solid white;
+      border-radius: 3px;
+      box-shadow: 0 2px 3px transparentize($black, 0.5);
+      color: $white;
+      font-style: italic;
+      padding: ($gutter-size / 2) 0;
+      text-align: center;
+    }
+
+    img,
+    .image {
+      max-width: 100%;
+
+      &.framed {
+        @include box-sizing(border-box);
+        background: $black;
+        border: 5px solid $white;
+        box-shadow: 0 2px 3px -1px transparentize($black, 0.5);
+        text-align: center;
+
+        > img {
+          display: block;
+        }
+      }
+    }
+
+    h2 {
+      font: {
+        size: 32px;
+        weight: inherit;
+      };
+      margin: 0.5em 0;
+    }
+
+    h3 {
+      font: {
+        size: 22px;
+        weight: inherit;
+      };
+      margin: 0.5em 0;
+    }
+
+    h4 {
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 2em 0 1em;
+      text-transform: uppercase;
+    }
+
+    hr {
+      color: inherit;
+      border: 1px solid transparentize($white, 0.5) {
+        width: 1px 0 0 0;
+      };
+      margin: 40px 0;
+    }
+
+    p {
+      &.center {
+        text-align: center;
+      }
+    }
+
+    ul {
+      > li {}
+    }
+
+    a {
+      color: $gold;
+      text-decoration: none;
+
+      &:visited {}
+
+      &:hover {}
+
+      &:active {}
+
+      img {
+        border: 0;
+      }
+    }
+
+    button {
+      background: transparent;
+      border: 0;
+      color: inherit;
+      cursor: pointer;
+      display: inline-block;
+      font: {
+        color: inherit;
+        family: inherit;
+        size: inherit;
+        weight: inherit;
+      };
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      text-align: inherit;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+
+    .action {
+      @include box-sizing(border-box);
+      @include linear-gradient($white, darken($white, 25%));
+      border-radius: 3px;
+      box-shadow: 0 1px 3px -1px $black;
+      color: $black;
+      display: inline-block;
+      font: {
+        size: 12px;
+        weight: bold;
+      };
+      padding: 3px $gutter-size;
+
+      &:hover {
+        box-shadow:
+          0 0 2px 1px $gold inset,
+          0 1px 3px -1px $black;
+      }
+    }
+  }
+}

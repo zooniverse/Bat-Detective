@@ -1,5 +1,18 @@
-.sass-cache
-_plugins
-_site
-scripts/lib
-styles/lib
+# Created by `zoo server`
+/.zoo_server_pids
+
+# Created by `zoo build`
+/build-*
+
+/src/scripts/lib
+/scripts/*.js
+/scripts/**/*.js
+/scripts/lib
+
+/styles/*.css
+/styles/**/*.css
+/styles/lib
+
+/src/styles/lib
+
+/beta

@@ -1,0 +1,191 @@
+$text-color: rgb(26, 26, 26);
+$text-color-off: rgb(110, 110, 100);
+$paper-color: rgb(243, 241, 237);
+$paper-color-off: rgb(200, 200, 190);
+
+$panel-padding: $gutter-size * 1.5;
+$panel-column: $one-half - $panel-padding;
+
+@mixin details-button {
+  @include box-shadow(0 1px 0 $white);
+  @include linear-gradient(#e4e2dc, #d5d3cd);
+  border: 1px solid darken($paper-color-off, 10%);
+  color: $text-color-off;
+  cursor: pointer;
+  display: inline-block;
+  font: {
+    family: inherit;
+    size: inherit;
+    weight: bold;
+  };
+  letter-spacing: 1px;
+  padding: 5px 20px 5px;
+  text: {
+    decoration: none;
+    shadow: 0 1px 0 $white;
+    transform: uppercase;
+  };
+
+  &.active {
+    @include linear-gradient($text-color-off, $text-color-off);
+    color: $paper-color;
+    text-shadow: none;
+  }
+}
+
+.bat-detective.app .details {
+  box-shadow: 0 3px 5px transparentize($black, 0.5);
+  font-size: 13px;
+  margin: 40px 0;
+
+  [data-page] {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  // Primary tab-style navigation
+  > nav {
+    > ul {
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      width: 100%;
+
+      &:before {
+        background: $paper-color-off;
+        bottom: 0;
+        border-radius: 3px 3px 0 0;
+        content: " ";
+        height: 1em;
+        left: 0;
+        padding: 10px 0 10px;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+      }
+
+      > li {
+        display: inline-block;
+        float: left;
+        margin-left: $gutter-size;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        > a {
+          @include box-sizing(border-box);
+          border-radius: 3px 3px 0 0;
+          color: $text-color-off;
+          display: block;
+          font-weight: bold;
+          letter-spacing: 1px;
+          padding: 15px 0 5px;
+          text: {
+            align: center;
+            transform: uppercase;
+          };
+          width: $one-quarter;
+
+          &.active {
+            background: $paper-color;
+            color: $text-color;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  > section {
+    @include clearfix;
+    background: $paper-color;
+    color: $text-color;
+    padding: $panel-padding;
+
+    > section {
+      @include clearfix;
+      clear: both;
+      margin-top: $gutter-size;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    button {
+      @include details-button;
+    }
+
+    > .column,
+    > section > .column {
+      float: left;
+      width: $panel-column;
+      margin-left: $gutter-size;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      // Secondary button-style navigation
+      > nav {
+        margin-bottom: 1em;
+
+        > ul {
+          margin: 0;
+          padding: 0;
+
+          > li {
+            display: inline-block;
+
+            a {
+              @include details-button;
+            }
+          }
+        }
+      }
+
+      > section {
+        // Tertiary list-style navigation
+        > nav {
+          > ul {
+            margin: 0;
+            padding: 0 1em;
+
+            > li {
+              display: block;
+
+              > a {
+                border-bottom: 1px dashed $paper-color-off;
+                color: $text-color-off;
+                display: inline-block;
+                font-weight: bold;
+                line-height: 1;
+                margin-bottom: 10px;
+                position: relative;
+
+                &.active {
+                  color: $text-color;
+
+                  &:before {
+                    color: $text-color-off;
+                    content: "\25C4";
+                    margin-right: 5px;
+                    font-size: 12px;
+                    position: absolute;
+                    right: 100%;
+                    top: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

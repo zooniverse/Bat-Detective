@@ -1,0 +1,29 @@
+.bat-detective.app .field-guide {
+  [data-page="context"] {
+    .map {
+      height: 325px;
+    }
+  }
+
+  .spectrogram-player {
+    text-align: center;
+
+    .spectrogram {
+      margin-bottom: $gutter-size;
+
+      img {
+        @include box-sizing(border-box);
+        border: 5px solid white;
+        box-shadow: 0 3px 3px -3px $black;
+      }
+    }
+
+    .seek {
+      display: none;
+    }
+
+    &.loading {
+      opacity: 0.75;
+    }
+  }
+}

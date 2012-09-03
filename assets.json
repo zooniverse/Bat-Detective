@@ -1,36 +1,26 @@
 [
-	{"git@github.com:zooniverse/Front-End-Assets.git": [
-		{"i18n/zooniverse-i18n.css": "styles/lib/zooniverse-i18n.css"},
-		{"zooniverse-bar/ZooniverseBar.js": "scripts/lib/ZooniverseBar.js"},
-		{"zooniverse-bar/zooniverse-bar.css": "styles/lib/zooniverse-bar.css"},
-		{"tutorial/Tutorial.js": "scripts/lib/Tutorial.js"},
-		{"pager/Pager.js": "scripts/lib/Pager.js"}
-	]},
+  {"http://requirejs.org/docs/release/2.0.0/comments/require.js": "scripts/lib/require.js"},
+  {"https://raw.github.com/jrburke/almond/latest/almond.js": "scripts/lib/almond.js"},
 
-	{"git://github.com/brian-c/jekyll-plugins.git": {"_plugins": "_plugins"}},
+  {"http://code.jquery.com/jquery-1.7.1.js": "scripts/lib/jquery.js"},
+  {"https://raw.github.com/tlianza/ajaxHooks/master/src/ajax/xdr.js": "scripts/lib/xdr.js"},
 
-	{"http://requirejs.org/docs/release/1.0.7/comments/require.js": "scripts/lib/require.js"},
-	{"http://requirejs.org/docs/release/1.0.5/comments/order.js": "scripts/lib/order.js"},
-	{"http://requirejs.org/docs/release/1.0.7/comments/text.js": "scripts/lib/text.js"},
+  {"http://spinejs.com/pages/download": {
+    "lib/spine.js": "scripts/lib/spine.js"
+  }},
 
-	{"http://code.jquery.com/jquery-1.7.1.js": "scripts/lib/jquery.js"},
+  {"http://stringencoders.googlecode.com/svn/trunk/javascript/base64.js": "scripts/lib/base64.js"},
 
-	{"https://github.com/maccman/spine/zipball/v1.0.6": {"lib": "scripts/lib/spine"}},
+  {"https://github.com/CloudMade/Leaflet/zipball/v0.3.1": [
+    {"dist/leaflet-src.js": "scripts/lib/leaflet.js"},
+    {"dist/*.css": "styles/lib/leaflet"},
+    {"dist/images": "styles/lib/leaflet/images"}
+  ]},
 
-	{"git://github.com/brian-c/route.git": {"Route.js": "scripts/lib/Route.js"}},
+  {"http://www.schillmania.com/projects/soundmanager2/download/soundmanagerv297a-20111220.zip": [
+    {"script/soundmanager2.js": "scripts/lib/soundmanager/soundmanager2.js"},
+    {"swf": "scripts/lib/soundmanager/swf"}
+  ]},
 
-	{"http://www.schillmania.com/projects/soundmanager2/download/soundmanagerv297a-20111220.zip": [
-		{"script/soundmanager2.js": "scripts/lib/soundmanager/soundmanager2.js"},
-		{"swf": "scripts/lib/soundmanager/swf"}
-	]},
-
-	{"https://github.com/CloudMade/Leaflet/zipball/v0.3.1": [
-		{"dist/leaflet-src.js": "scripts/lib/leaflet.js"},
-		{"dist/*.css": "styles/lib/leaflet"},
-		{"dist/images": "styles/lib/leaflet/images"}
-	]},
-
-	{"https://raw.github.com/aFarkas/html5shiv/6d46e08c69/src/html5shiv.js": "scripts/lib/html5shiv.js"},
-
-	{"http://www.fontsquirrel.com/fontfacekit/TitilliumText": {"*.{eot,svg,ttf,woff}": "styles/lib/titillium"}}
+  {"https://raw.github.com/aFarkas/html5shiv/6d46e08c69/src/html5shiv.js": "scripts/lib/html5shiv.js"}
 ]

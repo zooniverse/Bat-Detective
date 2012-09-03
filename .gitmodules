@@ -1,0 +1,3 @@
+[submodule "src/scripts/lib/zooniverse"]
+	path = src/scripts/lib/zooniverse
+	url = git@github.com:zooniverse/Front-End-Assets.git

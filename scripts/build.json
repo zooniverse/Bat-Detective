@@ -1,0 +1,6 @@
+{
+  "mainConfigFile": "main.js",
+  "name": "lib/almond",
+  "out": "build/main.js",
+  "insertRequire": ["site"]
+}

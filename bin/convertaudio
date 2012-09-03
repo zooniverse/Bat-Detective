@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-
-for file in "$@"
-do
-	echo "=> Creating MP3 from $file"
-	lame --quiet "$file"
-done
