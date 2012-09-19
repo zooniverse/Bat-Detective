@@ -286,10 +286,9 @@
         @include linear-gradient(lighten($gold, 5%), darken($gold, 10%));
         color: $black;
         display: block;
-        font-weight: bold;
+        font-size: 16px;
         margin-bottom: $gutter-size / 2;
-        padding: $gutter-size / 3;
-        text-transform: uppercase;
+        padding: 3px 0;
         width: 100%;
 
         &:hover {
