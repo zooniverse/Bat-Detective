@@ -159,6 +159,10 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
     color: $text-color;
     padding: $panel-padding;
 
+    section {
+      @include clearfix;
+    }
+
     .column {
       float: left;
       margin-left: $gutter-size;
