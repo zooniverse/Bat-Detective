@@ -9,9 +9,7 @@
     <link href="./styles/zooniverse.css" rel="stylesheet" />
     <link href="./styles/main.css" rel="stylesheet" />
 
-    <!--[if lt IE 9]>
-      <script src="./scripts/lib/html5shiv.js"></script>
-    <![endif]-->
+    <!--[if lt IE 9]><script src="./scripts/lib/html5shiv.js"></script><![endif]-->
   </head>
 
   <body>
@@ -59,50 +57,24 @@
           <br />
 
           <section class="three columns">
-            <div>
-              <p><a href="#!/about" data-i18n="learn_button" class="action">Learn about bats</a></p>
-            </div>
-
-            <div>
-              <p><a href="#!/classify" data-i18n="search_button" class="action">Begin searching</a></p>
-            </div>
-
-            <div>
-              <p><a href="#!/talk" data-i18n="findings_button" class="action">Visit the forum</a></p>
-            </div>
+            <div><p><a href="#!/about" data-i18n="learn_button" class="action">Learn about bats</a></p></div>
+            <div><p><a href="#!/classify" data-i18n="search_button" class="action">Begin searching</a></p></div>
+            <div><p><a href="#!/talk" data-i18n="findings_button" class="action">Visit the forum</a></p></div>
           </section>
 
           <hr />
 
           <section class="four columns">
-            <div class="bat-thumbnail">
-              <!-- <p>Pipistrellus pipistrellus</p> -->
-              <img src="images/bats/bat1.png" />
-            </div>
-
-            <div class="bat-thumbnail">
-              <!-- <p>Pipistrellus pipistrellus</p> -->
-              <img src="images/bats/bat2.png" />
-            </div>
-
-            <div class="bat-thumbnail">
-              <!-- <p>Pipistrellus pipistrellus</p> -->
-              <img src="images/bats/bat3.png" />
-            </div>
-
-            <div class="bat-thumbnail">
-              <!-- <p>Pipistrellus pipistrellus</p> -->
-              <img src="images/bats/bat4.png" />
-            </div>
+            <div class="bat-thumbnail"><img src="images/bats/bat1.png" /></div>
+            <div class="bat-thumbnail"><img src="images/bats/bat2.png" /></div>
+            <div class="bat-thumbnail"><img src="images/bats/bat3.png" /></div>
+            <div class="bat-thumbnail"><img src="images/bats/bat4.png" /></div>
           </section>
         </section>
 
         <section data-page="about">
-          <h2>What you're hearing</h2>
-          <p>With your help, we are learning about where different bats are found around the world and tracking changes in bat populations as humans continue to destroy bat habitats and alter the climate.</p>
-
           <div class="details">
-            <nav>
+            <nav class="primary">
               <ul>
                 <li><a href="#!/about/science">Science</a></li>
                 <li><a href="#!/about/bats">Bats</a></li>
@@ -112,37 +84,33 @@
             </nav>
 
             <section data-page="science" class="active">
-              <div class="column one-third">
-                <figure>
-                  <img src="images/bats/brown-long-eared.jpg" alt="Brown long-eared bat Plecotus auritus" />
-                  <figcaption>Brown long-eared bat Plecotus auritus <span class="source">Bat Conservation Trust</span></figcaption>
-                </figure>
+              <nav class="secondary">
+                <ul>
+                  <li><a href="#!/about/science/why-bats">Why bats?</a></li>
+                  <li><a href="#!/about/science/data">The data</a></li>
+                  <li><a href="#!/about/science/citizen-science">Citizen Science</a></li>
+                </ul>
+              </nav>
 
-                <figure>
-                  <img src="images/bats/spectrogram.jpg" alt="Spectrogram" />
-                </figure>
-              </div>
-
-              <div class="column two-thirds">
+              <section data-page="why-bats" class="active">
                 <p>Bats are mammals (like us) that have modified their hands and fingers to create wings for powered flight. Despite their description in many languages meaning blind or flying mice (murciélago, Fledermaus), they are neither blind nor mice. Bats are more closely related cats and dogs than to rodents. Although most bats are around 20g (a squash ball), bats range in size from the tiny bumblebee bat at under 2g to the flying fox at a whopping 1.5Kg. Out of the 1,200 or so species, one in every five species is threatened with extinction in the next 50 years. Some bat species in North America have undergone dramatic declines in the last few years owing to new disease (White-nose syndrome) that is threatening populations to extinction.</p>
-
-                <h2>Why are we recording bat calls?</h2>
+                <h3>Why are we recording bat calls?</h3>
                 <p>Many people believe that monitoring the status of bat populations can indicate the health of wild nature more generally (like canaries in coal mines). This is because bat species are distributed all over the world, and provide lots of services to humans through controlling pests by eating vast quantities of insects and pollinating and dispersing commercially important crops (for example bananas, tequila). Bat biology also makes them sensitive to human impacts, for example they typically only have one offspring a year and so bat populations take a long time to recover after disturbance. Many species are also very sensitive to climate and migrate or hibernate in different seasons, making them particularly vulnerable to climate change.</p>
-
                 <p>Although it is really important to monitor bat populations, it is difficult to do with traditional visual surveys as bats are mostly small, nocturnal and very hard to catch. More recently, a growing number of bat surveys are been done acoustically because bats ‘leak’ information about themselves into the environment. This is because they use sound to find their way around, hunt for food and to socialise. Over 1000 species of bats use sound in this way, with the rest of the species (Old World fruit bats or flying foxes) relying more on their eyes and noses to find food.</p>
-
                 <p>When bats are using sound to find their way around or to hunt, they emit a call and listen and interpret echoes as the call bounces off objects in the environment (echolocation). As a bat gets closer to its prey, the bat needs more information and calls get closer together ending in a ‘feeding buzz’. Bats tend to use ultrasonic frequencies for their calls (above 20 kHz) because shorter wavelengths are more likely to hit and bounce off smaller objects, and so give the bat more detail about its environment. However, higher frequency sounds tend to not travel as far as sounds of lower frequency, so there is a trade-off between hearing in fine detail and hearing long distances. Calls that bats use for socialising are not used for echolocation but communication, and these calls tend to be lower in frequency and have a more complex structure. Only under a third of all the echolocation calls of bats worldwide are known and even less is understood about social calls, perhaps only 5% of all species social calls have been recorded.</p>
+              </section>
 
-                <h2>What kind of data are we looking at?</h2>
+              <section data-page="data">
+                <h3>What kind of data are we looking at?</h3>
                 <p>There are lots of different methods to detect bat calls but they all involve using a special ultrasonic microphone to pick up bat calls ‘a bat detector’ and to transform these into something we can hear or see. More sophisticated methods transform the ultrasonic call into a ‘sonogram’ so that you can see the call or sequence of calls clearly. Sonograms show calls visually and display the frequency of the call going up along the side of the image and time going along the bottom, and the loudness of the call is shown by how intense the colour of the call is. We can extract details about different calls from spectrograms and develop methods to tell us exactly what species they belong to – enabling us to track populations of these species by making recordings along set surveys every year.</p>
-
                 <p>Typically many hours of recordings are made at night by researchers using bat detectors and the most difficult part of the process is finding bat calls in these recordings! For example, for a 1 hour recording it will take 6 hours to go through the files to find all the calls and detail them. There are existing automatic computer programmes that find calls in recordings, but these aren’t very good at finding calls in poor recordings where a bat call is mixed up with other sounds like insects or a lot of background noise. Existing programmes also can’t tell the difference between the different types of bat calls (search and feeding echolocation calls and social calls). Additionally, bat echolocation calls are emitted in a continuous stream as the bat tries to figure out where it is and where its food is and existing programmes can’t pick out which calls come from the which sequence.</p>
+              </section>
 
-                <h2>How do Citizen Scientists help?</h2>
+              <section data-page="citizen-science">
+                <h3>How do Citizen Scientists help?</h3>
                 <p>This is where you come in! Humans are absolutely fantastic at hearing and seeing the difference between a bat and a non-bat call, the different types of calls and what sequence a call belongs in. We need your help going through our recordings to pick out the different calls. We will use your classifications to make a NEW automatic programme that researchers all over the world can use to extract information out of their recordings, making it really easy to track populations of bats. This will make understanding how bat populations are being effected by global change much easier.</p>
-
                 <p>Each region of the world has different bats, the areas with the most bats or ‘bat hotspots’ are places like northern South America with over 200 species in an area! Bat Detective aims to develop these new automatic programmes for bats all over the world but we are starting our journey in Europe, where we know a lot about the bats already. Over the course of the project we will release data from more areas from around the world. In Europe, there are over 40 species of bats, they all use echolocation to eat insects. Most species hibernate to escape the food shortage in insects during the winter. Some other bat species migrate to other parts of Europe during winter, but we know very little about which species do this. In the summer, most species split into separate female and male roosts (in buildings, tree cavities, under bridges, caves), where the males just chill out whilst the females busily gather insects to raise their baby. During the autumn the males and females come back together again to mate and then don’t emerge again until the next spring. Check out the Bats page to see some examples of European bats whose calls you might see and hear in our recordings!</p>
-              </div>
+              </section>
             </section>
 
             <section data-page="bats">

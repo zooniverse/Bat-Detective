@@ -1,7 +1,7 @@
 define (require, exports, module) ->
   module.exports = '''
     <div class="details">
-      <nav>
+      <nav class="primary">
         <ul>
           <li><a href="#!/classify/bat-calls">Bat calls</a></li>
           <li><a href="#!/classify/insect-noise">Insect noises</a></li>
@@ -47,7 +47,7 @@ define (require, exports, module) ->
         </div>
 
         <div class="column">
-          <nav>
+          <nav class="secondary">
             <ul>
               <li><a href="#!/classify/bat-calls/searching">Searching</a></li>
               <li><a href="#!/classify/bat-calls/feeding">Feeding</a></li>
@@ -58,7 +58,7 @@ define (require, exports, module) ->
           <section data-page="searching" class="active">
             <h4>What it looks like</h4>
             <p>Spectrograms show a well defined pulse of sound, usually between 13KHz and 120KHz. There are usually a number of regularly spaced pulses making up a sequence. The shape of the pulse can range from:</p>
-            <nav>
+            <nav class="tertiary">
               <ul>
                 <li><a href="#!/classify/bat-calls/searching/vertical-hockey-stick">Vertical hockey-stick shaped</a> <button name="play-visible">Play</button></li>
                 <li><a href="#!/classify/bat-calls/searching/horizontal-hockey-stick">Flatter, more horizontal hockey-stick shape</a> <button name="play-visible">Play</button></li>
@@ -74,7 +74,7 @@ define (require, exports, module) ->
           <section data-page="feeding">
             <h4>What it looks like</h4>
             <p>On the spectrogram you can see pulses getting closer and closer together, with the lines getting shorter and shorter.</p>
-            <nav>
+            <nav class="tertiary">
               <ul>
                 <li><a href="#!/classify/bat-calls/feeding/buzz">Buzz-shaped</a> <button name="play-visible">Play</button></li>
               </ul>
@@ -87,7 +87,7 @@ define (require, exports, module) ->
           <section data-page="social">
             <h4>What it looks like</h4>
             <p>The spectrogram may show "V" shaped and tick shaped calls.</p>
-            <nav>
+            <nav class="tertiary">
               <ul>
                 <li><a href="#!/classify/bat-calls/social/social">Social call example</a> <button name="play-visible">Play</button></li>
               </ul>
@@ -119,7 +119,7 @@ define (require, exports, module) ->
           <section>
             <h4>What it looks like</h4>
             <p>The spectrogram can have fast evenly spaced pulses near the bottom, much closer together than bat calls, or it might look like messy background noise in which you can hear distinct sounds. </p>
-            <nav>
+            <nav class="tertiary">
               <ul>
                 <li><a href="#!/classify/insect-noise/distinct-pulse">Distinct pulse</a> <button name="play-visible">Play</button></li>
                 <li><a href="#!/classify/insect-noise/car-alarm">Like a car alarm</a> <button name="play-visible">Play</button></li>
@@ -157,7 +157,7 @@ define (require, exports, module) ->
           <section>
             <h4>What it looks like</h4>
             <p>The spectrogram appears random with no regular patterns to the noise, and may have either vertical or horizontal lines.</p>
-            <nav>
+            <nav class="tertiary">
               <ul>
                 <li><a href="#!/classify/machine-noise/car">Car background noise</a> <button name="play-visible">Play</button></li>
                 <li><a href="#!/classify/machine-noise/click">Click</a> <button name="play-visible">Play</button></li>

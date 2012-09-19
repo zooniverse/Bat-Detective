@@ -47,83 +47,119 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
     }
   }
 
-  // Primary tab-style navigation
-  > nav {
-    > ul {
-      margin: 0;
-      overflow: hidden;
-      padding: 0;
-      position: relative;
-      width: 100%;
-
-      &:before {
-        background: $paper-color-off;
-        bottom: 0;
-        border-radius: 3px 3px 0 0;
-        content: " ";
-        height: 1em;
-        left: 0;
-        padding: 10px 0 10px;
-        position: absolute;
+  nav {
+    &.primary {
+      ul {
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
         width: 100%;
-        z-index: -1;
-      }
 
-      > li {
-        display: inline-block;
-        float: left;
-        margin-left: $gutter-size;
-
-        &:first-child {
-          margin-left: 0;
+        &:before {
+          background: $paper-color-off;
+          bottom: 0;
+          border-radius: 3px 3px 0 0;
+          content: " ";
+          height: 1em;
+          left: 0;
+          padding: 10px 0 10px;
+          position: absolute;
+          width: 100%;
+          z-index: -1;
         }
 
-        > a {
-          @include box-sizing(border-box);
-          border-radius: 3px 3px 0 0;
-          color: $text-color-off;
-          display: block;
-          font-weight: bold;
-          letter-spacing: 1px;
-          padding: 15px 0 5px;
-          text: {
-            align: center;
-            transform: uppercase;
-          };
-          width: $one-quarter;
+        li {
+          display: inline-block;
+          float: left;
+          margin-left: $gutter-size;
 
-          &.active {
-            background: $paper-color;
-            color: $text-color;
-            opacity: 1;
+          &:first-child {
+            margin-left: 0;
+          }
+
+          a {
+            @include box-sizing(border-box);
+            border-radius: 3px 3px 0 0;
+            color: $text-color-off;
+            display: block;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 15px 0 5px;
+            text: {
+              align: center;
+              transform: uppercase;
+            };
+            width: $one-quarter;
+
+            &.active {
+              background: $paper-color;
+              color: $text-color;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    &.secondary {
+      margin-bottom: 1em;
+
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: inline-block;
+
+          a {
+            @include details-button;
+          }
+        }
+      }
+    }
+
+    &.tertiary {
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: block;
+
+          a {
+            color: $text-color-off;
+            display: inline-block;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 10px;
+            position: relative;
+
+            & + button {
+              display: none;
+            }
+
+            &.active {
+              color: $red;
+
+              & + button {
+                display: inline-block;
+              }
+            }
           }
         }
       }
     }
   }
 
-  > section {
+  > section,
+  > div {
     @include clearfix;
     background: $paper-color;
     color: $text-color;
     padding: $panel-padding;
 
-    > section {
-      @include clearfix;
-      clear: both;
-      margin-top: $gutter-size;
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-
-    button {
-      @include details-button;
-    }
-
-    > .column,
-    > section > .column {
+    .column {
       float: left;
       width: $panel-column;
       margin-left: $gutter-size;
@@ -139,59 +175,10 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
       &.two-thirds {
         width: $panel-column-third * 2;
       }
+    }
 
-      // Secondary button-style navigation
-      > nav {
-        margin-bottom: 1em;
-
-        > ul {
-          margin: 0;
-          padding: 0;
-
-          > li {
-            display: inline-block;
-
-            a {
-              @include details-button;
-            }
-          }
-        }
-      }
-
-      > section {
-        // Tertiary list-style navigation
-        > nav {
-          > ul {
-            margin: 0;
-            padding: 0 1em;
-
-            > li {
-              display: block;
-
-              > a {
-                color: $text-color-off;
-                display: inline-block;
-                font-weight: bold;
-                line-height: 1;
-                margin-bottom: 10px;
-                position: relative;
-
-                & + button {
-                  display: none;
-                }
-
-                &.active {
-                  color: $red;
-
-                  & + button {
-                    display: inline-block;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    button {
+      @include details-button;
     }
   }
 }
