@@ -1,11 +1,30 @@
-[data-page="about"] {
+.bat-detective.app [data-page="about"] {
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 1.5em 0 0;
+  }
+
+
+  p {
+    margin: 1.2em 0;
+  }
+
+  a {
+    color: #882a00;
+    &:hover {
+      text-decoration: underline;
+    }
+    &.minor {
+      display: block;
+      color: $gray;
+      font-size: 1.1em;
+    }
+  }
   figure {
-    @include transform(rotate(-3deg));
     background: $white;
     box-shadow: 0 3px 5px -3px $black;
-    margin: 10px 20px {
-      left: -50px;
-    };
+    margin: 10px 20px;
     max-width: 200px;
     float: left;
     font-size: 12px;
@@ -32,4 +51,25 @@
       };
     }
   }
+
+  $extra-padding: 20px;
+
+  [data-page="bats"] {
+    h3 {
+      margin: 0px;
+      font-weight: 700;
+    }
+
+    .framed {
+      padding: 10px 0 0;
+    }
+
+    .column {
+      &.two-thirds {
+        width: $panel-column-third * 2 - $extra-padding;
+        padding: 0 0 0 $extra-padding;
+      }
+    }
+  }
+
 }
