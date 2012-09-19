@@ -94,11 +94,12 @@
 
           .delete {
             bottom: $handle-thickness;
-            height: 20px;
+            font-size: 20px;
+            height: 30px;
             position: absolute;
             right: 0;
             text-align: center;
-            width: 20px;
+            width: 30px;
           }
 
           .cover {
@@ -178,6 +179,7 @@
                 };
                 bottom: auto;
                 color: $white;
+                font-size: 14px;
                 height: 16px;
                 left: 50%;
                 line-height: 4px;
