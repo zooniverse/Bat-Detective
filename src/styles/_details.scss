@@ -161,11 +161,14 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
 
     .column {
       float: left;
-      width: $panel-column;
       margin-left: $gutter-size;
 
       &:first-child {
         margin-left: 0;
+      }
+
+      &.one-half {
+        width: $panel-column;
       }
 
       &.one-third {

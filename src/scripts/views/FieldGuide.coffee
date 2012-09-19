@@ -10,7 +10,7 @@ define (require, exports, module) ->
       </nav>
 
       <section data-page="bat-calls" class="active">
-        <div class="column">
+        <div class="one-half column">
           <div data-page="searching" class="active">
             <div data-page="vertical-hockey-stick" class="active sample">
               <span data-audio-src="examples/audio/bat-searching-vertical-hockey-stick.mp3"></span>
@@ -46,7 +46,7 @@ define (require, exports, module) ->
           </div>
         </div>
 
-        <div class="column">
+        <div class="one-half column">
           <nav class="secondary">
             <ul>
               <li><a href="#!/classify/bat-calls/searching">Searching</a></li>
@@ -100,7 +100,7 @@ define (require, exports, module) ->
       </section>
 
       <section data-page="insect-noise">
-        <div class="column">
+        <div class="one-half column">
           <div data-page="distinct-pulse" class="active sample">
             <span data-audio-src="examples/audio/insect-distinct-pulse.mp3"></span>
             <img src="examples/images/insect-distinct-pulse.jpg" class="framed" />
@@ -115,7 +115,7 @@ define (require, exports, module) ->
           </div>
         </div>
 
-        <div class="column">
+        <div class="one-half column">
           <section>
             <h4>What it looks like</h4>
             <p>The spectrogram can have fast evenly spaced pulses near the bottom, much closer together than bat calls, or it might look like messy background noise in which you can hear distinct sounds. </p>
@@ -134,7 +134,7 @@ define (require, exports, module) ->
       </section>
 
       <section data-page="machine-noise">
-        <div class="column">
+        <div class="one-half column">
           <div data-page="car" class="active sample">
             <span data-audio-src="examples/audio/machine-car.mp3"></span>
             <img src="examples/images/machine-car.jpg" class="framed" />
@@ -153,7 +153,7 @@ define (require, exports, module) ->
           </div>
         </div>
 
-        <div class="column">
+        <div class="one-half column">
           <section>
             <h4>What it looks like</h4>
             <p>The spectrogram appears random with no regular patterns to the noise, and may have either vertical or horizontal lines.</p>
