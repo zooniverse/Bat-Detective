@@ -172,13 +172,36 @@
 
               .delete {
                 @include transition(opacity 0.25s ease-in-out);
+                background: $black;
+                border: 1px solid transparentize($white, 0.2) {
+                  radius: 1px;
+                };
                 bottom: auto;
-                height: 20px;
-                opacity: 0;
+                color: $white;
+                height: 16px;
+                left: 50%;
+                line-height: 4px;
+                margin-left: -10px;
+                overflow: visible;
                 position: absolute;
-                right: $handle-thickness;
-                top: 0;
-                width: 20px;
+                top: -16px;
+                width: 16px;
+
+                &:before,
+                &:after {
+                  border: 4px solid transparent;
+                  border-top-color: $black;
+                  content: " ";
+                  left: 50%;
+                  margin-left: -4px;
+                  position: absolute;
+                  top: 100%;
+                }
+
+                &:before {
+                  border-top-color: $white;
+                  margin-top: 1px;
+                }
               }
 
               > .handle {
@@ -196,12 +219,6 @@
 
                 &.end {
                   right: 0;
-                }
-              }
-
-              &:hover {
-                .delete {
-                  opacity: 1;
                 }
               }
             }
