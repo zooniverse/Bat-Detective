@@ -169,7 +169,6 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
               display: block;
 
               > a {
-                border-bottom: 1px dashed $paper-color-off;
                 color: $text-color-off;
                 display: inline-block;
                 font-weight: bold;
@@ -177,17 +176,15 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
                 margin-bottom: 10px;
                 position: relative;
 
-                &.active {
-                  color: $text-color;
+                & + button {
+                  display: none;
+                }
 
-                  &:before {
-                    color: $text-color-off;
-                    content: "\25C4";
-                    margin-right: 5px;
-                    font-size: 12px;
-                    position: absolute;
-                    right: 100%;
-                    top: 0;
+                &.active {
+                  color: $red;
+
+                  & + button {
+                    display: inline-block;
                   }
                 }
               }

@@ -22,8 +22,18 @@
       display: none;
     }
 
+    .controls {
+      display: none;
+    }
+
     &.loading {
       opacity: 0.75;
     }
+  }
+
+  button[name="play-visible"] {
+    font-size: 9px;
+    margin: 0 10px;
+    padding: 0 3px;
   }
 }

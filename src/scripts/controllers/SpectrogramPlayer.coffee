@@ -72,6 +72,8 @@ define (require, exports, module) ->
           onpause: @soundPaused
           onfinish: @soundFinished
 
+        @el.attr 'data-sound-id': @sound.id
+
     soundLoading: =>
       @el.addClass 'loading'
 

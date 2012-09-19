@@ -6,7 +6,6 @@ define (require, exports, module) ->
           <li><a href="#!/classify/bat-calls">Bat calls</a></li>
           <li><a href="#!/classify/insect-noise">Insect noises</a></li>
           <li><a href="#!/classify/machine-noise">Mechanical noises</a></li>
-          <li><a href="#!/classify/context">Context</a></li>
         </ul>
       </nav>
 
@@ -61,10 +60,10 @@ define (require, exports, module) ->
             <p>Spectrograms show a well defined pulse of sound, usually between 13KHz and 120KHz. There are usually a number of regularly spaced pulses making up a sequence. The shape of the pulse can range from:</p>
             <nav>
               <ul>
-                <li><a href="#!/classify/bat-calls/searching/vertical-hockey-stick">Vertical hockey-stick shaped</a></li>
-                <li><a href="#!/classify/bat-calls/searching/horizontal-hockey-stick">Flatter, more horizontal hockey-stick shape</a></li>
-                <li><a href="#!/classify/bat-calls/searching/vertical-line">Thin vertical line</a></li>
-                <li><a href="#!/classify/bat-calls/searching/plateau">Flat table or plateau shape</a></li>
+                <li><a href="#!/classify/bat-calls/searching/vertical-hockey-stick">Vertical hockey-stick shaped</a> <button name="play-visible">Play</button></li>
+                <li><a href="#!/classify/bat-calls/searching/horizontal-hockey-stick">Flatter, more horizontal hockey-stick shape</a> <button name="play-visible">Play</button></li>
+                <li><a href="#!/classify/bat-calls/searching/vertical-line">Thin vertical line</a> <button name="play-visible">Play</button></li>
+                <li><a href="#!/classify/bat-calls/searching/plateau">Flat table or plateau shape</a> <button name="play-visible">Play</button></li>
               </ul>
             </nav>
 
@@ -77,7 +76,7 @@ define (require, exports, module) ->
             <p>On the spectrogram you can see pulses getting closer and closer together, with the lines getting shorter and shorter.</p>
             <nav>
               <ul>
-                <li><a href="#!/classify/bat-calls/feeding/buzz">Buzz-shaped</a></li>
+                <li><a href="#!/classify/bat-calls/feeding/buzz">Buzz-shaped</a> <button name="play-visible">Play</button></li>
               </ul>
             </nav>
 
@@ -90,7 +89,7 @@ define (require, exports, module) ->
             <p>The spectrogram may show "V" shaped and tick shaped calls.</p>
             <nav>
               <ul>
-                <li><a href="#!/classify/bat-calls/social/social">Social call example</a></li>
+                <li><a href="#!/classify/bat-calls/social/social">Social call example</a> <button name="play-visible">Play</button></li>
               </ul>
             </nav>
 
@@ -122,9 +121,9 @@ define (require, exports, module) ->
             <p>The spectrogram can have fast evenly spaced pulses near the bottom, much closer together than bat calls, or it might look like messy background noise in which you can hear distinct sounds. </p>
             <nav>
               <ul>
-                <li><a href="#!/classify/insect-noise/distinct-pulse">Distinct pulse</a></li>
-                <li><a href="#!/classify/insect-noise/car-alarm">Like a car alarm</a></li>
-                <li><a href="#!/classify/insect-noise/messy">Messy spectrogram</a></li>
+                <li><a href="#!/classify/insect-noise/distinct-pulse">Distinct pulse</a> <button name="play-visible">Play</button></li>
+                <li><a href="#!/classify/insect-noise/car-alarm">Like a car alarm</a> <button name="play-visible">Play</button></li>
+                <li><a href="#!/classify/insect-noise/messy">Messy spectrogram</a> <button name="play-visible">Play</button></li>
               </ul>
             </nav>
 
@@ -160,43 +159,15 @@ define (require, exports, module) ->
             <p>The spectrogram appears random with no regular patterns to the noise, and may have either vertical or horizontal lines.</p>
             <nav>
               <ul>
-                <li><a href="#!/classify/machine-noise/car">Car background noise</a></li>
-                <li><a href="#!/classify/machine-noise/click">Click</a></li>
-                <li><a href="#!/classify/machine-noise/horizontal">Horizontal spectrogram</a></li>
-                <li><a href="#!/classify/machine-noise/vertical">Vertical spectrogram</a></li>
+                <li><a href="#!/classify/machine-noise/car">Car background noise</a> <button name="play-visible">Play</button></li>
+                <li><a href="#!/classify/machine-noise/click">Click</a> <button name="play-visible">Play</button></li>
+                <li><a href="#!/classify/machine-noise/horizontal">Horizontal spectrogram</a> <button name="play-visible">Play</button></li>
+                <li><a href="#!/classify/machine-noise/vertical">Vertical spectrogram</a> <button name="play-visible">Play</button></li>
               </ul>
             </nav>
 
             <h4>What it sounds like</h4>
             <p>These can sound like a click, a crackle or static noise, or something metallic like the sound of a workshop. Some may sound like listening out the window of a moving car.</p>
-          </section>
-        </div>
-      </section>
-
-      <section data-page="context">
-        <div class="column">
-          <div class="framed map image"></div>
-        </div>
-
-        <div class="column">
-          <section class="location">
-            <h3>Location</h3>
-            <div class="field">Paris, France</div>
-          </section>
-
-          <section class="habitat">
-            <h3>Habitat</h3>
-            <div class="field">Urban</div>
-          </section>
-
-          <section class="date">
-            <h3>Date</h3>
-            <div class="field">February 25, 1984</div>
-          </section>
-
-          <section class="time">
-            <h3>Time</h3>
-            <div class="field">12:34pm</div>
           </section>
         </div>
       </section>

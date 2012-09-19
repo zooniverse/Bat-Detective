@@ -12,10 +12,8 @@ define (require, exports, module) ->
     className: 'field-guide'
     template: template
 
-    map: null
-
-    elements:
-      '[data-page="context"] .map': 'mapContainer'
+    events:
+      'click button[name="play-visible"]': 'playVisibleSample'
 
     constructor: ->
       super
@@ -24,10 +22,6 @@ define (require, exports, module) ->
       for pageContainer in @el.find('[data-page]').parent()
         new Pager el: pageContainer
 
-      @map = new Map
-        el: @mapContainer.get 0
-        zoomControl: false
-
       for container in @el.find '.sample'
         container = $(container)
         audio = container.find('[data-audio-src]').attr 'data-audio-src'
@@ -35,7 +29,7 @@ define (require, exports, module) ->
 
         new SpectrogramPlayer {el: container, image, audio}
 
-    recenterMap: (lat, lng) =>
-      map.setCenter arguments...
+    playVisibleSample: =>
+      @el.find('.spectrogram-player:visible .play').click()
 
   module.exports = FieldGuide
