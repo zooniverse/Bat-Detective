@@ -60,10 +60,22 @@ define (require, exports, module) ->
             <p>Spectrograms show a well defined pulse of sound, usually between 13KHz and 120KHz. There are usually a number of regularly spaced pulses making up a sequence. The shape of the pulse can range from:</p>
             <nav class="tertiary">
               <ul>
-                <li><a href="#!/classify/bat-calls/searching/vertical-hockey-stick">Vertical hockey-stick shaped</a> <button name="play-visible">Play</button></li>
-                <li><a href="#!/classify/bat-calls/searching/horizontal-hockey-stick">Flatter, more horizontal hockey-stick shape</a> <button name="play-visible">Play</button></li>
-                <li><a href="#!/classify/bat-calls/searching/vertical-line">Thin vertical line</a> <button name="play-visible">Play</button></li>
-                <li><a href="#!/classify/bat-calls/searching/plateau">Flat table or plateau shape</a> <button name="play-visible">Play</button></li>
+                <li>
+                  <a href="#!/classify/bat-calls/searching/vertical-hockey-stick">Vertical hockey-stick shaped</a>
+                  <button data-play-audio="examples/audio/bat-searching-vertical-hockey-stick.mp3">Play</button>
+                </li>
+                <li>
+                  <a href="#!/classify/bat-calls/searching/horizontal-hockey-stick">Flatter, more horizontal hockey-stick shape</a>
+                  <button data-play-audio="examples/audio/bat-searching-horizontal-hockey-stick.mp3">Play</button>
+                </li>
+                <li>
+                  <a href="#!/classify/bat-calls/searching/vertical-line">Thin vertical line</a>
+                  <button data-play-audio="examples/audio/bat-searching-vertical-line.mp3">Play</button>
+                </li>
+                <li>
+                  <a href="#!/classify/bat-calls/searching/plateau">Flat table or plateau shape</a>
+                  <button data-play-audio="examples/audio/bat-searching-plateau.mp3">Play</button>
+                </li>
               </ul>
             </nav>
 
@@ -76,7 +88,10 @@ define (require, exports, module) ->
             <p>On the spectrogram you can see pulses getting closer and closer together, with the lines getting shorter and shorter.</p>
             <nav class="tertiary">
               <ul>
-                <li><a href="#!/classify/bat-calls/feeding/buzz">Buzz-shaped</a> <button name="play-visible">Play</button></li>
+                <li>
+                  <a href="#!/classify/bat-calls/feeding/buzz">Buzz-shaped</a>
+                  <button data-play-audio="examples/audio/bat-feeding-buzz.mp3">Play</button>
+                </li>
               </ul>
             </nav>
 
@@ -89,7 +104,10 @@ define (require, exports, module) ->
             <p>The spectrogram may show "V" shaped and tick shaped calls.</p>
             <nav class="tertiary">
               <ul>
-                <li><a href="#!/classify/bat-calls/social/social">Social call example</a> <button name="play-visible">Play</button></li>
+                <li>
+                  <a href="#!/classify/bat-calls/social/social">Social call example</a>
+                  <button data-play-audio="examples/audio/bat-social.mp3">Play</button>
+                </li>
               </ul>
             </nav>
 
@@ -121,9 +139,18 @@ define (require, exports, module) ->
             <p>The spectrogram can have fast evenly spaced pulses near the bottom, much closer together than bat calls, or it might look like messy background noise in which you can hear distinct sounds. </p>
             <nav class="tertiary">
               <ul>
-                <li><a href="#!/classify/insect-noise/distinct-pulse">Distinct pulse</a> <button name="play-visible">Play</button></li>
-                <li><a href="#!/classify/insect-noise/car-alarm">Like a car alarm</a> <button name="play-visible">Play</button></li>
-                <li><a href="#!/classify/insect-noise/messy">Messy spectrogram</a> <button name="play-visible">Play</button></li>
+                <li>
+                  <a href="#!/classify/insect-noise/distinct-pulse">Distinct pulse</a>
+                  <button data-play-audio="examples/audio/insect-distinct-pulse.mp3">Play</button>
+                </li>
+                <li>
+                  <a href="#!/classify/insect-noise/car-alarm">Like a car alarm</a>
+                  <button data-play-audio="examples/audio/insect-car-alarm.mp3">Play</button>
+                </li>
+                <li>
+                  <a href="#!/classify/insect-noise/messy">Messy spectrogram</a>
+                  <button data-play-audio="examples/audio/insect-messy.mp3">Play</button>
+                </li>
               </ul>
             </nav>
 
@@ -159,10 +186,22 @@ define (require, exports, module) ->
             <p>The spectrogram appears random with no regular patterns to the noise, and may have either vertical or horizontal lines.</p>
             <nav class="tertiary">
               <ul>
-                <li><a href="#!/classify/machine-noise/car">Car background noise</a> <button name="play-visible">Play</button></li>
-                <li><a href="#!/classify/machine-noise/click">Click</a> <button name="play-visible">Play</button></li>
-                <li><a href="#!/classify/machine-noise/horizontal">Horizontal spectrogram</a> <button name="play-visible">Play</button></li>
-                <li><a href="#!/classify/machine-noise/vertical">Vertical spectrogram</a> <button name="play-visible">Play</button></li>
+                <li>
+                  <a href="#!/classify/machine-noise/car">Car background noise</a>
+                  <button data-play-audio="examples/audio/machine-car.mp3">Play</button>
+                </li>
+                <li>
+                  <a href="#!/classify/machine-noise/click">Click</a>
+                  <button data-play-audio="examples/audio/machine-click.mp3">Play</button>
+                </li>
+                <li>
+                  <a href="#!/classify/machine-noise/horizontal">Horizontal spectrogram</a>
+                  <button data-play-audio="examples/audio/machine-horizontal.mp3">Play</button>
+                </li>
+                <li>
+                  <a href="#!/classify/machine-noise/vertical">Vertical spectrogram</a>
+                  <button data-play-audio="examples/audio/machine-vertical.mp3">Play</button>
+                </li>
               </ul>
             </nav>
 

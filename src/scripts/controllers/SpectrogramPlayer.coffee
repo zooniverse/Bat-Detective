@@ -2,10 +2,11 @@ define (require, exports, module) ->
   Spine = require 'Spine'
   $ = require 'jQuery'
   soundManager = require 'soundManager'
-
   {delay, clamp} = require 'zooniverse/util'
-
   TEMPLATE = require 'views/SpectrogramPlayer'
+
+  wordsOnly = (string) ->
+    string.replace /\W/g, ''
 
   class SpectrogramPlayer extends Spine.Controller
     image: ''
@@ -62,7 +63,7 @@ define (require, exports, module) ->
 
       soundManager.onready =>
         @sound = soundManager.createSound
-          id: "AUDIO_#{Math.floor Math.random() * 9999}"
+          id: wordsOnly @audio
           url: @audio
 
           whileloading: @soundLoading
@@ -71,8 +72,6 @@ define (require, exports, module) ->
           whileplaying: @soundPlaying
           onpause: @soundPaused
           onfinish: @soundFinished
-
-        @el.attr 'data-sound-id': @sound.id
 
     soundLoading: =>
       @el.addClass 'loading'
@@ -157,5 +156,10 @@ define (require, exports, module) ->
     release: =>
       @sound?.destruct()
       super
+
+  $(document).on 'click', '[data-play-audio]', ({currentTarget}) ->
+    id = wordsOnly $(currentTarget).attr 'data-play-audio'
+    sound = soundManager.getSoundById id
+    sound.play()
 
   module.exports = SpectrogramPlayer

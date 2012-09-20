@@ -137,6 +137,9 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
 
             & + button {
               display: none;
+              font-size: 9px;
+              margin: 0 3px;
+              padding: 0 3px;
             }
 
             &.active {
@@ -182,6 +185,10 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
       &.two-thirds {
         width: $panel-column-third * 2;
       }
+    }
+
+    a {
+      color: $red;
     }
 
     button {
