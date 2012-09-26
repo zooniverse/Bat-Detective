@@ -3,10 +3,6 @@ $text-color-off: rgb(110, 110, 100);
 $paper-color: rgb(243, 241, 237);
 $paper-color-off: rgb(200, 200, 190);
 
-$panel-padding: $gutter-size * 1.5;
-$panel-column: $one-half - $panel-padding;
-$panel-column-third: $one-third - (($panel-padding / 3) * 2);
-
 @mixin details-button {
   @include box-shadow(0 1px 0 $white);
   @include linear-gradient(#e4e2dc, #d5d3cd);
@@ -160,31 +156,26 @@ $panel-column-third: $one-third - (($panel-padding / 3) * 2);
     @include clearfix;
     background: $paper-color;
     color: $text-color;
-    padding: $panel-padding;
+    padding: $gutter-size * 1.5;
 
     section {
       @include clearfix;
     }
 
     .column {
+      @include box-sizing(border-box);
       float: left;
-      margin-left: $gutter-size;
+      padding-left: $gutter-size;
 
       &:first-child {
-        margin-left: 0;
+        padding-left: 0;
       }
 
-      &.one-half {
-        width: $panel-column;
-      }
-
-      &.one-third {
-        width: $panel-column-third;
-      }
-
-      &.two-thirds {
-        width: $panel-column-third * 2;
-      }
+      &.one-quarter {width: 25%;}
+      &.one-third {width: 33%;}
+      &.one-half {width: 50%;}
+      &.two-thirds {width: 67%;}
+      &.three-quarters {width: 75%;}
     }
 
     a {

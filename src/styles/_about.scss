@@ -19,34 +19,5 @@
         };
       }
     }
-
-    &.alt {
-      @include transform(rotate(3deg));
-      float: right;
-      margin: {
-        left: 20px;
-        right: -50px;
-      };
-    }
-  }
-
-  $extra-padding: 20px;
-
-  [data-page="bats"] {
-    h3 {
-      margin: 0px;
-      font-weight: 700;
-    }
-
-    .framed {
-      padding: 10px 0 0;
-    }
-
-    .column {
-      &.two-thirds {
-        width: $panel-column-third * 2 - $extra-padding;
-        padding: 0 0 0 $extra-padding;
-      }
-    }
   }
 }
