@@ -177,6 +177,10 @@ $paper-color-off: rgb(200, 200, 190);
       &.one-half {width: 50%;}
       &.two-thirds {width: 67%;}
       &.three-quarters {width: 75%;}
+
+      > :first-child {
+        margin-top: 0;
+      }
     }
 
     a {

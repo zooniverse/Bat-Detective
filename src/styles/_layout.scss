@@ -166,6 +166,7 @@ body {
         background: $black;
         border: 5px solid $white;
         box-shadow: 0 2px 3px -1px transparentize($black, 0.5);
+        display: block;
         text-align: center;
 
         > img {
