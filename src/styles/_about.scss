@@ -1,23 +1,6 @@
 .bat-detective.app [data-page="about"] {
-  figure {
-    background: $white;
-    box-shadow: 0 3px 5px -3px $black;
-    margin: 10px 20px;
-    max-width: 200px;
-    float: left;
-    font-size: 12px;
-    padding: 5px;
+  .spectrogram-player {
+    margin: -20px 0 15px;
     text-align: center;
-
-    img {}
-
-    figcaption {
-      .source {
-        font: {
-          size: 10px;
-          weight: bold;
-        };
-      }
-    }
   }
 }

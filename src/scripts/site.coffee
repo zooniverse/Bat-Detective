@@ -1,4 +1,6 @@
 define (require, exports, module) ->
+  $ = require 'jQuery'
+
   config = require 'zooniverse/config'
   ids = require 'ids'
 
@@ -12,6 +14,7 @@ define (require, exports, module) ->
 
   Map = require 'zooniverse/controllers/Map'
   Profile = require 'controllers/Profile'
+  SpectrogramPlayer = require 'controllers/SpectrogramPlayer'
 
   config.set
     name: 'Bat Detective'
@@ -102,7 +105,14 @@ define (require, exports, module) ->
     profile: new Profile
       el: '[data-page="profile"]'
 
-  $ = require 'jQuery'
+  for link in $('[data-page="about"] [data-page="bats"] a[href$=".mp3"]')
+    link = $(link)
+    player = new SpectrogramPlayer
+      audio: link.attr 'href'
+
+    player.el.insertBefore link
+    link.remove()
+
   window.refreshCSS = ->
     for link in $('link')
       href = $(link).attr 'href'
