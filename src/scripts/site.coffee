@@ -52,12 +52,12 @@ define (require, exports, module) ->
 
           subjects: [
             # For development only!
-            # new Subject
-            #   location:
-            #     standard: 'examples/images/bat-feeding-buzz.jpg'
-            #     mp3: 'examples/audio/bat-feeding-buzz.mp3'
-            #   coords: [0, 0]
-            #   metadata: {}
+            new Subject
+              location:
+                standard: 'examples/images/bat-feeding-buzz.jpg'
+                mp3: 'examples/audio/bat-feeding-buzz.mp3'
+              coords: [0, 0]
+              metadata: {}
 
             # new Subject
             #   location:
