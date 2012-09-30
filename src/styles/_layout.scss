@@ -82,9 +82,26 @@ body {
   }
 }
 
-.zooniverse-top-bar > div {
-  width: $full-width + 34;
+.zooniverse-top-bar {
+  color: #fff;
+  text-shadow: 0 1px 0 #000;
+
+  #zooniverse-top-bar-container {
+    background: #000;
+    border-bottom: 1px solid #666;
+  }
+
+  #zooniverse-top-bar-button {
+    background: #000;
+    border: 1px solid #666;
+    border-top: 0;
+
+    a img {
+      margin: 5px;
+    }
+  }
 }
+
 
 .bat-detective.app {
   @include clearfix;
