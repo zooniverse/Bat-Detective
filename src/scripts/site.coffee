@@ -52,52 +52,10 @@ define (require, exports, module) ->
             new Subject
               id: ids.tutorialSubject
               location:
-                standard: 'subjects/image/tutorial.jpg'
-                mp3: 'subjects/audio/tutorial.mp3'
+                standard: 'tutorial/tutorial.jpg'
+                mp3: 'tutorial/tutorial.mp3'
               coords: [0, 0]
               metadata: {}
-          ]
-
-          subjects: [
-            # new Subject
-            #   id: '5068c62054558f05df000001'
-            #   location:
-            #     standard: 'examples/images/bat-feeding-buzz.jpg'
-            #     mp3: 'examples/audio/bat-feeding-buzz.mp3'
-            #   coords: [0, 0]
-            #   metadata: {}
-
-            # new Subject
-            #   id: '5068c62254558f05df000002'
-            #   location:
-            #     standard: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
-            #     mp3: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
-            #   coords: [0, 0]
-            #   metadata: {}
-
-            # new Subject
-            #   id: '5068c62354558f05df000003'
-            #   location:
-            #     standard: 'examples/images/bat-searching-plateau.jpg'
-            #     mp3: 'examples/audio/bat-searching-plateau.mp3'
-            #   coords: [0, 0]
-            #   metadata: {}
-
-            # new Subject
-            #   id: '5068c62354558f05df000004'
-            #   location:
-            #     standard: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
-            #     mp3: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
-            #   coords: [0, 0]
-            #   metadata: {}
-
-            # new Subject
-            #   id: '5068c62454558f05df000005'
-            #   location:
-            #     standard: 'examples/images/bat-searching-vertical-line.jpg'
-            #     mp3: 'examples/audio/bat-searching-vertical-line.mp3'
-            #   coords: [0, 0]
-            #   metadata: {}
           ]
 
   Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's.
