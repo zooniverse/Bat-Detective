@@ -6,7 +6,7 @@ define (require, exports, module) ->
   TEMPLATE = require 'views/SpectrogramPlayer'
 
   wordsOnly = (string) ->
-    string.replace /\W/g, ''
+    string?.replace /\W/g, ''
 
   class SpectrogramPlayer extends Spine.Controller
     image: ''
