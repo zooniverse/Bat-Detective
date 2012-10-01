@@ -4,6 +4,11 @@
   }
 
   .spectrogram-player {
+    .spectrogram,
+    .seek {
+      display: none;
+    }
+
     .controls {
       bottom: 5px;
       position: absolute;
