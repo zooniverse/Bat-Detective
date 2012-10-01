@@ -25,9 +25,8 @@ define (require, exports, module) ->
     domain: 'batdetective.org'
     googleAnalytics: 'UA-1224199-32'
 
-    cartoUser: 'CARTODB USER'
-    cartoApiKey: 'CARTODB API KEY'
-    cartoTable: 'CARTODB TABLE'
+    cartoUser: 'the-zooniverse'
+    cartoTable: 'bat_detective'
 
   config.set
     app: new App
@@ -52,15 +51,16 @@ define (require, exports, module) ->
           ]
 
           subjects: [
-            # For development only!
-            new Subject
-              location:
-                standard: 'examples/images/bat-feeding-buzz.jpg'
-                mp3: 'examples/audio/bat-feeding-buzz.mp3'
-              coords: [0, 0]
-              metadata: {}
+            # new Subject
+            #   id: '5068c62054558f05df000001'
+            #   location:
+            #     standard: 'examples/images/bat-feeding-buzz.jpg'
+            #     mp3: 'examples/audio/bat-feeding-buzz.mp3'
+            #   coords: [0, 0]
+            #   metadata: {}
 
             # new Subject
+            #   id: '5068c62254558f05df000002'
             #   location:
             #     standard: 'examples/images/bat-searching-horizontal-hockey-stick.jpg'
             #     mp3: 'examples/audio/bat-searching-horizontal-hockey-stick.mp3'
@@ -68,6 +68,7 @@ define (require, exports, module) ->
             #   metadata: {}
 
             # new Subject
+            #   id: '5068c62354558f05df000003'
             #   location:
             #     standard: 'examples/images/bat-searching-plateau.jpg'
             #     mp3: 'examples/audio/bat-searching-plateau.mp3'
@@ -75,6 +76,7 @@ define (require, exports, module) ->
             #   metadata: {}
 
             # new Subject
+            #   id: '5068c62354558f05df000004'
             #   location:
             #     standard: 'examples/images/bat-searching-vertical-hockey-stick.jpg'
             #     mp3: 'examples/audio/bat-searching-vertical-hockey-stick.mp3'
@@ -82,6 +84,7 @@ define (require, exports, module) ->
             #   metadata: {}
 
             # new Subject
+            #   id: '5068c62454558f05df000005'
             #   location:
             #     standard: 'examples/images/bat-searching-vertical-line.jpg'
             #     mp3: 'examples/audio/bat-searching-vertical-line.mp3'
@@ -101,6 +104,7 @@ define (require, exports, module) ->
     homeMap: new Map
       latitude: 52.5
       longitude: 23.25
+      layers: ["http://d3clx83h4jp73a.cloudfront.net/tiles/#{config.cartoTable}/{z}/{x}/{y}.png"]
       el: '.home-map'
 
     profile: new Profile
