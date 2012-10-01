@@ -179,6 +179,7 @@
                 };
                 bottom: auto;
                 color: $white;
+                display: none;
                 font-size: 14px;
                 height: 16px;
                 left: 50%;
@@ -240,8 +241,14 @@
                 display: block;
               }
 
-              .time-selector:hover .handle {
-                width: $handle-thickness;
+              .time-selector {
+                .delete {
+                  display: block;
+                }
+
+                &:hover .handle {
+                  width: $handle-thickness;
+                }
               }
             }
           }
