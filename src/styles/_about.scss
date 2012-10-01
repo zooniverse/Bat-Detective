@@ -1,6 +1,30 @@
 .bat-detective.app [data-page="about"] {
+  .column {
+    position: relative;
+  }
+
   .spectrogram-player {
-    margin: -20px 0 15px;
-    text-align: center;
+    .spectrogram,
+    .seek {
+      display: none;
+    }
+
+    .controls {
+      bottom: 5px;
+      position: absolute;
+      right: 5px;
+
+      button {
+        background: transparentize($black, 0.25);
+        border: 0;
+        box-shadow: none;
+        color: $white;
+        height: 30px;
+        padding: 0;
+        text-align: center;
+        text-shadow: 0 1px 1px $black;
+        width: 30px;
+      }
+    }
   }
 }

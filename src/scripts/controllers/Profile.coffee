@@ -56,7 +56,7 @@ define (require, exports, module) ->
       @spectrogramPlayers.push player
       player.appendTo item
       $("<h4>#{formatDate favorite.createdAt}</h4>").appendTo item
-      $("<a href='#{favorite.subjects[0].talkHref()}' class='talk'>Talk about it</a>").appendTo item
+      $("<a href='#{favorite.subjects[0].talkHref()}' target='_blank' class='talk'>Talk about it</a>").appendTo item
       $("<a href='#delete' data-favorite='#{favorite.id}' class='delete'>Remove favorite</a>").appendTo item
       item
 
