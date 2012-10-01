@@ -15,12 +15,10 @@ $paper-color-off: rgb(200, 200, 190);
     size: inherit;
     weight: bold;
   };
-  letter-spacing: 1px;
   padding: 5px 20px 5px;
   text: {
     decoration: none;
     shadow: 0 1px 0 $white;
-    transform: uppercase;
   };
 
   &.active {
@@ -80,12 +78,8 @@ $paper-color-off: rgb(200, 200, 190);
             color: $text-color-off;
             display: block;
             font-weight: bold;
-            letter-spacing: 1px;
             padding: 15px 0 5px;
-            text: {
-              align: center;
-              transform: uppercase;
-            };
+            text-align: center;
             width: $one-quarter;
 
             &.active {
