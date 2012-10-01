@@ -11,8 +11,8 @@ define (require, exports, module) ->
         </header>
 
         <div class="favorites">
-          <h3>My favorites</h3>
-          <p class="none">You don't have any favorites.</p>
+          <h3>My favourites</h3>
+          <p class="none">You don't have any favourites.</p>
           <ul></ul>
         </div>
       </div>
