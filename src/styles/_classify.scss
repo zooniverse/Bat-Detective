@@ -428,12 +428,24 @@
   }
 }
 
-.tutorial-step {
+.tutorial-step,
+.dialog {
   @include transition(left 0.25s ease-in-out, top 0.33s ease-in-out);
   background: $black;
   border: 1px solid $white;
   padding: $gutter-size;
   position: absolute;
+  z-index: 950;
+
+  label {
+    display: block;
+    margin: 5px 0;
+
+    > span {
+      display: inline-block;
+      width: 10em;
+    }
+  }
 
   .controls {
     opacity: 0.5;
