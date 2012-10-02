@@ -32,8 +32,9 @@ define (require, exports, module) ->
       @spectrogramPlayers ?= []
       @recentMarkings ?= []
       @map = new Map
-        latitude: 52.5
-        longitude: 23.25
+        latitude: 43.037
+        longitude: 23.818
+        zoom: 6
         el: @mapContainer
 
     userChanged: =>
