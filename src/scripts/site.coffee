@@ -72,6 +72,7 @@ define (require, exports, module) ->
       longitude: 23.818
       zoom: 6
       layers: ["http://d3clx83h4jp73a.cloudfront.net/tiles/#{config.cartoTable}/{z}/{x}/{y}.png"]
+      cartoLogo: true
       el: '.home-map'
 
     profile: new Profile

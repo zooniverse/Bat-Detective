@@ -9,6 +9,18 @@
   top: 0;
   width: 100%;
 
+  .cartodb-logo {
+    bottom: 0;
+    opacity: 0.5;
+    position: absolute;
+    right: 4px;
+    z-index: 9;
+
+    &:hover {
+      opacity: 1
+    }
+  }
+
   &:after {
     @include linear-gradient(transparentize($black, 0.5), transparentize($black, 1), $fallback: transparent);
     content: " ";
