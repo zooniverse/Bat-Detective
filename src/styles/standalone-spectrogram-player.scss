@@ -1,11 +1,28 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
 .spectrogram-player {
   background: #000;
   display: inline-block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 
   .spectrogram {
-    position: relative;
+    bottom: 40px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 
-    img {}
+    img {
+      height: 100%;
+      width: 100%;
+    }
 
     .seek-line {
       background: #999;
@@ -18,13 +35,20 @@
   }
 
   .seek {
+    bottom: 30px;
+    left: 0;
+    position: absolute;
+    height: 10px;
+    width: 100%;
+
     .track {
+      height: 100%;
       position: relative;
 
       .fill {
         background: #333;
         border-right: 1px solid #999;
-        height: 10px;
+        height: 100%;
       }
 
       .thumb {}
@@ -32,6 +56,13 @@
   }
 
   .controls {
+    bottom: 0;
+    left: 0;
+    line-height: 30px;
+    position: absolute;
+    height: 30px;
+    width: 100%;
+
     button {
       background: transparent;
       border: 0;

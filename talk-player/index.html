@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>StandaloneSpectrogramPlayer</title>
+    <link rel="stylesheet" href="../styles/standalone-spectrogram-player.css" />
+  </head>
+
+  <body>
+    <script src="../scripts/lib/jquery.js"></script>
+
+    <script>window.SM2_DEFER = true;</script>
+    <script src="../scripts/lib/soundmanager/soundmanager2.js"></script>
+    <script>
+      window.soundManager = new SoundManager();
+      window.soundManager.url = '../scripts/lib/soundmanager/swf';
+      window.soundManager.flashLoadTimeout = 0;
+      window.soundManager.beginDelayedInit();
+    </script>
+
+    <script src="../scripts/StandaloneSpectrogramPlayer.js"></script>
+
+    <script>
+      (function() {
+        var host = '';
+        if (+window.location.port >= 1024) {
+          host = 'http://www.batdetective.org';
+        }
+
+        var params = {};
+        $.each(location.search.slice(1).split('&'), function(i, eq) {
+          eq = eq.split('=');
+          params[eq[0]] = eq[1];
+        });
+
+        window.player = new SpectrogramPlayer({
+          audio: host + '/subjects/mp3/' + params.id + '.mp3',
+          image: host + '/subjects/standard/' + params.id + '.jpg'
+        });
+
+        window.player.el.appendTo('body');
+      }());
+    </script>
+  </body>
+</html>
