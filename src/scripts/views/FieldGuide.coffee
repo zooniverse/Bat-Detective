@@ -49,13 +49,29 @@ define (require, exports, module) ->
         <div class="one-half column">
           <nav class="secondary">
             <ul>
+              <li><a href="#!/classify/bat-calls/social">Social</a></li>
               <li><a href="#!/classify/bat-calls/searching">Searching</a></li>
               <li><a href="#!/classify/bat-calls/feeding">Feeding</a></li>
-              <li><a href="#!/classify/bat-calls/social">Social</a></li>
             </ul>
           </nav>
 
-          <section data-page="searching" class="active">
+          <section data-page="social" class="active">
+            <h4>What it looks like</h4>
+            <p>The spectrogram may show "V" shaped and tick shaped calls.</p>
+            <nav class="tertiary">
+              <ul>
+                <li>
+                  <a href="#!/classify/bat-calls/social/social">Social call example</a>
+                  <button data-play-audio="examples/audio/bat-social.mp3">Play</button>
+                </li>
+              </ul>
+            </nav>
+
+            <h4>What it sounds like</h4>
+            <p>These sound like bat calls but with trills, and they're much closer together than normal bat calls. They may also have a different pitch than normal calls.</p>
+          </section>
+
+          <section data-page="searching">
             <h4>What it looks like</h4>
             <p>Spectrograms show a well defined pulse of sound, usually between 13KHz and 120KHz. There are usually a number of regularly spaced pulses making up a sequence. The shape of the pulse can range from:</p>
             <nav class="tertiary">
@@ -97,22 +113,6 @@ define (require, exports, module) ->
 
             <h4>What it sounds like</h4>
             <p>These sound like normal bat calls but the calls get closer and closer together until they terminate abruptly.</p>
-          </section>
-
-          <section data-page="social">
-            <h4>What it looks like</h4>
-            <p>The spectrogram may show "V" shaped and tick shaped calls.</p>
-            <nav class="tertiary">
-              <ul>
-                <li>
-                  <a href="#!/classify/bat-calls/social/social">Social call example</a>
-                  <button data-play-audio="examples/audio/bat-social.mp3">Play</button>
-                </li>
-              </ul>
-            </nav>
-
-            <h4>What it sounds like</h4>
-            <p>These sound like bat calls but with trills, and they're much closer together than normal bat calls. They may also have a different pitch than normal calls.</p>
           </section>
         </div>
       </section>
