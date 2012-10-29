@@ -31,7 +31,7 @@ body {
   }
 
   > header {
-    margin: 25px auto;
+    margin: -50px auto 25px;
     position: relative;
     width: $full-width;
     z-index: 3;
@@ -95,9 +95,12 @@ body {
     background: #000;
     border: 1px solid #666;
     border-top: 0;
+    margin-top: -1px;
 
     a img {
-      margin: 5px;
+      height: 30px;
+      margin: 10px;
+      width: 30px;
     }
   }
 }
