@@ -86,6 +86,10 @@ body {
   color: #fff;
   text-shadow: 0 1px 0 #000;
 
+  a {
+    color: inherit;
+  }
+
   #zooniverse-top-bar-container {
     background: #000;
     border-bottom: 1px solid #666;
