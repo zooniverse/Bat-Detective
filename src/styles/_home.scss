@@ -2,11 +2,11 @@
   @include transition(opacity 0.5s ease-in-out);
   background: $black;
   border-bottom: 1px solid transparentize($white, 0.67);
-  height: 400px;
+  height: 295px;
   left: 0;
   opacity: 0;
   position: absolute;
-  top: 0;
+  top: 105px;
   width: 100%;
 
   .cartodb-logo {
