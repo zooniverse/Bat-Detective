@@ -9,7 +9,7 @@
     "lib/spine.js": "scripts/lib/spine.js"
   }},
 
-  {"http://stringencoders.googlecode.com/svn/trunk/javascript/base64.js": "scripts/lib/base64.js"},
+  {"https://raw.github.com/zooniverse/Zooniverse/master/vendor/base64.js": "scripts/lib/base64.js"},
 
   {"https://github.com/CloudMade/Leaflet/zipball/v0.3.1": [
     {"dist/leaflet-src.js": "scripts/lib/leaflet.js"},
