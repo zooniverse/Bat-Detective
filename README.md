@@ -1,24 +1,23 @@
 Bat Detective
 =============
 
-First install the `zoo` command from the `app` branch of `zooniverse/Front-End-Assets`:
+Get set up:
 
 ```
-hub clone -p zooniverse/Front-End-Assets -b app
-cd Front-End-Assets
-gem build zoo.gemspec
-gem install zoo-*.gem
+bundle install
+bundle exec zoo install
 ```
 
-Then clone this repo using the `zoo` command:
+Then run a development server:
 
 ```
-zoo clone Bat-Detective
-cd Bat-Detective
+bundle exec zoo serve 3475
 ```
 
-Then run a server:
+Then do a build:
 
 ```
-zoo serve 3475
+bundle exec zoo build
 ```
+
+Deploy it manually, caveman.

@@ -1,0 +1,37 @@
+GIT
+  remote: https://github.com/zooniverse/Front-End-Assets.git
+  revision: 7d069e043e9974c20daf86b86d39e5e8d0b0570b
+  branch: app
+  specs:
+    zoo (0.0.8)
+      bourbon
+      coffee-script
+      colored
+      foreman (= 0.47)
+      grabass
+      sass
+      thor
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.3)
+    colored (1.2)
+    execjs (2.0.2)
+    foreman (0.47.0)
+      thor (>= 0.13.6)
+    grabass (0.3.0)
+    sass (3.2.12)
+    thor (0.18.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  zoo!
