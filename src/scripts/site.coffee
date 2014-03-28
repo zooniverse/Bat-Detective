@@ -58,9 +58,6 @@ define (require, exports, module) ->
               metadata: {}
           ]
 
-  Map::apiKey = '21a5504123984624a5e1a856fc00e238' # TODO: This is Brian's.
-  Map::tilesId = 61165
-
   config.set
     classifier: new Classifier
       workflow: config.app.projects[0].workflows[0]

@@ -17,6 +17,8 @@
     {"dist/images": "styles/lib/leaflet/images"}
   ]},
 
+  {"https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/1.0.3/leaflet-providers.js": "scripts/lib/leaflet-providers.js"},
+
   {"http://www.schillmania.com/projects/soundmanager2/download/soundmanagerv297a-20111220.zip": [
     {"script/soundmanager2.js": "scripts/lib/soundmanager/soundmanager2.js"},
     {"swf": "scripts/lib/soundmanager/swf"}
