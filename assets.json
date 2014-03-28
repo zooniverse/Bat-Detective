@@ -11,10 +11,10 @@
 
   {"https://raw.github.com/zooniverse/Zooniverse/master/vendor/base64.js": "scripts/lib/base64.js"},
 
-  {"https://github.com/CloudMade/Leaflet/zipball/v0.3.1": [
-    {"dist/leaflet-src.js": "scripts/lib/leaflet.js"},
-    {"dist/*.css": "styles/lib/leaflet"},
-    {"dist/images": "styles/lib/leaflet/images"}
+  {"http://leaflet-cdn.s3.amazonaws.com/build/leaflet-0.7.2.zip": [
+    {"leaflet-src.js": "scripts/lib/leaflet.js"},
+    {"leaflet.css": "styles/lib/leaflet/leaflet.css"},
+    {"images": "styles/lib/leaflet/images"}
   ]},
 
   {"https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/1.0.3/leaflet-providers.js": "scripts/lib/leaflet-providers.js"},
