@@ -3,5 +3,11 @@
     "coffee-script": "~1.4.0",
     "publisssh": "~1.0.0",
     "requirejs": "~2.0.0"
+  },
+  "scripts": {
+    "start": "bundle exec zoo serve 3475",
+    "predeploy": "bundle exec zoo build ./build-dir",
+    "deploy": "publisssh --ignore node_modules ./build-dir zooniverse-static/www.batdetective.org/test",
+    "postdeploy": "rm -rf ./build-dir"
   }
 }

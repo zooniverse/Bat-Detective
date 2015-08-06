@@ -1,23 +1,15 @@
 Bat Detective
 =============
 
-Get set up:
-
 ```
-bundle install
-bundle exec zoo install
+bundle install --path ./.bundle
+npm install
 ```
 
-Then run a development server:
-
 ```
-bundle exec zoo serve 3475
+npm start
 ```
 
-Then do a build:
-
 ```
-bundle exec zoo build
+npm run deploy
 ```
-
-Deploy it manually, caveman.
