@@ -1,18 +1,18 @@
 # Created by `zoo server`
 /.zoo_server_pids
 
+
 # Created by `zoo build`
 /build-*
 
-/src/scripts/lib
-/scripts/*.js
-/scripts/**/*.js
-/scripts/lib
+/scripts/*
+!/scripts/lib
+/scripts/lib/zooniverse
 
-/styles/*.css
-/styles/**/*.css
-/styles/lib
+/styles/*
+!/styles/lib
 
-/src/styles/lib
+/node_modules
 
-/beta
+/.ruby-version
+/ruby
