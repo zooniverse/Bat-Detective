@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "coffee-script": "~1.4.0",
+    "publisssh": "~1.0.0",
+    "requirejs": "~2.0.0"
+  }
+}
