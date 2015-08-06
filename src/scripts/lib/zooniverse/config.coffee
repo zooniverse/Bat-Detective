@@ -13,16 +13,16 @@ define (require, exports, module) ->
   # Determine if we're running on a development server.
   config.set
     dev: +location.port > 1023 or !!~location.hostname.indexOf '.dev'
-    demo: !!~location.hostname.indexOf 'demo'
+    demo: !!~location.href.indexOf 'demo'
 
   # Default host and API proxy path
   config.set
     apiHost: 'https://api.zooniverse.org'
     proxyPath: '/proxy.html'
 
-  config.set apiHost: "https://dev.zooniverse.org" if config.demo
-
   # TODO: What if dev Ouroboros isn't on 3000?
   config.set apiHost: "http://#{location.hostname}:3000" if config.dev
+
+  config.set apiHost: "https://dev.zooniverse.org" if config.demo
 
   module.exports = config
