@@ -1,0 +1,8 @@
+html[lang="en"] [lang="de"],
+html[lang="en"] [lang="po"],
+html[lang="de"] [lang="en"],
+html[lang="de"] [lang="po"],
+html[lang="po"] [lang="en"],
+html[lang="po"] [lang="de"] {
+  display: none;
+}

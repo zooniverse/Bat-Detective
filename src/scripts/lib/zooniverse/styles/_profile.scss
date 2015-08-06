@@ -1,0 +1,34 @@
+.zooniverse-profile {
+
+  > .profile {
+    display: none;
+
+    .favorites ul,
+    .recents ul,
+    .groups ul {
+      display: none;
+    }
+  }
+
+  &.has-favorites .favorites,
+  &.has-recents .recents,
+  &.has-groups .groups {
+    .none {
+      display: none;
+    }
+
+    ul {
+      display: block;
+    }
+  }
+
+  &.signed-in {
+    > .login-form {
+      display: none;
+    }
+
+    > .profile {
+      display: block;
+    }
+  }
+}

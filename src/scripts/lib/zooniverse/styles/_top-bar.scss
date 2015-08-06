@@ -1,0 +1,291 @@
+@mixin appearance($a) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+body {
+  -moz-transition: top 0.5s ease-in-out;
+  -ms-transition: top 0.5s ease-in-out;
+  -webkit-transition: top 0.5s ease-in-out;
+  transition: top 0.5s ease-in-out;
+  position: relative;
+  top: -100px;
+}
+
+body.show-top-bar {
+  top: 0;
+}
+
+.zooniverse-top-bar {
+  margin: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  box-shadow: 10px;
+  width: 100%;
+  z-index: 999;
+
+  label {
+    display: block;
+    font-size: 11px;
+  }
+
+  input, button, select {
+    margin-top: 10px;
+    height: 25px;
+    border-radius: 3px;
+  }
+
+  button {
+    border: 1px solid #979797;
+    box-shadow: inset 0px 1px 0px white, 0px 1px 2px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.5);
+    color: inherit;
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 115px;
+    margin-right: 5px;
+    padding-left: 5px;
+    background: #fff;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, .2);
+    border: 1px solid #C1C1C1;
+  }
+
+  button {
+    color: inherit;
+    width: 85px;
+    margin-right: 20px;
+    padding-bottom: 2px;
+    margin-right: 10px;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+  }
+
+  button[name="signout"] {
+    margin-left: 5px;
+  }
+}
+
+#zooniverse-top-bar-container {
+  padding: 30px;
+  display: block;
+  background: #f7f7f7;
+  color: inherit;
+  font-family: "Open Sans";
+  height: 45px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+    a {
+      text-decoration: none;
+      font-weight :700;
+      color: inherit;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  p {
+    font-size: 11px;
+    margin-bottom: 0;
+  }
+
+  #zooniverse-top-bar-info {
+    float: left;
+    padding-right: 10px;
+    width: 470px;
+    border-right: 1px solid;
+    height: 45px;
+  }
+
+  #zooniverse-top-bar-projects {
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    float: left;
+    padding-left: 10px;
+    padding-right: 15px;
+    width: 300px;
+    height: 45px;
+
+    a {
+      font-weight: 700;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h3 a {
+      font-weight: 200;
+    }
+  }
+
+  #zooniverse-top-bar-login {
+    float: right;
+    height: 45px;
+
+    h3 {
+      display: inline;
+    }
+
+    .progress {
+      display: none;
+    }
+
+    .inputs {
+      display: inline-block;
+      position: relative;
+
+      .reset {
+        left: 0;
+        position: absolute;
+        top: 100%;
+      }
+    }
+
+    .inputs .reset p {
+      display: inline;
+    }
+
+    .buttons {
+      display: inline-block;
+      position: relative;
+    }
+  }
+
+  #zooniverse-top-bar-languages {
+    float: right;
+    height: 45px;
+    display: none;
+
+    select {
+      background: #f7f7f7;
+      color: inherit;
+      margin-top: 12px;
+      @include appearance(none);
+      padding: 5px;
+      border: 0;
+      margin-right: -5px;
+    }
+  }
+}
+
+#zooniverse-top-bar-button {
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 50%;
+  margin-left: -500px;
+  position: relative;
+  background: #f7f7f7;
+  border-radius: 0px 0px 5px 5px;
+
+  img {
+    margin-left: 13px;
+    margin-top: 13px;
+  }
+}
+
+.dialog.sign-up {
+  height: 325px;
+  width: 300px;
+  font-family: "Open Sans";
+  padding: 30px;
+
+  label {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 11px;
+    display: block;
+
+    > span {
+      display: inline-block;
+      width: 15em;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 150px;
+      margin-top: 0;
+    }
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+    font-size: 11px;
+  }
+
+  p.errors {
+    font-size: 11px;
+  }
+
+  button[type="submit"] {
+    padding: 0.25em 1.5em;
+    margin-left: 5px;
+    width: 85px;
+  }
+
+  button.dialog-closer {
+    float: right;
+  }
+
+  > div  {
+    margin: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1385px) {
+  #zooniverse-top-bar-container {
+    #zooniverse-top-bar-info {
+      width: auto;
+
+      h3 {
+        margin-top: 17px;
+      }
+
+      p {
+        display: none;
+      }
+    }
+
+    #zooniverse-top-bar-projects {
+      width: auto;
+
+      h3 {
+        margin-top: 17px;
+      }
+
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  #zooniverse-top-bar-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 990px) {
+  #zooniverse-top-bar-container {
+    #zooniverse-top-bar-info {
+      border: 0;
+    }
+
+    #zooniverse-top-bar-projects {
+      display: none;
+    }
+  }
+}
+
