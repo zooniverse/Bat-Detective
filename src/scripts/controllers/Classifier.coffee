@@ -26,6 +26,7 @@ define (require, exports, module) ->
       'click .summary .favorite .destroy button': 'destroyFavorite'
       'click .summary .talk .yes': 'goToTalk'
       'click .summary .talk .no': 'nextSubjects'
+      'click button[name="restart-tutorial"]': 'restartTutorial'
       BaseClassifier::events
 
     elements: $.extend
@@ -75,6 +76,9 @@ define (require, exports, module) ->
       selector.deselect for selector in @selectors
       @saveClassification()
       @el.addClass 'showing-summary'
+
+    restartTutorial: =>
+      @startTutorial()
 
     isDisabled: =>
       @el.hasClass 'showing-summary'

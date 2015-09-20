@@ -71,6 +71,10 @@ define (require, exports, module) ->
       </div>
     </div>
 
+    <div class="action-buttons">
+      <button type="button" name="restart-tutorial">Restart Tutorial</button>
+    </div>
+
     <div class="field-guide">
       <!--Insert field guide here-->
     </div>
