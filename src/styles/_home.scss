@@ -42,6 +42,32 @@
   }
 }
 
+.world-tour-banner {
+  border-bottom: 1px dashed #444;
+  padding: 2em 0;
+  text-align: center;
+  text-shadow: 0 1px 1px black;
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  p {
+    font-size: 1.3em;
+  }
+
+  a {
+    @include transition(color 0.25s ease-in-out);
+    color: inherit;
+    position: relative;
+    white-space: nowrap;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+}
+
 .bat-detective.app [data-page="home"] {
   h2 {
     font: {
