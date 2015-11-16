@@ -37,6 +37,3 @@ PLATFORMS
 DEPENDENCIES
   rb-fsevent (~> 0.9)
   zoo!
-
-BUNDLED WITH
-   1.10.6
