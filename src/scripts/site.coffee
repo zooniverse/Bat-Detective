@@ -65,9 +65,9 @@ define (require, exports, module) ->
       tutorialSteps: tutorialSteps
 
     homeMap: new Map
-      latitude: 46
-      longitude: 24.6
-      zoom: 7
+      latitude: 54.5
+      longitude: -3.5
+      zoom: 5
       layers: ["http://d3clx83h4jp73a.cloudfront.net/tiles/#{config.cartoTable}/{z}/{x}/{y}.png"]
       cartoLogo: true
       el: '.home-map'
