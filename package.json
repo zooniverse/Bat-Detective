@@ -7,7 +7,7 @@
   "scripts": {
     "start": "bundle exec zoo serve 3475",
     "predeploy": "bundle exec zoo build ./build-dir",
-    "deploy": "publisssh --ignore node_modules ./build-dir zooniverse-static/www.batdetective.org/test",
+    "deploy": "publisssh --ignore node_modules ./build-dir zooniverse-static/www.batdetective.org",
     "postdeploy": "rm -rf ./build-dir"
   }
 }
