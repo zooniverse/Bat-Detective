@@ -1,5 +1,8 @@
 define (require, exports, module) ->
   module.exports = """
+    <div class="world-tour-banner">
+        <h2>This audio clip was recorded in the UK. <a href="http://blog.batdetective.org/2015/11/02/bat-detective-world-tour-uk-information/" target="_blank">Click here</a> to learn more about UK bats and the Bat Detective World Tour.</h2>
+    </div>
     <div class="interface">
       <!--This scale is inserted into the player after it's created.-->
       <!--TODO: Is this actually a linear scale?-->
