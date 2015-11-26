@@ -76,6 +76,7 @@ define (require, exports, module) ->
 
     <div class="action-buttons">
       <button type="button" name="restart-tutorial">Restart Tutorial</button>
+      <span class="origin-wrap">Clip origin: <span class="clip-origin">N/A</span></span>
     </div>
 
     <div class="field-guide">

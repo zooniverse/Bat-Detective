@@ -33,6 +33,8 @@ define (require, exports, module) ->
       '.scale': 'scale'
       '.player': 'playerContainer'
       '.decision-tree': 'decisionTreeContainer'
+      '.clip-origin': 'clipOriginContainer'
+      '.origin-wrap': 'clipOriginWrapper'
       '.field-guide': 'fieldGuideContainer'
       BaseClassifier::elements
 
@@ -52,6 +54,11 @@ define (require, exports, module) ->
       subject = @workflow.selection[0]
       @player.setImage subject.location.standard
       @player.setAudio subject.location.mp3
+      if subject.metadata.origin?
+          @clipOriginWrapper.show()
+          @clipOriginContainer.html subject.metadata.origin
+      else
+          @clipOriginWrapper.hide()
 
     addFrequencyRange: (e) =>
       return if @isDisabled()
