@@ -17,8 +17,8 @@ define (require, exports, module) ->
 
   # Default host and API proxy path
   config.set
-    apiHost: 'https://api.zooniverse.org'
-    proxyPath: '/proxy.html'
+    apiHost: 'http://www.batdetective.org'
+    proxyPath: '/_ouroboros_api/proxy'
 
   # TODO: What if dev Ouroboros isn't on 3000?
   config.set apiHost: "http://#{location.hostname}:3000" if config.dev
