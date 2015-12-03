@@ -15,4 +15,7 @@
 /node_modules
 
 /.ruby-version
+/.rvmrc
 /ruby
+
+/npm-debug.log
