@@ -48,3 +48,6 @@ define (require, exports, module) ->
     saveClassification: ({project, workflow, subjects, annotations}, andThen...) ->
       path = "/projects/#{project}/workflows/#{workflow}/classifications"
       post path, {classification: {subject_ids: subjects}, annotations}, andThen...
+    
+    fetchProject: (project, andThen...) ->
+      get "/projects/#{idOf project}", andThen...

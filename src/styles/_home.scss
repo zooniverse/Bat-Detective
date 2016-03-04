@@ -65,6 +65,21 @@
       color: $gold;
     }
   }
+  
+  .progress-bar {
+    border: 1px solid white;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    height: 1em;
+    line-height: 1;
+    
+    .progress {
+      display: inline-block;
+      background: white;
+      height: 1em;
+    }
+  }
 }
 
 .bat-detective.app [data-page="home"] {
