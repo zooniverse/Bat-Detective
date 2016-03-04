@@ -15,6 +15,8 @@ define (require, exports, module) ->
   Map = require 'zooniverse/controllers/Map'
   Profile = require 'controllers/Profile'
   SpectrogramPlayer = require 'controllers/SpectrogramPlayer'
+  
+  API = require 'zooniverse/API'
 
   noop = ->
   window.console ||=
@@ -64,14 +66,6 @@ define (require, exports, module) ->
       el: '[data-page="classify"]'
       tutorialSteps: tutorialSteps
 
-    homeMap: new Map
-      latitude: 42.7
-      longitude: -75.0
-      zoom: 6
-      layers: ["http://d3clx83h4jp73a.cloudfront.net/tiles/#{config.cartoTable}/{z}/{x}/{y}.png"]
-      cartoLogo: true
-      el: '.home-map'
-
     profile: new Profile
       el: '[data-page="profile"]'
 
@@ -83,6 +77,16 @@ define (require, exports, module) ->
     player.el.insertBefore link
     link.remove()
 
+# classification challenge progress
+  TARGET = 500000
+  START = 400000
+  $('.challenge-target').html TARGET.toLocaleString()
+  API.fetchProject ids.project, (project) ->
+    count = parseInt project.classification_count
+    $('.challenge-current').html count.toLocaleString()
+    progress = Math.min (count - START) / (TARGET - START), 1
+    $('.progress-bar .progress').css 'width', "#{parseInt progress * 100}%"
+    
   window.refreshCSS = ->
     for link in $('link')
       href = $(link).attr 'href'
