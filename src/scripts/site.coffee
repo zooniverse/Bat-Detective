@@ -79,7 +79,7 @@ define (require, exports, module) ->
 
 # classification challenge progress
   TARGET = 100000
-  START = 400000
+  START = 423500
   $('.challenge-target').html TARGET.toLocaleString()
   API.fetchProject ids.project, (project) ->
     count = parseInt project.classification_count
