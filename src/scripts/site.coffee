@@ -83,7 +83,7 @@ define (require, exports, module) ->
   $('.challenge-target').html TARGET.toLocaleString()
   API.fetchProject ids.project, (project) ->
     count = parseInt project.classification_count
-    $('.challenge-current').html count.toLocaleString()
+    $('.challenge-current').html (count - START).toLocaleString()
     progress = Math.min (count - START) / (TARGET), 1
     $('.progress-bar .progress').css 'width', "#{parseInt progress * 100}%"
     
