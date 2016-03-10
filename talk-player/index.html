@@ -35,9 +35,17 @@
           params[eq[0]] = eq[1];
         });
 
+        if (params.id.substr(-4) === ".png") {
+            audio = host + '/subjects/mp3/' + params.id.replace('.png', '.mp3')
+            image = host + '/subjects/standard/' + params.id
+        } else {
+            audio = host + '/subjects/mp3/' + params.id + '.mp3'
+            image = host + '/subjects/standard/' + params.id + '.jpg'
+        }
+
         window.player = new SpectrogramPlayer({
-          audio: host + '/subjects/mp3/' + params.id + '.mp3',
-          image: host + '/subjects/standard/' + params.id + '.jpg'
+          audio: audio,
+          image: image
         });
 
         window.player.el.appendTo('body');
