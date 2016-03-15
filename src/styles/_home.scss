@@ -99,15 +99,14 @@
       &:hover {
         color: $gold;
       }
-
-      &:after {
-        border-bottom: 1px dashed transparentize($white, 0.75);
-        bottom: 5px;
-        content: " ";
-        height: 0;
-        left: 0;
-        position: absolute;
-        width: 100%;
+      
+      &.classify {
+        display: inline-block;
+        text-decoration: none;
+        background: $red;
+        border: 1px solid $white;
+        padding: .5em;
+        border-radius: 5px;
       }
     }
   }
