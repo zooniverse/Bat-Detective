@@ -17,7 +17,7 @@ define (require, exports, module) ->
 
   # Default host and API proxy path
   config.set
-    apiHost: 'http://www.batdetective.org'
+    apiHost: 'https://www.batdetective.org'
     proxyPath: '/_ouroboros_api/proxy'
 
   # TODO: What if dev Ouroboros isn't on 3000?
