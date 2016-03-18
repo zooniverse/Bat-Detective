@@ -2,6 +2,7 @@ define (require, exports, module) ->
   $ = require 'jQuery'
 
   BaseClassifier = require 'zooniverse/controllers/Classifier'
+  Recent = require 'zooniverse/models/Recent'
 
   template = require 'views/Classifier'
   tutorialSteps = require 'tutorialSteps'
@@ -89,5 +90,9 @@ define (require, exports, module) ->
 
     isDisabled: =>
       @el.hasClass 'showing-summary'
+    
+    saveClassification: =>
+      @classificationsThisSession += 1
+      Recent.create subjects: @workflow.selection
 
   module.exports = Classifier
