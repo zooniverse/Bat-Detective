@@ -89,6 +89,8 @@ define (require, exports, module) ->
     $('.progress-bar .progress').css 'width', "#{parseInt progress * 100}%"
   
   updateCounter()
+  config.classifier.on 'update', ->
+    updateCounter()
     
   window.refreshCSS = ->
     for link in $('link')

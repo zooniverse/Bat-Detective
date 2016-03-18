@@ -94,5 +94,6 @@ define (require, exports, module) ->
     saveClassification: =>
       @classificationsThisSession += 1
       Recent.create subjects: @workflow.selection
+      @trigger 'update', @
 
   module.exports = Classifier
