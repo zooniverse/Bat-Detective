@@ -64,7 +64,7 @@ define (require, exports, module) ->
     classifier: new Classifier
       workflow: config.app.projects[0].workflows[0]
       el: '[data-page="classify"]'
-      tutorialSteps: tutorialSteps
+      tutorialSteps: []
 
     profile: new Profile
       el: '[data-page="profile"]'

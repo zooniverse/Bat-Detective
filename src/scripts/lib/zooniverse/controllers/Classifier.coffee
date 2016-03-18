@@ -54,7 +54,7 @@ define (require, exports, module) ->
       @updateFavoriteButtons()
 
     reset: =>
-      @tutorial.end()
+      @tutorial?.end()
 
       @el.removeClass 'is-favored'
       @updateFavoriteButtons()
