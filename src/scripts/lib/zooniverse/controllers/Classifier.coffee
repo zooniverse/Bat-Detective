@@ -115,27 +115,27 @@ define (require, exports, module) ->
         open @workflow.selection[0].talkHref()
 
     nextSubjects: =>
-      if @classificationsThisSession in [3, 9] and not User.current
-        dialog = new Dialog
-          content: $('<div></div>').append('''
-            <p>You're not signed in!</p>
-            <p>Sign in or create an account to receive credit for your work.</p>
-          ''').html()
-          buttons: [{'Log in': true}, {'No thanks': false}]
-          target: @el.parent()
-          className: 'classifier'
-          done: (logIn) =>
-            if logIn
-              dialog = new Dialog
-                content: ''
-                buttons: [{'Cancel': null}]
-                target: @el.parent()
-                className: 'classifier'
-
-              loginForm = new LoginForm
-
-              dialog.contentContainer.append loginForm.el
-              dialog.reposition()
+      # if @classificationsThisSession in [3, 9] and not User.current
+      #   dialog = new Dialog
+      #     content: $('<div></div>').append('''
+      #       <p>You're not signed in!</p>
+      #       <p>Sign in or create an account to receive credit for your work.</p>
+      #     ''').html()
+      #     buttons: [{'Log in': true}, {'No thanks': false}]
+      #     target: @el.parent()
+      #     className: 'classifier'
+      #     done: (logIn) =>
+      #       if logIn
+      #         dialog = new Dialog
+      #           content: ''
+      #           buttons: [{'Cancel': null}]
+      #           target: @el.parent()
+      #           className: 'classifier'
+      #
+      #         loginForm = new LoginForm
+      #
+      #         dialog.contentContainer.append loginForm.el
+      #         dialog.reposition()
 
       @workflow.fetchSubjects().done => @workflow.selectNext()
 
