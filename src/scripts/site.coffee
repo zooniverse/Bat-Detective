@@ -78,14 +78,17 @@ define (require, exports, module) ->
     link.remove()
 
 # classification challenge progress
-  TARGET = 100000
-  START = 423500
+  TARGET = 100
+  START = 0
   $('.challenge-target').html TARGET.toLocaleString()
-  API.fetchProject ids.project, (project) ->
-    count = parseInt project.classification_count
+  
+  updateCounter = ->
+    count = config.classifier.classificationsThisSession
     $('.challenge-current').html (count - START).toLocaleString()
     progress = Math.min (count - START) / (TARGET), 1
     $('.progress-bar .progress').css 'width', "#{parseInt progress * 100}%"
+  
+  updateCounter()
     
   window.refreshCSS = ->
     for link in $('link')

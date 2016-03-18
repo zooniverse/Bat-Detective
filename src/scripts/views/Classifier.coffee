@@ -1,5 +1,9 @@
 define (require, exports, module) ->
   module.exports = """
+    <div class="world-tour-banner">
+        <p><span class="challenge-current">…</span> classifications</p>
+        <p class="progress-bar"><span class="progress"></span></p>
+    </div>
     <div class="interface">
       <!--This scale is inserted into the player after it's created.-->
       <!--TODO: Is this actually a linear scale?-->
