@@ -1,5 +1,6 @@
 define (require, exports, module) ->
   Proxy = require 'zooniverse/Proxy'
+  $ = require 'jQuery'
   {get, post, del, getJSON} = Proxy
 
   # These accepts objects with IDs or string-IDs.
@@ -27,10 +28,11 @@ define (require, exports, module) ->
       getJSON "/projects/#{idOf project}/login", {username, password}, andThen...
 
     fetchSubjects: ({project, group, limit}, andThen...) ->
-      path = "/projects/#{idOf project}"
-      path += "/groups/#{idOf group}" if group
-      path += "/subjects"
-      get path, {limit}, andThen...
+      # path = "/projects/#{idOf project}"
+      # path += "/groups/#{idOf group}" if group
+      # path += "/subjects"
+      path = 'offline/subjects.json'
+      $.get( path ).then andThen...
 
     fetchFavorites: ({project, user}, andThen...) ->
       get "/projects/#{idOf project}/users/#{idOf user}/favorites", andThen...
