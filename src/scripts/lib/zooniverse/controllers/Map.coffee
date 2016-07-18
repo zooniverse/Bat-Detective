@@ -24,7 +24,7 @@ define (require, exports, module) ->
     tilesId: 998
 
     # Pick one from http://leaflet-extras.github.io/leaflet-providers/preview/index.html
-    tilesProvider: 'MapQuestOpen.Aerial'
+    tilesProvider: 'Esri.WorldImagery'
 
     map: null
 
