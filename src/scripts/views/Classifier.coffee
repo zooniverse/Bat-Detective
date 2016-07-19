@@ -1,7 +1,7 @@
 define (require, exports, module) ->
   module.exports = """
     <div class="world-tour-banner">
-        <h2>This audio clip was recorded in Australia. <a href="http://blog.batdetective.org/2016/05/31/australia-bat-detective-world-tour/" target="_blank">Click here</a> to learn more about Australian bats and the Bat Detective World Tour.</h2>
+        <h2>This audio clip was recorded in Japan. <a href="http://blog.batdetective.org/2016/07/19/bat-detective-arrives-in-japan-our-next-world-tour-stop/" target="_blank">Click here</a> to learn more about Japanese bats and the Bat Detective World Tour.</h2>
     </div>
     <div class="interface">
       <!--This scale is inserted into the player after it's created.-->
