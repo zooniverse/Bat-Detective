@@ -1,5 +1,5 @@
 define (require, exports, module) ->
-  $ = require 'jQuery'
+  $ = window.jQuery
 
   BaseClassifier = require 'zooniverse/controllers/Classifier'
 
