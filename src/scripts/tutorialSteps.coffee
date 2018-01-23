@@ -1,5 +1,5 @@
 define (require, exports, module) ->
-  $ = window.jQuery
+  $ = require 'jQuery'
   {Step} = require 'zooniverse/controllers/Tutorial'
   {delay} = require 'zooniverse/util'
 

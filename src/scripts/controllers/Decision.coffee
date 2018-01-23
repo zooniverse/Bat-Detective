@@ -1,6 +1,6 @@
 define (require, exports, module) ->
   Spine = require 'Spine'
-  $ = window.jQuery
+  $ = require 'jQuery'
 
   class Decision extends Spine.Controller
     class @Question

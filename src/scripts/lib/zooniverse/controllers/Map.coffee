@@ -2,7 +2,7 @@ define (require, exports, module) ->
   Spine = require 'Spine'
   Leaflet = require 'Leaflet'
   require 'leafletProviders'
-  $ = window.jQuery
+  $ = require 'jQuery'
 
   {delay} = require 'zooniverse/util'
 

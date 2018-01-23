@@ -1,6 +1,6 @@
 define (require, exports, module) ->
   Spine = require 'Spine'
-  $ = window.jQuery
+  $ = require 'jQuery'
 
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 

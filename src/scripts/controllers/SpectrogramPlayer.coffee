@@ -1,6 +1,6 @@
 define (require, exports, module) ->
   Spine = require 'Spine'
-  $ = window.jQuery
+  $ = require 'jQuery'
   soundManager = require 'soundManager'
   {delay, clamp} = require 'zooniverse/util'
   TEMPLATE = require 'views/SpectrogramPlayer'

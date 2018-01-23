@@ -1,5 +1,5 @@
 define (require, exports, module) ->
-  $ = window.jQuery
+  $ = require 'jQuery'
   {getObject} = require 'zooniverse/util'
 
   attribute = 'data-i18n'
