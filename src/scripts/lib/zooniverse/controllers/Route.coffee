@@ -1,5 +1,5 @@
 define (require, exports, module) ->
-  $ = require 'jQuery'
+  $ = window.jQuery
   {remove, delay} = require 'zooniverse/util'
 
   class Route

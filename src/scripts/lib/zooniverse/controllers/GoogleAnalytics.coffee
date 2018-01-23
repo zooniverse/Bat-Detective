@@ -1,5 +1,5 @@
 define (require, exports, module) ->
-  $ = require 'jQuery'
+  $ = window.jQuery
 
   class GoogleAnalytics
     @instance: null
