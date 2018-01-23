@@ -1,5 +1,5 @@
 define (require, exports, module) ->
-  $ = window.jQuery
+  $ = require 'jQuery'
   Spine = require 'Spine'
   User = require 'zooniverse/models/User'
   templates = require 'zooniverse/views/LoginForm'

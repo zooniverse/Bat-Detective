@@ -2,6 +2,7 @@
   {"http://requirejs.org/docs/release/2.0.0/comments/require.js": "scripts/lib/require.js"},
   {"https://raw.github.com/jrburke/almond/latest/almond.js": "scripts/lib/almond.js"},
 
+  {"http://code.jquery.com/jquery-1.7.1.js": "scripts/lib/jquery.js"},
   {"https://raw.github.com/tlianza/ajaxHooks/master/src/ajax/xdr.js": "scripts/lib/xdr.js"},
 
   {"http://spinejs.com/pages/download": {
